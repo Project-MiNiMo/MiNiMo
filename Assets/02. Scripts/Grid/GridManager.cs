@@ -106,8 +106,8 @@ public class GridManager : ManagerBase, IEventListener
         _editCircle.SetPosition(_currentObject.transform);
 
         BoundsInt buildingArea = _currentObject.Area;
+
         TileBase[] baseArray = _checkTilemap.GetTilesBlock(buildingArea);
-        Debug.Log("Base array length: " + baseArray.Length);
         TileBase[] tileArray = new TileBase[baseArray.Length];
 
         for (int i = 0; i < baseArray.Length; i++)
@@ -115,12 +115,10 @@ public class GridManager : ManagerBase, IEventListener
             if (baseArray[i] == _tileBases[(int)TileType.Empty])
             {
                 tileArray[i] = _tileBases[(int)TileType.Possible];
-                Debug.Log("Possible tile at index: " + i);
             }
             else
             {
                 tileArray[i] = _tileBases[(int)TileType.Impossible];
-                Debug.LogError("Possible tile at index: " + i);
             }
         }
 
