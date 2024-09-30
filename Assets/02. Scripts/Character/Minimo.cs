@@ -11,7 +11,7 @@ public class Minimo : MonoBehaviour
         _animator = GetComponent<Animator>();
 
         FSM = new(this);
-        FSM.ChangeState(MinimoState.Idle);
+        SetChillState();
     }
 
     private void Update()
@@ -24,5 +24,19 @@ public class Minimo : MonoBehaviour
         Debug.Log($"Minimo State Change {_trigger}");
 
         _animator.SetTrigger(_trigger);
+    }
+
+    public void SetChillState()
+    {
+        int randomIndex = Random.Range(0, 3);
+
+        if (randomIndex == 0)
+        {
+            FSM.ChangeState(MinimoState.Idle);
+        }
+        else
+        {
+            FSM.ChangeState(MinimoState.Walk);
+        }
     }
 }
