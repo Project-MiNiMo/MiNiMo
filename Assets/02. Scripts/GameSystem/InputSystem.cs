@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InputCtrl : MonoBehaviour, IListener
+public class InputSystem : MonoBehaviour, IEventListener
 {
-    private const float PressDuration = 1.0f;
+    private const float PRESS_DURATION = 1.0f;
     private float _pressStartTime = 0f;
 
     private bool _isEditing = false;
@@ -21,7 +21,10 @@ public class InputCtrl : MonoBehaviour, IListener
 
     private void Update()
     {
-        if (_isEditing) return;
+        if (_isEditing)
+        {
+            return;
+        }
 
         HandleInput();
     }
@@ -51,7 +54,7 @@ public class InputCtrl : MonoBehaviour, IListener
 
         if (_isPressing && _pressedObject != null)
         {
-            if (Time.time - _pressStartTime >= PressDuration)
+            if (Time.time - _pressStartTime >= PRESS_DURATION)
             {
                 var eventManager = App.Instance.GetManager<EventManager>();
                 eventManager.PostEvent(EventCode.EditStart, this);

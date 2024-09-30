@@ -420,5 +420,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb07cd728e7d28b41aca913757ed9d6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectImage: {fileID: 1849316769126866298}
-  objectCountText: {fileID: 7988240610883100054}
+  _objectImg: {fileID: 1849316769126866298}
+  _objectCountTxt: {fileID: 7988240610883100054}

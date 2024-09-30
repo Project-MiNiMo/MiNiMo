@@ -79,6 +79,7 @@ public class App : Singleton<App>
     public static void LoadScene(SceneName sceneName)
     {
         DOTween.KillAll();
+
         UnityEngine.SceneManagement.SceneManager.LoadScene((int)sceneName);
     }
 }

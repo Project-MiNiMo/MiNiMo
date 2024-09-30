@@ -9,34 +9,38 @@ public enum TileType
     Impossible,
 }
 
-public class GridManager : ManagerBase, IListener
+public class GridManager : ManagerBase, IEventListener
 {
-    [SerializeField] private GridLayout gridLayout;
+    [SerializeField] private Tilemap _checkTilemap;
+    [SerializeField] private Tilemap _markTilemap;
+    [SerializeField] private TileBase[] _tileBases;
 
-    [SerializeField] private Tilemap checkTilemap;
-    [SerializeField] private Tilemap markTilemap;
-    [SerializeField] private TileBase[] tileBases;
+    private GridLayout _gridLayout;
 
-    private GridObject currentObject;
-    private Vector3Int currentCellPosition;
-    private TileBase[] currentTiles;
+    private GridObject _currentObject;
+    private Vector3Int _currentCellPosition;
+    private TileBase[] _currentTiles;
 
-    private bool isEditing = false;
-    private bool isDragging = false;
+    private bool _isEditing = false;
+    private bool _isDragging = false;
 
-    private EditCirclePanel editCircle;
+    private EditCirclePanel _editCircle;
 
     private void Start()
     {
         App.Instance.GetManager<EventManager>().AddListener(EventCode.EditStart, this);
         App.Instance.GetManager<EventManager>().AddListener(EventCode.EditEnd, this);
 
-        editCircle = App.Instance.GetManager<UIManager>().GetPanel<EditCirclePanel>();
+        _gridLayout = GetComponent<GridLayout>();
+        _editCircle = App.Instance.GetManager<UIManager>().GetPanel<EditCirclePanel>();
     }
 
     private void Update()
     {
-        if (!isEditing) return;
+        if (!_isEditing)
+        { 
+            return;
+        }
 
         HandleInput();
     }
@@ -44,13 +48,13 @@ public class GridManager : ManagerBase, IListener
     private void HandleInput()
     {
         Vector2 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3Int cellPosition = gridLayout.WorldToCell(touchPosition);
+        Vector3Int cellPosition = _gridLayout.WorldToCell(touchPosition);
 
         if (Input.GetMouseButtonDown(0))
         {
             if (EventSystem.current.IsPointerOverGameObject()) return;
 
-            isDragging = true;
+            _isDragging = true;
 
             RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero);
 
@@ -58,14 +62,14 @@ public class GridManager : ManagerBase, IListener
             {
                 GridObject gridObject = hit.collider.GetComponentInParent<GridObject>();
 
-                if (currentObject == null || gridObject != currentObject)
+                if (_currentObject == null || gridObject != _currentObject)
                 {
                     SetObject(gridObject);
                 }
             }
             else
             {
-                if (currentObject != null && currentCellPosition != cellPosition)
+                if (_currentObject != null && _currentCellPosition != cellPosition)
                 {
                     SetObjectPosition(cellPosition);
                     FollowObject();
@@ -75,12 +79,12 @@ public class GridManager : ManagerBase, IListener
 
         if (Input.GetMouseButtonUp(0))
         {
-            isDragging = false;
+            _isDragging = false;
         }
 
-        if (isDragging && currentObject != null)
+        if (_isDragging && _currentObject != null)
         {
-            if (currentCellPosition != cellPosition)
+            if (_currentCellPosition != cellPosition)
             {
                 SetObjectPosition(cellPosition);
                 FollowObject();
@@ -90,75 +94,84 @@ public class GridManager : ManagerBase, IListener
 
     private void SetObjectPosition(Vector3Int cellPosition)
     {
-        currentObject.transform.position = gridLayout.CellToWorld(cellPosition) + gridLayout.cellSize * 0.5f;
-        currentCellPosition = cellPosition;
+        _currentObject.transform.position = _gridLayout.CellToWorld(cellPosition) + _gridLayout.cellSize * 0.5f;
+        _currentCellPosition = cellPosition;
     }
 
     private void FollowObject()
     {
         ClearArea();
 
-        currentObject.area.position = gridLayout.WorldToCell(currentObject.transform.position);
-        editCircle.SetPosition(currentObject.transform);
+        _currentObject.Area.position = _gridLayout.WorldToCell(_currentObject.transform.position);
+        _editCircle.SetPosition(_currentObject.transform);
 
-        BoundsInt buildingArea = currentObject.area;
-        TileBase[] baseArray = checkTilemap.GetTilesBlock(buildingArea);
+        BoundsInt buildingArea = _currentObject.Area;
+        TileBase[] baseArray = _checkTilemap.GetTilesBlock(buildingArea);
+        Debug.Log("Base array length: " + baseArray.Length);
         TileBase[] tileArray = new TileBase[baseArray.Length];
 
         for (int i = 0; i < baseArray.Length; i++)
         {
-            if (baseArray[i] == tileBases[(int)TileType.Empty])
+            if (baseArray[i] == _tileBases[(int)TileType.Empty])
             {
-                tileArray[i] = tileBases[(int)TileType.Possible];
+                tileArray[i] = _tileBases[(int)TileType.Possible];
+                Debug.Log("Possible tile at index: " + i);
             }
             else
             {
-                tileArray[i] = tileBases[(int)TileType.Impossible];
+                tileArray[i] = _tileBases[(int)TileType.Impossible];
+                Debug.LogError("Possible tile at index: " + i);
             }
         }
 
-        currentTiles = tileArray;
-        markTilemap.SetTilesBlock(buildingArea, tileArray);
+        _currentTiles = tileArray;
+        _markTilemap.SetTilesBlock(buildingArea, tileArray);
     }
 
     private void ClearArea()
     {
-        if (currentObject == null) return;
+        if (_currentObject == null)
+        {
+            return;
+        }
 
-        BoundsInt area = currentObject.area;
+        BoundsInt area = _currentObject.Area;
         TileBase[] emptyTiles = new TileBase[area.size.x * area.size.y * area.size.z];
-        markTilemap.SetTilesBlock(area, emptyTiles);
+        _markTilemap.SetTilesBlock(area, emptyTiles);
     }
 
     #region Manage Object
     public void SetObject(GridObject gridObject, bool isPressing = true)
     {
-        if (currentObject != null)
+        if (_currentObject != null)
         {
             CancelObject();
         }
 
-        currentObject = gridObject;
-        currentObject.StartEdit();
-        SetObjectPosition(currentObject.area.position);
-        editCircle.OpenPanel();
+        _currentObject = gridObject;
+        _currentObject.StartEdit();
+        SetObjectPosition(_currentObject.Area.position);
+        _editCircle.OpenPanel();
 
-        isDragging = isPressing;
+        _isDragging = isPressing;
 
         FollowObject();
     }
 
     public void ConfirmObject()
     {
-        if (currentObject == null) return;
+        if (_currentObject == null) 
+        {
+            return;
+        }
 
         if (CheckCanPlace())
         {
-            currentObject.Place();
+            _currentObject.Place();
             ClearArea();
 
-            currentObject = null;
-            editCircle.ClosePanel();
+            _currentObject = null;
+            _editCircle.ClosePanel();
         }
     }
 
@@ -166,34 +179,34 @@ public class GridManager : ManagerBase, IListener
     {
         ClearArea();
 
-        if (!currentObject.IsPlaced || keepObject)
+        if (!_currentObject.IsPlaced || keepObject)
         {
-            App.Instance.GetManager<UIManager>().GetPanel<StoragePanel>().AddObjectCount(currentObject.name, 1);
-            Destroy(currentObject.gameObject);
+            App.Instance.GetManager<UIManager>().GetPanel<StoragePanel>().AddObjectCount(_currentObject.name, 1);
+            Destroy(_currentObject.gameObject);
         }
         else
         {
-            SetObjectPosition(currentObject.PreviousArea.position);
-            currentObject.EndEdit();
+            SetObjectPosition(_currentObject.PreviousArea.position);
+            _currentObject.EndEdit();
         }
 
-        currentObject = null;
-        currentTiles = null;
-        editCircle.ClosePanel();
+        _currentObject = null;
+        _currentTiles = null;
+        _editCircle.ClosePanel();
     }
 
     public void RotateObject()
     {
-        currentObject?.Rotate();
+        _currentObject.Rotate();
         FollowObject();
     }
     #endregion
 
     private bool CheckCanPlace()
     {
-        foreach (var tile in currentTiles)
+        foreach (var tile in _currentTiles)
         {
-            if (tile == tileBases[(int)TileType.Impossible])
+            if (tile == _tileBases[(int)TileType.Impossible])
             {
                 return false;
             }
@@ -207,12 +220,12 @@ public class GridManager : ManagerBase, IListener
         switch (code)
         {
             case EventCode.EditStart:
-                isEditing = true;
+                _isEditing = true;
                 break;
 
             case EventCode.EditEnd:
-                isEditing = false;
-                if (currentObject != null)
+                _isEditing = false;
+                if (_currentObject != null)
                 {
                     CancelObject();
                 }

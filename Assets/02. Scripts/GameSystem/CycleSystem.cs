@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class CycleCtrl : MonoBehaviour
+public class CycleSystem : MonoBehaviour
 {
     [Serializable]
     public struct CycleMark
@@ -16,12 +16,11 @@ public class CycleCtrl : MonoBehaviour
     [SerializeField] private CycleMark[] marks;
     [SerializeField] private Light2D globalLight;
 
-    private const float cycleLength = 24f;
+    private const float CYCLE_LENGTH = 24f;
     private float lastUpdateTime = 0f;
+    private float time;
 
     private int currentIndex = 0;
-
-    private float time;
 
     private void Start()
     {
@@ -48,7 +47,7 @@ public class CycleCtrl : MonoBehaviour
     {
         DateTime now = DateTime.Now;
 
-        time = (now.Hour + now.Minute / 60f) / cycleLength;
+        time = (now.Hour + now.Minute / 60f) / CYCLE_LENGTH;
     }
 
     private void FindCurrentIndex()
@@ -74,22 +73,26 @@ public class CycleCtrl : MonoBehaviour
         float nextTime = nextMark.timeRatio;
 
         if (nextTime < currentTime)
+        {
             nextTime += 1f;
+        }
 
         float timeSinceCurrent = time - currentTime;
         if (timeSinceCurrent < 0)
+        {
             timeSinceCurrent += 1f;
+        }
 
         float duration = nextTime - currentTime;
         return Mathf.Clamp01(timeSinceCurrent / duration);
     }
 
-    private void UpdateLight(float t)
+    private void UpdateLight(float updateTime)
     {
         CycleMark currentMark = marks[currentIndex];
         CycleMark nextMark = marks[(currentIndex + 1) % marks.Length];
 
-        globalLight.color = Color.Lerp(currentMark.color, nextMark.color, t);
-        globalLight.intensity = Mathf.Lerp(currentMark.intensity, nextMark.intensity, t);
+        globalLight.color = Color.Lerp(currentMark.color, nextMark.color, updateTime);
+        globalLight.intensity = Mathf.Lerp(currentMark.intensity, nextMark.intensity, updateTime);
     }
 }

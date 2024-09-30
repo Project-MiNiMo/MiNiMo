@@ -12,12 +12,12 @@ public enum UIState
 
 public class UIManager : ManagerBase
 {
-    [SerializeField] private Image blackBlur;
+    [SerializeField] private Image _blackBlur;
 
-    private Dictionary<Type, UIBase> uiDictionary;
-    private Stack<UIState> uiStack;
+    private Dictionary<Type, UIBase> _uiDictionary;
+    private Stack<UIState> _uiStack;
 
-    public UIState CurrentState => uiStack.Count > 0 ? uiStack.Peek() : UIState.Normal;
+    public UIState CurrentState => _uiStack.Count > 0 ? _uiStack.Peek() : UIState.Normal;
 
     protected override void Awake()
     {
@@ -25,18 +25,18 @@ public class UIManager : ManagerBase
 
         var uiPanels = GetComponentsInChildren<UIBase>(true);
 
-        uiDictionary = new(uiPanels.Length);
-        uiStack = new();
+        _uiDictionary = new(uiPanels.Length);
+        _uiStack = new();
 
         foreach (var panel in uiPanels)
         {
-            uiDictionary.Add(panel.GetType(), panel);
+            _uiDictionary.Add(panel.GetType(), panel);
         }
     }
 
     private void Start()
     {
-        foreach (var UI in uiDictionary.Values)
+        foreach (var UI in _uiDictionary.Values)
         {
             if (!UI.gameObject.activeSelf) //wake up panels
             {
@@ -53,7 +53,7 @@ public class UIManager : ManagerBase
     #region Get Panel
     public T GetPanel<T>() where T : UIBase
     {
-        if (uiDictionary.TryGetValue(typeof(T), out UIBase panel))
+        if (_uiDictionary.TryGetValue(typeof(T), out UIBase panel))
         {
             return panel as T;
         }
@@ -66,14 +66,14 @@ public class UIManager : ManagerBase
     #region UI Stack Management
     public void PushUIState(UIState state)
     {
-        uiStack.Push(state);
+        _uiStack.Push(state);
     }
 
     public void PopUIState(UIState state)
     {
         if (CurrentState == state)
         {
-            uiStack.Pop();
+            _uiStack.Pop();
         }
     }
     #endregion
@@ -81,10 +81,10 @@ public class UIManager : ManagerBase
     #region Fade In / Out
     public void FadeIn(Action onComplete = null)
     {
-        blackBlur.gameObject.SetActive(true);
+        _blackBlur.gameObject.SetActive(true);
 
-        blackBlur.DOKill();
-        blackBlur.DOFade(1f, 0.5f).SetEase(Ease.Linear).OnComplete(() =>
+        _blackBlur.DOKill();
+        _blackBlur.DOFade(1f, 0.5f).SetEase(Ease.Linear).OnComplete(() =>
         {
             onComplete?.Invoke();
         });
@@ -92,20 +92,20 @@ public class UIManager : ManagerBase
 
     public void FadeOut(Action onComplete = null)
     {
-        blackBlur.DOKill();
-        blackBlur.DOFade(0f, 1f).SetEase(Ease.Linear).OnComplete(() =>
+        _blackBlur.DOKill();
+        _blackBlur.DOFade(0f, 1f).SetEase(Ease.Linear).OnComplete(() =>
         {
-            blackBlur.gameObject.SetActive(false);
+            _blackBlur.gameObject.SetActive(false);
             onComplete?.Invoke();
         });
     }
 
     public void FadeInOut(Action midAction = null)
     {
-        blackBlur.gameObject.SetActive(true);
+        _blackBlur.gameObject.SetActive(true);
 
-        blackBlur.DOKill();
-        blackBlur.DOFade(1f, 0.5f).SetEase(Ease.Linear).OnComplete(() =>
+        _blackBlur.DOKill();
+        _blackBlur.DOFade(1f, 0.5f).SetEase(Ease.Linear).OnComplete(() =>
         {
             midAction?.Invoke();
             FadeOut();

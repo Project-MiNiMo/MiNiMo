@@ -23,7 +23,8 @@ public class JsonUtilityHelper
 {
     public static T[] FromJson<T>(string json)
     {
-        string newJson = "";
+        string newJson;
+
         if (json[0] == '{')
         {
             newJson = json;
@@ -32,14 +33,16 @@ public class JsonUtilityHelper
         {
             newJson = "{ \"array\": " + json + "}";
         }
+
         Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(newJson);
         return wrapper.array;
     }
 
     public static string ToJson<T>(T[] array)
     {
-        Wrapper<T> wrapper = new Wrapper<T>();
+        Wrapper<T> wrapper = new();
         wrapper.array = array;
+
         return JsonUtility.ToJson(wrapper);
     }
 

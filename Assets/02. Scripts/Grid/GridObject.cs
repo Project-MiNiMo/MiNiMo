@@ -2,13 +2,17 @@ using UnityEngine;
 
 public class GridObject : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer spriteRenderer;
-
-    public BoundsInt area;
+    public BoundsInt Area;
     public BoundsInt PreviousArea { get; private set; }
-
     public bool IsPlaced { get; private set; }
-    private bool isFlipped = false;
+
+    private bool _isFlipped = false;
+    private SpriteRenderer _spriteRenderer;
+
+    private void Awake()
+    {
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+    }
 
     public void StartEdit()
     {
@@ -23,20 +27,20 @@ public class GridObject : MonoBehaviour
     public void Place()
     {
         IsPlaced = true;
-        PreviousArea = area;
+        PreviousArea = Area;
         EndEdit();
     }
 
     public void Rotate()
     {
-        transform.Rotate(0, isFlipped ? -180 : 180, 0);
-        isFlipped = !isFlipped;
+        transform.Rotate(0, _isFlipped ? -180 : 180, 0);
+        _isFlipped = !_isFlipped;
     }
 
     private void SetTransparency(float alpha)
     {
-        Color color = spriteRenderer.color;
+        Color color = _spriteRenderer.color;
         color.a = alpha;
-        spriteRenderer.color = color;
+        _spriteRenderer.color = color;
     }
 }

@@ -22,17 +22,17 @@ public class AStarNode
 
 public class PathManager : ManagerBase
 {
-    [SerializeField] private Tilemap checkTilemap;
-    [SerializeField] private TileBase emptyTile;
+    [SerializeField] private Tilemap _checkTilemap;
+    [SerializeField] private TileBase _emptyTile;
 
     public Vector3 GetTileWorldPosition(Vector3Int tilePosition)
     {
-        return checkTilemap.CellToWorld(tilePosition) + checkTilemap.cellSize * 0.5f;
+        return _checkTilemap.CellToWorld(tilePosition) + _checkTilemap.cellSize * 0.5f;
     }
 
     public List<Vector3Int> GetRandomPath(Vector3 currentPosition, int searchRadius = 10)
     {
-        Vector3Int currentCell = checkTilemap.WorldToCell(currentPosition);
+        Vector3Int currentCell = _checkTilemap.WorldToCell(currentPosition);
         Vector3Int targetCell = GetRandomWalkableTile(currentCell, searchRadius);
 
         if (targetCell == Vector3Int.zero) return null;
@@ -146,7 +146,7 @@ public class PathManager : ManagerBase
 
     private bool IsWalkable(Vector3Int position)
     {
-        return checkTilemap.GetTile(position) == emptyTile;
+        return _checkTilemap.GetTile(position) == _emptyTile;
     }
 
     private List<Vector3Int> ConstructPath(AStarNode node)

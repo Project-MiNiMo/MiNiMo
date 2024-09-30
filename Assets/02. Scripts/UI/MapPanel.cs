@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MapPanel : UIBase, IListener
+public class MapPanel : UIBase, IEventListener
 {
-    [SerializeField] private Button editStartBtn;
+    [SerializeField] private Button _editStartBtn;
 
     public override void Initialize()
     {
@@ -12,7 +12,7 @@ public class MapPanel : UIBase, IListener
         eventManager.AddListener(EventCode.EditStart, this);
         eventManager.AddListener(EventCode.EditEnd, this);
 
-        editStartBtn.onClick.AddListener(() => eventManager.PostEvent(EventCode.EditStart, this));
+        _editStartBtn.onClick.AddListener(() => eventManager.PostEvent(EventCode.EditStart, this));
 
         gameObject.SetActive(true);
     }

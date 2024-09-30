@@ -3,13 +3,15 @@ using UnityEngine;
 public class Minimo : MonoBehaviour
 {
     public MinimoFSM FSM { get; private set; }
-    private Animator animator;
+
+    private Animator _animator;
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
 
         FSM = new(this);
+        FSM.ChangeState(MinimoState.Idle);
     }
 
     private void Update()
@@ -21,6 +23,6 @@ public class Minimo : MonoBehaviour
     {
         Debug.Log($"Minimo State Change {_trigger}");
 
-        animator.SetTrigger(_trigger);
+        _animator.SetTrigger(_trigger);
     }
 }

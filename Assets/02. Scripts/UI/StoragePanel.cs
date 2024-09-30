@@ -5,25 +5,26 @@ using DG.Tweening;
 
 public class StoragePanel : UIBase
 {
-    [SerializeField] private Transform storageGroup;
-    [SerializeField] private GameObject storageBtnPrefab;
+    [SerializeField] private Transform _storageGroup;
+    [SerializeField] private GameObject _storageBtnPrefab;
+    [SerializeField] private Transform _gridObjectGroup;
 
-    [SerializeField] private Button storageOpenBtn;
-    [SerializeField] private Button storageCloseBtn;
+    [Header("Buttons")]
+    [SerializeField] private Button _openBtn;
+    [SerializeField] private Button _closeBtn;
 
-    [SerializeField] private Transform gridObjectGroup;
-    private RectTransform rectTransform;
+    private RectTransform _rect;
 
-    private Dictionary<string, StorageBtn> storageButtons = new();
+    private Dictionary<string, StorageBtn> _btnDictionary = new();
 
-    private bool isOpen = true;
+    private bool _isOpen = true;
 
     public override void Initialize()
     {
-        rectTransform = GetComponent<RectTransform>();
+        _rect = GetComponent<RectTransform>();
 
-        storageOpenBtn.onClick.AddListener(Open);
-        storageCloseBtn.onClick.AddListener(Close);
+        _openBtn.onClick.AddListener(Open);
+        _closeBtn.onClick.AddListener(Close);
 
         InitStorageButtons();
         UpdateOpenCloseButtons();
@@ -31,7 +32,8 @@ public class StoragePanel : UIBase
 
     private void InitStorageButtons()
     {
-        var existingButtons = storageGroup.GetComponentsInChildren<StorageBtn>(true);
+        var existingButtons = _storageGroup.GetComponentsInChildren<StorageBtn>(true);
+
         int index = 0;
 
         foreach (var data in App.Instance.GetData<TitleData>().GridObject.Values)
@@ -44,25 +46,27 @@ public class StoragePanel : UIBase
             }
             else
             {
-                storageBtn = Instantiate(storageBtnPrefab, storageGroup).GetComponent<StorageBtn>();
+                storageBtn = Instantiate(_storageBtnPrefab, _storageGroup).GetComponent<StorageBtn>();
             }
 
-            storageBtn.Initialize(data, gridObjectGroup);
-            storageButtons.Add(data.Code, storageBtn);
+            storageBtn.Initialize(data, _gridObjectGroup);
+            _btnDictionary.Add(data.Code, storageBtn);
+
             index++;
         }
     }
 
     private void UpdateOpenCloseButtons()
     {
-        storageOpenBtn.gameObject.SetActive(!isOpen);
-        storageCloseBtn.gameObject.SetActive(isOpen);
+        _openBtn.gameObject.SetActive(!_isOpen);
+        _closeBtn.gameObject.SetActive(_isOpen);
     }
 
     public void AddObjectCount(string objectName, int count)
     {
-        string cleanName = objectName.Replace("(Clone)", "");
-        if (storageButtons.TryGetValue(cleanName, out var storageBtn))
+        string cleanName = objectName.Replace("(Clone)", string.Empty);
+
+        if (_btnDictionary.TryGetValue(cleanName, out var storageBtn))
         {
             storageBtn.AddObjectCount(count);
         }
@@ -74,29 +78,29 @@ public class StoragePanel : UIBase
 
     public void Open()
     {
-        if (isOpen) return;
-
-        rectTransform.DOAnchorPosY(0f, 0.5f).OnComplete(() =>
+        if (_isOpen)
         {
-            isOpen = true;
+            return;
+        }
+
+        _rect.DOAnchorPosY(0f, 0.5f).OnComplete(() =>
+        {
+            _isOpen = true;
             UpdateOpenCloseButtons();
         });
     }
 
     public void Close()
     {
-        if (!isOpen) return;
-
-        rectTransform.DOAnchorPosY(-rectTransform.sizeDelta.y, 0.2f).OnComplete(() =>
+        if (!_isOpen)
         {
-            isOpen = false;
+            return;
+        }
+
+        _rect.DOAnchorPosY(-_rect.sizeDelta.y, 0.2f).OnComplete(() =>
+        {
+            _isOpen = false;
             UpdateOpenCloseButtons();
         });
-    }
-
-    private void OnDestroy()
-    {
-        storageOpenBtn.onClick.RemoveAllListeners();
-        storageCloseBtn.onClick.RemoveAllListeners();
     }
 }

@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EditPanel : UIBase, IListener
+public class EditPanel : UIBase, IEventListener
 {
-    [SerializeField] private Button editEndBtn;
+    [SerializeField] private Button _editEndBtn;
 
     public override void Initialize()
     {
@@ -12,7 +12,7 @@ public class EditPanel : UIBase, IListener
         eventManager.AddListener(EventCode.EditStart, this);
         eventManager.AddListener(EventCode.EditEnd, this);
 
-        editEndBtn.onClick.AddListener(() => eventManager.PostEvent(EventCode.EditEnd, this));
+        _editEndBtn.onClick.AddListener(() => eventManager.PostEvent(EventCode.EditEnd, this));
 
         gameObject.SetActive(false);
     }

@@ -8,7 +8,7 @@ public abstract class UIBase : MonoBehaviour
     /// Is Panel need to add ui stack?
     /// </summary>
     /// <returns></returns>
-    public virtual bool IsAddUIStack() => false;
+    public virtual bool IsAddUIStack => false;
 
     /// <summary>
     /// Initialize Panel.
@@ -18,7 +18,7 @@ public abstract class UIBase : MonoBehaviour
 
     public virtual void OpenPanel()
     {
-        if (IsAddUIStack() && !gameObject.activeSelf)
+        if (IsAddUIStack && !gameObject.activeSelf)
         {
             App.Instance.GetManager<UIManager>().PushUIState(UIState);
         }
@@ -28,7 +28,7 @@ public abstract class UIBase : MonoBehaviour
 
     public virtual void ClosePanel()
     {
-        if (IsAddUIStack() && gameObject.activeSelf)
+        if (IsAddUIStack && gameObject.activeSelf)
         {
             App.Instance.GetManager<UIManager>().PopUIState(UIState);
         }

@@ -9,14 +9,9 @@ public enum EventCode
     EditEnd,
 }
 
-public interface IListener
-{
-    void OnEvent(EventCode code, Component sender, object param = null);
-}
-
 public class EventManager : ManagerBase
 {
-    private Dictionary<EventCode, List<IListener>> listeners = new();
+    private Dictionary<EventCode, List<IEventListener>> _listeners = new();
 
     protected override void Awake()
     {
@@ -35,12 +30,13 @@ public class EventManager : ManagerBase
         RemoveNullListeners();
     }
 
-    public void AddListener(EventCode code, IListener listener)
+    public void AddListener(EventCode code, IEventListener listener)
     {
-        if (!listeners.TryGetValue(code, out var listenerList))
+        if (!_listeners.TryGetValue(code, out var listenerList))
         {
             listenerList = new();
-            listeners.Add(code, listenerList);
+
+            _listeners.Add(code, listenerList);
         }
 
         if (!listenerList.Contains(listener))
@@ -49,21 +45,22 @@ public class EventManager : ManagerBase
         }
     }
 
-    public void RemoveListener(EventCode code, IListener listener)
+    public void RemoveListener(EventCode code, IEventListener listener)
     {
-        if (listeners.TryGetValue(code, out var listenerList))
+        if (_listeners.TryGetValue(code, out var listenerList))
         {
             listenerList.Remove(listener);
+
             if (listenerList.Count == 0)
             {
-                listeners.Remove(code);
+                _listeners.Remove(code);
             }
         }
     }
 
     public void PostEvent(EventCode code, Component sender, object param = null)
     {
-        if (listeners.TryGetValue(code, out var listenerList))
+        if (_listeners.TryGetValue(code, out var listenerList))
         {
             foreach (var listener in listenerList)
             {
@@ -77,9 +74,9 @@ public class EventManager : ManagerBase
 
     public void RemoveNullListeners()
     {
-        foreach (var key in listeners.Keys)
+        foreach (var key in _listeners.Keys)
         {
-            listeners[key].RemoveAll(listener => listener == null);
+            _listeners[key].RemoveAll(listener => listener == null);
         }
     }
 }

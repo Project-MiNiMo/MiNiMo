@@ -10,7 +10,9 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         get
         {
             if (_isDestroyed)
+            {
                 return null;
+            }
 
             if (_instance == null)
             {
@@ -22,6 +24,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                     _instance = singletonObject.AddComponent<T>();
                 }
             }
+
             return _instance;
         }
     }

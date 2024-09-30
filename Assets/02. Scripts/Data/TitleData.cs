@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 
+using UnityEngine;
+
 [Serializable]
 public class GridObjectData
 {
@@ -17,10 +19,10 @@ public class TitleData : DataBase
 {
     public Dictionary<string, GridObjectData> GridObject { get; private set; } = new();
 
-    private bool isGameDataLoaded = false;
+    private bool _isGameDataLoaded = false;
 
     #region Data Path
-    private const string gridObjectDataPath = "Data/GridObjectData";
+    private const string GRID_PATH = "Data/GridObjectData";
     #endregion
 
     protected override void Awake()
@@ -32,20 +34,20 @@ public class TitleData : DataBase
 
     public void LoadData()
     {
-        if (isGameDataLoaded)
+        if (_isGameDataLoaded)
         {
             return;
         }
 
         GridObject.Clear();
 
-        var valueDataRaw = DataLoader.LoadData<GridObjectData>(gridObjectDataPath);
+        var valueDataRaw = DataLoader.LoadData<GridObjectData>(GRID_PATH);
 
         foreach (var data in valueDataRaw)
         {
             GridObject.Add(data.Code, data);
         }
 
-        isGameDataLoaded = true;
+        _isGameDataLoaded = true;
     }
 }
