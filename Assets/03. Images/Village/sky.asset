@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: sky
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 21300000, guid: 48d239d91968175448fcbc1896386d9b, type: 3}
-  m_Color: {r: 0.5176471, g: 0.5176471, b: 0.5176471, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_Transform:
     e00: 1
     e01: 0
