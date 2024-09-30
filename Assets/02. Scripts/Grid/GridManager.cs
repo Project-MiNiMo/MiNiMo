@@ -141,7 +141,7 @@ public class GridManager : ManagerBase, IListener
         currentObject = gridObject;
         currentObject.StartEdit();
         SetObjectPosition(currentObject.area.position);
-        editCircle.ClosePanel();
+        editCircle.OpenPanel();
 
         isDragging = isPressing;
 

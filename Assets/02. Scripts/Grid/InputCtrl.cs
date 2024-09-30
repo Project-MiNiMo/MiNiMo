@@ -77,11 +77,4 @@ public class InputCtrl : MonoBehaviour, IListener
                 break;
         }
     }
-
-    private void OnDestroy()
-    {
-        var eventManager = App.Instance.GetManager<EventManager>();
-        eventManager.RemoveListener(EventCode.EditStart, this);
-        eventManager.RemoveListener(EventCode.EditEnd, this);
-    }
 }
