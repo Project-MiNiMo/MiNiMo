@@ -13,18 +13,18 @@ public class CycleSystem : MonoBehaviour
         public float intensity;
     }
 
-    [SerializeField] private CycleMark[] marks;
-    [SerializeField] private Light2D globalLight;
+    [SerializeField] private CycleMark[] _marks;
+    [SerializeField] private Light2D _globalLight;
 
     private const float CYCLE_LENGTH = 24f;
-    private float lastUpdateTime = 0f;
-    private float time;
+    private float _lastUpdateTime = 0f;
+    private float _time;
 
-    private int currentIndex = 0;
+    private int _currentIndex = 0;
 
     private void Start()
     {
-        Array.Sort(marks, (a, b) => a.timeRatio.CompareTo(b.timeRatio));
+        Array.Sort(_marks, (a, b) => a.timeRatio.CompareTo(b.timeRatio));
 
         UpdateTime();
         FindCurrentIndex();
@@ -33,9 +33,9 @@ public class CycleSystem : MonoBehaviour
 
     private void Update()
     {
-        if (Time.time - lastUpdateTime >= 60f)
+        if (Time.time - _lastUpdateTime >= 60f)
         {
-            lastUpdateTime = Time.time;
+            _lastUpdateTime = Time.time;
 
             UpdateTime();
             FindCurrentIndex();
@@ -47,27 +47,27 @@ public class CycleSystem : MonoBehaviour
     {
         DateTime now = DateTime.Now;
 
-        time = (now.Hour + now.Minute / 60f) / CYCLE_LENGTH;
+        _time = (now.Hour + now.Minute / 60f) / CYCLE_LENGTH;
     }
 
     private void FindCurrentIndex()
     {
-        for (int i = 0; i < marks.Length; i++)
+        for (int i = 0; i < _marks.Length; i++)
         {
-            if (time < marks[i].timeRatio)
+            if (_time < _marks[i].timeRatio)
             {
-                currentIndex = (i - 1 + marks.Length) % marks.Length;
+                _currentIndex = (i - 1 + _marks.Length) % _marks.Length;
                 return;
             }
         }
 
-        currentIndex = marks.Length - 1;
+        _currentIndex = _marks.Length - 1;
     }
 
     private float CalculateTransitionFactor()
     {
-        CycleMark currentMark = marks[currentIndex];
-        CycleMark nextMark = marks[(currentIndex + 1) % marks.Length];
+        CycleMark currentMark = _marks[_currentIndex];
+        CycleMark nextMark = _marks[(_currentIndex + 1) % _marks.Length];
 
         float currentTime = currentMark.timeRatio;
         float nextTime = nextMark.timeRatio;
@@ -77,7 +77,7 @@ public class CycleSystem : MonoBehaviour
             nextTime += 1f;
         }
 
-        float timeSinceCurrent = time - currentTime;
+        float timeSinceCurrent = _time - currentTime;
         if (timeSinceCurrent < 0)
         {
             timeSinceCurrent += 1f;
@@ -89,10 +89,10 @@ public class CycleSystem : MonoBehaviour
 
     private void UpdateLight(float updateTime)
     {
-        CycleMark currentMark = marks[currentIndex];
-        CycleMark nextMark = marks[(currentIndex + 1) % marks.Length];
+        CycleMark currentMark = _marks[_currentIndex];
+        CycleMark nextMark = _marks[(_currentIndex + 1) % _marks.Length];
 
-        globalLight.color = Color.Lerp(currentMark.color, nextMark.color, updateTime);
-        globalLight.intensity = Mathf.Lerp(currentMark.intensity, nextMark.intensity, updateTime);
+        _globalLight.color = Color.Lerp(currentMark.color, nextMark.color, updateTime);
+        _globalLight.intensity = Mathf.Lerp(currentMark.intensity, nextMark.intensity, updateTime);
     }
 }

@@ -300,13 +300,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f411f7c5ca5bf047a880a13016ad59d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  marks:
+  _marks:
   - timeRatio: 0
     color: {r: 0.2509804, g: 0.3019608, b: 1, a: 1}
-    intensity: 0.5
+    intensity: 0.3
   - timeRatio: 0.125
     color: {r: 0.2509804, g: 0.3019608, b: 1, a: 1}
-    intensity: 0.3
+    intensity: 0.7
   - timeRatio: 0.25
     color: {r: 1, g: 0.60784316, b: 0.015686275, a: 1}
     intensity: 0.7
@@ -325,7 +325,7 @@ MonoBehaviour:
   - timeRatio: 1
     color: {r: 0.2509804, g: 0.3019608, b: 1, a: 1}
     intensity: 0.5
-  globalLight: {fileID: 619394801}
+  _globalLight: {fileID: 619394801}
 --- !u!114 &216209806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,8 +338,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f9ef261634fd8b468ea60271b3540a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkTilemap: {fileID: 1588932227}
-  emptyTile: {fileID: 11400000, guid: 18988b35f8e38424f8364214ee03f606, type: 2}
+  _checkTilemap: {fileID: 1588932227}
+  _emptyTile: {fileID: 11400000, guid: 18988b35f8e38424f8364214ee03f606, type: 2}
 --- !u!1 &230119722
 GameObject:
   m_ObjectHideFlags: 0
