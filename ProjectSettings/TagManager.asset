@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - GridObject
   layers:
   - Default
   - TransparentFX
@@ -38,6 +39,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Water
+    uniqueID: 1261157159
+    locked: 0
+  - name: Mask
+    uniqueID: 1195860539
+    locked: 0
+  - name: Village
+    uniqueID: 2086947713
+    locked: 0
+  - name: Sky
+    uniqueID: 3109006487
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
