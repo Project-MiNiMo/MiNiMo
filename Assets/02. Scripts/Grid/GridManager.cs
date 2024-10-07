@@ -37,6 +37,11 @@ public class GridManager : ManagerBase, IEventListener
 
     private void Update()
     {
+        // TODO: 리팩토링 필요
+        // 현재 어떤 edit 모드(객체 선택, 옮기기)인지, 그에따라 입력이 어디서 처리되어야 하는지가 GridManager와 InputSystem의 상태(_isEditing)와 이벤트들로 관리되고 있음.
+        // 기능에 비해 복잡하고 각 클래스에서 어떤 기능을 담당하는지 함수를 통해서만 확인 가능한 상태임
+        // 상호작용이 추가되어야 할 경우 전반적인 입력처리에 관한 리팩토링이 필수적으로 필요해 보임
+        
         if (!_isEditing)
         { 
             return;
@@ -56,6 +61,7 @@ public class GridManager : ManagerBase, IEventListener
 
             _isDragging = true;
 
+            // TODO: 오브젝트가 많아질 경우 레이어 분리가 필수적으로 필요해 보임..!
             RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero);
 
             if (hit.collider != null && hit.collider.CompareTag("GridObject"))
