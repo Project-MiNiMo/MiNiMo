@@ -25,6 +25,7 @@ public class GridManager : ManagerBase, IEventListener
     private bool _isDragging = false;
 
     private EditCirclePanel _editCircle;
+    private Camera _mainCamera;
 
     private void Start()
     {
@@ -33,6 +34,7 @@ public class GridManager : ManagerBase, IEventListener
 
         _gridLayout = GetComponent<GridLayout>();
         _editCircle = App.Instance.GetManager<UIManager>().GetPanel<EditCirclePanel>();
+        _mainCamera = Camera.main;
     }
 
     private void Update()
@@ -52,7 +54,7 @@ public class GridManager : ManagerBase, IEventListener
 
     private void HandleInput()
     {
-        Vector2 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 touchPosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
         Vector3Int cellPosition = _gridLayout.WorldToCell(touchPosition);
 
         if (Input.GetMouseButtonDown(0))
