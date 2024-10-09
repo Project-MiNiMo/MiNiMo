@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
+// TODO : 추후 서버 시간으로 대체
 public class CycleSystem : MonoBehaviour
 {
     [Serializable]
