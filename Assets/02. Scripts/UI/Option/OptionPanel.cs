@@ -44,14 +44,14 @@ public class OptionPanel : UIBase
 
     public override void ClosePanel()
     {
+        SaveOptionData();
+
         if (IsAddUIStack && _optionBack.activeSelf)
         {
             App.Instance.GetManager<UIManager>().PopUIState(UIState);
         }
 
         _optionBack.SetActive(false);
-
-        SaveOptionData();
     }
     #endregion
 
