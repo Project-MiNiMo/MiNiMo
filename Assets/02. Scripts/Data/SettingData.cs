@@ -36,16 +36,16 @@ public class SettingData : DataBase
         public AlertData Alert;
     }
 
-    [SerializeField] SettingDefault Default;
+    [SerializeField] private SettingDefault _default;
 
-    public SoundData DefaultSound => Default.Sound;
-    public GraphicsData DefaultGraphics => Default.Graphics;
-    public AlertData DefaultAlert => Default.Alert;
+    public SoundData DefaultSound => _default.Sound;
+    public GraphicsData DefaultGraphics => _default.Graphics;
+    public AlertData DefaultAlert => _default.Alert;
 
-    private GameData Data;
+    private GameData _data;
 
-    private string dataPath;
-    private bool IsDataMessy;
+    private string _dataPath;
+    private bool _isDataMessy;
 
     public bool IsDataLoaded { get; private set; }
     public bool IsDataSaved { get; private set; }
@@ -53,46 +53,46 @@ public class SettingData : DataBase
     #region Getter Setter
     public SystemLanguage Language
     {
-        get => Data.Language;
+        get => _data.Language;
         set
         {
-            Data.Language = value;
+            _data.Language = value;
             IsDataSaved = false;
-            IsDataMessy = true;
+            _isDataMessy = true;
             SaveToLocal();
         }
     }
 
     public SoundData Sound
     {
-        get => Data.Sound;
+        get => _data.Sound;
         set
         {
-            Data.Sound = value;
+            _data.Sound = value;
             IsDataSaved = false;
-            IsDataMessy = true;
+            _isDataMessy = true;
         }
     }
 
     public GraphicsData Graphics
     {
-        get => Data.Graphics;
+        get => _data.Graphics;
         set
         {
-            Data.Graphics = value;
+            _data.Graphics = value;
             IsDataSaved = false;
-            IsDataMessy = true;
+            _isDataMessy = true;
         }
     }
 
     public AlertData Alert
     {
-        get => Data.Alert;
+        get => _data.Alert;
         set
         {
-            Data.Alert = value;
+            _data.Alert = value;
             IsDataSaved = false;
-            IsDataMessy = true;
+            _isDataMessy = true;
         }
     }
     #endregion
@@ -103,8 +103,8 @@ public class SettingData : DataBase
 
         IsDataLoaded = false;
         IsDataSaved = false;
-        IsDataMessy = true;
-        dataPath = Application.persistentDataPath + '/' + Default.Path;
+        _isDataMessy = true;
+        _dataPath = Application.persistentDataPath + '/' + _default.Path;
 
         LoadFromLocal();
     }
@@ -116,7 +116,7 @@ public class SettingData : DataBase
 
     private void CreateDefault()
     {
-        Data = new()
+        _data = new()
         {
             UDID = SystemInfo.deviceUniqueIdentifier,
             Version = Application.version,
@@ -127,7 +127,7 @@ public class SettingData : DataBase
             Alert = DefaultAlert,
         };
 
-        Data.Language = Application.systemLanguage switch
+        _data.Language = Application.systemLanguage switch
         {
             SystemLanguage.Korean => SystemLanguage.Korean,
             SystemLanguage.Chinese => SystemLanguage.Chinese,
@@ -138,32 +138,32 @@ public class SettingData : DataBase
         SaveToLocal();
 
         IsDataLoaded = true;
-        IsDataMessy = false;
+        _isDataMessy = false;
     }
 
     private void LoadFromLocal()
     {
         try
         {
-            using var fstream = new FileStream(dataPath, FileMode.Open);
+            using var fstream = new FileStream(_dataPath, FileMode.Open);
             LoadDataInternal(fstream);
         }
         catch (Exception exception)
         {
-            Debug.LogWarning("Failed to load save file from " + dataPath +
+            Debug.LogWarning("Failed to load save file from " + _dataPath +
                 ". Default settings will be applied.\n" + exception);
         }
 
         if (IsDataLoaded)
         {
-            Debug.Log("Data loaded successfully from " + dataPath);
+            Debug.Log("Data loaded successfully from " + _dataPath);
         }
         else
         {
             CreateDefault();
         }
 
-        IsDataMessy = false;
+        _isDataMessy = false;
     }
 
     private void LoadDataInternal(FileStream fstream) // loading save file should not be async function
@@ -171,33 +171,33 @@ public class SettingData : DataBase
         using var streamReader = new StreamReader(fstream);
         string jsonStr = streamReader.ReadToEnd();
 
-        Data = JsonUtility.FromJson<GameData>(jsonStr);
+        _data = JsonUtility.FromJson<GameData>(jsonStr);
 
-        if (!Data.UDID.Equals(SystemInfo.deviceUniqueIdentifier))
+        if (!_data.UDID.Equals(SystemInfo.deviceUniqueIdentifier))
         {
             // TODO: just reset screen related data..?
             throw new InvalidDataException("New device detected");
         }
 
-        if (!Data.Version.Equals(Application.version))
+        if (!_data.Version.Equals(Application.version))
         {
             // TODO: notice user of version mismatch
-            Data.Version = Application.version;
+            _data.Version = Application.version;
         }
 
         IsDataLoaded = true;
     }
 
-    public async void SaveToLocal(bool _force = false)
+    public async void SaveToLocal(bool force = false)
     {
         // if the data hasn't changed, we don't need to save it again
-        if (!IsDataMessy && !_force) return;
+        if (!_isDataMessy && !force) return;
 
-        using (var fstream = new FileStream(dataPath, FileMode.Create))
+        using (var fstream = new FileStream(_dataPath, FileMode.Create))
         {
             do
             {
-                IsDataMessy = false;
+                _isDataMessy = false;
 
                 try
                 {
@@ -209,16 +209,16 @@ public class SettingData : DataBase
                     return;
                 }
             }
-            while (IsDataMessy);
+            while (_isDataMessy);
         }
 
         IsDataSaved = true;
-        Debug.Log("Data saved successfully to " + dataPath);
+        Debug.Log("Data saved successfully to " + _dataPath);
     }
 
     public async Task SaveDataInternal(FileStream fstream)
     {
-        string jsonStr = JsonUtility.ToJson(Data);
+        string jsonStr = JsonUtility.ToJson(_data);
 
         using var streamWriter = new StreamWriter(fstream);
         await streamWriter.WriteAsync(jsonStr);

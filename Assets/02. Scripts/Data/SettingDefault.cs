@@ -3,15 +3,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DefaultSetting", menuName = "Scriptable Object/Default Setting Data")]
 public class SettingDefault : ScriptableObject
 {
-    [SerializeField] string path;
+    [SerializeField] private string _path;
 
-    [SerializeField] SoundData sound;
-    [SerializeField] GraphicsData graphics;
-    [SerializeField] AlertData alert;
+    [SerializeField] private SoundData _sound;
+    [SerializeField] private GraphicsData _graphics;
+    [SerializeField] private AlertData _alert;
 
-    public string Path => path;
+    public string Path => _path;
 
-    public SoundData Sound => sound;
-    public GraphicsData Graphics => graphics;
-    public AlertData Alert => alert;
+    public SoundData Sound => _sound;
+    public GraphicsData Graphics => _graphics;
+    public AlertData Alert => _alert;
 }
