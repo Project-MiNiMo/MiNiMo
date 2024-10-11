@@ -1,12 +1,12 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
+
 using UnityEngine;
 
 public class PathFinder : MonoBehaviour
 {
-    [SerializeField] private Transform _target;
-    [SerializeField] private float _speed = 3.0f;
+    [SerializeField] private float _speed = 2.0f;
     [SerializeField] private float _rayDistance = 1.5f;
     [SerializeField] private LayerMask _layerMask;
 
@@ -17,6 +17,7 @@ public class PathFinder : MonoBehaviour
     [Tooltip("Time threshold for forced direction change during oscillation")]
     [SerializeField] private float _stuckTimeThreshold = 0.5f;
 
+    private Vector3 _target = Vector3.zero;
     private float _objectSize;
     private Vector2 _lastDirection;
     private Vector2 _lastPosition;
@@ -39,8 +40,6 @@ public class PathFinder : MonoBehaviour
 
         var collider = GetComponent<CircleCollider2D>();
         _objectSize = collider.radius * 2;
-
-        SetTarget(_target);
     }
 
     private static Vector2 RotateVector(Vector2 v, float degrees)
@@ -53,25 +52,42 @@ public class PathFinder : MonoBehaviour
         return new Vector2(x, y).normalized;
     }
 
-    public void SetTarget(Transform newTarget)
+    public bool SetTarget(Vector3 newTarget, Action endEvent = null)
     {
-        _target = newTarget;
-
         if (_pathfindingCoroutine != null)
         {
             StopCoroutine(_pathfindingCoroutine);
+            _pathfindingCoroutine = null;
+            _target = Vector3.zero;
         }
-        if (_target != null)
+
+        _target = newTarget;
+
+        if (_target != Vector3.zero)
         {
-            _pathfindingCoroutine = StartCoroutine(UpdatePathfinding());
+            _pathfindingCoroutine = StartCoroutine(UpdatePathfinding(endEvent));
+            return true;
+        }
+
+        return false;
+    }
+
+    public void StopPathFinding()
+    {
+        if (_pathfindingCoroutine != null)
+        {
+            StopCoroutine(_pathfindingCoroutine);
+            _pathfindingCoroutine = null;
+            _target = Vector3.zero;
         }
     }
 
-    private IEnumerator UpdatePathfinding()
+    private IEnumerator UpdatePathfinding(Action endEvent = null)
     {
         var waitTime = new WaitForSeconds(0.05f);
+        float time = 0;
 
-        while (_target != null)
+        while (_target != Vector3.zero)
         {
             var interest = CalculateInterest();
 
@@ -79,13 +95,22 @@ public class PathFinder : MonoBehaviour
             DetectOscillation(interest);
 
             // Check if target is reached
-            if (Vector2.Distance(transform.position, _target.position) < 0.1f)
+            if (Vector2.Distance(transform.position, _target) < 0.1f)
             {
-                _target = null;
+                _target = Vector3.zero;
+            }
+
+            if (time >= 30)
+            {
+                _target = Vector3.zero;
             }
 
             yield return waitTime;
+
+            time += 0.05f;
         }
+
+        endEvent?.Invoke();
     }
 
     /// <summary>
@@ -94,7 +119,7 @@ public class PathFinder : MonoBehaviour
     private float[] CalculateInterest()
     {
         float[] interest = new float[_directions.Length];
-        Vector2 targetDirection = (_target.position - transform.position).normalized;
+        Vector2 targetDirection = (_target - transform.position).normalized;
 
         for (int i = 0; i < _directions.Length; i++)
         {

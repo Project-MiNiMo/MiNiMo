@@ -5,7 +5,7 @@ public class MinimoIdleState : StateBase<Minimo>
     private float _stateTimer;
     private bool _isUpdating;
 
-    private string[] _idleAnimations = { "Sit", "Stand", "Dance" };
+    private readonly string[] _idleAnimations = { "Sit", "Stand", "Dance" };
     private string _currentAnimation;
 
     public MinimoIdleState(Minimo owner) : base(owner) { }
@@ -23,13 +23,16 @@ public class MinimoIdleState : StateBase<Minimo>
 
     public override void Execute()
     {
-        if (!_isUpdating) return;
+        if (!_isUpdating)
+        {
+            return;
+        }
 
         _stateTimer -= Time.deltaTime;
 
         if (_stateTimer <= 0)
         {
-            _owner.FSM.ChangeState(MinimoState.Idle);
+            _owner.SetChillState();
         }
     }
 

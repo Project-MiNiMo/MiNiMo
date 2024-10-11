@@ -28,7 +28,7 @@ public class Minimo : MonoBehaviour
 
     public void SetChillState()
     {
-        int randomIndex = Random.Range(0, 3);
+        int randomIndex = Random.Range(0, 2);
 
         if (randomIndex == 0)
         {
