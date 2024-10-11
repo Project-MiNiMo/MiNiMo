@@ -24,7 +24,7 @@ public class OptionPanel : UIBase
     #region Override
     public override void Initialize()
     {
-        _optionBases = GetComponentsInChildren<OptionBase>();
+        _optionBases = GetComponentsInChildren<OptionBase>(true);
 
         SetString();
         SetButtonEvent();
