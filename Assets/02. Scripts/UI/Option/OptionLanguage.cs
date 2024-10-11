@@ -25,14 +25,14 @@ public class OptionLanguage : OptionBase
     {
         var titleData = App.Instance.GetData<TitleData>();
 
-        _language.LeftToggle.GetComponentInChildren<TextMeshProUGUI>().text = titleData.GetString("STR_OPTION_LANGUAGE_KOREAN");
-        _language.RightToggle.GetComponentInChildren<TextMeshProUGUI>().text = titleData.GetString("STR_OPTION_LANGUAGE_ENGLISH");
+        _language.LeftToggle.GetComponentInChildren<TextMeshProUGUI>().text = titleData.GetString("STR_OPTION_GAMESETTING_LANGUAGE_KOREAN");
+        _language.RightToggle.GetComponentInChildren<TextMeshProUGUI>().text = titleData.GetString("STR_OPTION_GAMESETTING_LANGUAGE_ENGLISH");
 
-        _titleTMP.text = titleData.GetString("STR_OPTION_LANGUAGE_POPUP");
-        _contentTMP.text = titleData.GetString("STR_OPTION_LANGUAGE_POPUP_CONTENT");
+        _titleTMP.text = titleData.GetString("STR_OPTION_GAMESETTING_LANGUAGE_POPUP");
+        _contentTMP.text = titleData.GetString("STR_OPTION_GAMESETTING_LANGUAGE_POPUP_CONTENT");
 
-        _yesBtn.GetComponentInChildren<TextMeshProUGUI>().text = titleData.GetString("STR_OPTION_LANGUAGE_POPUP_YES");
-        _noBtn.GetComponentInChildren<TextMeshProUGUI>().text = titleData.GetString("STR_OPTION_LANGUAGE_POPUP_NO");
+        _yesBtn.GetComponentInChildren<TextMeshProUGUI>().text = titleData.GetString("STR_OPTION_GAMESETTING_LANGUAGE_POPUP_YES");
+        _noBtn.GetComponentInChildren<TextMeshProUGUI>().text = titleData.GetString("STR_OPTION_GAMESETTING_LANGUAGE_POPUP_NO");
     }
 
     protected override void SetEvent()

@@ -73,9 +73,24 @@ public class TitleData : DataBase
 
     public string GetString(string _code)
     {
-        TryGetString(_code, App.Instance.GetData<SettingData>().Language, out var str);
-
+        TryGetString(_code, out var str);
         return str;
+    }
+
+    public string GetFormatString(string _code, params string[] _args)
+    {
+        TryGetString(_code, out var str);
+
+        try { return string.Format(str, _args); }
+        catch (Exception error)
+        { Debug.LogError($"Failed to format string {_code}. {error}"); }
+
+        return _code;
+    }
+
+    private bool TryGetString(string _code, out string str)
+    {
+        return TryGetString(_code, App.Instance.GetData<SettingData>().Language, out str);
     }
 
     private bool TryGetString(string _code, SystemLanguage _language, out string str)
@@ -93,7 +108,7 @@ public class TitleData : DataBase
             return true;
         }
 
-        str = "String not found";
+        str = _code;
         return false;
     }
 }
