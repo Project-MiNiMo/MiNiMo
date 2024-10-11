@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8692080dbd2400646867a0a046c73291, type: 3}
   m_Name: DefaultSetting
   m_EditorClassIdentifier: 
-  path: data.minimo
-  sound:
+  _path: data.minimo
+  _sound:
     BGM: 1
     SFX: 1
-  graphics:
+  _screen:
     Frame: 60
     Graphics: 1
-  alert:
+  _alert:
     Push: 1

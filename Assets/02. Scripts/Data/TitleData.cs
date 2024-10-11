@@ -18,7 +18,7 @@ public class GridObjectData
 [Serializable]
 public class StringData
 {
-    public string Code;
+    public string ID;
     public string Korean;
     public string English;
     public string Japanese;
@@ -60,7 +60,7 @@ public class TitleData : DataBase
 
         foreach (var data in stringDataRaw)
         {
-            _string.Add(data.Code, data);
+            _string.Add(data.ID, data);
         }
 
         foreach (var data in gridObjectDataRaw)

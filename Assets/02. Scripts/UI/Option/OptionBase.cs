@@ -1,8 +1,19 @@
+using System;
+
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public abstract class OptionBase : MonoBehaviour
 {
+    [Serializable]
+    protected struct ToggleOption
+    {
+        public TextMeshProUGUI Title;
+        public Toggle LeftToggle;
+        public Toggle RightToggle;
+    }
+
     [SerializeField] protected TextMeshProUGUI _titleTMP;
 
     protected SettingData _setting;
@@ -15,7 +26,7 @@ public abstract class OptionBase : MonoBehaviour
     protected virtual void Start()
     {
         SetString();
-        SetButtonEvent();
+        SetEvent();
     }
 
     protected virtual void OnEnable()
@@ -25,7 +36,7 @@ public abstract class OptionBase : MonoBehaviour
 
     protected abstract void SetString();
 
-    protected abstract void SetButtonEvent();
+    protected abstract void SetEvent();
 
     protected abstract void SetValueFromData();
 

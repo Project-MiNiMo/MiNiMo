@@ -9,6 +9,7 @@ public class OptionPanel : UIBase
     [SerializeField] private Button _closeBtn;
 
     [Header("Options")]
+    [SerializeField] private GameObject _optionBack;
     [SerializeField] private Button[] _optionBtns;
     [SerializeField] private GameObject[] _optionBacks;
     [SerializeField] private Sprite[] _btnSprites;
@@ -31,14 +32,24 @@ public class OptionPanel : UIBase
 
     public override void OpenPanel()
     {
-        base.OpenPanel();
+        if (IsAddUIStack && !_optionBack.activeSelf)
+        {
+            App.Instance.GetManager<UIManager>().PushUIState(UIState);
+        }
+
+        _optionBack.SetActive(true);
 
         OnClickOption(0);
     }
 
     public override void ClosePanel()
     {
-        base.ClosePanel();
+        if (IsAddUIStack && _optionBack.activeSelf)
+        {
+            App.Instance.GetManager<UIManager>().PopUIState(UIState);
+        }
+
+        _optionBack.SetActive(false);
 
         SaveOptionData();
     }
