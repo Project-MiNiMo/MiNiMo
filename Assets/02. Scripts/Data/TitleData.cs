@@ -15,13 +15,26 @@ public class GridObjectData
     public string Prefab;
 }
 
+[Serializable]
+public class StringData
+{
+    public string Code;
+    public string Korean;
+    public string English;
+    public string Japanese;
+    public string Chinese;
+}
+
 public class TitleData : DataBase
 {
     public Dictionary<string, GridObjectData> GridObject { get; private set; } = new();
 
+    private Dictionary<string, StringData> _string = new Dictionary<string, StringData>();
+
     private bool _isGameDataLoaded = false;
 
     #region Data Path
+    private const string STRING_PATH = "Data/StringData";
     private const string GRID_PATH = "Data/GridObjectData";
     #endregion
 
@@ -39,15 +52,48 @@ public class TitleData : DataBase
             return;
         }
 
+        _string.Clear();
         GridObject.Clear();
 
-        var valueDataRaw = DataLoader.LoadData<GridObjectData>(GRID_PATH);
+        var stringDataRaw = DataLoader.LoadData<StringData>(STRING_PATH);
+        var gridObjectDataRaw = DataLoader.LoadData<GridObjectData>(GRID_PATH);
 
-        foreach (var data in valueDataRaw)
+        foreach (var data in stringDataRaw)
+        {
+            _string.Add(data.Code, data);
+        }
+
+        foreach (var data in gridObjectDataRaw)
         {
             GridObject.Add(data.Code, data);
         }
 
         _isGameDataLoaded = true;
+    }
+
+    public string GetString(string _code)
+    {
+        TryGetString(_code, App.Instance.GetData<SettingData>().Language, out var str);
+
+        return str;
+    }
+
+    private bool TryGetString(string _code, SystemLanguage _language, out string str)
+    {
+        if (_code != null && _string.TryGetValue(_code, out var data))
+        {
+            str = _language switch
+            {
+                SystemLanguage.Korean => data.Korean,
+                SystemLanguage.Chinese => data.Chinese,
+                SystemLanguage.Japanese => data.Japanese,
+                _ => data.English
+            };
+
+            return true;
+        }
+
+        str = "String not found";
+        return false;
     }
 }

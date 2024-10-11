@@ -11,7 +11,7 @@ public struct SoundData
 }
 
 [Serializable]
-public struct GraphicsData
+public struct ScreenData
 {
     public float Frame;
     public bool Graphics;
@@ -32,14 +32,14 @@ public class SettingData : DataBase
         public SystemLanguage Language;
 
         public SoundData Sound;
-        public GraphicsData Graphics;
+        public ScreenData Screen;
         public AlertData Alert;
     }
 
     [SerializeField] private SettingDefault _default;
 
     public SoundData DefaultSound => _default.Sound;
-    public GraphicsData DefaultGraphics => _default.Graphics;
+    public ScreenData DefaultScreen => _default.Screen;
     public AlertData DefaultAlert => _default.Alert;
 
     private GameData _data;
@@ -74,12 +74,12 @@ public class SettingData : DataBase
         }
     }
 
-    public GraphicsData Graphics
+    public ScreenData Screen
     {
-        get => _data.Graphics;
+        get => _data.Screen;
         set
         {
-            _data.Graphics = value;
+            _data.Screen = value;
             IsDataSaved = false;
             _isDataMessy = true;
         }
@@ -123,7 +123,7 @@ public class SettingData : DataBase
             Language = SystemLanguage.Korean,
 
             Sound = DefaultSound,
-            Graphics = DefaultGraphics,
+            Screen = DefaultScreen,
             Alert = DefaultAlert,
         };
 
