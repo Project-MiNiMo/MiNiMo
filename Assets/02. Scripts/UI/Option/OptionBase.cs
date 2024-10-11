@@ -14,8 +14,6 @@ public abstract class OptionBase : MonoBehaviour
         public Toggle RightToggle;
     }
 
-    [SerializeField] protected TextMeshProUGUI _titleTMP;
-
     protected SettingData _setting;
 
     protected virtual void Awake()

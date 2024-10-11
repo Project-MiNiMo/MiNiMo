@@ -100,133 +100,161 @@
   {
     "ID": "STR_OPTION_GAMESETTING",
     "Korean": "게임설정",
-    "English": -1,
+    "English": "Game",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_OPTION_GAMESETTING_ON",
     "Korean": "켜짐",
-    "English": -1,
+    "English": "On",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_OPTION_GAMESETTING_OFF",
     "Korean": "꺼짐",
-    "English": -1,
+    "English": "Off",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_OPTION_GAMESETTING_SOUND",
     "Korean": "사운드",
-    "English": -1,
+    "English": "Sound",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_OPTION_GAMESETTING_SOUND_BGM",
     "Korean": "배경음",
-    "English": -1,
+    "English": "BGM",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_OPTION_GAMESETTING_SOUND_SFX",
     "Korean": "효과음",
-    "English": -1,
+    "English": "SFX",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_OPTION_GAMESETTING_SCREEN",
     "Korean": "게임환경",
-    "English": -1,
+    "English": "Environments",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_OPTION_GAMESETTING_SCREEN_FRAME",
     "Korean": "프레임 설정",
-    "English": -1,
+    "English": "FPS Settings",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_OPTION_GAMESETTING_SCREEN_FRAME_30",
     "Korean": "30Fps",
-    "English": -1,
+    "English": "30Fps",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_OPTION_GAMESETTING_SCREEN_FRAME_60",
     "Korean": "60Fps",
-    "English": -1,
+    "English": "60Fps",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_OPTION_GAMESETTING_SCREEN_GRAPHICS",
     "Korean": "그래픽 설정",
-    "English": -1,
+    "English": "Graphics",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_OPTION_GAMESETTING_SCREEN_GRAPHICS_LOW",
     "Korean": "낮음",
-    "English": -1,
+    "English": "Low",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_OPTION_GAMESETTING_SCREEN_GRAPHICS_DEFAULT",
     "Korean": "일반",
-    "English": -1,
+    "English": "Default",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_OPTION_GAMESETTING_ALERT",
     "Korean": "알림",
-    "English": -1,
+    "English": "Notifications",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_OPTION_GAMESETTING_ALERT_PUSH",
     "Korean": "푸시 알림",
-    "English": -1,
+    "English": "Push Notifications",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_OPTION_LANGUAGE_KOREAN",
     "Korean": "한국어",
-    "English": -1,
+    "English": "KOR",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_OPTION_LANGUAGE_ENGLISH",
     "Korean": "ENG",
-    "English": -1,
+    "English": "ENG",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_LANGUAGE_POPUP",
+    "Korean": "언어 변경",
+    "English": "Change Language",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_LANGUAGE_POPUP_CONTENT",
+    "Korean": "언어를 변경하기 위해\n게임을 재시작 할까요?",
+    "English": "Restart the game to \napply the language change?",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_LANGUAGE_POPUP_YES",
+    "Korean": "예",
+    "English": "Yes",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_LANGUAGE_POPUP_NO",
+    "Korean": "아니요",
+    "English": "No",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_OPTION_ACCOUNTSETTING",
     "Korean": "계정설정",
-    "English": -1,
+    "English": "Account",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_OPTION_SERVICECENTER",
     "Korean": "고객센터",
-    "English": -1,
+    "English": "Service Center",
     "Chinese": -1,
     "Japanese": -1
   }

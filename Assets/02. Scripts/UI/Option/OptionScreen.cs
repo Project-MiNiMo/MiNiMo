@@ -3,6 +3,7 @@ using TMPro;
 
 public class OptionScreen : OptionBase
 {
+    [SerializeField] private TextMeshProUGUI _titleTMP;
     [SerializeField] private ToggleOption _frame;
     [SerializeField] private ToggleOption _graphics;
 

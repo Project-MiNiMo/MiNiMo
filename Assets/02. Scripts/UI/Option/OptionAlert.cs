@@ -3,6 +3,7 @@ using TMPro;
 
 public class OptionAlert : OptionBase
 {
+    [SerializeField] private TextMeshProUGUI _titleTMP;
     [SerializeField] private ToggleOption _push;
 
     #region Override

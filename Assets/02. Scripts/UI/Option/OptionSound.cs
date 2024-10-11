@@ -4,6 +4,7 @@ using TMPro;
 //TODO : Connect with Wwise
 public class OptionSound : OptionBase
 {
+    [SerializeField] private TextMeshProUGUI _titleTMP;
     [SerializeField] private ToggleOption _bgm;
     [SerializeField] private ToggleOption _sfx;
 
