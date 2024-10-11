@@ -13,7 +13,7 @@ public struct SoundData
 [Serializable]
 public struct ScreenData
 {
-    public float Frame;
+    public bool Frame;
     public bool Graphics;
 }
 
