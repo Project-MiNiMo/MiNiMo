@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9289c9e765809ec408877f7c7b8d296d, type: 3}
   m_Name: InitBank
   m_EditorClassIdentifier: 
-  AddressableBank: {fileID: 11400000, guid: 6b4df916a0fa8d7449dd779f3990bc9a, type: 2}
+  AddressableBank: {fileID: 11400000, guid: 6d5f445b5c931e44c9f3c9c32fb4aab1, type: 2}

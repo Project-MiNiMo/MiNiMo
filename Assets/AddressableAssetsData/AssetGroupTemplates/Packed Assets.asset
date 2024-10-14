@@ -1,6 +1,23 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3519088109569517469
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a3c5d64ac83548c09dd1678b9f6f1cd, type: 3}
+  m_Name: Packed Assets
+  m_EditorClassIdentifier: 
+  m_SchemaObjects:
+  - {fileID: 5481109296645072240}
+  - {fileID: 8496487998906432958}
+  m_Description: Pack assets into asset bundles.
+  m_Settings: {fileID: 11400000, guid: 8237b5043acba074a8d2c73adde8d9b2, type: 2}
+--- !u!114 &5481109296645072240
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,7 +60,7 @@ MonoBehaviour:
     m_ClassName: 
   m_BundleNaming: 0
   m_AssetLoadMode: 0
---- !u!114 &-2181502722649664795
+--- !u!114 &8496487998906432958
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57,20 +74,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Group: {fileID: 0}
   m_StaticContent: 0
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a3c5d64ac83548c09dd1678b9f6f1cd, type: 3}
-  m_Name: Packed Assets
-  m_EditorClassIdentifier: 
-  m_SchemaObjects:
-  - {fileID: -3519088109569517469}
-  - {fileID: -2181502722649664795}
-  m_Description: Pack assets into asset bundles.
-  m_Settings: {fileID: 11400000, guid: e6019f0777eea2749b34049f3acffd38, type: 2}

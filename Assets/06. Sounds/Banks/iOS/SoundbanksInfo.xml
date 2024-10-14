@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="iOS" BasePlatform="iOS" SchemaVersion="16" SoundBankVersion="150">
 	<RootPaths>
-		<ProjectRoot>C:/Users/daun7/Documents/Minimo</ProjectRoot>
-		<SourceFilesRoot>C:/Users/daun7/Documents/Minimo/.cache/iOS</SourceFilesRoot>
+		<ProjectRoot>../../../WwiseProject/Minimo</ProjectRoot>
+		<SourceFilesRoot>../../../WwiseProject/Minimo/.cache/iOS</SourceFilesRoot>
 		<SoundBanksRoot>.</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:/Users/daun7/Documents/Minimo/GeneratedSoundBanks/iOS</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>../../../WwiseProject/Minimo/GeneratedSoundBanks/iOS</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
@@ -23,5 +23,5 @@
 			</Busses>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{98F5D9E4-0018-62FB-FED8-47B75A7F512B}</FileHash>
+	<FileHash>{123CF90F-E0ED-0568-07AB-BD4193E4E91B}</FileHash>
 </SoundBanksInfo>

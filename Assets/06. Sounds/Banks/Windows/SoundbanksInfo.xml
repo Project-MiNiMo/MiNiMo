@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
 	<RootPaths>
-		<ProjectRoot>C:/Users/daun7/Documents/Minimo</ProjectRoot>
-		<SourceFilesRoot>C:/Users/daun7/Documents/Minimo/.cache/Windows</SourceFilesRoot>
+		<ProjectRoot>../../../WwiseProject/Minimo</ProjectRoot>
+		<SourceFilesRoot>../../../WwiseProject/Minimo/.cache/Windows</SourceFilesRoot>
 		<SoundBanksRoot>.</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:/Users/daun7/Documents/Minimo/GeneratedSoundBanks/Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>../../../WwiseProject/Minimo/GeneratedSoundBanks/Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
@@ -23,5 +23,5 @@
 			</Busses>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{D9BEB054-BE19-0482-F1F4-661CC39061BF}</FileHash>
+	<FileHash>{0C10B6D2-85DD-7994-A16B-EA6AC45B9E88}</FileHash>
 </SoundBanksInfo>

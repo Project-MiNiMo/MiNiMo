@@ -83,11 +83,6 @@ WwiseProject/*_WwiseProject.*.validationcache
 WwiseProject/*_WwiseProject.*.wsettings
 WwiseProject/**/*.akd
 
-# Wsise folder stuff
-Assets/Wwise/LauncherInfo.json
-Assets/Wwise/LauncherInfo.json.meta
-Assets/WwiseSettings.xml
-
 # build stuff (unsure?)
 # Assets/Wwise/Deployment/Plugins/Windows/**/*.meta
 

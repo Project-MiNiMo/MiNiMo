@@ -13,22 +13,11 @@ MonoBehaviour:
   m_Name: Init
   m_EditorClassIdentifier: 
   m_dataPerPlatformList:
-  - WwisePlatform: Windows
-    LocalizedBankKeys:
-    - SFX
-    LocalizedBanksValues:
-    - m_AssetGUID: 094c88fd73843bf49817782e922638ee
-      m_SubObjectName: 
-      m_SubObjectType: 
-      m_EditorAssetChanged: 0
-    LocalizedStreamingMediaKeys: []
-    LocalizedStreamingMediaValues:
-      localizedMediaList: []
   - WwisePlatform: iOS
     LocalizedBankKeys:
     - SFX
     LocalizedBanksValues:
-    - m_AssetGUID: 293c3debd463917499cc657fbc5a8715
+    - m_AssetGUID: 8316ee04b6d4dd74b90cad0686562d4a
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -39,7 +28,18 @@ MonoBehaviour:
     LocalizedBankKeys:
     - SFX
     LocalizedBanksValues:
-    - m_AssetGUID: a3a9198281f6f8b4880e52988cd8eb01
+    - m_AssetGUID: 68bfc34c61f30a54aa0192d984246f89
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    LocalizedStreamingMediaKeys: []
+    LocalizedStreamingMediaValues:
+      localizedMediaList: []
+  - WwisePlatform: Windows
+    LocalizedBankKeys:
+    - SFX
+    LocalizedBanksValues:
+    - m_AssetGUID: 7ec9666bec82fe241bb230cfe2167e51
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
     LocalizedBankKeys:
     - SFX
     LocalizedBanksValues:
-    - m_AssetGUID: 094c88fd73843bf49817782e922638ee
+    - m_AssetGUID: 7ec9666bec82fe241bb230cfe2167e51
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5d17a21594effb4e9591490b009e7aa, type: 3}
   m_Name: WwiseData_iOS_InitBank_BundledAssetGroupSchema
   m_EditorClassIdentifier: 
-  m_Group: {fileID: 11400000, guid: 91ae303b4b2d15b48be23b3115dac717, type: 2}
+  m_Group: {fileID: 11400000, guid: 52a1b0a454394cc45bd49277357cc521, type: 2}
   m_InternalBundleIdMode: 1
   m_Compression: 0
   m_IncludeAddressInCatalog: 1
@@ -34,9 +34,9 @@ MonoBehaviour:
   m_RedirectLimit: -1
   m_RetryCount: 0
   m_BuildPath:
-    m_Id: 8f217eb4e55a10544a72137fdf684a09
+    m_Id: c95df040a6e0ab1409a0fc616cac7b45
   m_LoadPath:
-    m_Id: e139474576bcc6d41ac30ef2eff50782
+    m_Id: 1e160ac09cd9f2f48a44380410e815ea
   m_BundleMode: 0
   m_AssetBundleProviderType:
     m_AssemblyName: Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null

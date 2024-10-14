@@ -2,11 +2,11 @@
 <PlatformInfo>
 	<Platform Name="Android" BasePlatform="Android" Generator="2023.1.3.8471"/>
 	<RootPaths>
-		<ProjectRoot>C:/Users/daun7/Documents/Minimo</ProjectRoot>
-		<SourceFilesRoot>C:/Users/daun7/Documents/Minimo/.cache/Android</SourceFilesRoot>
+		<ProjectRoot>../../../WwiseProject/Minimo</ProjectRoot>
+		<SourceFilesRoot>../../../WwiseProject/Minimo/.cache/Android</SourceFilesRoot>
 		<SoundBanksRoot>.</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:/Users/daun7/Documents/Minimo/GeneratedSoundBanks/Android</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>../../../WwiseProject/Minimo/GeneratedSoundBanks/Android</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DefaultAlign>16</DefaultAlign>
 	<Settings>
@@ -28,5 +28,5 @@
 		<PrintObjectGuid>false</PrintObjectGuid>
 		<PrintObjectPath>false</PrintObjectPath>
 	</Settings>
-	<FileHash>{CCEC9D12-539C-A38D-7AF5-B4AE41504B20}</FileHash>
+	<FileHash>{CC056F28-AB91-0AFA-AE03-CD05E520805A}</FileHash>
 </PlatformInfo>

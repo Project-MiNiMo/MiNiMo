@@ -2,11 +2,11 @@
 <PlatformInfo>
 	<Platform Name="iOS" BasePlatform="iOS" Generator="2023.1.3.8471"/>
 	<RootPaths>
-		<ProjectRoot>C:/Users/daun7/Documents/Minimo</ProjectRoot>
-		<SourceFilesRoot>C:/Users/daun7/Documents/Minimo/.cache/iOS</SourceFilesRoot>
+		<ProjectRoot>../../../WwiseProject/Minimo</ProjectRoot>
+		<SourceFilesRoot>../../../WwiseProject/Minimo/.cache/iOS</SourceFilesRoot>
 		<SoundBanksRoot>.</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:/Users/daun7/Documents/Minimo/GeneratedSoundBanks/iOS</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>../../../WwiseProject/Minimo/GeneratedSoundBanks/iOS</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DefaultAlign>16</DefaultAlign>
 	<Settings>
@@ -28,5 +28,5 @@
 		<PrintObjectGuid>false</PrintObjectGuid>
 		<PrintObjectPath>false</PrintObjectPath>
 	</Settings>
-	<FileHash>{D3B012C1-94F3-BFB4-A33C-E850AD51317C}</FileHash>
+	<FileHash>{BDC116BB-C18C-623C-D0B3-5D9C6901413C}</FileHash>
 </PlatformInfo>
