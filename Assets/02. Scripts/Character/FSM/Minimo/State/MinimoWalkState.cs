@@ -4,27 +4,30 @@ using UnityEngine;
 
 public class MinimoWalkState : StateBase<Minimo>
 {
-    public MinimoWalkState(Minimo owner) : base(owner) { }
-
     private const float SPEED = 0.3f;
 
     private bool _isUpdating = false;
-
+    private PathManager _pathManager;
     private List<Vector3Int> _path;
     private Vector3 _targetPosition;
 
     private int _currIndex;
 
+    public MinimoWalkState(Minimo owner) : base(owner) 
+    {
+        _pathManager = App.Instance.GetManager<PathManager>();
+    }
+
     public override void Enter()
     {
-        _path = App.Instance.GetManager<PathManager>().GetRandomPath(_owner.transform.position);
+        _path = _pathManager.GetRandomPath(_owner.transform.position);
 
         if (_path != null && _path.Count > 0)
         {
             _owner.SetAnimation("Walk");
 
             _currIndex = 0;
-            _targetPosition = App.Instance.GetManager<PathManager>().GetTileWorldPosition(_path[_currIndex]);
+            _targetPosition = _pathManager.GetTileWorldPosition(_path[_currIndex]);
 
             _isUpdating = true;
         }
@@ -37,7 +40,7 @@ public class MinimoWalkState : StateBase<Minimo>
     public override void Execute()
     {
         if (!_isUpdating)
-        { 
+        {
             return;
         }
 
@@ -51,7 +54,7 @@ public class MinimoWalkState : StateBase<Minimo>
             {
                 if (++_currIndex < _path.Count)
                 {
-                    _targetPosition = App.Instance.GetManager<PathManager>().GetTileWorldPosition(_path[_currIndex]);
+                    _targetPosition = _pathManager.GetTileWorldPosition(_path[_currIndex]);
                 }
             }
         }
@@ -66,5 +69,7 @@ public class MinimoWalkState : StateBase<Minimo>
     {
         _isUpdating = false;
         _path = null;
+
+        _currIndex = 0;
     }
 }

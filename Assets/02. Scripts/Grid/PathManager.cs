@@ -3,27 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class AStarNode
-{
-    public Vector3Int Position { get; set; }
-    public AStarNode Parent { get; set; }
-    public float G { get; set; } // Cost from start to current node
-    public float H { get; set; } // Heuristic cost from current to target
-    public float F => G + H;     // Total cost
-
-    public AStarNode(Vector3Int position, AStarNode parent, float g, float h)
-    {
-        Position = position;
-        Parent = parent;
-        G = g;
-        H = h;
-    }
-}
-
 public class PathManager : ManagerBase
 {
     [SerializeField] private Tilemap _checkTilemap;
     [SerializeField] private TileBase _emptyTile;
+
+    private Dictionary<Vector3Int, bool> _walkableCache = new();
 
     public Vector3 GetTileWorldPosition(Vector3Int tilePosition)
     {
@@ -42,13 +27,13 @@ public class PathManager : ManagerBase
 
     private Vector3Int GetRandomWalkableTile(Vector3Int center, int size)
     {
-        List<Vector3Int> walkableTiles = new List<Vector3Int>();
+        List<Vector3Int> walkableTiles = new();
 
         for (int x = center.x - size / 2; x <= center.x + size / 2; x++)
         {
             for (int y = center.y - size / 2; y <= center.y + size / 2; y++)
             {
-                Vector3Int position = new Vector3Int(x, y, 0);
+                Vector3Int position = new(x, y, 0);
                 if (IsWalkable(position))
                 {
                     walkableTiles.Add(position);
@@ -69,71 +54,48 @@ public class PathManager : ManagerBase
     #region A* Algorithm
     public List<Vector3Int> FindPath(Vector3Int start, Vector3Int target)
     {
-        List<AStarNode> openList = new List<AStarNode>();
-        HashSet<Vector3Int> closedSet = new HashSet<Vector3Int>();
+        PriorityQueue<AStarNode> openList = new();
+        HashSet<Vector3Int> closedSet = new();
 
-        AStarNode startNode = new AStarNode(start, null, 0, GetHeuristic(start, target));
-        openList.Add(startNode);
+        AStarNode startNode = new(start, null, 0, GetHeuristic(start, target));
+        openList.Enqueue(startNode, startNode.F);
 
         while (openList.Count > 0)
         {
-            AStarNode currentNode = GetLowestFScoreNode(openList);
+            AStarNode currentNode = openList.Dequeue();
 
             if (currentNode.Position == target)
             {
                 return ConstructPath(currentNode);
             }
 
-            openList.Remove(currentNode);
             closedSet.Add(currentNode.Position);
 
             foreach (var neighborPos in GetNeighbors(currentNode.Position))
             {
                 if (closedSet.Contains(neighborPos) || !IsWalkable(neighborPos))
+                {
                     continue;
+                }
 
                 float tentativeGScore = currentNode.G + GetDistance(currentNode.Position, neighborPos);
 
-                AStarNode neighborNode = openList.Find(n => n.Position == neighborPos);
-
-                if (neighborNode == null)
-                {
-                    neighborNode = new AStarNode(neighborPos, currentNode, tentativeGScore, GetHeuristic(neighborPos, target));
-                    openList.Add(neighborNode);
-                }
-                else if (tentativeGScore < neighborNode.G)
-                {
-                    neighborNode.G = tentativeGScore;
-                    neighborNode.Parent = currentNode;
-                }
+                AStarNode neighborNode = new(neighborPos, currentNode, tentativeGScore, GetHeuristic(neighborPos, target));
+                openList.Enqueue(neighborNode, neighborNode.F);
             }
         }
 
         return null; // Path not found
     }
 
-    private AStarNode GetLowestFScoreNode(List<AStarNode> nodes)
-    {
-        AStarNode lowest = nodes[0];
-
-        foreach (var node in nodes)
-        {
-            if (node.F < lowest.F)
-            {
-                lowest = node;
-            }
-        }
-        return lowest;
-    }
-
     private float GetHeuristic(Vector3Int a, Vector3Int b)
     {
-        return Mathf.Abs(a.x - b.x) + Mathf.Abs(a.y - b.y);
+        return Mathf.Abs(a.x - b.x) + Mathf.Abs(a.y - b.y); // Manhattan distance
     }
 
     private float GetDistance(Vector3Int a, Vector3Int b)
     {
-        return Vector3Int.Distance(a, b);
+        return Mathf.Sqrt(Mathf.Pow(a.x - b.x, 2) + Mathf.Pow(a.y - b.y, 2)); // Euclidean distance for isometric
     }
 
     private IEnumerable<Vector3Int> GetNeighbors(Vector3Int position)
@@ -142,16 +104,29 @@ public class PathManager : ManagerBase
         yield return new Vector3Int(position.x - 1, position.y, position.z);
         yield return new Vector3Int(position.x, position.y + 1, position.z);
         yield return new Vector3Int(position.x, position.y - 1, position.z);
+        // Adjusted diagonal directions for isometric
+        yield return new Vector3Int(position.x + 1, position.y + 1, position.z);
+        yield return new Vector3Int(position.x + 1, position.y - 1, position.z);
+        yield return new Vector3Int(position.x - 1, position.y + 1, position.z);
+        yield return new Vector3Int(position.x - 1, position.y - 1, position.z);
     }
 
     private bool IsWalkable(Vector3Int position)
     {
-        return _checkTilemap.GetTile(position) == _emptyTile;
+        if (_walkableCache.TryGetValue(position, out bool isWalkable))
+        {
+            return isWalkable;
+        }
+
+        isWalkable = _checkTilemap.GetTile(position) == _emptyTile;
+        _walkableCache[position] = isWalkable;
+
+        return isWalkable;
     }
 
     private List<Vector3Int> ConstructPath(AStarNode node)
     {
-        List<Vector3Int> path = new List<Vector3Int>();
+        List<Vector3Int> path = new();
 
         while (node != null)
         {
