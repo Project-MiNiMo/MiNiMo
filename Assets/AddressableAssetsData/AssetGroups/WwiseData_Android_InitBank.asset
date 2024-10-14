@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: WwiseData_Android_InitBank
+  m_EditorClassIdentifier: 
+  m_GroupName: WwiseData_Android_InitBank
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 202a7d800aaf3f3408377afdaa83b2e9
+  m_SerializeEntries:
+  - m_GUID: a3a9198281f6f8b4880e52988cd8eb01
+    m_Address: Assets/06. Sounds/Banks/Android/Init.bnk
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: e6019f0777eea2749b34049f3acffd38, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 7f618c56dac0b8e48b7e0963c87370cb, type: 2}
+    - {fileID: 11400000, guid: 70b5536f1161f634eb9666310e5aeb34, type: 2}
