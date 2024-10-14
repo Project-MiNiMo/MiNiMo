@@ -22,6 +22,23 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
+		<SoundBank Id="4072029455" Type="User" Language="SFX" Hash="{391E274F-FC5B-4778-09B5-9CBF305D7D98}">
+			<ShortName>New_SoundBank</ShortName>
+			<Path>New_SoundBank.bnk</Path>
+			<Media>
+				<File Id="162712758" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_ReflectionKill_01.wav</ShortName>
+					<CachePath>SFX/SFX_ReflectionKill_01_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="1097980931" Name="TestEvent" DurationType="OneShot" DurationMin="2.3362083" DurationMax="2.3362083">
+					<MediaRefs>
+						<MediaRef Id="162712758"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
 	</SoundBanks>
-	<FileHash>{0C10B6D2-85DD-7994-A16B-EA6AC45B9E88}</FileHash>
+	<FileHash>{30104548-4A17-AAF4-5DB2-371C6093690B}</FileHash>
 </SoundBanksInfo>
