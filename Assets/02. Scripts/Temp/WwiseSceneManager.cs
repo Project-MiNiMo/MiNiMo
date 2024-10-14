@@ -6,7 +6,6 @@ public class WwiseSceneManager : MonoBehaviour
     [SerializeField] private Button _testBtn;
     [SerializeField] private GameObject _playImg;
     [SerializeField] private GameObject _notPlayImg;
-    [SerializeField] private Sprite[] _stateSprites;
 
     [Header("Hey Donghun Here!!")]
     [SerializeField] private string _soundCode;
