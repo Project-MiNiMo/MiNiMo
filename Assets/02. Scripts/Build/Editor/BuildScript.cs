@@ -16,7 +16,7 @@ class BuildScript
     }
     
     [MenuItem("CustomBuild/Perform Build iOS")]
-    statiic void PerformBuildiOS()
+    static void PerformBuildiOS()
     {
         BuildPipeline.BuildPlayer(FindEnabledEditorScenes(), "Builds/Test", BuildTarget.iOS, BuildOptions.None);
     }
