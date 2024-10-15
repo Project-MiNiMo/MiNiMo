@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{FF5F7DEF-EAC3-4A69-80F8-2A60EDE5D2A4}" SchemaVersion="119">
+	<AudioObjects>
+		<WorkUnit Name="Default Work Unit" ID="{FF5F7DEF-EAC3-4A69-80F8-2A60EDE5D2A4}" PersistMode="Standalone">
+			<ChildrenList>
+				<ActorMixer Name="New Actor-Mixer" ID="{3596EC78-D999-4DB9-9F19-9A20E7544045}" ShortID="30706618">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AD282FF1-D8D7-4FC4-B3C8-7C40AEFE1B63}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{32CED0DE-D5C6-4CC2-855F-411DDFFC76A9}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="SFX_ReflectionKill_01" ID="{DB9120D3-8185-40E1-9225-CC1C27B0BEDE}" ShortID="537863721">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-10</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AD282FF1-D8D7-4FC4-B3C8-7C40AEFE1B63}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{32CED0DE-D5C6-4CC2-855F-411DDFFC76A9}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="SFX_ReflectionKill_01" ID="{288EE06F-34A0-4D2A-A2BF-6E5998FCB314}">
+									<Language>SFX</Language>
+									<AudioFile>SFX_ReflectionKill_01.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="162712758"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="SFX_ReflectionKill_01" ID="{288EE06F-34A0-4D2A-A2BF-6E5998FCB314}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</ActorMixer>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

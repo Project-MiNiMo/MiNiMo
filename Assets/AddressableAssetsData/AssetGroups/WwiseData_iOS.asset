@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: WwiseData_iOS
+  m_EditorClassIdentifier: 
+  m_GroupName: WwiseData_iOS
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 3ad7464229e3db244a803515c05b8c3c
+  m_SerializeEntries:
+  - m_GUID: 1cab75671047bc1459e571b6ec83fe45
+    m_Address: Assets/06. Sounds/Banks/iOS/New_SoundBank.bnk
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 8237b5043acba074a8d2c73adde8d9b2, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 5d52e14caa2544f429161e9c29a64ed2, type: 2}
+    - {fileID: 11400000, guid: c5f44ed598dd75d4aae55afa8328fa09, type: 2}
