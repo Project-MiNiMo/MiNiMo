@@ -4,15 +4,40 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class GridObjectData
+public class CommonData
 {
-    public int Index;
-    public string Code;
+    public string ID;
+    public int Value;
+}
+
+[Serializable]
+public class BuildingData
+{
+    public string ID;
     public int Type;
+    public int SizeX;
+    public int SizeY;
+    public int Level_Limit;
+    public string Icon;
+    public string GridObject;
     public string Name;
     public string Description;
-    public string Sprite;
-    public string Prefab;
+}
+
+[Serializable]
+public class ItemData
+{
+    public string ID;
+    public int Type;
+    public int Grade;
+    public int Overlap_Count;
+    public bool CanSell;
+    public int BuyCost;
+    public int SellCost;
+    public int BuyCost_Cash;
+    public string Icon;
+    public string Name;
+    public string Description;
 }
 
 [Serializable]
@@ -27,15 +52,19 @@ public class StringData
 
 public class TitleData : DataBase
 {
-    public Dictionary<string, GridObjectData> GridObject { get; private set; } = new();
+    public Dictionary<string, CommonData> Common { get; private set; } = new();
+    public Dictionary<string, BuildingData> Building { get; private set; } = new();
+    public Dictionary<string, ItemData> Item { get; private set; } = new();
 
-    private Dictionary<string, StringData> _string = new Dictionary<string, StringData>();
+    private Dictionary<string, StringData> _string = new();
 
     private bool _isGameDataLoaded = false;
 
     #region Data Path
     private const string STRING_PATH = "Data/StringData";
-    private const string GRID_PATH = "Data/GridObjectData";
+    private const string COMMON_PATH = "Data/CommonData";
+    private const string BUILDING_PATH = "Data/BuildingData";
+    private const string ITEM_PATH = "Data/ItemData";
     #endregion
 
     protected override void Awake()
@@ -53,19 +82,33 @@ public class TitleData : DataBase
         }
 
         _string.Clear();
-        GridObject.Clear();
+        Common.Clear();
+        Building.Clear();
+        Item.Clear();
 
         var stringDataRaw = DataLoader.LoadData<StringData>(STRING_PATH);
-        var gridObjectDataRaw = DataLoader.LoadData<GridObjectData>(GRID_PATH);
+        var commonDataRaw = DataLoader.LoadData<CommonData>(COMMON_PATH);
+        var buildingDataRaw = DataLoader.LoadData<BuildingData>(BUILDING_PATH);
+        var itemDataRaw = DataLoader.LoadData<ItemData>(ITEM_PATH);
 
         foreach (var data in stringDataRaw)
         {
             _string.Add(data.ID, data);
         }
 
-        foreach (var data in gridObjectDataRaw)
+        foreach (var data in commonDataRaw)
         {
-            GridObject.Add(data.Code, data);
+            Common.Add(data.ID, data);
+        }
+
+        foreach (var data in buildingDataRaw)
+        {
+            Building.Add(data.ID, data);
+        }
+
+        foreach (var data in itemDataRaw)
+        {
+            Item.Add(data.ID, data);
         }
 
         _isGameDataLoaded = true;
