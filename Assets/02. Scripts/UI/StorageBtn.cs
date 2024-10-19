@@ -7,36 +7,34 @@ public class StorageBtn : MonoBehaviour
     [SerializeField] private Image _objectImg;
     [SerializeField] private TextMeshProUGUI _objectCountTxt;
 
+    private BuildingData _data;
     private GameObject _objectPrefab;
-    private Transform _gridObjectGroup;
+    private Transform _buildingGroup;
 
     private int _objectCount;
 
     private void Start()
     {
         GetComponent<Button>().onClick.AddListener(CreateObject);
+
+        string prefabPath = $"Building/GridObject";
+        _objectPrefab = Resources.Load<GameObject>(prefabPath);
     }
 
-    public void Initialize(GridObjectData data, Transform gridObjectGroup)
+    public void Initialize(BuildingData data, Transform gridObjectGroup)
     {
-        _gridObjectGroup = gridObjectGroup;
+        _data = data;
+
+        _buildingGroup = gridObjectGroup;
 
         _objectCount = 5; 
 
-        string spritePath = $"GridObject/Sprite/{data.Sprite}";
-        string prefabPath = $"GridObject/Prefab/{data.Prefab}";
-
+        string spritePath = $"Building/Icon/{data.Icon}";
         _objectImg.sprite = Resources.Load<Sprite>(spritePath);
-        _objectPrefab = Resources.Load<GameObject>(prefabPath);
 
         if (_objectImg.sprite == null)
         {
             Debug.LogError($"Sprite not found at path: {spritePath}");
-        }
-
-        if (_objectPrefab == null)
-        {
-            Debug.LogError($"Prefab not found at path: {prefabPath}");
         }
 
         UpdateObjectCountText();
@@ -61,18 +59,19 @@ public class StorageBtn : MonoBehaviour
             return;
         }
 
-        var objInstance = Instantiate(_objectPrefab, _gridObjectGroup);
-        var gridObject = objInstance.GetComponentInChildren<GridObject>();
+        var gridObject = Instantiate(_objectPrefab, _buildingGroup).GetComponentInChildren<GridObject>();
 
         if (gridObject != null)
         {
             AddObjectCount(-1);
-            App.Instance.GetManager<GridManager>()?.SetObject(gridObject, false);
+
+            gridObject.Initialize(_data, _objectImg.sprite);
+            App.Instance.GetManager<GridManager>().SetObject(gridObject, false);
         }
         else
         {
             Debug.LogError("GridObject component not found in instantiated prefab.");
-            Destroy(objInstance);
+            Destroy(gridObject.gameObject);
         }
     }
 }

@@ -6,7 +6,6 @@
     "SizeY": 3,
     "Level_limit": 1,
     "Icon": "House",
-    "GridObject": "House",
     "Name": "STR_BUILDING_HOUSE_NAME",
     "Description": "STR_BUILDING_HOUSE_DESC"
   },
@@ -17,7 +16,6 @@
     "SizeY": 1,
     "Level_limit": 1,
     "Icon": "Farm",
-    "GridObject": "Farm",
     "Name": "STR_BUILDING_FARM_NAME",
     "Description": "STR_BUILDING_FARM_DESC"
   },
@@ -28,7 +26,6 @@
     "SizeY": 2,
     "Level_limit": 1,
     "Icon": "RiceFarm",
-    "GridObject": "RiceFarm",
     "Name": "STR_BUILDING_RICEFARM_NAME",
     "Description": "STR_BUILDING_RICEFARM_DESC"
   },
@@ -39,7 +36,6 @@
     "SizeY": 2,
     "Level_limit": 1,
     "Icon": "BeanFarm",
-    "GridObject": "BeanFarm",
     "Name": "STR_BUILDING_BEANFARM_NAME",
     "Description": "STR_BUILDING_BEANFARM_DESC"
   },
@@ -50,7 +46,6 @@
     "SizeY": 2,
     "Level_limit": 1,
     "Icon": "PepperFarm",
-    "GridObject": "PepperFarm",
     "Name": "STR_BUILDING_PEPPERFARM_NAME",
     "Description": "STR_BUILDING_PEPPERFARM_DESC"
   },
@@ -61,7 +56,6 @@
     "SizeY": 2,
     "Level_limit": 1,
     "Icon": "FermentRoom",
-    "GridObject": "FermentRoom",
     "Name": "STR_BUILDING_FERMENTROOM_NAME",
     "Description": "STR_BUILDING_FERMENTROOM_DESC"
   },
@@ -72,7 +66,6 @@
     "SizeY": 2,
     "Level_limit": 1,
     "Icon": "Pot",
-    "GridObject": "Pot",
     "Name": "STR_BUILDING_POT_NAME",
     "Description": "STR_BUILDING_POT_DESC"
   },
@@ -83,7 +76,6 @@
     "SizeY": 2,
     "Level_limit": 1,
     "Icon": "Mill",
-    "GridObject": "Mill",
     "Name": "STR_BUILDING_MILL_NAME",
     "Description": "STR_BUILDING_MILL_DESC"
   },
@@ -94,7 +86,6 @@
     "SizeY": 3,
     "Level_limit": 1,
     "Icon": "Restaurant",
-    "GridObject": "Restaurant",
     "Name": "STR_BUILDING_RESTAURANT_NAME",
     "Description": "STR_BUILDING_RESTAURANT_DESC"
   }

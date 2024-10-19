@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6314677404844064391}
   - component: {fileID: 6314677404844064393}
-  - component: {fileID: 6314677404844064390}
+  - component: {fileID: 158240154172929646}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: GridObject
@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 6314677404844064388}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.9, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6314677405763876296}
@@ -74,19 +74,19 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 29cbd956a23604cf99c381ed39a3471a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 75a001a8f440ec64ebd763f1209bbc04, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5, y: 5}
+  m_Size: {x: 2.5, y: 2.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &6314677404844064390
-PolygonCollider2D:
+--- !u!61 &158240154172929646
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -121,98 +121,15 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.99, y: 5}
-    newSize: {x: 5, y: 5}
+    oldSize: {x: 2.5, y: 2.5}
+    newSize: {x: 2.5, y: 2.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 1.1949999, y: -1.7199999}
-      - {x: 1.295, y: -1.65}
-      - {x: 1.665, y: -1.4399999}
-      - {x: 1.995, y: -1.25}
-      - {x: 2.2649999, y: -1.11}
-      - {x: 2.305, y: -1.05}
-      - {x: 2.305, y: -0.88}
-      - {x: 2.2549999, y: -0.82}
-      - {x: 2.135, y: -0.75}
-      - {x: 2.125, y: -0.64}
-      - {x: 2.115, y: -0.56}
-      - {x: 2.105, y: -0.51}
-      - {x: 2.0449998, y: -0.45999998}
-      - {x: 1.9749999, y: -0.47}
-      - {x: 1.9449999, y: -0.5}
-      - {x: 1.9649999, y: -0.45999998}
-      - {x: 2.0349998, y: -0.32999998}
-      - {x: 2.0349998, y: -0.17999999}
-      - {x: 1.985, y: -0.07}
-      - {x: 1.9449999, y: -0.01}
-      - {x: 1.935, y: 0.099999994}
-      - {x: 1.915, y: 0.13}
-      - {x: 1.895, y: 0.17999999}
-      - {x: 1.8149999, y: 0.26999998}
-      - {x: 1.7149999, y: 0.31}
-      - {x: 1.5849999, y: 0.31}
-      - {x: 1.4549999, y: 0.28}
-      - {x: 1.385, y: 0.19}
-      - {x: 1.375, y: 0.14999999}
-      - {x: 1.375, y: 1.05}
-      - {x: 1.415, y: 1.05}
-      - {x: 1.4649999, y: 1.12}
-      - {x: 1.4549999, y: 1.37}
-      - {x: 1.435, y: 1.43}
-      - {x: 1.355, y: 1.49}
-      - {x: 0.885, y: 1.77}
-      - {x: 0.42499998, y: 2.05}
-      - {x: 0.055, y: 2.28}
-      - {x: 0.005, y: 2.29}
-      - {x: -0.035, y: 2.29}
-      - {x: -0.435, y: 2.05}
-      - {x: -0.79499996, y: 1.8299999}
-      - {x: -1.395, y: 1.4699999}
-      - {x: -1.4549999, y: 1.41}
-      - {x: -1.4649999, y: 1.38}
-      - {x: -1.4649999, y: 1.1}
-      - {x: -1.435, y: 1.06}
-      - {x: -1.395, y: 1.04}
-      - {x: -1.405, y: 0.63}
-      - {x: -1.435, y: 0.63}
-      - {x: -1.4649999, y: 0.59999996}
-      - {x: -1.4449999, y: 0.48}
-      - {x: -1.475, y: 0.42999998}
-      - {x: -1.605, y: 0.48999998}
-      - {x: -1.795, y: 0.48999998}
-      - {x: -1.885, y: 0.45}
-      - {x: -1.9449999, y: 0.39999998}
-      - {x: -1.995, y: 0.28}
-      - {x: -1.985, y: 0.14}
-      - {x: -2.0349998, y: 0.11}
-      - {x: -2.075, y: 0.01}
-      - {x: -2.055, y: -0.19}
-      - {x: -2.0249999, y: -0.26}
-      - {x: -1.935, y: -0.35}
-      - {x: -1.905, y: -0.41}
-      - {x: -1.985, y: -0.45}
-      - {x: -2.095, y: -0.42999998}
-      - {x: -2.125, y: -0.48}
-      - {x: -2.125, y: -0.53999996}
-      - {x: -2.135, y: -0.68}
-      - {x: -2.105, y: -0.71999997}
-      - {x: -2.235, y: -0.79999995}
-      - {x: -2.305, y: -0.87}
-      - {x: -2.305, y: -1.05}
-      - {x: -2.2749999, y: -1.09}
-      - {x: -1.5849999, y: -1.49}
-      - {x: -1.0749999, y: -1.78}
-      - {x: -0.545, y: -2.09}
-      - {x: -0.035, y: -2.3799999}
-      - {x: 0.035, y: -2.3799999}
-      - {x: 0.085, y: -2.36}
-      - {x: 0.305, y: -2.23}
-      - {x: 0.565, y: -2.08}
-  m_UseDelaunayMesh: 0
+  serializedVersion: 2
+  m_Size: {x: 2.5, y: 2.5}
+  m_EdgeRadius: 0
 --- !u!1 &6314677405763876294
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,7 +141,7 @@ GameObject:
   - component: {fileID: 6314677405763876296}
   - component: {fileID: 4147359064544084292}
   m_Layer: 0
-  m_Name: Map_Cafe
+  m_Name: GridObject
   m_TagString: GridObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
