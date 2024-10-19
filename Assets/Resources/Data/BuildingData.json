@@ -4,7 +4,7 @@
     "Type": 2,
     "SizeX": 3,
     "SizeY": 3,
-    "UnlockLevel": 1,
+    "UnlockLevel": 2,
     "Icon": "House",
     "Name": "STR_BUILDING_HOUSE_NAME",
     "Description": "STR_BUILDING_HOUSE_DESC"

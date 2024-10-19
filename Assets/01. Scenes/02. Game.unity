@@ -5662,7 +5662,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _storageGroup: {fileID: 1522272316}
   _storageBtnPrefab: {fileID: 8041554706994968909, guid: eda60d3a111a9e44cbc94a459576e492, type: 3}
-  _gridObjectGroup: {fileID: 1403595778}
   _buildingGroup: {fileID: 1403595778}
   _openBtn: {fileID: 930838242}
   _closeBtn: {fileID: 230447806}
@@ -20532,7 +20531,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1403595778}
   m_Layer: 0
-  m_Name: GridObject
+  m_Name: BuildingObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21232,6 +21231,7 @@ GameObject:
   - component: {fileID: 1570677664}
   - component: {fileID: 1570677665}
   - component: {fileID: 1570677666}
+  - component: {fileID: 1570677667}
   m_Layer: 0
   m_Name: Data
   m_TagString: Untagged
@@ -21279,6 +21279,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _default: {fileID: 11400000, guid: 9d934cd7834102d4b93ae14ead7dd664, type: 2}
+--- !u!114 &1570677667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570677663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44090bfca748ca047b009b225efae0e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerLevel: 1
 --- !u!1 &1575397482
 GameObject:
   m_ObjectHideFlags: 0

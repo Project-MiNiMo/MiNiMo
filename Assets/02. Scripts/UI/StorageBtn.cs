@@ -31,10 +31,11 @@ public class StorageBtn : MonoBehaviour
 
         string spritePath = $"Building/Icon/{data.Icon}";
         _objectImg.sprite = Resources.Load<Sprite>(spritePath);
+        _objectImg.SetNativeSize();
 
-        if (_objectImg.sprite == null)
+        if (App.Instance.GetData<PlayerData>().PlayerLevel < data.UnlockLevel)
         {
-            Debug.LogError($"Sprite not found at path: {spritePath}");
+            GetComponent<Button>().interactable = false;
         }
 
         UpdateObjectCountText();
