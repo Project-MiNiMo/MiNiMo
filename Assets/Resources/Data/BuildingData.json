@@ -1,10 +1,10 @@
 [
   {
     "ID": "Building_House",
-    "Type": 0,
+    "Type": 2,
     "SizeX": 3,
     "SizeY": 3,
-    "Level_limit": 1,
+    "UnlockLevel": 1,
     "Icon": "House",
     "Name": "STR_BUILDING_HOUSE_NAME",
     "Description": "STR_BUILDING_HOUSE_DESC"
@@ -14,7 +14,7 @@
     "Type": 0,
     "SizeX": 1,
     "SizeY": 1,
-    "Level_limit": 1,
+    "UnlockLevel": 1,
     "Icon": "Farm",
     "Name": "STR_BUILDING_FARM_NAME",
     "Description": "STR_BUILDING_FARM_DESC"
@@ -24,7 +24,7 @@
     "Type": 0,
     "SizeX": 2,
     "SizeY": 2,
-    "Level_limit": 1,
+    "UnlockLevel": 1,
     "Icon": "RiceFarm",
     "Name": "STR_BUILDING_RICEFARM_NAME",
     "Description": "STR_BUILDING_RICEFARM_DESC"
@@ -34,7 +34,7 @@
     "Type": 0,
     "SizeX": 2,
     "SizeY": 2,
-    "Level_limit": 1,
+    "UnlockLevel": 1,
     "Icon": "BeanFarm",
     "Name": "STR_BUILDING_BEANFARM_NAME",
     "Description": "STR_BUILDING_BEANFARM_DESC"
@@ -44,7 +44,7 @@
     "Type": 0,
     "SizeX": 2,
     "SizeY": 2,
-    "Level_limit": 1,
+    "UnlockLevel": 1,
     "Icon": "PepperFarm",
     "Name": "STR_BUILDING_PEPPERFARM_NAME",
     "Description": "STR_BUILDING_PEPPERFARM_DESC"
@@ -54,7 +54,7 @@
     "Type": 0,
     "SizeX": 2,
     "SizeY": 2,
-    "Level_limit": 1,
+    "UnlockLevel": 1,
     "Icon": "FermentRoom",
     "Name": "STR_BUILDING_FERMENTROOM_NAME",
     "Description": "STR_BUILDING_FERMENTROOM_DESC"
@@ -64,7 +64,7 @@
     "Type": 0,
     "SizeX": 2,
     "SizeY": 2,
-    "Level_limit": 1,
+    "UnlockLevel": 1,
     "Icon": "Pot",
     "Name": "STR_BUILDING_POT_NAME",
     "Description": "STR_BUILDING_POT_DESC"
@@ -74,7 +74,7 @@
     "Type": 0,
     "SizeX": 2,
     "SizeY": 2,
-    "Level_limit": 1,
+    "UnlockLevel": 1,
     "Icon": "Mill",
     "Name": "STR_BUILDING_MILL_NAME",
     "Description": "STR_BUILDING_MILL_DESC"
@@ -84,7 +84,7 @@
     "Type": 0,
     "SizeX": 3,
     "SizeY": 3,
-    "Level_limit": 1,
+    "UnlockLevel": 1,
     "Icon": "Restaurant",
     "Name": "STR_BUILDING_RESTAURANT_NAME",
     "Description": "STR_BUILDING_RESTAURANT_DESC"

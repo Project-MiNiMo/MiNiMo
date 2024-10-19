@@ -17,9 +17,8 @@ public class BuildingData
     public int Type;
     public int SizeX;
     public int SizeY;
-    public int Level_Limit;
+    public int UnlockLevel;
     public string Icon;
-    public string GridObject;
     public string Name;
     public string Description;
 }
@@ -30,7 +29,7 @@ public class ItemData
     public string ID;
     public int Type;
     public int Grade;
-    public int Overlap_Count;
+    public int MaxOverlap;
     public bool CanSell;
     public int BuyCost;
     public int SellCost;
