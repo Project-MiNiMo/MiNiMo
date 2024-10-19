@@ -23,7 +23,7 @@ public class OptionLanguage : OptionBase
 
     protected override void SetString()
     {
-        var titleData = App.Instance.GetData<TitleData>();
+        var titleData = App.GetData<TitleData>();
 
         _language.LeftToggle.GetComponentInChildren<TextMeshProUGUI>().text = titleData.GetString("STR_OPTION_GAMESETTING_LANGUAGE_KOREAN");
         _language.RightToggle.GetComponentInChildren<TextMeshProUGUI>().text = titleData.GetString("STR_OPTION_GAMESETTING_LANGUAGE_ENGLISH");

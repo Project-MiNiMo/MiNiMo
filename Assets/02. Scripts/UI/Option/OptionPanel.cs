@@ -34,7 +34,7 @@ public class OptionPanel : UIBase
     {
         if (IsAddUIStack && !_optionBack.activeSelf)
         {
-            App.Instance.GetManager<UIManager>().PushUIState(UIState);
+            App.GetManager<UIManager>().PushUIState(UIState);
         }
 
         _optionBack.SetActive(true);
@@ -48,7 +48,7 @@ public class OptionPanel : UIBase
 
         if (IsAddUIStack && _optionBack.activeSelf)
         {
-            App.Instance.GetManager<UIManager>().PopUIState(UIState);
+            App.GetManager<UIManager>().PopUIState(UIState);
         }
 
         _optionBack.SetActive(false);
@@ -57,7 +57,7 @@ public class OptionPanel : UIBase
 
     private void SetString()
     {
-        var titleData = App.Instance.GetData<TitleData>();
+        var titleData = App.GetData<TitleData>();
 
         _gameSettingTMP.text = titleData.GetString("STR_OPTION_GAMESETTING");
         _accountSettingTMP.text = titleData.GetString("STR_OPTION_ACCOUNTSETTING");
@@ -104,6 +104,6 @@ public class OptionPanel : UIBase
             _optionBases[i].SaveOption();
         }
 
-        App.Instance.GetData<SettingData>().SaveToLocal();
+        App.GetData<SettingData>().SaveToLocal();
     }
 }

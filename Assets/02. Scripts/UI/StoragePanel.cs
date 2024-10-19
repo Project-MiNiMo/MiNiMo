@@ -36,7 +36,7 @@ public class StoragePanel : UIBase
 
         int index = 0;
 
-        foreach (var data in App.Instance.GetData<TitleData>().Building.Values)
+        foreach (var data in App.GetData<TitleData>().Building.Values)
         {
             StorageBtn storageBtn;
 

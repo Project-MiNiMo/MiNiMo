@@ -132,7 +132,7 @@ public class TitleData : DataBase
 
     private bool TryGetString(string _code, out string str)
     {
-        return TryGetString(_code, App.Instance.GetData<SettingData>().Language, out str);
+        return TryGetString(_code, App.GetData<SettingData>().Language, out str);
     }
 
     private bool TryGetString(string _code, SystemLanguage _language, out string str)

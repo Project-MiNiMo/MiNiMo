@@ -33,7 +33,7 @@ public class StorageBtn : MonoBehaviour
         _objectImg.sprite = Resources.Load<Sprite>(spritePath);
         _objectImg.SetNativeSize();
 
-        if (App.Instance.GetData<PlayerData>().PlayerLevel < data.UnlockLevel)
+        if (App.GetData<PlayerData>().PlayerLevel < data.UnlockLevel)
         {
             GetComponent<Button>().interactable = false;
         }
@@ -67,7 +67,7 @@ public class StorageBtn : MonoBehaviour
             AddObjectCount(-1);
 
             gridObject.Initialize(_data, _objectImg.sprite);
-            App.Instance.GetManager<GridManager>().SetObject(gridObject, false);
+            App.GetManager<GridManager>().SetObject(gridObject, false);
         }
         else
         {

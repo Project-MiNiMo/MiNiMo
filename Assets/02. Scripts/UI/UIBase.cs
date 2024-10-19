@@ -20,7 +20,7 @@ public abstract class UIBase : MonoBehaviour
     {
         if (IsAddUIStack && !gameObject.activeSelf)
         {
-            App.Instance.GetManager<UIManager>().PushUIState(UIState);
+            App.GetManager<UIManager>().PushUIState(UIState);
         }
 
         gameObject.SetActive(true);
@@ -30,7 +30,7 @@ public abstract class UIBase : MonoBehaviour
     {
         if (IsAddUIStack && gameObject.activeSelf)
         {
-            App.Instance.GetManager<UIManager>().PopUIState(UIState);
+            App.GetManager<UIManager>().PopUIState(UIState);
         }
 
         gameObject.SetActive(false);
