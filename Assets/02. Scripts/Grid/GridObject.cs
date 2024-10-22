@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GridObject : MonoBehaviour
 {
-    public BoundsInt Area;
+    [HideInInspector] public BoundsInt Area;
     public BoundsInt PreviousArea { get; private set; }
     public bool IsPlaced { get; private set; }
 
@@ -12,6 +12,17 @@ public class GridObject : MonoBehaviour
     private void Awake()
     {
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+    }
+
+    public void Initialize(BuildingData data, Sprite sprite)
+    {
+        var size = new Vector3Int(data.SizeX, data.SizeY, 1);
+        Area = new BoundsInt(Vector3Int.zero, size);
+
+        _spriteRenderer.sprite = sprite;
+
+        var yPosition = (float)((data.SizeX - 1) * 0.5);
+        _spriteRenderer.transform.localPosition = new Vector3(0, yPosition, 0);
     }
 
     public void StartEdit()

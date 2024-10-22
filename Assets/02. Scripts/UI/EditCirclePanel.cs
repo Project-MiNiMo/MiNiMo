@@ -13,10 +13,10 @@ public class EditCirclePanel : UIBase
 
     public override void Initialize()
     {
-        _confirmBtn.onClick.AddListener(() => App.Instance.GetManager<GridManager>().ConfirmObject());
-        _rotateBtn.onClick.AddListener(() => App.Instance.GetManager<GridManager>().RotateObject());
-        _cancelBtn.onClick.AddListener(() => App.Instance.GetManager<GridManager>().CancelObject());
-        _keepBtn.onClick.AddListener(() => App.Instance.GetManager<GridManager>().CancelObject(true));
+        _confirmBtn.onClick.AddListener(() => App.GetManager<GridManager>().ConfirmObject());
+        _rotateBtn.onClick.AddListener(() => App.GetManager<GridManager>().RotateObject());
+        _cancelBtn.onClick.AddListener(() => App.GetManager<GridManager>().CancelObject());
+        _keepBtn.onClick.AddListener(() => App.GetManager<GridManager>().CancelObject(true));
 
         _mainCamera = Camera.main;
         _rect = GetComponent<RectTransform>();

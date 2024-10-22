@@ -13,7 +13,7 @@ public class OptionPin : MonoBehaviour
     {
         _userPin = "1234567890";
 
-        _pinTMP.text = App.Instance.GetData<TitleData>().GetFormatString("STR_OPTION_GAMESETTING_PIN", _userPin);
+        _pinTMP.text = App.GetData<TitleData>().GetFormatString("STR_OPTION_GAMESETTING_PIN", _userPin);
         _pinBtn.onClick.AddListener(OnClickPin);
     }
 

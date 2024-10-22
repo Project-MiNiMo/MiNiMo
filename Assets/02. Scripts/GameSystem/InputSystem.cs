@@ -13,7 +13,7 @@ public class InputSystem : MonoBehaviour, IEventListener
 
     private void Start()
     {
-        var eventManager = App.Instance.GetManager<EventManager>();
+        var eventManager = App.GetManager<EventManager>();
 
         eventManager.AddListener(EventCode.EditStart, this);
         eventManager.AddListener(EventCode.EditEnd, this);
@@ -56,10 +56,10 @@ public class InputSystem : MonoBehaviour, IEventListener
         {
             if (Time.time - _pressStartTime >= PRESS_DURATION)
             {
-                var eventManager = App.Instance.GetManager<EventManager>();
+                var eventManager = App.GetManager<EventManager>();
                 eventManager.PostEvent(EventCode.EditStart, this);
 
-                var gridManager = App.Instance.GetManager<GridManager>();
+                var gridManager = App.GetManager<GridManager>();
                 gridManager.SetObject(_pressedObject.GetComponent<GridObject>());
 
                 _isPressing = false;

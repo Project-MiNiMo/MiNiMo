@@ -11,7 +11,7 @@ public class OptionSound : OptionBase
     #region Override
     protected override void SetString()
     {
-        var titleData = App.Instance.GetData<TitleData>();
+        var titleData = App.GetData<TitleData>();
 
         _titleTMP.text = titleData.GetString("STR_OPTION_GAMESETTING_SOUND");
         _bgm.Title.text = titleData.GetString("STR_OPTION_GAMESETTING_SOUND_BGM");

@@ -7,7 +7,7 @@ public class MapPanel : UIBase, IEventListener
 
     public override void Initialize()
     {
-        var eventManager = App.Instance.GetManager<EventManager>();
+        var eventManager = App.GetManager<EventManager>();
 
         eventManager.AddListener(EventCode.EditStart, this);
         eventManager.AddListener(EventCode.EditEnd, this);

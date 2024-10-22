@@ -7,7 +7,7 @@ public class StoragePanel : UIBase
 {
     [SerializeField] private Transform _storageGroup;
     [SerializeField] private GameObject _storageBtnPrefab;
-    [SerializeField] private Transform _gridObjectGroup;
+    [SerializeField] private Transform _buildingGroup;
 
     [Header("Buttons")]
     [SerializeField] private Button _openBtn;
@@ -36,7 +36,7 @@ public class StoragePanel : UIBase
 
         int index = 0;
 
-        foreach (var data in App.Instance.GetData<TitleData>().GridObject.Values)
+        foreach (var data in App.GetData<TitleData>().Building.Values)
         {
             StorageBtn storageBtn;
 
@@ -49,8 +49,8 @@ public class StoragePanel : UIBase
                 storageBtn = Instantiate(_storageBtnPrefab, _storageGroup).GetComponent<StorageBtn>();
             }
 
-            storageBtn.Initialize(data, _gridObjectGroup);
-            _btnDictionary.Add(data.Code, storageBtn);
+            storageBtn.Initialize(data, _buildingGroup);
+            _btnDictionary.Add(data.ID, storageBtn);
 
             index++;
         }

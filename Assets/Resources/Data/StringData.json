@@ -1,101 +1,325 @@
 [
   {
-    "ID": "STR_Map_House",
+    "ID": "STR_ITEM_RICE_NAME",
+    "Korean": "벼",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_BEAN_NAME",
+    "Korean": "콩",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PEPPER_NAME",
+    "Korean": "고추",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_WHITERICE_NAME",
+    "Korean": "백미",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_BEANPULP_NAME",
+    "Korean": "콩비지",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PEPPERPOWDER_NAME",
+    "Korean": "고춧가루",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_RICESYRUP_NAME",
+    "Korean": "조청",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_BEANPASTE_NAME",
+    "Korean": "장",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_ITEM_RICEMEAL_NAME",
+    "Korean": "별밥",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_ITEM_TOFU_NAME",
+    "Korean": "별두부",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_ITEM_RICECAKE_NAME",
+    "Korean": "별떡",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_ITEM_CANDY_NAME",
+    "Korean": "별엿",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_ITEM_TTEOKBOKKI_NAME",
+    "Korean": "별떡볶이",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_ITEM_TOFUSTEW_NAME",
+    "Korean": "별두부찌개",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_ITEM_RICE_DESC",
+    "Korean": "벼",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_BEAN_DESC",
+    "Korean": "콩",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PEPPER_DESC",
+    "Korean": "고추",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_WHITERICE_DESC",
+    "Korean": "백미",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_BEANPULP_DESC",
+    "Korean": "콩비지",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PEPPERPOWDER_DESC",
+    "Korean": "고춧가루",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_RICESYRUP_DESC",
+    "Korean": "조청",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_BEANPASTE_DESC",
+    "Korean": "장",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_ITEM_RICEMEAL_DESC",
+    "Korean": "별밥",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_ITEM_TOFU_DESC",
+    "Korean": "별두부",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_ITEM_RICECAKE_DESC",
+    "Korean": "별떡",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_ITEM_CANDY_DESC",
+    "Korean": "별엿",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_ITEM_TTEOKBOKKI_DESC",
+    "Korean": "별떡볶이",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_ITEM_TOFUSTEW_DESC",
+    "Korean": "별두부찌개",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_BUILDING_HOUSE_NAME",
     "Korean": "집",
-    "English": -1,
-    "Chinese": -1,
-    "Japanese": -1
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
   },
   {
-    "ID": "STR_Map_Windmill",
-    "Korean": "풍차",
-    "English": -1,
-    "Chinese": -1,
-    "Japanese": -1
+    "ID": "STR_BUILDING_FARM_NAME",
+    "Korean": "밭",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
   },
   {
-    "ID": "STR_Map_ClockTower",
-    "Korean": "시계탑",
-    "English": -1,
-    "Chinese": -1,
-    "Japanese": -1
+    "ID": "STR_BUILDING_RICEFARM_NAME",
+    "Korean": "쌀농장",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
   },
   {
-    "ID": "STR_Map_Cafe",
-    "Korean": "카페",
-    "English": -1,
-    "Chinese": -1,
-    "Japanese": -1
+    "ID": "STR_BUILDING_BEANFARM_NAME",
+    "Korean": "콩농장",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
   },
   {
-    "ID": "STR_Map_Fountain",
-    "Korean": "분수대",
-    "English": -1,
-    "Chinese": -1,
-    "Japanese": -1
+    "ID": "STR_BUILDING_PEPPERFARM_NAME",
+    "Korean": "고추농장",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
   },
   {
-    "ID": "STR_Map_Quarry",
-    "Korean": "채석장",
-    "English": -1,
-    "Chinese": -1,
-    "Japanese": -1
+    "ID": "STR_BUILDING_FERMENTROOM_NAME",
+    "Korean": "발효공방",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
   },
   {
-    "ID": "STR_Map_LumberCamp",
-    "Korean": "벌목장",
-    "English": -1,
-    "Chinese": -1,
-    "Japanese": -1
+    "ID": "STR_BUILDING_POT_NAME",
+    "Korean": "별가마솥",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
   },
   {
-    "ID": "STR_Map_House_Desc",
+    "ID": "STR_BUILDING_MILL_NAME",
+    "Korean": "별방앗간",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_BUILDING_RESTAURANT_NAME",
+    "Korean": "별식당",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_BUILDING_HOUSE_DESC",
     "Korean": "집",
-    "English": -1,
-    "Chinese": -1,
-    "Japanese": -1
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
   },
   {
-    "ID": "STR_Map_Windmill_Desc",
-    "Korean": "풍차",
-    "English": -1,
-    "Chinese": -1,
-    "Japanese": -1
+    "ID": "STR_BUILDING_FARM_DESC",
+    "Korean": "밭",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
   },
   {
-    "ID": "STR_Map_ClockTower_Desc",
-    "Korean": "시계탑",
-    "English": -1,
-    "Chinese": -1,
-    "Japanese": -1
+    "ID": "STR_BUILDING_RICEFARM_DESC",
+    "Korean": "쌀농장",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
   },
   {
-    "ID": "STR_Map_Cafe_Desc",
-    "Korean": "카페",
-    "English": -1,
-    "Chinese": -1,
-    "Japanese": -1
+    "ID": "STR_BUILDING_BEANFARM_DESC",
+    "Korean": "콩농장",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
   },
   {
-    "ID": "STR_Map_Fountain_Desc",
-    "Korean": "분수대",
-    "English": -1,
-    "Chinese": -1,
-    "Japanese": -1
+    "ID": "STR_BUILDING_PEPPERFARM_DESC",
+    "Korean": "고추농장",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
   },
   {
-    "ID": "STR_Map_Quarry_Desc",
-    "Korean": "채석장",
-    "English": -1,
-    "Chinese": -1,
-    "Japanese": -1
+    "ID": "STR_BUILDING_FERMENTROOM_DESC",
+    "Korean": "발효공방",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
   },
   {
-    "ID": "STR_Map_LumberCamp_Desc",
-    "Korean": "벌목장",
-    "English": -1,
-    "Chinese": -1,
-    "Japanese": -1
+    "ID": "STR_BUILDING_POT_DESC",
+    "Korean": "별가마솥",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_BUILDING_MILL_DESC",
+    "Korean": "별방앗간",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_BUILDING_RESTAURANT_DESC",
+    "Korean": "별식당",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
   },
   {
     "ID": "STR_OPTION_GAMESETTING",

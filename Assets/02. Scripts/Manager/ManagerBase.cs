@@ -4,6 +4,6 @@ public class ManagerBase : MonoBehaviour
 {
     protected virtual void Awake()
     {
-        App.Instance.RegisterManager(this);
+        App.RegisterManager(this);
     }
 }

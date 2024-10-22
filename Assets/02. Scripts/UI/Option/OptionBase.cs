@@ -18,7 +18,7 @@ public abstract class OptionBase : MonoBehaviour
 
     protected virtual void Awake()
     {
-        _setting = App.Instance.GetData<SettingData>();
+        _setting = App.GetData<SettingData>();
     }
 
     protected virtual void Start()

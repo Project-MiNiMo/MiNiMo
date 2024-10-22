@@ -29,11 +29,11 @@ public class GridManager : ManagerBase, IEventListener
 
     private void Start()
     {
-        App.Instance.GetManager<EventManager>().AddListener(EventCode.EditStart, this);
-        App.Instance.GetManager<EventManager>().AddListener(EventCode.EditEnd, this);
+        App.GetManager<EventManager>().AddListener(EventCode.EditStart, this);
+        App.GetManager<EventManager>().AddListener(EventCode.EditEnd, this);
 
         _gridLayout = GetComponent<GridLayout>();
-        _editCircle = App.Instance.GetManager<UIManager>().GetPanel<EditCirclePanel>();
+        _editCircle = App.GetManager<UIManager>().GetPanel<EditCirclePanel>();
         _mainCamera = Camera.main;
     }
 
@@ -187,7 +187,7 @@ public class GridManager : ManagerBase, IEventListener
 
         if (!_currentObject.IsPlaced || keepObject)
         {
-            App.Instance.GetManager<UIManager>().GetPanel<StoragePanel>().AddObjectCount(_currentObject.name, 1);
+            App.GetManager<UIManager>().GetPanel<StoragePanel>().AddObjectCount(_currentObject.name, 1);
             Destroy(_currentObject.gameObject);
         }
         else
