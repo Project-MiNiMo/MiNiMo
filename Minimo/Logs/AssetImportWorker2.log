@@ -1,0 +1,1893 @@
+Using pre-set license
+Built from '2022.3/staging' branch; Version is '2022.3.36f1 (95a4219250e5) revision 9806881'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19045) 64bit Core' Language: 'ko' Physical Memory: 32699 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2022.3.36f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker2
+-projectPath
+D:/UNITY/Minimo/Minimo
+-logFile
+Logs/AssetImportWorker2.log
+-srvPort
+9867
+Successfully changed project path to: D:/UNITY/Minimo/Minimo
+D:/UNITY/Minimo/Minimo
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [28440] Host "[IP] 180.230.176.158 [Port] 0 [Flags] 2 [Guid] 564322522 [EditorId] 564322522 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-F3LNGG9) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [28440] Host "[IP] 180.230.176.158 [Port] 0 [Flags] 2 [Guid] 564322522 [EditorId] 564322522 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-F3LNGG9) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+Refreshing native plugins compatible for Editor in 72.02 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.36f1 (95a4219250e5)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.3.36f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/UNITY/Minimo/Minimo/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 2070 SUPER (ID=0x1e84)
+    Vendor:   NVIDIA
+    VRAM:     7989 MB
+    Driver:   32.0.15.6094
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.3.36f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.3.36f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.3.36f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56536
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.36f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.36f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.36f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.031960 seconds.
+- Loaded All Assemblies, in  0.556 seconds
+Native extension for WindowsStandalone target not found
+[usbmuxd] Start listen thread
+[usbmuxd] Listen thread started
+Native extension for iOS target not found
+Native extension for Android target not found
+InvalidOperationException: Cannot start process because a file name has not been provided.
+  at System.Diagnostics.Process.Start () [0x00024] in <23dfa41cc66a415bae1a3ceab34a2df9>:0 
+  at (wrapper remoting-invoke-with-check) System.Diagnostics.Process.Start()
+  at UnityEditor.Android.ProgramAsShellExecute.Start (System.Diagnostics.ProcessStartInfo psi) [0x0000e] in <e80ef732fe394813b9f861cbc00ae95f>:0 
+  at UnityEditor.Android.Command.RunWithShellExecute (System.String command, System.String args, System.String workingdir, System.String errorMsg) [0x0003e] in <e80ef732fe394813b9f861cbc00ae95f>:0 
+  at UnityEditor.Android.ADB.StartServer () [0x00013] in <e80ef732fe394813b9f861cbc00ae95f>:0 
+  at UnityEditor.Android.ADB.Run (System.String[] command, UnityEditor.Android.Command+WaitingForProcessToExit waitingForProcessToExit, System.String errorMsg) [0x0000b] in <e80ef732fe394813b9f861cbc00ae95f>:0 
+  at UnityEditor.Android.AndroidDeploymentTargetsExtension.GetKnownTargets (UnityEditor.DeploymentTargets.IDeploymentTargetsMainThreadContext context, UnityEditor.ProgressHandler progressHandler) [0x002ae] in <e80ef732fe394813b9f861cbc00ae95f>:0 
+  at UnityEditor.Android.TargetScanWorker.ScanSync () [0x00039] in <e80ef732fe394813b9f861cbc00ae95f>:0 
+  at UnityEditor.Android.TargetExtension.OnUsbDevicesChanged (UnityEditor.Hardware.UsbDevice[] usbDevices) [0x00081] in <e80ef732fe394813b9f861cbc00ae95f>:0 
+  at UnityEditor.Android.TargetExtension.OnLoad () [0x000ad] in <e80ef732fe394813b9f861cbc00ae95f>:0 
+  at UnityEditor.Modules.ModuleManager.InitializePlatformSupportModules () [0x0009d] in <2201ab87e660427c974282df3bb3cf36>:0 
+
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.480 seconds
+Domain Reload Profiling: 1029ms
+	BeginReloadAssembly (157ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (43ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (118ms)
+	LoadAllAssembliesAndSetupDomain (217ms)
+		LoadAssemblies (153ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (212ms)
+			TypeCache.Refresh (210ms)
+				TypeCache.ScanAssembly (194ms)
+			ScanForSourceGeneratedMonoScriptInfo (1ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (480ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (411ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (207ms)
+			SetLoadedEditorAssemblies (5ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (2ms)
+			ProcessInitializeOnLoadAttributes (138ms)
+			ProcessInitializeOnLoadMethodAttributes (59ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.067 seconds
+Refreshing native plugins compatible for Editor in 47.73 ms, found 5 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for iOS target not found
+Native extension for Android target not found
+Package Manager log level set to [2]
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.473 seconds
+Domain Reload Profiling: 2530ms
+	BeginReloadAssembly (222ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (8ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (28ms)
+	RebuildCommonClasses (46ms)
+	RebuildNativeTypeToScriptingClass (18ms)
+	initialDomainReloadingComplete (73ms)
+	LoadAllAssembliesAndSetupDomain (699ms)
+		LoadAssemblies (508ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (324ms)
+			TypeCache.Refresh (271ms)
+				TypeCache.ScanAssembly (246ms)
+			ScanForSourceGeneratedMonoScriptInfo (38ms)
+			ResolveRequiredComponents (13ms)
+	FinalizeReload (1474ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1243ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (81ms)
+			SetLoadedEditorAssemblies (7ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (127ms)
+			ProcessInitializeOnLoadAttributes (839ms)
+			ProcessInitializeOnLoadMethodAttributes (162ms)
+			AfterProcessingInitializeOnLoad (27ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (18ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.09 seconds
+Refreshing native plugins compatible for Editor in 52.71 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 7008 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 345 unused Assets / (0.6 MB). Loaded Objects now: 7220.
+Memory consumption went from 264.4 MB to 263.8 MB.
+Total: 5.436200 ms (FindLiveObjects: 0.735500 ms CreateObjectMapping: 0.211700 ms MarkObjects: 3.822500 ms  DeleteObjects: 0.664800 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 72b91833f83ae208fae7752999fa3104 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 165767.345945 seconds.
+  path: Assets/Wwise/API/Editor/PluginActivator/Common/StaticPluginRegistration.cs
+  artifactKey: Guid(26be4570cde92c745bd803c20146f205) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Editor/PluginActivator/Common/StaticPluginRegistration.cs using Guid(26be4570cde92c745bd803c20146f205) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '2fd5f549367123d793f894db153437b0') in 0.240521 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Wwise/API/Editor/WwiseWindows/AkWwiseProjectInfo.cs
+  artifactKey: Guid(727ff10746f534448ba8e8b62e8f79fe) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Editor/WwiseWindows/AkWwiseProjectInfo.cs using Guid(727ff10746f534448ba8e8b62e8f79fe) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '6d7f392f6875c998e2448330f6e0c0a6') in 0.010748 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Wwise/API/Editor/WwiseWindows/AkWwiseXMLBuilder.cs
+  artifactKey: Guid(a1347660e602bec4db9007dd961c4501) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Editor/WwiseWindows/AkWwiseXMLBuilder.cs using Guid(a1347660e602bec4db9007dd961c4501) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '9ed59ef223b07552bdbe80103733d79c') in 0.011388 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Wwise/Documentation/Windows/ko/WwiseUnityIntegrationHelp_ko.chm
+  artifactKey: Guid(a8ddcc7f774a67e4da657ca2be0f8439) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/Documentation/Windows/ko/WwiseUnityIntegrationHelp_ko.chm using Guid(a8ddcc7f774a67e4da657ca2be0f8439) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '0b91fb3bc480664da24d39f4ebe6c06a') in 0.012287 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Wwise/Documentation/Windows/zh/WwiseUnityIntegrationHelp_zh.chm
+  artifactKey: Guid(4e64c5abfe28ee14eab54fd759f03980) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/Documentation/Windows/zh/WwiseUnityIntegrationHelp_zh.chm using Guid(4e64c5abfe28ee14eab54fd759f03980) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '9ae67377e4549f3ecf907ccd7ff9bcec') in 0.010382 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Wwise/API/Editor/PluginActivator/iOS/AkiOSPluginActivator.cs
+  artifactKey: Guid(b24936963e2502547ab5146f0f404ac6) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Editor/PluginActivator/iOS/AkiOSPluginActivator.cs using Guid(b24936963e2502547ab5146f0f404ac6) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '0fd3508b03c6b667b42effb1df290241') in 0.012773 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Plugins/Demigiant/DOTween/Editor/Imgs/DOTweenMiniIcon.png
+  artifactKey: Guid(61521df2e071645488ba3d05e49289ae) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Plugins/Demigiant/DOTween/Editor/Imgs/DOTweenMiniIcon.png using Guid(61521df2e071645488ba3d05e49289ae) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'da4e924678f3f65d70e15c5bd520df8c') in 0.071977 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/LiberationSans SDF - Soft Mask.mat
+  artifactKey: Guid(42df1c7856584b6b8db9a509b6b10074) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/LiberationSans SDF - Soft Mask.mat using Guid(42df1c7856584b6b8db9a509b6b10074) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'df4520924d68da4a5370a5e3465bee71') in 0.036955 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Wwise/API/Editor/WwiseWindows/AkWwisePicker.cs
+  artifactKey: Guid(2d19b481049840c44ab9bde9bb7e7412) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Editor/WwiseWindows/AkWwisePicker.cs using Guid(2d19b481049840c44ab9bde9bb7e7412) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '1ed235d8057c4f3122a58a677814a89f') in 0.012590 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Wwise/API/Editor/AK.Wwise.Unity.API.Editor.asmdef
+  artifactKey: Guid(070f91f034c79bc47952aa11a5721d1e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Editor/AK.Wwise.Unity.API.Editor.asmdef using Guid(070f91f034c79bc47952aa11a5721d1e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '4c04f447b718ca2d6afcbe6180b92a13') in 0.011054 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Wwise/MonoBehaviour/Runtime/AkTriggerMouseDown.cs
+  artifactKey: Guid(4a3499e312bfdf04ca9d61dfc4652e1a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/MonoBehaviour/Runtime/AkTriggerMouseDown.cs using Guid(4a3499e312bfdf04ca9d61dfc4652e1a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '0aeaa1dad32f59cf7717e270b85a5b1e') in 0.008931 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Resources/Building/Icon/Pot.png
+  artifactKey: Guid(6794e8510d7c0d443835c763fb4a78ab) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Resources/Building/Icon/Pot.png using Guid(6794e8510d7c0d443835c763fb4a78ab) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '73b41eb4c9ba0307ae5ee1a25e638b53') in 0.026492 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/TextMesh Pro/Examples & Extras/Scenes/10 - Bullets & Numbered List Example.unity
+  artifactKey: Guid(c3f814e1d12c45568daf3dd9a86a0e61) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/TextMesh Pro/Examples & Extras/Scenes/10 - Bullets & Numbered List Example.unity using Guid(c3f814e1d12c45568daf3dd9a86a0e61) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '75eb2cc87752ad951dd4a718d8cef43b') in 0.011128 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Wwise/MonoBehaviour/Runtime/AkTriggerHandler.cs
+  artifactKey: Guid(a9fac853fb23c4347a00f613679c6787) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/MonoBehaviour/Runtime/AkTriggerHandler.cs using Guid(a9fac853fb23c4347a00f613679c6787) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'c1e061c7cbdf19bb1395e73dad24c761') in 0.012081 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/07. Materials/Water.shadergraph
+  artifactKey: Guid(075453969857fba4e9309ec6e6bc0c37) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/07. Materials/Water.shadergraph using Guid(075453969857fba4e9309ec6e6bc0c37) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '952951ac96eee975ee7b667b7e4f58c0') in 0.027584 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/Ak3DAudioSinkCapabilities.cs
+  artifactKey: Guid(9013fe2f76c49424f9469fd49695c4a1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/Ak3DAudioSinkCapabilities.cs using Guid(9013fe2f76c49424f9469fd49695c4a1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '46d34ba6c2fcc575c9063ced8f7a592f') in 0.016072 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/06. Sounds/Banks/Android/New_SoundBank.txt
+  artifactKey: Guid(d81c0e6b33d1e33449900151ea90927d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/06. Sounds/Banks/Android/New_SoundBank.txt using Guid(d81c0e6b33d1e33449900151ea90927d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '924380c2786dc868f9312782ee4fc1fe') in 0.015337 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/AkImageSourceParams.cs
+  artifactKey: Guid(ab5139011c55e674185a48f7cbc1d5ec) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/AkImageSourceParams.cs using Guid(ab5139011c55e674185a48f7cbc1d5ec) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'd4c59349520dfdcf7d3d3f7b42ad933c') in 0.013338 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Wwise/API/Editor/WwiseWindows/TreeViewIcons/acoustictexture_nor.png
+  artifactKey: Guid(7b232f62c17b12040b26401e3fe57a73) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Editor/WwiseWindows/TreeViewIcons/acoustictexture_nor.png using Guid(7b232f62c17b12040b26401e3fe57a73) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '247ae303b595aec79415bf6f19577f53') in 0.023138 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/AkExternalSourceInfo.cs
+  artifactKey: Guid(ba88e97165eac3f46812de8ef5bc211f) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/AkExternalSourceInfo.cs using Guid(ba88e97165eac3f46812de8ef5bc211f) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'bd2c4e6a94e36573b349015aa5baa398') in 0.014840 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/AkGroupType.cs
+  artifactKey: Guid(f39a557174fccfe40888d61553069d56) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/AkGroupType.cs using Guid(f39a557174fccfe40888d61553069d56) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'ad0640e77c6226178bd2c7dfa28161eb') in 0.014240 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Wwise/API/Editor/WwiseWindows/TreeViewIcons/physical_folder_nor.png
+  artifactKey: Guid(a7ed4ea6bce45c44e9c191b3d904bf4b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Editor/WwiseWindows/TreeViewIcons/physical_folder_nor.png using Guid(a7ed4ea6bce45c44e9c191b3d904bf4b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '4b24308735bc059907cba27a28fbabd5') in 0.037899 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Wwise/API/Editor/WwiseMenu/iOS/AkWwiseMenu_iOS.cs
+  artifactKey: Guid(41899df9faa690a4b8cda8e7c2eaf200) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Editor/WwiseMenu/iOS/AkWwiseMenu_iOS.cs using Guid(41899df9faa690a4b8cda8e7c2eaf200) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '199ccbea120c3caaeb728f0c605fdff1') in 0.018510 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Android/AkSoundEngine_Android.cs
+  artifactKey: Guid(5ad7a0675567e8c47aed1a2fe96b02d1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Android/AkSoundEngine_Android.cs using Guid(5ad7a0675567e8c47aed1a2fe96b02d1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '7ac101abdb47fb52c16d77c7e9404aac') in 0.014092 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/AkExtent.cs
+  artifactKey: Guid(f7d69293e90352345b8d51b14649fa19) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/AkExtent.cs using Guid(f7d69293e90352345b8d51b14649fa19) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'b31bc0ca39f06031137813acee4a6c8d') in 0.013102 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Wwise/API/Editor/WwiseWindows/TreeViewIcons/state_nor.png
+  artifactKey: Guid(f1d20806b5a0ed641b74330623955c13) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Editor/WwiseWindows/TreeViewIcons/state_nor.png using Guid(f1d20806b5a0ed641b74330623955c13) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '0bccca9d997c65d701458d4d86482259') in 0.023619 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/AkAudioSourceChangeCallbackInfo.cs
+  artifactKey: Guid(409c33b9ff5a2df42932302843c108c5) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/AkAudioSourceChangeCallbackInfo.cs using Guid(409c33b9ff5a2df42932302843c108c5) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '4e047efdb344af319e242c679d8cfd85') in 0.014847 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Android/AkSoundEnginePINVOKE_Android.cs
+  artifactKey: Guid(a8d0687e09087774da022dd52c357aab) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Android/AkSoundEnginePINVOKE_Android.cs using Guid(a8d0687e09087774da022dd52c357aab) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'f59138233205a69bd16234562d6de5d8') in 0.019776 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Wwise/API/Editor/WwiseWindows/TreeViewIcons/wproj.png
+  artifactKey: Guid(6ea4364b424e16546a3e04186b7025fe) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Editor/WwiseWindows/TreeViewIcons/wproj.png using Guid(6ea4364b424e16546a3e04186b7025fe) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'dbbee319cc013a94e079cdfe270c920d') in 0.027900 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/AkMeteringFlags.cs
+  artifactKey: Guid(05d15459970936047818cdef762a11c5) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/AkMeteringFlags.cs using Guid(05d15459970936047818cdef762a11c5) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '4777adaeafeda3d383727e0b6fbac86e') in 0.013723 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Wwise/API/Editor/WwiseWindows/TreeViewIcons/soundbank_nor.png
+  artifactKey: Guid(399e104dccafcbb4795b474ce666e2b8) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Editor/WwiseWindows/TreeViewIcons/soundbank_nor.png using Guid(399e104dccafcbb4795b474ce666e2b8) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '6b48777422eb09989994db3d10e519f7') in 0.023958 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/AkOutputSettings.cs
+  artifactKey: Guid(2d2fa274d29dc4e439f809372338211b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/AkOutputSettings.cs using Guid(2d2fa274d29dc4e439f809372338211b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '4a79decb70cbcac4ec50a27d19ea959b') in 0.013762 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/AkPluginType.cs
+  artifactKey: Guid(61bc39da84190524a8bfc177fdab16c0) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/AkPluginType.cs using Guid(61bc39da84190524a8bfc177fdab16c0) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'de7e7642fa811ae58842af3f9a622de8') in 0.012393 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/AkReflectionPathInfo.cs
+  artifactKey: Guid(dc88e9fb564c4994989bf135c46455dc) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/AkReflectionPathInfo.cs using Guid(dc88e9fb564c4994989bf135c46455dc) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '1983030097404c4769cb78710079fbf2') in 0.014778 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/AkMIDIEvent.cs
+  artifactKey: Guid(d91a490d18123c542ab978b13c508ea1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/AkMIDIEvent.cs using Guid(d91a490d18123c542ab978b13c508ea1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '3eaf9bc97f720e8cc87e6e68ba070a82') in 0.013227 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/AkMusicPlaylistCallbackInfo.cs
+  artifactKey: Guid(fa849eb8e601050478f4a23ae54a61ab) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/AkMusicPlaylistCallbackInfo.cs using Guid(fa849eb8e601050478f4a23ae54a61ab) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'ff883cbafaef38b54a43138c7ceabffe') in 0.013708 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/AkResourceMonitorDataSummary.cs
+  artifactKey: Guid(c0a1d2efadf9de24fb923b18b2de97c3) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/AkResourceMonitorDataSummary.cs using Guid(c0a1d2efadf9de24fb923b18b2de97c3) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '91f64a09e8a63790a7e75024aa5b2f24') in 0.013008 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/AkMusicSyncCallbackInfo.cs
+  artifactKey: Guid(1901a329d73c694449efa3f85a166d55) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/AkMusicSyncCallbackInfo.cs using Guid(1901a329d73c694449efa3f85a166d55) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '8d28be702ee6ba6a1fbf2a32e39fa9b2') in 0.015581 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/AkStdMovePolicy.cs
+  artifactKey: Guid(c9facaf867b44674ebf73135be0f5f5c) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/AkStdMovePolicy.cs using Guid(c9facaf867b44674ebf73135be0f5f5c) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '7e1033a26aea823deae6519d20285159') in 0.013147 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/AkSegmentInfo.cs
+  artifactKey: Guid(b3884d9827111b748976164dc6802b54) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/AkSegmentInfo.cs using Guid(b3884d9827111b748976164dc6802b54) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '38dba522db0603c12cf1aed7c6b6eff6') in 0.012792 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/MsgContext.cs
+  artifactKey: Guid(7f3a09d5b738ae94f942e630dfd425ff) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/MsgContext.cs using Guid(7f3a09d5b738ae94f942e630dfd425ff) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '656f81cdbc0c6919202392c75bd0e745') in 0.016137 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/AkPreparationType.cs
+  artifactKey: Guid(afcb734285490b047bcd0f0f764adc8f) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/AkPreparationType.cs using Guid(afcb734285490b047bcd0f0f764adc8f) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '50a22bf7dc289a6ad2ccb32ae15a3596') in 0.016429 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000118 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/AkRoomParams.cs
+  artifactKey: Guid(20d9d406d944bf643b4ba4a6f14b64c2) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/AkRoomParams.cs using Guid(20d9d406d944bf643b4ba4a6f14b64c2) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '7f2ec87eb4f6d3be5d1345ec3d96c0d4') in 0.015619 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/AkMonitorErrorCode.cs
+  artifactKey: Guid(ca75de65f048ae04da141dcd8a6cf215) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/AkMonitorErrorCode.cs using Guid(ca75de65f048ae04da141dcd8a6cf215) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '24f70f3d16f085df0cfee53e218cde5d') in 0.016063 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Wwise/API/Editor/WwiseWindows/TreeViewIcons/folder_nor.png
+  artifactKey: Guid(9d705dcb88d0af348b7a503a0c6adc81) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Editor/WwiseWindows/TreeViewIcons/folder_nor.png using Guid(9d705dcb88d0af348b7a503a0c6adc81) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'd02976bc0ab341c0731c08cab2c6968e') in 0.027518 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Android/AkPlatformInitSettings_Android.cs
+  artifactKey: Guid(b984f115f0e5a3644ac46ae0615b8408) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Android/AkPlatformInitSettings_Android.cs using Guid(b984f115f0e5a3644ac46ae0615b8408) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'e8b964b26e3b20c58537108f91993db0') in 0.015805 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Wwise/API/Editor/WwiseWindows/TreeViewIcons/switch_nor.png
+  artifactKey: Guid(8f7a6ed50ec76af4fa431c7c8caf1b08) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Editor/WwiseWindows/TreeViewIcons/switch_nor.png using Guid(8f7a6ed50ec76af4fa431c7c8caf1b08) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'f6f70b8f414c9a351e72f8d300da28e8') in 0.023537 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/AkImageSourceSettings.cs
+  artifactKey: Guid(a4baa06e54cee24468fe007c7faa2d3b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/AkImageSourceSettings.cs using Guid(a4baa06e54cee24468fe007c7faa2d3b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '66faabc571e37bbd8ee63e7a34a1793b') in 0.014815 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Windows/AkSoundEngine_Windows.cs
+  artifactKey: Guid(f5f90dcfea9ed0745a1abb5c61dcdee2) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Windows/AkSoundEngine_Windows.cs using Guid(f5f90dcfea9ed0745a1abb5c61dcdee2) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '1afbf6efbb32a1cb872a72146f65d21e') in 0.014172 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Wwise/API/Runtime/Handwritten/Common/AkCommonPlatformSettings.cs
+  artifactKey: Guid(a32f1a605c5f1fa48bfe97a25f3c5bdf) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Handwritten/Common/AkCommonPlatformSettings.cs using Guid(a32f1a605c5f1fa48bfe97a25f3c5bdf) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'c04321aa1aab65977519f4566d93eccf') in 0.015678 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Wwise/API/Runtime/Handwritten/iOS/AkiOSSettings.cs
+  artifactKey: Guid(e672f709d24795b4ea01a78aeca0ee55) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Handwritten/iOS/AkiOSSettings.cs using Guid(e672f709d24795b4ea01a78aeca0ee55) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'f6e35b996f5f2b92af7d41939df7f8c8') in 0.014577 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Windows/AkCommunicationSettings_Windows.cs
+  artifactKey: Guid(ccd0216bf306f164d96face1b0a96c99) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Windows/AkCommunicationSettings_Windows.cs using Guid(ccd0216bf306f164d96face1b0a96c99) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'ccde8d40f57297a9e67e373fac2611d1') in 0.015313 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Wwise/API/Runtime/Handwritten/Mac/AkSoundEngine.cs
+  artifactKey: Guid(57118e10c07722c44a573777a0d8ce62) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Handwritten/Mac/AkSoundEngine.cs using Guid(57118e10c07722c44a573777a0d8ce62) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '50cc98aca5e27e4b8148502983bd3af9') in 0.012335 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Windows/AkUnityPlatformSpecificSettings_Windows.cs
+  artifactKey: Guid(5c730a023357d11468d8e23a5021acc3) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Windows/AkUnityPlatformSpecificSettings_Windows.cs using Guid(5c730a023357d11468d8e23a5021acc3) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'a4cd6fe4bef5a71c00f1401288bc6a9d') in 0.012013 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/iOS/AkUnityPlatformSpecificSettings_iOS.cs
+  artifactKey: Guid(78fbc580168988c4590483acd37e2b21) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/iOS/AkUnityPlatformSpecificSettings_iOS.cs using Guid(78fbc580168988c4590483acd37e2b21) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '97da985990faa8136ee64c5e5508759a') in 0.011763 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Wwise/API/Runtime/Handwritten/Windows/AkSoundEngine.cs
+  artifactKey: Guid(35ff0be2d2b004e49b958b0bed494d2b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Handwritten/Windows/AkSoundEngine.cs using Guid(35ff0be2d2b004e49b958b0bed494d2b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '2ed557b7a4282559dbd8dd087f03daa8') in 0.011918 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Wwise/API/Runtime/Handwritten/WAAPI/Wamp.cs
+  artifactKey: Guid(4c0b62ed7cd3a6b42a70ae959c4ed13a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Handwritten/WAAPI/Wamp.cs using Guid(4c0b62ed7cd3a6b42a70ae959c4ed13a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '7c526ae56d19737f1a91d10bd7c56b9c') in 0.012949 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Wwise/API/Runtime/Handwritten/WAAPI/AkWaapiClient.cs
+  artifactKey: Guid(7cc169ed33f31c24aa77d1954293ea2b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Handwritten/WAAPI/AkWaapiClient.cs using Guid(7cc169ed33f31c24aa77d1954293ea2b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'bae6a94da40350fdac09642e10550ca6') in 0.016573 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Wwise/API/Runtime/Handwritten/Common/AkSoundEngine.cs
+  artifactKey: Guid(56739ca4adbb3464c95ab8f952a3ac0b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Handwritten/Common/AkSoundEngine.cs using Guid(56739ca4adbb3464c95ab8f952a3ac0b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'b5e52ddac4593abb8f45e350b0344c52') in 0.011525 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Wwise/API/Runtime/Handwritten/Common/AkVector64.cs
+  artifactKey: Guid(86ccf924d1a457f469f76cdbf853ffc2) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Handwritten/Common/AkVector64.cs using Guid(86ccf924d1a457f469f76cdbf853ffc2) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'baa79fcadac603e138f90829e97b861e') in 0.011222 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Wwise/API/Runtime/Handwritten/Android/AkSoundEngine.cs
+  artifactKey: Guid(393ab2b0d1ad2054694d81b57b702261) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Handwritten/Android/AkSoundEngine.cs using Guid(393ab2b0d1ad2054694d81b57b702261) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '8854d4f339755bb87f69c18b6b087a39') in 0.015322 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Wwise/API/Runtime/Handwritten/Common/AkLogger.cs
+  artifactKey: Guid(5558025d707b5074a94bac0dd41e78fb) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Handwritten/Common/AkLogger.cs using Guid(5558025d707b5074a94bac0dd41e78fb) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'f9e9ad5c3b296af2445188a1afca4489') in 0.011763 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Wwise/API/Runtime/Handwritten/Windows/AkWindowsBasePathGetter.cs
+  artifactKey: Guid(19893df9070b7c64faef3545ee742637) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Handwritten/Windows/AkWindowsBasePathGetter.cs using Guid(19893df9070b7c64faef3545ee742637) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'bc1e3dff3dcf4ac76a4367dad3d67c54') in 0.013901 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/iOS/AkAudioSessionSetActiveOptions_iOS.cs
+  artifactKey: Guid(cf19e891979e2f74fa484ed8a07a6239) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/iOS/AkAudioSessionSetActiveOptions_iOS.cs using Guid(cf19e891979e2f74fa484ed8a07a6239) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '90c85389f16ef3f037a6e13deeb3bf63') in 0.011476 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/AkBankContent.cs
+  artifactKey: Guid(4de1356e50f508e41a9b13c039ebb39c) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/AkBankContent.cs using Guid(4de1356e50f508e41a9b13c039ebb39c) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'b5882f8d529efeb0edbb464b71bf8297') in 0.010525 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/AkQueryRTPCValue.cs
+  artifactKey: Guid(a4f27c81f420333408ded7d05ff7b610) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/AkQueryRTPCValue.cs using Guid(a4f27c81f420333408ded7d05ff7b610) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'aa1e83049fb4c5050714d74f6821f577') in 0.013411 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/AkWorldTransform.cs
+  artifactKey: Guid(3a469dd23e9831a48a95f9cb137a2db2) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/AkWorldTransform.cs using Guid(3a469dd23e9831a48a95f9cb137a2db2) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'afb67dbf180e1a11b855af4e2de1ad2b') in 0.014221 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000109 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/AkTransform.cs
+  artifactKey: Guid(84c42bd9a67c64942b1ac311679a9faa) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/AkTransform.cs using Guid(84c42bd9a67c64942b1ac311679a9faa) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'd7dd9ad91d0dfbef16e7f14a9ec599c1') in 0.012808 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Mac/AkSoundEnginePINVOKE_Mac.cs
+  artifactKey: Guid(eee174eb61b981d4b950dd32c5dc2d46) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Mac/AkSoundEnginePINVOKE_Mac.cs using Guid(eee174eb61b981d4b950dd32c5dc2d46) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'b09129a50b3347e74e915e74a39a14a0') in 0.013091 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Wwise/API/Runtime/WwiseTypes/WwiseTypes/AkWwiseBaseGroupType.cs
+  artifactKey: Guid(5593fe7bab0857541a943553f62d671c) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/WwiseTypes/WwiseTypes/AkWwiseBaseGroupType.cs using Guid(5593fe7bab0857541a943553f62d671c) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '52d103ed45fb569f9acf1d4fdcb27a3f') in 0.013702 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Wwise/API/Runtime/WwiseTypes/WwiseTypes/AkWwiseSwitch.cs
+  artifactKey: Guid(e88ab01dfebef6f4ebb360f5d696cf14) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/WwiseTypes/WwiseTypes/AkWwiseSwitch.cs using Guid(e88ab01dfebef6f4ebb360f5d696cf14) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '14fc19c6017e6167ce95aac6f68cf774') in 0.012739 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Wwise/API/Runtime/Handwritten/Common/Arrays/AkBaseArray.cs
+  artifactKey: Guid(482d1f255220604458ffd77502c6f36f) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Handwritten/Common/Arrays/AkBaseArray.cs using Guid(482d1f255220604458ffd77502c6f36f) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '10a88049989f6f4208a77edc58ab9fdc') in 0.012193 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Wwise/API/Runtime/Handwritten/Common/Arrays/AkTriangleArray.cs
+  artifactKey: Guid(30fb1c291f479c44c81b732ca464696e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Handwritten/Common/Arrays/AkTriangleArray.cs using Guid(30fb1c291f479c44c81b732ca464696e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '44355672bb83e41121d6b90b403faf23') in 0.013602 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Mac/DSP/libiZotope.bundle
+  artifactKey: Guid(c1f635fb92370a14a994b661dd789e97) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Mac/DSP/libiZotope.bundle using Guid(c1f635fb92370a14a994b661dd789e97) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '67ac0ea171365ad0b94d96ea235d481c') in 0.015965 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Wwise/MonoBehaviour/Editor/EditorPlatformHelpers/iOS/AkiOSBuildPreprocessor.cs
+  artifactKey: Guid(fd6052cd545f03a4d9766c5d588c0575) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/MonoBehaviour/Editor/EditorPlatformHelpers/iOS/AkiOSBuildPreprocessor.cs using Guid(fd6052cd545f03a4d9766c5d588c0575) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '0d8bcf226d4ff0e4f487f79b7ccd9de6') in 0.010299 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Wwise/API/Runtime/Handwritten/Common/Arrays/AkChannelEmitterArray.cs
+  artifactKey: Guid(f574f7523a1232c48ad35edf7b7e7944) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Handwritten/Common/Arrays/AkChannelEmitterArray.cs using Guid(f574f7523a1232c48ad35edf7b7e7944) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'da704296969a523c49e4c87606dc6a6c') in 0.011936 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Mac/DSP/libAkSynthOne.bundle
+  artifactKey: Guid(9a2ef17ef3bfa1d4bbca283ee13611e4) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Mac/DSP/libAkSynthOne.bundle using Guid(9a2ef17ef3bfa1d4bbca283ee13611e4) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'c55494ef114df006a4e9ab1fe3523476') in 0.012320 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Mac/DSP/libAkTimeStretch.bundle
+  artifactKey: Guid(0cfcb684f83d23146ab1e2647b3ab849) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Mac/DSP/libAkTimeStretch.bundle using Guid(0cfcb684f83d23146ab1e2647b3ab849) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '870c0dafdbb455ce70f3eda4ef6758a8') in 0.010977 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Mac/DSP/libAkPitchShifter.bundle
+  artifactKey: Guid(f1da3d03b2802e04f950d067eaa87f69) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Mac/DSP/libAkPitchShifter.bundle using Guid(f1da3d03b2802e04f950d067eaa87f69) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'ec09103671bf867152994d71e58ab3ba') in 0.011931 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Wwise/API/Runtime/Handwritten/Common/Arrays/AkObstructionOcclusionValuesArray.cs
+  artifactKey: Guid(e00d44227d5861a49b077830312498fe) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Handwritten/Common/Arrays/AkObstructionOcclusionValuesArray.cs using Guid(e00d44227d5861a49b077830312498fe) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'c217647170c79c60567fd93a0bb78414') in 0.010874 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Wwise/API/Runtime/WwiseTypes/WwiseObjects/WwiseStateGroupReference.cs
+  artifactKey: Guid(0d594d6240726a6469d93e377f53e404) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/WwiseTypes/WwiseObjects/WwiseStateGroupReference.cs using Guid(0d594d6240726a6469d93e377f53e404) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '3b92c2f1a748e443af52a1adf2fb2616') in 0.012940 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Mac/DSP/libAk3DAudioBedMixer.bundle
+  artifactKey: Guid(99157fdda978d0142b37d0a8deed4b75) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Mac/DSP/libAk3DAudioBedMixer.bundle using Guid(99157fdda978d0142b37d0a8deed4b75) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '1ca7c6ab136fece6105f727bc0644868') in 0.013647 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Wwise/API/Runtime/WwiseTypes/WwiseObjects/WwiseAuxBusReference.cs
+  artifactKey: Guid(dd5de4029473a22438c5f58e3496595b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/WwiseTypes/WwiseObjects/WwiseAuxBusReference.cs using Guid(dd5de4029473a22438c5f58e3496595b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '70c251115cfff484ba0e572c569211a2') in 0.014549 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Android/arm64-v8a/Debug/libAkSoundEngine.so
+  artifactKey: Guid(32a6c0486e10a88419ed10e257ddffd3) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Android/arm64-v8a/Debug/libAkSoundEngine.so using Guid(32a6c0486e10a88419ed10e257ddffd3) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'a5f44fdffa163834321d7249ee6b3f35') in 0.012846 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Wwise/MonoBehaviour/Editor/EditorPlatformHelpers/Windows/AkWindowsBuildPreprocessor.cs
+  artifactKey: Guid(8a959f2f420c3344a8b895d3b1e47b39) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/MonoBehaviour/Editor/EditorPlatformHelpers/Windows/AkWindowsBuildPreprocessor.cs using Guid(8a959f2f420c3344a8b895d3b1e47b39) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'f5453c0dfca6149d29c46ee59dde7cff') in 0.012177 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Wwise/API/Runtime/WwiseTypes/WwiseTypes/AkWwiseState.cs
+  artifactKey: Guid(f553aed4d8cac71458261100f129a4d0) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/WwiseTypes/WwiseTypes/AkWwiseState.cs using Guid(f553aed4d8cac71458261100f129a4d0) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'c3687daf387b7ceec19740dc62b95551') in 0.012254 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/04. Prefabs/Btn_Storage.prefab
+  artifactKey: Guid(eda60d3a111a9e44cbc94a459576e492) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/04. Prefabs/Btn_Storage.prefab using Guid(eda60d3a111a9e44cbc94a459576e492) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'a3258da2b09c8b3b343cd398e47c4f7c') in 0.065121 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 29
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Wwise/MonoBehaviour/Editor/EditorPlatformHelpers/Android/AkAndroidBuildPreprocessor.cs
+  artifactKey: Guid(9e76e8f2e8c33d04f9957f52547f8067) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/MonoBehaviour/Editor/EditorPlatformHelpers/Android/AkAndroidBuildPreprocessor.cs using Guid(9e76e8f2e8c33d04f9957f52547f8067) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '25af46028f26e1e2e6dbcd1679c54d49') in 0.010751 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/AkCompressorFXFactory.h
+  artifactKey: Guid(49cd316c0c1308d4b97c1b2320542cd1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/AkCompressorFXFactory.h using Guid(49cd316c0c1308d4b97c1b2320542cd1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'a32cb08a08d499acaeb9971198a536f7') in 0.013250 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/AkRoomVerbFXFactory.h
+  artifactKey: Guid(b414c94640635ed4c821b623dd03e6f6) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/AkRoomVerbFXFactory.h using Guid(b414c94640635ed4c821b623dd03e6f6) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '0286058b3f494b3e81a95638f764c5d2') in 0.013101 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Android/x86/DSP/libiZotope.so
+  artifactKey: Guid(b0d2059e2a826a04fb9f00fa99aa021c) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Android/x86/DSP/libiZotope.so using Guid(b0d2059e2a826a04fb9f00fa99aa021c) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '7e1fb5d1d74fab21a7f4cdf89f2f5019') in 0.012175 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/AkHarmonizerFXFactory.h
+  artifactKey: Guid(7cd6aed131a71194aa78fb048b96a7f6) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/AkHarmonizerFXFactory.h using Guid(7cd6aed131a71194aa78fb048b96a7f6) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '01f1fd7863661354c9b555d64c579ae6') in 0.013840 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Android/x86/DSP/libAkSoundSeedAir.so
+  artifactKey: Guid(030472b989b0b494d9b5cf91bd61b297) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Android/x86/DSP/libAkSoundSeedAir.so using Guid(030472b989b0b494d9b5cf91bd61b297) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '9ad9434c3d63a2104ec226d9f088a5da') in 0.012834 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Android/arm64-v8a/Profile/libAkSoundEngine.so
+  artifactKey: Guid(a6adf4d601791be4cbd35b31b55b8e29) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Android/arm64-v8a/Profile/libAkSoundEngine.so using Guid(a6adf4d601791be4cbd35b31b55b8e29) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '320b4b8b8d518c8e5d0d0b8d3c46e0e6') in 0.013372 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Android/arm64-v8a/DSP/libAkSoundSeedGrain.so
+  artifactKey: Guid(9d6f587e001c3404ba3e18555aab6568) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Android/arm64-v8a/DSP/libAkSoundSeedGrain.so using Guid(9d6f587e001c3404ba3e18555aab6568) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'e23d7130ed1a42df0e6b76ca5cace8f2') in 0.016804 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/AkPeakLimiterFXFactory.h
+  artifactKey: Guid(34c4fafa8ce8d7441ab9ac857d78f225) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/AkPeakLimiterFXFactory.h using Guid(34c4fafa8ce8d7441ab9ac857d78f225) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'a09fe2bab2f1e921006fadef1ce36183') in 0.013350 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/AkReflectGameData.h
+  artifactKey: Guid(f791d820ea5fb0240b10a6d4755d9c5a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/AkReflectGameData.h using Guid(f791d820ea5fb0240b10a6d4755d9c5a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '7056e4e4810e67d0bf8407e2986898f0') in 0.013021 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/AkMeterFXFactory.h
+  artifactKey: Guid(95f143c1058e87042a1273c643dba590) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/AkMeterFXFactory.h using Guid(95f143c1058e87042a1273c643dba590) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'a824d2ccd840cebe7a71760122e7f522') in 0.015958 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/AkExpanderFXFactory.h
+  artifactKey: Guid(ddff89fc15cd9014097adb3841fcf87a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/AkExpanderFXFactory.h using Guid(ddff89fc15cd9014097adb3841fcf87a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'b3b8298a44c6c273a65f29a463c317fe') in 0.013489 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Android/arm64-v8a/DSP/libAkSoundSeedAir.so
+  artifactKey: Guid(8eae2cfa79af82c4082c762b2b5deedc) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Android/arm64-v8a/DSP/libAkSoundSeedAir.so using Guid(8eae2cfa79af82c4082c762b2b5deedc) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '10f130d3b2843cb22463085fd87174cc') in 0.013553 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/Ak3DAudioBedMixerFXFactory.h
+  artifactKey: Guid(b856a1898ed496a4c9b310cb426ac890) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/Ak3DAudioBedMixerFXFactory.h using Guid(b856a1898ed496a4c9b310cb426ac890) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '026b5584b9a46511496ca65a1b2c27be') in 0.012975 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Android/armeabi-v7a/Profile/libAkSoundEngine.so
+  artifactKey: Guid(30ce5c5578a8d984c81b15471162d1e5) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Android/armeabi-v7a/Profile/libAkSoundEngine.so using Guid(30ce5c5578a8d984c81b15471162d1e5) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'b0bc076f962e59d607c13d7cd05ee993') in 0.015296 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000166 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Android/x86/Debug/libAkSoundEngine.so
+  artifactKey: Guid(2d13f3f6f91a1b148ba10e3620c240fc) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Android/x86/Debug/libAkSoundEngine.so using Guid(2d13f3f6f91a1b148ba10e3620c240fc) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'f7d4b97326e9919b5e6d2198a0f8d0bb') in 0.015861 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Android/armeabi-v7a/DSP/libAkMotion.so
+  artifactKey: Guid(3b8a12b7f027fa645bfad8f50122ab4c) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Android/armeabi-v7a/DSP/libAkMotion.so using Guid(3b8a12b7f027fa645bfad8f50122ab4c) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'bd0eeedcf16656c980d7893d88fa1b84') in 0.015470 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Mac/DSP/libAuro.bundle
+  artifactKey: Guid(d3e55f5912623934186da51580d53170) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Mac/DSP/libAuro.bundle using Guid(d3e55f5912623934186da51580d53170) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '22e795ff1690d30c84ed100de8cc92fe') in 0.013989 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Wwise/API/Runtime/Handwritten/Common/Arrays/AkAcousticSurfaceArray.cs
+  artifactKey: Guid(b9a4aa700d68ee8419ca611a70ceaa13) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Handwritten/Common/Arrays/AkAcousticSurfaceArray.cs using Guid(b9a4aa700d68ee8419ca611a70ceaa13) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '1785c9b5c86d60bb2ae8625fdb839623') in 0.015037 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Android/x86/DSP/libAkSoundSeedGrain.so
+  artifactKey: Guid(b3dffe7d7005bf445b3a1ac3516a1893) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Android/x86/DSP/libAkSoundSeedGrain.so using Guid(b3dffe7d7005bf445b3a1ac3516a1893) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '7b19c4d77a6b3af7cd00041cebdf439c') in 0.013736 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Wwise/API/Runtime/WwiseTypes/WwiseTypes/AkWwiseAuxBus.cs
+  artifactKey: Guid(d6d6a0bed27ee134391cb03eb66f5283) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/WwiseTypes/WwiseTypes/AkWwiseAuxBus.cs using Guid(d6d6a0bed27ee134391cb03eb66f5283) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'dbc4c9c8267156062d487bbc4ee5b2a2') in 0.012729 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/AkSinkFactory.h
+  artifactKey: Guid(33b1f23c740cf284fa282a44a389dea8) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/AkSinkFactory.h using Guid(33b1f23c740cf284fa282a44a389dea8) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '02d1f6738fa77677141a25e00b40e14b') in 0.012849 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/AllPluginsFactories.h
+  artifactKey: Guid(ed873098162053641b00ec2b857634cf) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/AllPluginsFactories.h using Guid(ed873098162053641b00ec2b857634cf) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '11c63fa2d41a8dac5dc63267d39a27e2') in 0.014204 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libCommunicationCentral.a
+  artifactKey: Guid(42dc8b94aba3a7f47b22cc3e327ff316) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libCommunicationCentral.a using Guid(42dc8b94aba3a7f47b22cc3e327ff316) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '266208ed3ab9b0a7ec911ef3dc98c20c') in 0.013599 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libAkMatrixReverbFX.a
+  artifactKey: Guid(631c25865deaf1143a31404ffbd832d2) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libAkMatrixReverbFX.a using Guid(631c25865deaf1143a31404ffbd832d2) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'bfe25a4ff6303bba142bae7439fccbe1') in 0.013048 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libAkSilenceSource.a
+  artifactKey: Guid(7eec7920647daeb4a86b95ee0d5f5faf) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libAkSilenceSource.a using Guid(7eec7920647daeb4a86b95ee0d5f5faf) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '44013e1b0617b6bf140525a63e82ca32') in 0.013388 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/AkSoundSeedWindSourceFactory.h
+  artifactKey: Guid(33392a057c2d1d7469c65e0393e9166d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/AkSoundSeedWindSourceFactory.h using Guid(33392a057c2d1d7469c65e0393e9166d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '654bf9ac4323b56cb854c17e38583cc0') in 0.013851 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libAuroHeadphoneFX.a
+  artifactKey: Guid(d29d2a96dd6a11148ac3f21776dc1632) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libAuroHeadphoneFX.a using Guid(d29d2a96dd6a11148ac3f21776dc1632) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '8062e439b2743ece1bc161cf1b897bb8') in 0.013428 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libAkHarmonizerFX.a
+  artifactKey: Guid(e2c5323c74c305340aafde657a92ac69) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libAkHarmonizerFX.a using Guid(e2c5323c74c305340aafde657a92ac69) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'e1e588fd90a84a705bc92bf70d06caef') in 0.011572 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libAkSineSource.a
+  artifactKey: Guid(448d5fd53d035224fb93e171966fb4f8) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libAkSineSource.a using Guid(448d5fd53d035224fb93e171966fb4f8) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '1fc94c3cc101df46a8500461fdba9bc4') in 0.013079 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libAkAudioInputSource.a
+  artifactKey: Guid(8dfc7bf2dffebca4db8321619c3df221) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libAkAudioInputSource.a using Guid(8dfc7bf2dffebca4db8321619c3df221) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '6e1e8039da660a4bbc070244040a1d84') in 0.011829 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libAkSoundSeedGrainSource.a
+  artifactKey: Guid(9b84457431dc60045a49568523cba5cf) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libAkSoundSeedGrainSource.a using Guid(9b84457431dc60045a49568523cba5cf) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '182e21ec726b260c24914547d1558ed2') in 0.013193 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libAkRecorderFX.a
+  artifactKey: Guid(1fc6ef271a1bf004f8d0b27ec72574f5) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libAkRecorderFX.a using Guid(1fc6ef271a1bf004f8d0b27ec72574f5) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'fef7d667a1d6003a7a6ace9b9ca803d9') in 0.011781 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libAkRoomVerbFX.a
+  artifactKey: Guid(33e3ee25002c2074883e355e7788f85d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libAkRoomVerbFX.a using Guid(33e3ee25002c2074883e355e7788f85d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'e6c64ec63e36cc29595c32fcf375fc18') in 0.012502 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libAkStreamMgr.a
+  artifactKey: Guid(0ff9357f4dce9f043b66538ff1d80a34) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libAkStreamMgr.a using Guid(0ff9357f4dce9f043b66538ff1d80a34) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'af073b5a09f8ce5cdeff81c533a44370') in 0.013536 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libAkMemoryMgr.a
+  artifactKey: Guid(f45394909f977564ba9d89683d02bb77) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libAkMemoryMgr.a using Guid(f45394909f977564ba9d89683d02bb77) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '0029cb961d4bf74b1ea35242a5a1134d') in 0.012720 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libAkSpatialAudio.a
+  artifactKey: Guid(86dad10320c1b334e80f8d4ff16dcabb) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libAkSpatialAudio.a using Guid(86dad10320c1b334e80f8d4ff16dcabb) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '91bcab5112cb53e191b27bdf9938c075') in 0.013990 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libAkTimeStretchFX.a
+  artifactKey: Guid(35d678f781cb11b49b7840c7a0ce5644) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libAkTimeStretchFX.a using Guid(35d678f781cb11b49b7840c7a0ce5644) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'f00477fe895f580454fd26fdbd99d4ea') in 0.012853 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/AkVorbisDecoderFactory.h
+  artifactKey: Guid(247115bb709619644ab1d78551c2c63d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/AkVorbisDecoderFactory.h using Guid(247115bb709619644ab1d78551c2c63d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '22ec8f09010f49b78938a2ddb2127eb7') in 0.013057 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libAkGainFX.a
+  artifactKey: Guid(762fe48430d04f04cb8f92bb81d7a2be) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libAkGainFX.a using Guid(762fe48430d04f04cb8f92bb81d7a2be) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'acb715373233acf67810d14f3ff18308') in 0.013723 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/AkAudioInterruptionCallbackInfo.cs
+  artifactKey: Guid(11d7b63f83a188440b36bc497e293c23) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/AkAudioInterruptionCallbackInfo.cs using Guid(11d7b63f83a188440b36bc497e293c23) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'e646ba788b514eb1dd829cfb7370bbb9') in 0.013026 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Wwise/API/Runtime/WwiseTypes/WwiseTypes/AkWwiseBank.cs
+  artifactKey: Guid(a30a03fa7efbd2245abdaf12c3399fcf) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/WwiseTypes/WwiseTypes/AkWwiseBank.cs using Guid(a30a03fa7efbd2245abdaf12c3399fcf) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '9f0148b655e0a1fa6e4a95caedf9708b') in 0.012807 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/AkHarmonizerFXFactory.h
+  artifactKey: Guid(937c39d447117244791fda8d7d74b36d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/AkHarmonizerFXFactory.h using Guid(937c39d447117244791fda8d7d74b36d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'da403ca86acd0749be910df891bd1136') in 0.013928 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/McDSPFutzBoxFXFactory.h
+  artifactKey: Guid(4d1c9d472dbc5bd4995c04e7b07d9ef6) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/McDSPFutzBoxFXFactory.h using Guid(4d1c9d472dbc5bd4995c04e7b07d9ef6) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '008b0bc31b7116b750b986d3965cabd7') in 0.014536 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/AkAudioInputPlugin.h
+  artifactKey: Guid(9e3c920732caf594689cd0bb413391e3) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/AkAudioInputPlugin.h using Guid(9e3c920732caf594689cd0bb413391e3) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '84fb6656ed7f1146f7dd7c9b1987b2bb') in 0.013187 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/iZHybridReverbFXFactory.h
+  artifactKey: Guid(b66a2454b9758bf47888d74a90b84cd8) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/iZHybridReverbFXFactory.h using Guid(b66a2454b9758bf47888d74a90b84cd8) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '94caa32b7371f5b162fbf8854fb4b458') in 0.012672 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/AkStereoDelayFXFactory.h
+  artifactKey: Guid(7a4720e74adcf6642be9caad0d93e80f) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/AkStereoDelayFXFactory.h using Guid(7a4720e74adcf6642be9caad0d93e80f) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'f74efa0a6f164a7d2fb5b9bec2c94e2b') in 0.013089 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libMcDSPFutzBoxFX.a
+  artifactKey: Guid(e2e7906ba1492af439cf70a50437adb4) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libMcDSPFutzBoxFX.a using Guid(e2e7906ba1492af439cf70a50437adb4) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'eea69f9196a46c4633bf1dfb3f08de53') in 0.013028 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libiZTrashMultibandDistortionFX.a
+  artifactKey: Guid(db36cac72aa198f40b3c04981b06c333) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libiZTrashMultibandDistortionFX.a using Guid(db36cac72aa198f40b3c04981b06c333) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'dcbf1b61f3f4b0d906fd189e5923c084') in 0.013035 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/iZTrashBoxModelerFXFactory.h
+  artifactKey: Guid(0234e13a319e9464d807eeffa2a49bfe) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/iZTrashBoxModelerFXFactory.h using Guid(0234e13a319e9464d807eeffa2a49bfe) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '3612499cfffbed424704ebaaf75287f1') in 0.010865 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/AkRoomVerbFXFactory.h
+  artifactKey: Guid(83b02c5f552d1a64e9c6efd189618318) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/AkRoomVerbFXFactory.h using Guid(83b02c5f552d1a64e9c6efd189618318) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '992d35062d612635c45601c034ed1a46') in 0.013381 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/AuroHeadphoneFXFactory.h
+  artifactKey: Guid(673b73d2c41216c4cb7278776bb89787) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/AuroHeadphoneFXFactory.h using Guid(673b73d2c41216c4cb7278776bb89787) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '799f68423f45cf08053f88c0297db781') in 0.012988 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/AkTremoloFXFactory.h
+  artifactKey: Guid(c33a083a68e153d4eacb638a22d76cd0) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/AkTremoloFXFactory.h using Guid(c33a083a68e153d4eacb638a22d76cd0) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'a6184919fb58f92bce774cc5630f80cd') in 0.013740 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/AllPluginsFactories.h
+  artifactKey: Guid(f75618544b717bd41afdddb22d4337de) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/AllPluginsFactories.h using Guid(f75618544b717bd41afdddb22d4337de) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '99c14cd961ff13c2e3603b7520f708ae') in 0.012983 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/AllPluginsRegistrationHelpers.h
+  artifactKey: Guid(6b60f93bb6851a24b895cebbcd42ebcb) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/AllPluginsRegistrationHelpers.h using Guid(6b60f93bb6851a24b895cebbcd42ebcb) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '4fca1c286b79829a95683124be474aa7') in 0.014421 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/AkGainFXFactory.h
+  artifactKey: Guid(17efe43f2b0a10048a28b6df46710c1e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/AkGainFXFactory.h using Guid(17efe43f2b0a10048a28b6df46710c1e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '88bc3dbe2765460891c71c7d0a3cdba0') in 0.012536 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/libAkFlangerFX.a
+  artifactKey: Guid(c5689a099eb80b142aba1af774c400b1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/libAkFlangerFX.a using Guid(c5689a099eb80b142aba1af774c400b1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '8b7bea24b4a0ed057ba0d9d89b846a75') in 0.012384 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libiZTrashBoxModelerFX.a
+  artifactKey: Guid(74241244555582945ace98aa25e89174) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphoneos/DSP/libiZTrashBoxModelerFX.a using Guid(74241244555582945ace98aa25e89174) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'f2d167b254b985d1edbabe07ea5148f2') in 0.014785 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/AkPeakLimiterFXFactory.h
+  artifactKey: Guid(661ab022df6d5fa468967d591f17ce4c) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/AkPeakLimiterFXFactory.h using Guid(661ab022df6d5fa468967d591f17ce4c) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'e731be4f1c0f287f70bd36d2613bbd67') in 0.012474 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/libAkDelayFX.a
+  artifactKey: Guid(dd326e08751c7b644bc44d278f51706d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/libAkDelayFX.a using Guid(dd326e08751c7b644bc44d278f51706d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '68805ea538b2edbf51f302f8d7b7f47d') in 0.011605 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/AkCompressorFXFactory.h
+  artifactKey: Guid(bcb928ff530908b4fa9f5fae74b6a540) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/AkCompressorFXFactory.h using Guid(bcb928ff530908b4fa9f5fae74b6a540) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '718b82b54df799a66e3f1d35860994d5') in 0.012631 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/AkVorbisDecoderFactory.h
+  artifactKey: Guid(1470c69a31cc20f48ad9f70a8e8d1f34) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/AkVorbisDecoderFactory.h using Guid(1470c69a31cc20f48ad9f70a8e8d1f34) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '2dd4daf551a46e8d5a44e241bb3fd484') in 0.012979 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/Ak3DAudioBedMixerFXFactory.h
+  artifactKey: Guid(6a616dbaa12152f40a5e6031ea980c03) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/Ak3DAudioBedMixerFXFactory.h using Guid(6a616dbaa12152f40a5e6031ea980c03) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '0845060b73b9e2b14f0328dff4b001d4') in 0.011684 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Android/x86/DSP/libMcDSP.so
+  artifactKey: Guid(f147941b98a8e3442a50d912d904395b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Android/x86/DSP/libMcDSP.so using Guid(f147941b98a8e3442a50d912d904395b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '74aef5557ce13c6f6534a13cc9f499ee') in 0.014764 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/libAkAudioInputSource.a
+  artifactKey: Guid(ef6bed4497f607246b2d5265c03815c9) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/libAkAudioInputSource.a using Guid(ef6bed4497f607246b2d5265c03815c9) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '44e8af3dd7550f559746c18b1e765a2c') in 0.012689 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/iOS/AkAudioSessionCategory_iOS.cs
+  artifactKey: Guid(0c9248b593750d84baf66463572eefc5) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/iOS/AkAudioSessionCategory_iOS.cs using Guid(0c9248b593750d84baf66463572eefc5) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'a2d3255e0805dc0bd6504c54129659b0') in 0.010622 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/AkMIDIEventCallbackInfo.cs
+  artifactKey: Guid(08c00ae5bc74cc0459bd06686b1d003d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/AkMIDIEventCallbackInfo.cs using Guid(08c00ae5bc74cc0459bd06686b1d003d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'f4e36b6e5187488202c87d559ea469fe') in 0.011980 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Wwise/MonoBehaviour/LICENSE.md
+  artifactKey: Guid(869d0d87ece65fc438dd9b72f15c33c1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/MonoBehaviour/LICENSE.md using Guid(869d0d87ece65fc438dd9b72f15c33c1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'e9bf5597ba5daf1f3f4b8f648be87d8c') in 0.012026 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/TextMesh Pro/Shaders/TMP_SDF.shader
+  artifactKey: Guid(68e6db2ebdc24f95958faec2be5558d6) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/TextMesh Pro/Shaders/TMP_SDF.shader using Guid(68e6db2ebdc24f95958faec2be5558d6) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'b254875e439b35fcb5158a5ebc43933d') in 0.012318 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/TextMesh Pro/Examples & Extras/Scenes/14 - Multi Font & Sprites.unity
+  artifactKey: Guid(22a2fba786ad4c40ac0ba09f0b933100) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/TextMesh Pro/Examples & Extras/Scenes/14 - Multi Font & Sprites.unity using Guid(22a2fba786ad4c40ac0ba09f0b933100) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'ff9adf58b3515e4ea25ca8dd92363b6c') in 0.009665 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/TextMesh Pro/Examples & Extras/Scenes/16 - Linked text overflow mode example.unity
+  artifactKey: Guid(9442cda25baa4a0bb544c4d095b00caa) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/TextMesh Pro/Examples & Extras/Scenes/16 - Linked text overflow mode example.unity using Guid(9442cda25baa4a0bb544c4d095b00caa) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'ceec28116bf1a90e0e80abb5ca4eacf3') in 0.009716 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Wwise/API/Runtime/WwiseTypes/WwiseObjects/WwiseRtpcReference.cs
+  artifactKey: Guid(0759ae9c280473440a154ed2259ab332) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/WwiseTypes/WwiseObjects/WwiseRtpcReference.cs using Guid(0759ae9c280473440a154ed2259ab332) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'fefc024a0462305164cc9e4c516e704a') in 0.011726 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/AkAcousticSurface.cs
+  artifactKey: Guid(f32b9817ae017dc45a822fc20946f8c9) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/AkAcousticSurface.cs using Guid(f32b9817ae017dc45a822fc20946f8c9) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '5369c631f6d752f84bb0b55e827a2363') in 0.011462 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Wwise/API/Runtime/Generated/Common/AkDurationCallbackInfo.cs
+  artifactKey: Guid(07e007439499d174fa66fc210a35d0c7) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Generated/Common/AkDurationCallbackInfo.cs using Guid(07e007439499d174fa66fc210a35d0c7) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '2317c96a619eab2897308d6e9e7de639') in 0.011386 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Wwise/MonoBehaviour/Runtime/AkSpatialAudioEmitter.cs
+  artifactKey: Guid(b0e51d256598264469eace0f3cb389d9) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/MonoBehaviour/Runtime/AkSpatialAudioEmitter.cs using Guid(b0e51d256598264469eace0f3cb389d9) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'e8b640d356932727392912f4b78af4e5') in 0.010477 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Wwise/MonoBehaviour/Runtime/AkSoundEngineController.cs
+  artifactKey: Guid(b3502ae8a3502f245a3d38aaceabd4ee) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/MonoBehaviour/Runtime/AkSoundEngineController.cs using Guid(b3502ae8a3502f245a3d38aaceabd4ee) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '0753eca238cf49f02ffaa968d07bf7c6') in 0.013175 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 1.353292 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/libAkGainFX.a
+  artifactKey: Guid(cd98e96658ff2dd49880e7f0b591be14) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/libAkGainFX.a using Guid(cd98e96658ff2dd49880e7f0b591be14) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '940313c72f70576d49c2f96113dfac57') in 0.011893 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/libAkPeakLimiterFX.a
+  artifactKey: Guid(05264dc0b1d524f46bd25f5b936fddcb) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/libAkPeakLimiterFX.a using Guid(05264dc0b1d524f46bd25f5b936fddcb) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '8e4f713f9e9486c8375557a68d68010e') in 0.012118 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/libAkTremoloFX.a
+  artifactKey: Guid(6e5a235890f755f41847f1c459761460) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/libAkTremoloFX.a using Guid(6e5a235890f755f41847f1c459761460) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '371b6f41aca34f764ee3c6b7183c0eeb') in 0.015724 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Windows/x86/DSP/AkConvolutionReverb.dll
+  artifactKey: Guid(c59e721db2e8cf348933fac67d13c24a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Windows/x86/DSP/AkConvolutionReverb.dll using Guid(c59e721db2e8cf348933fac67d13c24a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'bd22a026c4904398689004fce00bdfe6') in 0.012634 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Mac/Profile/AkSoundEngine.bundle.dSYM/Contents/Resources/DWARF/AkSoundEngine
+  artifactKey: Guid(c4ad219ef6415a14bbeda1c85f4b4a4e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Mac/Profile/AkSoundEngine.bundle.dSYM/Contents/Resources/DWARF/AkSoundEngine using Guid(c4ad219ef6415a14bbeda1c85f4b4a4e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '9a2587db00b664c08141996bdcba1758') in 0.009888 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/libAkMemoryMgr.a
+  artifactKey: Guid(8773f2dd3581fc242812c70afa708bf4) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/libAkMemoryMgr.a using Guid(8773f2dd3581fc242812c70afa708bf4) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '5b211bb843e102c947970a14926f9008') in 0.014886 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Windows/x86/Release/AkSoundEngine.dll
+  artifactKey: Guid(063e4a6a2a8e4294196d9d42c14001c4) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Windows/x86/Release/AkSoundEngine.dll using Guid(063e4a6a2a8e4294196d9d42c14001c4) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'a18ef27925b1ef83695685ba54d0cd22') in 0.011919 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/libAkRoomVerbFX.a
+  artifactKey: Guid(587aa595d000f914fbb196c91c23bd01) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/libAkRoomVerbFX.a using Guid(587aa595d000f914fbb196c91c23bd01) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '988f7b35add82246f3ea5797199970c4') in 0.014771 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/libAkSineSource.a
+  artifactKey: Guid(7d2700572799619408598a61c9716ea1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/libAkSineSource.a using Guid(7d2700572799619408598a61c9716ea1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '895c9237844a91d696104e4b291b534a') in 0.014983 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/McDSPLimiterFXFactory.h
+  artifactKey: Guid(251facf5e21df7d4ebc5198111a038ae) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/McDSPLimiterFXFactory.h using Guid(251facf5e21df7d4ebc5198111a038ae) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '4212161c3fabf1ff36fe07bc16cb3523') in 0.014564 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Mac/Debug/AkSoundEngine.bundle.dSYM/Contents/Info.plist
+  artifactKey: Guid(6e041ab6d11a6c445858a1a930dc1b73) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Mac/Debug/AkSoundEngine.bundle.dSYM/Contents/Info.plist using Guid(6e041ab6d11a6c445858a1a930dc1b73) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'a4e06bffdeeace9f64e31bb347f32f62') in 0.014595 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/libiZTrashDynamicsFX.a
+  artifactKey: Guid(82177f7f87791e446a795d13df72cb2d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/libiZTrashDynamicsFX.a using Guid(82177f7f87791e446a795d13df72cb2d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '8054a96ae3710978556a6846d6fc58f1') in 0.013432 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Mac/Profile/AkSoundEngine.bundle.dSYM/Contents/Info.plist
+  artifactKey: Guid(8e77ec744c945cc40a4cabfd02261301) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Mac/Profile/AkSoundEngine.bundle.dSYM/Contents/Info.plist using Guid(8e77ec744c945cc40a4cabfd02261301) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'aaa663f861b860ae252508a72efb686e') in 0.016477 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Windows/x86/DSP/McDSP.dll
+  artifactKey: Guid(b39b3e1e25b14384cbb7754fe4c251a9) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Windows/x86/DSP/McDSP.dll using Guid(b39b3e1e25b14384cbb7754fe4c251a9) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'f204024577727377f96d5cc0d4248f79') in 0.020048 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/libiZTrashMultibandDistortionFX.a
+  artifactKey: Guid(ba6ad220e4d3a2c4b89b9286f4b8c11c) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/libiZTrashMultibandDistortionFX.a using Guid(ba6ad220e4d3a2c4b89b9286f4b8c11c) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'ee28594194941fe7b0184c03b2e742ed') in 0.031301 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Windows/x86_64/DSP/AkMotion.dll
+  artifactKey: Guid(46833ef54c62e404eb787f17c3ffdb41) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Windows/x86_64/DSP/AkMotion.dll using Guid(46833ef54c62e404eb787f17c3ffdb41) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '9cdb90ca84c8f5263a85051449232fe5') in 0.026259 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Windows/x86_64/DSP/McDSP.dll
+  artifactKey: Guid(3c56a3f96504f7b44bb299e35e35e224) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Windows/x86_64/DSP/McDSP.dll using Guid(3c56a3f96504f7b44bb299e35e35e224) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '7f2025f4253fb5a1621af288077e6be8') in 0.017362 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Windows/x86/DSP/AkSoundSeedAir.dll
+  artifactKey: Guid(e882c19ca93d5b547b14ff1788d348b0) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Windows/x86/DSP/AkSoundSeedAir.dll using Guid(e882c19ca93d5b547b14ff1788d348b0) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '6cba51a6fec4f55a805541a1761034df') in 0.016176 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/libiZTrashDistortionFX.a
+  artifactKey: Guid(6223d0e964b347e4db020939d7596cbb) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/libiZTrashDistortionFX.a using Guid(6223d0e964b347e4db020939d7596cbb) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '74e1bc5b878ad89ce888433ac2f143d8') in 0.015470 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Mac/Release/AkSoundEngine.bundle.dSYM/Contents/Info.plist
+  artifactKey: Guid(bc96daf2516ec384d8263a7099a180f7) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Mac/Release/AkSoundEngine.bundle.dSYM/Contents/Info.plist using Guid(bc96daf2516ec384d8263a7099a180f7) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'b70410c633a19b2dcfdb04cf91300867') in 0.015828 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Windows/x86/DSP/iZotope.dll
+  artifactKey: Guid(b602407399b09ed4a8a408ba9fa8124b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Windows/x86/DSP/iZotope.dll using Guid(b602407399b09ed4a8a408ba9fa8124b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'e5cd1ec1ade54814f235ce7ec9be6456') in 0.016357 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/libAkPitchShifterFX.a
+  artifactKey: Guid(480aebb7a4457af4495efd518c027eeb) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/libAkPitchShifterFX.a using Guid(480aebb7a4457af4495efd518c027eeb) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'c567c1046faf47430cb09b199b380b63') in 0.017074 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Windows/x86_64/DSP/AkSoundSeedGrain.dll
+  artifactKey: Guid(38ceaadb8c4caf84b810b49a81776af7) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Windows/x86_64/DSP/AkSoundSeedGrain.dll using Guid(38ceaadb8c4caf84b810b49a81776af7) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'bbc43d8f63cd5585f09617618ba08632') in 0.017614 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/Windows/x86_64/Release/AkSoundEngine.dll
+  artifactKey: Guid(082a7e01140f3c2479064ed1d5bd8fa4) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/Windows/x86_64/Release/AkSoundEngine.dll using Guid(082a7e01140f3c2479064ed1d5bd8fa4) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '360ae20728c2b6359a3ed89e57ad8b46') in 0.013265 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/libiZTrashBoxModelerFX.a
+  artifactKey: Guid(533d6b35644a35443849fa02c9daa23c) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Wwise/API/Runtime/Plugins/iOS/iphonesimulator/DSP/libiZTrashBoxModelerFX.a using Guid(533d6b35644a35443849fa02c9daa23c) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '3fb48b1b4f40eb055fe5d91f20416e20') in 0.013541 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
