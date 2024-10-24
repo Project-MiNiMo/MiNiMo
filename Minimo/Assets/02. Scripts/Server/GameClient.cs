@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using Cysharp.Threading.Tasks;
 using MinimoShared;
+using Newtonsoft.Json;
 
 public class GameClient
 {
@@ -29,7 +30,11 @@ public class GameClient
             }
 
             // Deserialize response to PlayerDTO array
-            return JsonUtility.FromJson<PlayerListWrapper>(request.downloadHandler.text)?.Players;
+            List<PlayerDTO> players = JsonConvert.DeserializeObject<List<PlayerDTO>>(request.downloadHandler.text, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto
+            });
+            return players;
         }
     }
 
@@ -118,12 +123,5 @@ public class GameClient
 
             return true;
         }
-    }
-
-    // Wrapper class for deserializing a list of PlayerDTOs
-    [Serializable]
-    public class PlayerListWrapper
-    {
-        public List<PlayerDTO> Players;
     }
 }

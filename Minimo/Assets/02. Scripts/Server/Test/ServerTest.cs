@@ -21,10 +21,10 @@ public class ServerTest : MonoBehaviour
         await FetchPlayers();
         
         // Update a player
-        await UpdatePlayer(0);
+        await UpdatePlayer(1);
         
         // Delete a player
-        await DeletePlayer(0);
+        await DeletePlayer(1);
     }
 
     private async UniTask FetchPlayers()
