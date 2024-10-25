@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
-
+using System.ComponentModel.Design;
 using UnityEngine;
 using DG.Tweening;
+using Microsoft.Extensions.DependencyInjection;
 
 public enum SceneName
 {
@@ -16,6 +17,7 @@ public class App : Singleton<App>
 {
     private static readonly Dictionary<Type, MonoBehaviour> _managers = new();
     private static readonly Dictionary<Type, MonoBehaviour> _datas = new();
+    public static IServiceProvider Services { get; private set; }
 
     protected override void Awake()
     {
@@ -25,6 +27,15 @@ public class App : Singleton<App>
         Application.targetFrameRate = 120;
 
         DOTween.safeModeLogBehaviour = DG.Tweening.Core.Enums.SafeModeLogBehaviour.Error;
+        
+        ConfigureServices();
+    }
+    
+    private void ConfigureServices()
+    {
+        var services = new ServiceCollection();
+        services.AddSingleton(new GameClient("http://localhost:5093"));
+        Services = services.BuildServiceProvider();
     }
 
     private static void Register(MonoBehaviour obj, Dictionary<Type, MonoBehaviour> dictionary)

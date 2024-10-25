@@ -1,9 +1,8 @@
 using System;
-using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 using Cysharp.Threading.Tasks;
-using MinimoShared;
 using Newtonsoft.Json;
 
 public class GameClient
@@ -14,113 +13,68 @@ public class GameClient
     {
         _baseUrl = baseUrl;
     }
-
-    // Get all players (returns PlayerDTO list)
-    public async UniTask<IEnumerable<PlayerDTO>> GetPlayersAsync()
+    
+    public async UniTask<T> GetAsync<T>(string endpoint)
     {
-        string endpoint = $"{_baseUrl}/api/Players";
+        endpoint = $"{_baseUrl}/{endpoint}";
         using (UnityWebRequest request = UnityWebRequest.Get(endpoint))
         {
             var asyncOp = await request.SendWebRequest().ToUniTask();
 
-            if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
+            if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
             {
                 Debug.LogError($"Error: {request.error}");
                 throw new Exception(request.error);
             }
-
-            // Deserialize response to PlayerDTO array
-            List<PlayerDTO> players = JsonConvert.DeserializeObject<List<PlayerDTO>>(request.downloadHandler.text, new JsonSerializerSettings
-            {
-                TypeNameHandling = TypeNameHandling.Auto
-            });
-            return players;
+            return JsonConvert.DeserializeObject<T>(request.downloadHandler.text);
         }
     }
-
-    // Get player by ID (returns PlayerDTO)
-    public async UniTask<PlayerDTO> GetPlayerAsync(int id)
+    
+    public async UniTask PutAsync<T>(string endpoint, object data)
     {
-        string endpoint = $"{_baseUrl}/api/Players/{id}";
-        using (UnityWebRequest request = UnityWebRequest.Get(endpoint))
+        endpoint = $"{_baseUrl}/{endpoint}";
+        var jsonData = data == null ? null : JsonConvert.SerializeObject(data);
+        using (UnityWebRequest request = UnityWebRequest.Put(endpoint, jsonData))
         {
-            var asyncOp = await request.SendWebRequest().ToUniTask();
-
-            if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
-            {
-                Debug.LogError($"Error: {request.error}");
-                throw new Exception(request.error);
-            }
-
-            return JsonUtility.FromJson<PlayerDTO>(request.downloadHandler.text);
-        }
-    }
-
-    // Create a new player using PlayerDTO
-    public async UniTask<PlayerDTO> CreatePlayerAsync(PlayerDTO playerDTO)
-    {
-        string endpoint = $"{_baseUrl}/api/Players";
-        string jsonData = JsonUtility.ToJson(playerDTO);
-        
-        using (UnityWebRequest request = new UnityWebRequest(endpoint, "POST"))
-        {
-            byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonData);
-            request.uploadHandler = new UploadHandlerRaw(bodyRaw);
-            request.downloadHandler = new DownloadHandlerBuffer();
             request.SetRequestHeader("Content-Type", "application/json");
+            await request.SendWebRequest().ToUniTask();
 
-            var asyncOp = await request.SendWebRequest().ToUniTask();
-
-            if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
+            if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
             {
                 Debug.LogError($"Error: {request.error}");
                 throw new Exception(request.error);
             }
-
-            return JsonUtility.FromJson<PlayerDTO>(request.downloadHandler.text);
         }
     }
-
-    // Update an existing player using PlayerDTO
-    public async UniTask<PlayerDTO> UpdatePlayerAsync(int id, PlayerDTO playerDTO)
+    
+    public async Task<T> PostAsync<T>(string endpoint, object data)
     {
-        string endpoint = $"{_baseUrl}/api/Players/{id}";
-        string jsonData = JsonUtility.ToJson(playerDTO);
-
-        using (UnityWebRequest request = new UnityWebRequest(endpoint, "PUT"))
+        endpoint = $"{_baseUrl}/{endpoint}";
+        using (UnityWebRequest request = UnityWebRequest.PostWwwForm(endpoint, JsonConvert.SerializeObject(data)))
         {
-            byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonData);
-            request.uploadHandler = new UploadHandlerRaw(bodyRaw);
-            request.downloadHandler = new DownloadHandlerBuffer();
             request.SetRequestHeader("Content-Type", "application/json");
+            await request.SendWebRequest().ToUniTask();
 
-            var asyncOp = await request.SendWebRequest().ToUniTask();
-
-            if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
+            if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
             {
                 Debug.LogError($"Error: {request.error}");
                 throw new Exception(request.error);
             }
-
-            return JsonUtility.FromJson<PlayerDTO>(request.downloadHandler.text);
+            return JsonConvert.DeserializeObject<T>(request.downloadHandler.text);
         }
     }
-
-    // Delete a player
-    public async UniTask<bool> DeletePlayerAsync(int id)
+    
+    public async UniTask<bool> DeleteAsync(string endpoint)
     {
-        string endpoint = $"{_baseUrl}/api/Players/{id}";
-
         using (UnityWebRequest request = UnityWebRequest.Delete(endpoint))
         {
-            var asyncOp = await request.SendWebRequest().ToUniTask();
+            await request.SendWebRequest().ToUniTask();
 
-            if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
+            if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
             {
                 Debug.LogError($"Error: {request.error}");
                 return false;
             }
-
             return true;
         }
     }
