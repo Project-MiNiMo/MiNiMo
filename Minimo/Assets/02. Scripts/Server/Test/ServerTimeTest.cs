@@ -11,11 +11,13 @@ public class ServerTimeTest : MonoBehaviour
     private void Start()
     {
         _timeManager = App.GetManager<TimeManager>();
-        _timeManager.Init();
     }
     
     private void Update()
     {
+        if(_timeManager.IsProcessing == false)
+            return;
+        
         _timeText.text = _timeManager.Time.ToString(CultureInfo.CurrentCulture);
     }
     

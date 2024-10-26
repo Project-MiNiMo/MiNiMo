@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -30,7 +31,7 @@ public class GameClient
         }
     }
     
-    public async UniTask PutAsync<T>(string endpoint, object data)
+    public async UniTask PutAsync(string endpoint, object data)
     {
         endpoint = $"{_baseUrl}/{endpoint}";
         var jsonData = data == null ? null : JsonConvert.SerializeObject(data);
@@ -50,8 +51,13 @@ public class GameClient
     public async Task<T> PostAsync<T>(string endpoint, object data)
     {
         endpoint = $"{_baseUrl}/{endpoint}";
-        using (UnityWebRequest request = UnityWebRequest.PostWwwForm(endpoint, JsonConvert.SerializeObject(data)))
+        var jsonData = data == null ? null : JsonConvert.SerializeObject(data);
+        Debug.Log($"PostAsync: {endpoint}, {jsonData}");
+        using (UnityWebRequest request = new UnityWebRequest(endpoint, "POST"))
         {
+            byte[] jsonToSend = new UTF8Encoding().GetBytes(jsonData);
+            request.uploadHandler = new UploadHandlerRaw(jsonToSend);
+            request.downloadHandler = new DownloadHandlerBuffer();
             request.SetRequestHeader("Content-Type", "application/json");
             await request.SendWebRequest().ToUniTask();
 
