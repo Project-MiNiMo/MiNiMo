@@ -17,6 +17,7 @@ public class BuildingData
     public int Type;
     public int SizeX;
     public int SizeY;
+    public int HPI;
     public int UnlockLevel;
     public string Icon;
     public string Name;
@@ -33,10 +34,40 @@ public class ItemData
     public bool CanSell;
     public int BuyCost;
     public int SellCost;
-    public int BuyCost_Cash;
+    public int CashCost;
     public string Icon;
     public string Name;
     public string Description;
+}
+
+[Serializable]
+public class ProduceData
+{
+    public string ID;
+    public string Fst_MaterialCode1;
+    public string Fst_MaterialAmount1;
+    public string Fst_MaterialCode2;
+    public string Fst_MaterialAmount2;
+    public string Fst_ResultCode;
+    public string Fst_ResultAmount;
+    public string Fst_Time;
+    public string Fst_EXP;
+    public string Snd_MaterialCode1;
+    public string Snd_MaterialAmount1;
+    public string Snd_MaterialCode2;
+    public string Snd_MaterialAmount2;
+    public string Snd_ResultCode;
+    public string Snd_ResultAmount;
+    public string Snd_Time;
+    public string Snd_EXP;
+    public string Trd_MaterialCode1;
+    public string Trd_MaterialAmount1;
+    public string Trd_MaterialCode2;
+    public string Trd_MaterialAmount2;
+    public string Trd_ResultCode;
+    public string Trd_ResultAmount;
+    public string Trd_Time;
+    public string Trd_EXP;
 }
 
 [Serializable]
@@ -54,6 +85,7 @@ public class TitleData : DataBase
     public Dictionary<string, CommonData> Common { get; private set; } = new();
     public Dictionary<string, BuildingData> Building { get; private set; } = new();
     public Dictionary<string, ItemData> Item { get; private set; } = new();
+    public Dictionary<string, ProduceData> Produce { get; private set; } = new();
 
     private Dictionary<string, StringData> _string = new();
 
@@ -64,6 +96,7 @@ public class TitleData : DataBase
     private const string COMMON_PATH = "Data/CommonData";
     private const string BUILDING_PATH = "Data/BuildingData";
     private const string ITEM_PATH = "Data/ItemData";
+    private const string PRODUCE_PATH = "Data/ProduceData";
     #endregion
 
     protected override void Awake()
@@ -84,11 +117,13 @@ public class TitleData : DataBase
         Common.Clear();
         Building.Clear();
         Item.Clear();
+        Produce.Clear();
 
         var stringDataRaw = DataLoader.LoadData<StringData>(STRING_PATH);
         var commonDataRaw = DataLoader.LoadData<CommonData>(COMMON_PATH);
         var buildingDataRaw = DataLoader.LoadData<BuildingData>(BUILDING_PATH);
         var itemDataRaw = DataLoader.LoadData<ItemData>(ITEM_PATH);
+        var produceDataRaw = DataLoader.LoadData<ProduceData>(PRODUCE_PATH);
 
         foreach (var data in stringDataRaw)
         {
@@ -108,6 +143,11 @@ public class TitleData : DataBase
         foreach (var data in itemDataRaw)
         {
             Item.Add(data.ID, data);
+        }
+
+        foreach (var data in produceDataRaw)
+        {
+            Produce.Add(data.ID, data);
         }
 
         _isGameDataLoaded = true;

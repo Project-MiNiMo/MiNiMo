@@ -10,5 +10,17 @@
   {
     "ID": "ShootingStar_Reward_ItemLevel",
     "Value": 2
+  },
+  {
+    "ID": "Item_SellCost",
+    "Value": 2
+  },
+  {
+    "ID": "Item_CashCost",
+    "Value": 10
+  },
+  {
+    "ID": "BlueStarCost",
+    "Value": 30
   }
 ]
