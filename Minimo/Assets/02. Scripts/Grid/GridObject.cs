@@ -5,6 +5,7 @@ public class GridObject : MonoBehaviour
     [HideInInspector] public BoundsInt Area;
     public BoundsInt PreviousArea { get; private set; }
     public bool IsPlaced { get; private set; }
+    public BuildingData Data { get; private set; }
 
     private bool _isFlipped = false;
     private SpriteRenderer _spriteRenderer;
@@ -16,6 +17,8 @@ public class GridObject : MonoBehaviour
 
     public void Initialize(BuildingData data, Sprite sprite)
     {
+        Data = data;
+
         var size = new Vector3Int(data.SizeX, data.SizeY, 1);
         Area = new BoundsInt(Vector3Int.zero, size);
 
@@ -60,6 +63,6 @@ public class GridObject : MonoBehaviour
 
     public void OnClick()
     {
-
+        App.GetManager<UIManager>().GetPanel<ProducePanel>().StartManageBuilding(this);
     }
 }

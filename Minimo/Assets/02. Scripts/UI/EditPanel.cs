@@ -22,11 +22,11 @@ public class EditPanel : UIBase, IEventListener
         switch (_code)
         {
             case EventCode.EditStart:
-                gameObject.SetActive(true);
+                OpenPanel();
                 break;
 
             case EventCode.EditEnd:
-                gameObject.SetActive(false);
+                ClosePanel();
                 break;
         }
     }
