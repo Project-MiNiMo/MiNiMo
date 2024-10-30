@@ -25,6 +25,7 @@ public class GridObject : MonoBehaviour
         _spriteRenderer.transform.localPosition = new Vector3(0, yPosition, 0);
     }
 
+    #region Edit Functions
     public void StartEdit()
     {
         SetTransparency(0.5f);
@@ -39,6 +40,7 @@ public class GridObject : MonoBehaviour
     {
         IsPlaced = true;
         PreviousArea = Area;
+
         EndEdit();
     }
 
@@ -53,5 +55,11 @@ public class GridObject : MonoBehaviour
         Color color = _spriteRenderer.color;
         color.a = alpha;
         _spriteRenderer.color = color;
+    }
+    #endregion
+
+    public void OnClick()
+    {
+
     }
 }
