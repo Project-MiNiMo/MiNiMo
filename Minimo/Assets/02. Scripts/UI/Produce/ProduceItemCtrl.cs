@@ -30,16 +30,33 @@ public class ProduceItemCtrl : MonoBehaviour
         UpdateOpenCloseButtons();
     }
 
-    public void InitItemButtons(string dataID)
+    public void InitItemButtons(GridObject gridObject)
     {
-        int index = 0;
-
-        if (!App.GetData<TitleData>().Produce.TryGetValue(dataID, out var produceData))
+        if (!App.GetData<TitleData>().Produce.TryGetValue(gridObject.Data.ID, out var produceData))
         {
+            Debug.LogError($"Can't find ProduceData with ID : {gridObject.Data.ID}");
             return;
         }
 
-        
+        for (int i = 0; i < 3; i++)
+        {
+            var itemID = i switch
+            {
+                0 => produceData.Fst_ResultCode,
+                1 => produceData.Snd_ResultCode,
+                2 => produceData.Trd_ResultCode,
+                _ => string.Empty,
+            };
+
+            if (string.IsNullOrEmpty(itemID))
+            {
+                _itemBtns[i].gameObject.SetActive(false);
+                continue;
+            }
+
+            _itemBtns[i].gameObject.SetActive(true);
+            _itemBtns[i].Initialize(gridObject, itemID);
+        }
     }
 
     private void UpdateOpenCloseButtons()

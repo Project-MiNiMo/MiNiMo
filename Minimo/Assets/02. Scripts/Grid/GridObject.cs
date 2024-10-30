@@ -1,7 +1,24 @@
+using System.Collections;
+
 using UnityEngine;
 
 public class GridObject : MonoBehaviour
 {
+    private enum GridObjectType
+    {
+        Production,
+        Decoration,
+        AutoProduction
+    }
+
+    private enum GridObjectState
+    {
+        Idle,
+        Construct,
+        Produce,
+        Complete,
+    }
+
     [HideInInspector] public BoundsInt Area;
     public BoundsInt PreviousArea { get; private set; }
     public bool IsPlaced { get; private set; }
@@ -9,6 +26,8 @@ public class GridObject : MonoBehaviour
 
     private bool _isFlipped = false;
     private SpriteRenderer _spriteRenderer;
+
+    private GridObjectState _currState = GridObjectState.Idle;
 
     private void Awake()
     {
@@ -63,6 +82,37 @@ public class GridObject : MonoBehaviour
 
     public void OnClick()
     {
-        App.GetManager<UIManager>().GetPanel<ProducePanel>().StartManageBuilding(this);
+        if (Data.Type == (int)GridObjectType.Production)
+        {
+            switch (_currState)
+            {
+                case GridObjectState.Idle:
+                    App.GetManager<UIManager>().GetPanel<ProducePanel>().StartManageBuilding(this);
+                    break;
+
+                case GridObjectState.Construct:
+                    break;
+
+                case GridObjectState.Produce:
+                    break;
+
+                case GridObjectState.Complete:
+                    break;
+            }
+        }
+    }
+
+    public void StartProduce(int duration)
+    {
+        _currState = GridObjectState.Produce;
+
+        StartCoroutine(Produce(duration));
+    }
+
+    private IEnumerator Produce(int duration)
+    {
+        yield return new WaitForSeconds(duration);
+
+        _currState = GridObjectState.Complete;
     }
 }

@@ -45,6 +45,6 @@ public class ProducePanel : UIBase, IEventListener
         OpenPanel();
 
         _circleCtrl.SetPosition(gridObject.transform);
-        _itemCtrl.InitItemButtons(gridObject.Data.ID);
+        _itemCtrl.InitItemButtons(gridObject);
     }
 }
