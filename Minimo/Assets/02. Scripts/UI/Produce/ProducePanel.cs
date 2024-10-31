@@ -44,7 +44,16 @@ public class ProducePanel : UIBase, IEventListener
     {
         OpenPanel();
 
+        _circleCtrl.SetRemainTime(false);
         _circleCtrl.SetPosition(gridObject.transform);
         _itemCtrl.InitItemButtons(gridObject);
+    }
+
+    public void StartManageBuildingOnProduce(GridObject gridObject, int remainTime)
+    {
+        OpenPanel();
+
+        _circleCtrl.SetRemainTime(true, remainTime);
+        _circleCtrl.SetPosition(gridObject.transform);
     }
 }

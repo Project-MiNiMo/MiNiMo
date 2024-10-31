@@ -29,9 +29,17 @@ public class GridObject : MonoBehaviour
 
     private GridObjectState _currState = GridObjectState.Idle;
 
+    [SerializeField] private GameObject _produceUI;
+    [SerializeField] private GameObject _completeUI;
+    [SerializeField] private GameObject _gridObjectUI;
+
+    private int _remainTime;
+
     private void Awake()
     {
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        _gridObjectUI.SetActive(false);
+        UpdateStateUI();
     }
 
     public void Initialize(BuildingData data, Sprite sprite)
@@ -82,6 +90,7 @@ public class GridObject : MonoBehaviour
 
     public void OnClick()
     {
+        Debug.Log("OnClick");
         if (Data.Type == (int)GridObjectType.Production)
         {
             switch (_currState)
@@ -94,9 +103,12 @@ public class GridObject : MonoBehaviour
                     break;
 
                 case GridObjectState.Produce:
+                    App.GetManager<UIManager>().GetPanel<ProducePanel>().StartManageBuildingOnProduce(this, _remainTime);
                     break;
 
                 case GridObjectState.Complete:
+                    _currState = GridObjectState.Idle;
+                    UpdateStateUI();
                     break;
             }
         }
@@ -105,14 +117,44 @@ public class GridObject : MonoBehaviour
     public void StartProduce(int duration)
     {
         _currState = GridObjectState.Produce;
+        UpdateStateUI();
 
         StartCoroutine(Produce(duration));
     }
 
     private IEnumerator Produce(int duration)
     {
-        yield return new WaitForSeconds(duration);
+        _remainTime = duration;
+
+        while (_remainTime > 0)
+        {
+            yield return new WaitForSeconds(1);
+
+            _remainTime--;
+        }
 
         _currState = GridObjectState.Complete;
+        UpdateStateUI();
+    }
+
+    private void UpdateStateUI()
+    {
+        switch (_currState)
+        {
+            case GridObjectState.Produce:
+                _produceUI.SetActive(true);
+                _completeUI.SetActive(false);
+                break;
+
+            case GridObjectState.Complete:
+                _produceUI.SetActive(false);
+                _completeUI.SetActive(true);
+                break;
+
+            default:
+                _produceUI.SetActive(false);
+                _completeUI.SetActive(false);
+                break;
+        }
     }
 }
