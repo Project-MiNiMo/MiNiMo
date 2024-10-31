@@ -8,6 +8,7 @@ public class InputSystem : MonoBehaviour, IEventListener
 
     private bool _isEditing = false;
     private bool _isPressing = false;
+    private bool _longPressTriggered = false;
 
     private GameObject _pressedObject = null;
 
@@ -41,30 +42,57 @@ public class InputSystem : MonoBehaviour, IEventListener
             if (hit.collider != null && hit.collider.CompareTag("GridObject"))
             {
                 _isPressing = true;
+                _longPressTriggered = false;
+
                 _pressedObject = hit.collider.gameObject;
                 _pressStartTime = Time.time;
             }
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && _isPressing)
         {
             _isPressing = false;
+
+            if (!_longPressTriggered && _pressedObject != null)
+            {
+                HandleSingleClick();
+            }
+
             _pressedObject = null;
         }
 
-        if (_isPressing && _pressedObject != null)
+        if (_isPressing && _pressedObject != null && !_longPressTriggered)
         {
             if (Time.time - _pressStartTime >= PRESS_DURATION)
             {
-                var eventManager = App.GetManager<EventManager>();
-                eventManager.PostEvent(EventCode.EditStart, this);
-
-                var gridManager = App.GetManager<GridManager>();
-                gridManager.SetObject(_pressedObject.GetComponent<GridObject>());
+                HandleLongPress();
 
                 _isPressing = false;
+                _longPressTriggered = true;
             }
         }
+    }
+
+    /// <summary>
+    /// Pop up building production and management UI 
+    /// </summary>
+    /// <param name="clickedObject"></param>
+    private void HandleSingleClick()
+    {
+        Debug.Log($"Single click : {_pressedObject.name}");
+
+        _pressedObject.GetComponentInParent<GridObject>().OnClick();
+    }
+
+    /// <summary>
+    /// Start edit mode with pressedObject
+    /// </summary>
+    private void HandleLongPress()
+    {
+        Debug.Log($"Long press : {_pressedObject.name}");
+
+        App.GetManager<EventManager>().PostEvent(EventCode.EditStart, this);
+        App.GetManager<GridManager>().SetObject(_pressedObject.GetComponentInParent<GridObject>());
     }
 
     public void OnEvent(EventCode code, Component sender, object param = null)

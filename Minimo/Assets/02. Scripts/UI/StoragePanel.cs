@@ -19,6 +19,12 @@ public class StoragePanel : UIBase
 
     private bool _isOpen = true;
 
+    private void OnEnable()
+    {
+        _isOpen = true;
+        UpdateOpenCloseButtons();
+    }
+
     public override void Initialize()
     {
         _rect = GetComponent<RectTransform>();
@@ -76,7 +82,7 @@ public class StoragePanel : UIBase
         }
     }
 
-    public void Open()
+    private void Open()
     {
         if (_isOpen)
         {
@@ -90,7 +96,7 @@ public class StoragePanel : UIBase
         });
     }
 
-    public void Close()
+    private void Close()
     {
         if (!_isOpen)
         {
