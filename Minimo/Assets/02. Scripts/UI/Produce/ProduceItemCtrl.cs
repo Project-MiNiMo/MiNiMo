@@ -32,7 +32,7 @@ public class ProduceItemCtrl : MonoBehaviour
 
     public void InitItemButtons(GridObject gridObject)
     {
-        if (!App.GetData<TitleData>().Produce.TryGetValue(gridObject.Data.ID, out var produceData))
+        if (!App.GetData<TitleData>().ProduceSingle.TryGetValue(gridObject.Data.ID, out var produceData))
         {
             Debug.LogError($"Can't find ProduceData with ID : {gridObject.Data.ID}");
             return;

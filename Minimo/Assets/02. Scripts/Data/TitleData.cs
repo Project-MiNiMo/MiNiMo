@@ -41,33 +41,85 @@ public class ItemData
 }
 
 [Serializable]
-public class ProduceData
+public class ProduceSingleData
+{
+    public string ID;
+    public string Fst_MaterialCode;
+    public int Fst_MaterialAmount;
+    public string Fst_ResultCode;
+    public int Fst_ResultAmount;
+    public int Fst_Time;
+    public int Fst_EXP;
+    public string Snd_MaterialCode;
+    public int Snd_MaterialAmount;
+    public string Snd_ResultCode;
+    public int Snd_ResultAmount;
+    public int Snd_Time;
+    public int Snd_EXP;
+    public string Trd_MaterialCode;
+    public int Trd_MaterialAmount;
+    public string Trd_ResultCode;
+    public int Trd_ResultAmount;
+    public int Trd_Time;
+    public int Trd_EXP;
+    public string Fourth_MaterialCode;
+    public int Fourth_MaterialAmount;
+    public string Fourth_ResultCode;
+    public int Fourth_ResultAmount;
+    public int Fourth_Time;
+    public int Fourth_EXP;
+    public string Fifth_MaterialCode;
+    public int Fifth_MaterialAmount;
+    public string Fifth_ResultCode;
+    public int Fifth_ResultAmount;
+    public int Fifth_Time;
+    public int Fifth_EXP;
+}
+
+[Serializable]
+public class ProduceMultipleData
 {
     public string ID;
     public string Fst_MaterialCode1;
-    public string Fst_MaterialAmount1;
+    public int Fst_MaterialAmount1;
     public string Fst_MaterialCode2;
-    public string Fst_MaterialAmount2;
+    public int Fst_MaterialAmount2;
     public string Fst_ResultCode;
-    public string Fst_ResultAmount;
-    public string Fst_Time;
-    public string Fst_EXP;
+    public int Fst_ResultAmount;
+    public int Fst_Time;
+    public int Fst_EXP;
     public string Snd_MaterialCode1;
-    public string Snd_MaterialAmount1;
+    public int Snd_MaterialAmount1;
     public string Snd_MaterialCode2;
-    public string Snd_MaterialAmount2;
+    public int Snd_MaterialAmount2;
     public string Snd_ResultCode;
-    public string Snd_ResultAmount;
-    public string Snd_Time;
-    public string Snd_EXP;
+    public int Snd_ResultAmount;
+    public int Snd_Time;
+    public int Snd_EXP;
     public string Trd_MaterialCode1;
-    public string Trd_MaterialAmount1;
+    public int Trd_MaterialAmount1;
     public string Trd_MaterialCode2;
-    public string Trd_MaterialAmount2;
+    public int Trd_MaterialAmount2;
     public string Trd_ResultCode;
-    public string Trd_ResultAmount;
-    public string Trd_Time;
-    public string Trd_EXP;
+    public int Trd_ResultAmount;
+    public int Trd_Time;
+    public int Trd_EXP;
+    public string Fourth_MaterialCode1;
+    public int Fourth_MaterialAmount1;
+    public string Fourth_MaterialCode2;
+    public int Fourth_MaterialAmount2;
+    public string Fourth_ResultCode;
+    public int Fourth_ResultAmount;
+    public int Fourth_Time;
+    public int Fourth_EXP;
+    public string Fifth_MaterialCode1;
+    public int Fifth_MaterialAmount1;
+    public string Fifth_MaterialCode2;
+    public int Fifth_MaterialAmount2;
+    public string Fifth_ResultCode;
+    public int Fifth_ResultAmount;
+    public int Fifth_Time;
+    public int Fifth_EXP;
 }
 
 [Serializable]
@@ -76,8 +128,8 @@ public class StringData
     public string ID;
     public string Korean;
     public string English;
-    public string Japanese;
     public string Chinese;
+    public string Japanese;
 }
 
 public class TitleData : DataBase
@@ -85,7 +137,8 @@ public class TitleData : DataBase
     public Dictionary<string, CommonData> Common { get; private set; } = new();
     public Dictionary<string, BuildingData> Building { get; private set; } = new();
     public Dictionary<string, ItemData> Item { get; private set; } = new();
-    public Dictionary<string, ProduceData> Produce { get; private set; } = new();
+    public Dictionary<string, ProduceSingleData> ProduceSingle { get; private set; } = new();
+    public Dictionary<string, ProduceMultipleData> ProduceMultiple { get; private set; } = new();
 
     private Dictionary<string, StringData> _string = new();
 
@@ -96,7 +149,8 @@ public class TitleData : DataBase
     private const string COMMON_PATH = "Data/CommonData";
     private const string BUILDING_PATH = "Data/BuildingData";
     private const string ITEM_PATH = "Data/ItemData";
-    private const string PRODUCE_PATH = "Data/ProduceData";
+    private const string PRODUCESINGLE_PATH = "Data/ProduceSingleData";
+    private const string PRODUCEMULTIPLE_PATH = "Data/ProduceMultipleData";
     #endregion
 
     protected override void Awake()
@@ -117,13 +171,15 @@ public class TitleData : DataBase
         Common.Clear();
         Building.Clear();
         Item.Clear();
-        Produce.Clear();
+        ProduceSingle.Clear();
+        ProduceMultiple.Clear();
 
         var stringDataRaw = DataLoader.LoadData<StringData>(STRING_PATH);
         var commonDataRaw = DataLoader.LoadData<CommonData>(COMMON_PATH);
         var buildingDataRaw = DataLoader.LoadData<BuildingData>(BUILDING_PATH);
         var itemDataRaw = DataLoader.LoadData<ItemData>(ITEM_PATH);
-        var produceDataRaw = DataLoader.LoadData<ProduceData>(PRODUCE_PATH);
+        var produceSingleDataRaw = DataLoader.LoadData<ProduceSingleData>(PRODUCESINGLE_PATH);
+        var produceMultipleDataRaw = DataLoader.LoadData<ProduceMultipleData>(PRODUCEMULTIPLE_PATH);
 
         foreach (var data in stringDataRaw)
         {
@@ -145,9 +201,14 @@ public class TitleData : DataBase
             Item.Add(data.ID, data);
         }
 
-        foreach (var data in produceDataRaw)
+        foreach (var data in produceSingleDataRaw)
         {
-            Produce.Add(data.ID, data);
+            ProduceSingle.Add(data.ID, data);
+        }
+
+        foreach (var data in produceMultipleDataRaw)
+        {
+            ProduceMultiple.Add(data.ID, data);
         }
 
         _isGameDataLoaded = true;
