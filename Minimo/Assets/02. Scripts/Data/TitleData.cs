@@ -134,7 +134,7 @@ public class StringData
 
 public class TitleData : DataBase
 {
-    public Dictionary<string, CommonData> Common { get; private set; } = new();
+    public Dictionary<string, int> Common { get; private set; } = new();
     public Dictionary<string, BuildingData> Building { get; private set; } = new();
     public Dictionary<string, ItemData> Item { get; private set; } = new();
     public Dictionary<string, ProduceSingleData> ProduceSingle { get; private set; } = new();
@@ -188,7 +188,7 @@ public class TitleData : DataBase
 
         foreach (var data in commonDataRaw)
         {
-            Common.Add(data.ID, data);
+            Common.Add(data.ID, data.Value);
         }
 
         foreach (var data in buildingDataRaw)
