@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="iOS" BasePlatform="iOS" SchemaVersion="16" SoundBankVersion="150">
 	<RootPaths>
-		<ProjectRoot>../../../WwiseProject/Minimo</ProjectRoot>
-		<SourceFilesRoot>../../../WwiseProject/Minimo/.cache/iOS</SourceFilesRoot>
+		<ProjectRoot>../../../WwiseProject</ProjectRoot>
+		<SourceFilesRoot>../../../WwiseProject/.cache/iOS</SourceFilesRoot>
 		<SoundBanksRoot>.</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>../../../WwiseProject/Minimo/GeneratedSoundBanks/iOS</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>../../../WwiseProject/GeneratedSoundBanks/iOS</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
@@ -40,5 +40,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{B5894852-592F-835D-F3C9-D141B4D2E21C}</FileHash>
+	<FileHash>{F59E9FDF-A265-9F28-4B70-98DF82A0E8EE}</FileHash>
 </SoundBanksInfo>
