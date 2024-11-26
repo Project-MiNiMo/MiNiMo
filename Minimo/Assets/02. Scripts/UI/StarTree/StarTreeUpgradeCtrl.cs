@@ -10,17 +10,27 @@ public class StarTreeUpgradeCtrl : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _blueStarCountTMP;
 
     [SerializeField] private Button _upgradeBtn;
+
     [SerializeField] private GameObject _upgradePopUpObj;
     [SerializeField] private Button _confirmBtn;
     [SerializeField] private Button _denyBtn;
+    [SerializeField] private TextMeshProUGUI _upgradeTMP;
+
+    [SerializeField] private StarTreeLevelInfoCtrl _levelInfoCtrl;
 
     private int _currentLevel = 1; //TODO : Connect with Server
+    private int _currentBlueStarCount = 99; //TODO : Connect with Server
 
-    public void Initialize()
+    private void Start()
     {
         _upgradeBtn.onClick.AddListener(OnClickUpgradeBtn);
         _confirmBtn.onClick.AddListener(OnClickConfirmBtn);
         _denyBtn.onClick.AddListener(OnClickDenyBtn);
+
+        _upgradeTMP.text = App.GetData<TitleData>().GetString("STR_STARTREE_UPGRADE_DESC");
+
+        UpdateLevelInfo();
+        UpdateBlueStarCount();
     }
 
     private void OnClickUpgradeBtn()
@@ -30,8 +40,17 @@ public class StarTreeUpgradeCtrl : MonoBehaviour
 
     private void OnClickConfirmBtn()
     {
-        UpgradeTree();
         _upgradePopUpObj.SetActive(false);
+
+        if (_currentBlueStarCount <= 0)
+        {
+            return;
+        }
+
+        _currentBlueStarCount--;
+
+        UpdateLevelInfo();
+        UpdateBlueStarCount();
     }
 
     private void OnClickDenyBtn()
@@ -39,13 +58,18 @@ public class StarTreeUpgradeCtrl : MonoBehaviour
         _upgradePopUpObj.SetActive(false);
     }
 
-    private void UpgradeTree()
+    private void UpdateLevelInfo()
     {
-        for (int i = 1; i < _levelTMPs.Length; i++)
+        for (int i = 0; i < _levelTMPs.Length; i++)
         {
             _levelTMPs[i].text = (_currentLevel + i).ToString();
         }
 
-        _currentLevel++;
+        _levelInfoCtrl.Initialize(++_currentLevel);
+    }
+
+    private void UpdateBlueStarCount()
+    {
+        _blueStarCountTMP.text = _currentBlueStarCount.ToString();
     }
 }
