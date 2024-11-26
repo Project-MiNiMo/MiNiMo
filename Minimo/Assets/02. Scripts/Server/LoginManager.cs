@@ -19,9 +19,12 @@ public class LoginManager : ManagerBase
     
     private readonly string _endpoint = "api/login";
     
+    public string JwtToken { get; private set; }
+    
     private void Start()
     {
         _gameClient = App.Services.GetRequiredService<GameClient>();
+        JwtToken = PlayerPrefs.GetString("JwtToken");
     }
     
     public async UniTask LoginAsync(string username, string password)
@@ -37,13 +40,45 @@ public class LoginManager : ManagerBase
             
             App.GetManager<TimeManager>().Init(time);
             _nickname = accountDTO.Nickname;
+            JwtToken = token;
+            PlayerPrefs.SetString("JwtToken", JwtToken);
+            PlayerPrefs.Save();
             
             Debug.Log($"Login Success: Token: {token}, Time: {time}");
+            
+            // test code
+            var user = await _gameClient.GetAsync<AccountDTO>("api/accounts/1");
+            Debug.Log($"User: {user.Nickname}");
         }
         catch (System.Exception ex)
         {
             Debug.LogError($"Login Failed: {ex.Message}");
         }   
+    }
+
+    public async UniTask LoginAsyncWithToken()
+    {
+        var endpoint = _endpoint + "/token";
+        try
+        {
+            var response = await _gameClient.PostAsync<JObject>(endpoint, null);
+            
+            var time = response["time"].Value<DateTime>();
+            var accountDTO = response["account"].ToObject<AccountDTO>();
+            
+            App.GetManager<TimeManager>().Init(time);
+            _nickname = accountDTO.Nickname;
+            
+            Debug.Log($"Login With Token Success: Time: {time}");
+            
+            // test code
+            var user = await _gameClient.GetAsync<AccountDTO>("api/accounts/1");
+            Debug.Log($"User: {user.Nickname}");
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError($"Login Failed: {ex.Message}");
+        }
     }
     
     public async UniTask<AccountDTO> CreateAccountAsync(string username, string password, string nickname)
@@ -71,7 +106,14 @@ public class LoginManager : ManagerBase
         
         if (GUILayout.Button("Login"))
         {
-            LoginAsync(_userName, _password).Forget();
+            if (string.IsNullOrEmpty(JwtToken))
+            {
+                LoginAsync(_userName, _password).Forget();
+            }
+            else
+            {
+                LoginAsyncWithToken().Forget();
+            }
         }
         
         if (GUILayout.Button("Create Account"))
