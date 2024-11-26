@@ -1,23 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StarTree : MonoBehaviour
 {
+    private StarTreePanel _starTreePanel;
+
+    private void Start()
+    {
+        _starTreePanel = App.GetManager<UIManager>().GetPanel<StarTreePanel>();
+    }
+
     private void OnMouseUp()
     {
-        
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _starTreePanel.OpenPanel();
     }
 }
