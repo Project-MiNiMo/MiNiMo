@@ -41,6 +41,17 @@ public class ItemData
 }
 
 [Serializable]
+public class StarTreeData
+{
+    public int ID;
+    public int LimitTime;
+    public int StarCoin;
+    public int HPI;
+    public int EXP;
+    public int VisitMinimoLimit;
+}
+
+[Serializable]
 public class ProduceSingleData
 {
     public string ID;
@@ -137,6 +148,7 @@ public class TitleData : DataBase
     public Dictionary<string, int> Common { get; private set; } = new();
     public Dictionary<string, BuildingData> Building { get; private set; } = new();
     public Dictionary<string, ItemData> Item { get; private set; } = new();
+    public Dictionary<int, StarTreeData> StarTree { get; private set; } = new();
     public Dictionary<string, ProduceSingleData> ProduceSingle { get; private set; } = new();
     public Dictionary<string, ProduceMultipleData> ProduceMultiple { get; private set; } = new();
 
@@ -149,6 +161,7 @@ public class TitleData : DataBase
     private const string COMMON_PATH = "Data/CommonData";
     private const string BUILDING_PATH = "Data/BuildingData";
     private const string ITEM_PATH = "Data/ItemData";
+    private const string STARTREE_PATH = "Data/StarTreeData";
     private const string PRODUCESINGLE_PATH = "Data/ProduceSingleData";
     private const string PRODUCEMULTIPLE_PATH = "Data/ProduceMultipleData";
     #endregion
@@ -171,6 +184,7 @@ public class TitleData : DataBase
         Common.Clear();
         Building.Clear();
         Item.Clear();
+        StarTree.Clear();
         ProduceSingle.Clear();
         ProduceMultiple.Clear();
 
@@ -178,6 +192,7 @@ public class TitleData : DataBase
         var commonDataRaw = DataLoader.LoadData<CommonData>(COMMON_PATH);
         var buildingDataRaw = DataLoader.LoadData<BuildingData>(BUILDING_PATH);
         var itemDataRaw = DataLoader.LoadData<ItemData>(ITEM_PATH);
+        var starTreeDataRaw = DataLoader.LoadData<StarTreeData>(STARTREE_PATH);
         var produceSingleDataRaw = DataLoader.LoadData<ProduceSingleData>(PRODUCESINGLE_PATH);
         var produceMultipleDataRaw = DataLoader.LoadData<ProduceMultipleData>(PRODUCEMULTIPLE_PATH);
 
@@ -199,6 +214,11 @@ public class TitleData : DataBase
         foreach (var data in itemDataRaw)
         {
             Item.Add(data.ID, data);
+        }
+
+        foreach (var data in starTreeDataRaw)
+        {
+            StarTree.Add(data.ID, data);
         }
 
         foreach (var data in produceSingleDataRaw)
