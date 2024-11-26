@@ -15,4 +15,4 @@ MonoBehaviour:
   objectName: New_SoundBank
   id: 4072029455
   guid: 9A2FB49C-C386-425F-962B-5DBB12D75D1A
-  bank: {fileID: 11400000, guid: c661bb866cd5ae247a2aa7c091ef5536, type: 2}
+  bank: {fileID: 11400000, guid: d1eed45e56df50242a88c549de43cf15, type: 2}

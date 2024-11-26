@@ -322,16 +322,30 @@
     "Japanese": ""
   },
   {
+    "ID": "STR_UPGRADE_DESC",
+    "Korean": "파란 별을 이용하여 별나무를 꾸며줄 수 있습니다.\n별나무를 꾸미면 보상을 높여줄 수 있습니다.",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_UPGRADECHECK_DESC",
+    "Korean": "파란 별 1개를 별나무에 장식하겠습니까?\n별나무를 꾸미면 수익이 증가합니다.",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
     "ID": "STR_OPTION_GAMESETTING",
     "Korean": "게임설정",
-    "English": "Game",
+    "English": "On",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_OPTION_GAMESETTING_ON",
     "Korean": "켜짐",
-    "English": "On",
+    "English": "",
     "Chinese": -1,
     "Japanese": -1
   },

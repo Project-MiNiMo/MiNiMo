@@ -5,7 +5,7 @@
   },
   {
     "ID": "ShootingStarSpawnTime",
-    "Value": 60
+    "Value": 600
   },
   {
     "ID": "ShootingStar_Reward_ItemLevel",
@@ -18,6 +18,10 @@
   {
     "ID": "Item_CashCost",
     "Value": 10
+  },
+  {
+    "ID": "StarTreeMaxTime",
+    "Value": 172800
   },
   {
     "ID": "BlueStarCost",

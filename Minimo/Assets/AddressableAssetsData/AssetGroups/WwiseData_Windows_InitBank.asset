@@ -17,8 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 313bc5d29ab53da42987a4680c155c7c
   m_SerializeEntries:
-  - m_GUID: 7ec9666bec82fe241bb230cfe2167e51
-    m_Address: Assets/06. Sounds/Banks/Windows/Init.bnk
+  - m_GUID: 3354e056d56f6af4d8f70315f78509c4
+    m_Address: Assets/06. Sounds/GeneratedBanks/Windows/Init.bnk
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

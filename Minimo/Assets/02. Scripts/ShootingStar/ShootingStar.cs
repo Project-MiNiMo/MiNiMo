@@ -4,18 +4,64 @@ using UnityEngine;
 
 public class ShootingStar : MonoBehaviour
 {
-    private float _spawnCooltime;
-    private ShootingStarType _currentType;
-
-    private void Start()
+    private enum EShootingStar
     {
-        
+        GreenSS,
+        BlueSS,
+        YellowSS,
+        RainbowSS
     }
 
-    public void Initialized(ShootingStarType _type)
+    private EShootingStar _shootingStarType;
+
+    private ShootingStarCtrl _shootingStarCtrl;
+    private HarvestShootingStarPanel _harvestShootingStarPanel;
+
+    public void Initialize(ShootingStarCtrl shootingStarCtrl)
     {
-        _currentType = _type;
+        _shootingStarCtrl = shootingStarCtrl;
 
+        _harvestShootingStarPanel = App.GetManager<UIManager>().GetPanel<HarvestShootingStarPanel>();
+    }
 
+    private void OnMouseUp()
+    {
+        StartCoroutine(HarvestShootingStar());
+    }
+
+    private IEnumerator HarvestShootingStar()
+    {
+        SetRandomShootingStarType();
+
+        _harvestShootingStarPanel.OpenPanel();
+
+        yield return new WaitForSeconds(1);
+
+        _harvestShootingStarPanel.ClosePanel();
+
+        ShootingStarAction();
+
+        _shootingStarCtrl.OnHarvestShootingStar(gameObject);
+    }
+
+    private void SetRandomShootingStarType()
+    {
+        _shootingStarType = (EShootingStar)Random.Range(0, 4);
+    }
+
+    private void ShootingStarAction()
+    {
+        switch (_shootingStarType)
+        {
+            case EShootingStar.GreenSS:
+            case EShootingStar.BlueSS:
+                App.GetManager<UIManager>().GetPanel<QuestPanel>().ShowNewQuest();
+                break;
+
+            case EShootingStar.YellowSS:
+            case EShootingStar.RainbowSS:
+                App.GetManager<UIManager>().GetPanel<ResourcePanel>().ShowGetResource();
+                break;
+        }
     }
 }
