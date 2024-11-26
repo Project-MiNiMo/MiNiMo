@@ -22,6 +22,16 @@ public class ShootingStarCtrl : MonoBehaviour
         CheckShootingStars();
     }
 
+    private void Update()
+    {
+        checkTimer += Time.deltaTime;
+        if (checkTimer >= CHECK_INTERVAL)
+        {
+            CheckShootingStars();
+            checkTimer = 0f;
+        }
+    }
+
     private void CheckShootingStars()
     {
         DateTime currentServerTime = App.GetManager<TimeManager>().Time; // Get current server time
@@ -39,7 +49,7 @@ public class ShootingStarCtrl : MonoBehaviour
     private void SpawnShootingStar()
     {
         Vector2 spawnPosition = GetRandomSpawnPosition();
-        Instantiate(shootingStarPrefab, spawnPosition, Quaternion.identity);
+        Instantiate(shootingStarPrefab, spawnPosition, Quaternion.identity).GetComponent<ShootingStar>().Initialize(this);
         currentStarCount++;
     }
 
@@ -56,19 +66,9 @@ public class ShootingStarCtrl : MonoBehaviour
     /// Treatment during oil harvesting
     /// </summary>
     /// <param name="star"></param>
-    public void OnCollectShootingStar(GameObject star)
+    public void OnHarvestShootingStar(GameObject star)
     {
         currentStarCount--;
         Destroy(star);
-    }
-
-    private void Update()
-    {
-        checkTimer += Time.deltaTime;
-        if (checkTimer >= CHECK_INTERVAL)
-        {
-            CheckShootingStars();
-            checkTimer = 0f;
-        }
     }
 }
