@@ -3,7 +3,7 @@
   <CopySoundBanksAsPreBuildStep>true</CopySoundBanksAsPreBuildStep>
   <GenerateSoundBanksAsPreBuildStep>false</GenerateSoundBanksAsPreBuildStep>
   <SoundbankPath>Audio/GeneratedSoundBanks</SoundbankPath>
-  <GeneratedSoundbanksPath>WwiseProject\..\..\06. Sounds\Banks</GeneratedSoundbanksPath>
+  <GeneratedSoundbanksPath>06. Sounds/GeneratedBanks</GeneratedSoundbanksPath>
   <CreatedPicker>true</CreatedPicker>
   <CreateWwiseGlobal>true</CreateWwiseGlobal>
   <CreateWwiseListener>true</CreateWwiseListener>
