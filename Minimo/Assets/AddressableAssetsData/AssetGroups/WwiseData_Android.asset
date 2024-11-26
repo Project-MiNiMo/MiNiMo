@@ -17,11 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 7d189299078b94145b8f593408a62c21
   m_SerializeEntries:
-  - m_GUID: 7abbb55a47893d643a897ee607969a7f
-    m_Address: Assets/06. Sounds/Banks/Android/New_SoundBank.bnk
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 84038c9ca87eecb41b9c8beae27615ed
     m_Address: Assets/06. Sounds/GeneratedBanks/Android/New_SoundBank.bnk
     m_ReadOnly: 0
