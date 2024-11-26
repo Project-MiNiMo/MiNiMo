@@ -2,5 +2,5 @@ Event	ID	Name			Wwise Object Path	Notes
 	1097980931	TestEvent			\Default Work Unit\TestEvent	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	162712758	SFX_ReflectionKill_01	C:\Users\xcwhy\Documents\GitHub\MINIMO\MINIMO\Assets\WwiseProject\Minimo\.cache\iOS\SFX\SFX_ReflectionKill_01_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\New Actor-Mixer\SFX_ReflectionKill_01		448648
+	162712758	SFX_ReflectionKill_01	D:\Github\MINIMO\Minimo\Assets\WwiseProject\.cache\iOS\SFX\SFX_ReflectionKill_01_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\New Actor-Mixer\SFX_ReflectionKill_01		448648
 

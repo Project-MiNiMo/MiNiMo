@@ -17,11 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 6f550cdb9655eb948bfec4cf7be1e203
   m_SerializeEntries:
-  - m_GUID: 8316ee04b6d4dd74b90cad0686562d4a
-    m_Address: Assets/06. Sounds/Banks/iOS/Init.bnk
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e9da2e5bc976dd24fb4a65499f9f5762
     m_Address: Assets/06. Sounds/GeneratedBanks/iOS/Init.bnk
     m_ReadOnly: 0

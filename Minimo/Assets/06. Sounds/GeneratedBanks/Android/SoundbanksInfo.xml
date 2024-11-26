@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Android" BasePlatform="Android" SchemaVersion="16" SoundBankVersion="150">
 	<RootPaths>
-		<ProjectRoot>../../../WwiseProject/Minimo</ProjectRoot>
-		<SourceFilesRoot>../../../WwiseProject/Minimo/.cache/Android</SourceFilesRoot>
+		<ProjectRoot>../../../WwiseProject</ProjectRoot>
+		<SourceFilesRoot>../../../WwiseProject/.cache/Android</SourceFilesRoot>
 		<SoundBanksRoot>.</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>../../../WwiseProject/Minimo/GeneratedSoundBanks/Android</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>../../../WwiseProject/GeneratedSoundBanks/Android</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
@@ -40,5 +40,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{83B03EF2-EA71-4532-D50A-86292978E707}</FileHash>
+	<FileHash>{5B6FED36-C006-BE5C-C2EB-6442E0DE28AA}</FileHash>
 </SoundBanksInfo>

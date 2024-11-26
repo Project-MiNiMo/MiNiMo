@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
 	<RootPaths>
-		<ProjectRoot>../../../WwiseProject/Minimo</ProjectRoot>
-		<SourceFilesRoot>../../../WwiseProject/Minimo/.cache/Windows</SourceFilesRoot>
+		<ProjectRoot>../../../WwiseProject</ProjectRoot>
+		<SourceFilesRoot>../../../WwiseProject/.cache/Windows</SourceFilesRoot>
 		<SoundBanksRoot>.</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>../../../WwiseProject/Minimo/GeneratedSoundBanks/Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>../../../WwiseProject/GeneratedSoundBanks/Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
@@ -40,5 +40,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{30104548-4A17-AAF4-5DB2-371C6093690B}</FileHash>
+	<FileHash>{E9942EB7-BB85-1548-8367-E659FCAF77B9}</FileHash>
 </SoundBanksInfo>
