@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class StarTree : MonoBehaviour
 {
@@ -11,6 +12,11 @@ public class StarTree : MonoBehaviour
 
     private void OnMouseUp()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+
         _starTreePanel.OpenPanel();
     }
 }

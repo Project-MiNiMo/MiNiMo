@@ -868,15 +868,43 @@
     "Japanese": ""
   },
   {
-    "ID": "",
-    "Korean": "",
+    "ID": "STR_PROFILE_LEVEL",
+    "Korean": "Lv. {0}",
+    "English": "Lv. {0}",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_PROFILE_EXP",
+    "Korean": "EXP {0} / {1}",
+    "English": "EXP {0} / {1}",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_PROFILE_SELFINTRODUCTION_DEFAULT",
+    "Korean": "자신을 소개해보세요.",
+    "English": "Hello Nice to meet you!",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_PROFILE_FOLLOWER",
+    "Korean": "팔로워",
     "English": "",
     "Chinese": "",
     "Japanese": ""
   },
   {
-    "ID": "STR_PROFILE_DEFAULT_INTRODUCTION_DESC",
-    "Korean": "안녕하세요 반가워요!",
+    "ID": "STR_PROFILE_VISITOR",
+    "Korean": "오늘 방문자",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_PROFILE_FRIEND",
+    "Korean": "친구",
     "English": "Hello Nice to meet you!",
     "Chinese": "",
     "Japanese": ""
