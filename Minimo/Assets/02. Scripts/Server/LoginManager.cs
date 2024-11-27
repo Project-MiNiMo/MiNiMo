@@ -9,6 +9,7 @@ using Newtonsoft.Json.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 
+[DefaultExecutionOrder(-30)]
 public class LoginManager : ManagerBase
 {
     private GameClient _gameClient;
@@ -20,6 +21,7 @@ public class LoginManager : ManagerBase
     private readonly string _endpoint = "api/login";
     
     public string JwtToken { get; private set; }
+    private bool IsLoggedIn { get; set; } = false;
     
     private void Start()
     {
@@ -27,8 +29,21 @@ public class LoginManager : ManagerBase
         JwtToken = PlayerPrefs.GetString("JwtToken");
     }
     
-    public async UniTask LoginAsync(string username, string password)
+    public void Logout()
     {
+        JwtToken = "";
+        PlayerPrefs.DeleteKey("JwtToken");
+        PlayerPrefs.Save();
+        IsLoggedIn = false;
+    }
+    
+    public async UniTask<(bool, string)> LoginAsync(string username, string password)
+    {
+        if(IsLoggedIn)
+        {
+            return (false, "Already Logged In");
+        }
+        
         LoginDTO loginDto = new LoginDTO { Username = username, Password = password };
         try
         {
@@ -43,21 +58,25 @@ public class LoginManager : ManagerBase
             JwtToken = token;
             PlayerPrefs.SetString("JwtToken", JwtToken);
             PlayerPrefs.Save();
+            IsLoggedIn = true;
             
-            Debug.Log($"Login Success: Token: {token}, Time: {time}");
+            return (true, $"Login Success: Token: {token}, Time: {time}, NickName: {_nickname}");
             
-            // test code
-            var user = await _gameClient.GetAsync<AccountDTO>("api/accounts/1");
-            Debug.Log($"User: {user.Nickname}");
         }
         catch (System.Exception ex)
         {
             Debug.LogError($"Login Failed: {ex.Message}");
+            return (false, $"Login Failed.");
         }   
     }
 
-    public async UniTask LoginAsyncWithToken()
+    public async UniTask<(bool, string)> LoginWithTokenAsync()
     {
+        if(IsLoggedIn)
+        {
+            return (false, "Already Logged In");
+        }
+        
         var endpoint = _endpoint + "/token";
         try
         {
@@ -68,60 +87,32 @@ public class LoginManager : ManagerBase
             
             App.GetManager<TimeManager>().Init(time);
             _nickname = accountDTO.Nickname;
+            IsLoggedIn = true;
             
-            Debug.Log($"Login With Token Success: Time: {time}");
+            Debug.Log($"Login With Token Success: Time: {time}, NickName: {_nickname}");
             
-            // test code
-            var user = await _gameClient.GetAsync<AccountDTO>("api/accounts/1");
-            Debug.Log($"User: {user.Nickname}");
+            return (true, $"Login Success: Time: {time}");
         }
         catch (System.Exception ex)
         {
             Debug.LogError($"Login Failed: {ex.Message}");
+            return (false, $"Login Failed.");
         }
     }
     
-    public async UniTask<AccountDTO> CreateAccountAsync(string username, string password, string nickname)
+    public async UniTask<(bool, string)> CreateAccountAsync(string username, string password, string nickname)
     {
         var createAccountDto = new CreateAccountDTO { Username = username, Password = password, Nickname = nickname };
         try
         {
             var createdAccount = await _gameClient.PostAsync<AccountDTO>(_endpoint, createAccountDto);
             Debug.Log($"Created player: {createdAccount.Nickname} with ID: {createdAccount.ID}");
-            return createdAccount;
+            return (true, $"Successfully registered.");
         }
         catch (System.Exception ex)
         {
             Debug.LogError($"Failed to create account: {ex.Message}");
-            return null;
+            return (false, $"Failed to register the account.");
         }
     }
-        
-#if UNITY_EDITOR
-    private void OnGUI()
-    {
-        GUILayout.BeginArea(new Rect(10, 100, 300, 100));
-        _userName = GUILayout.TextField(_userName, 20);
-        _password = GUILayout.TextField(_password, 20);
-        
-        if (GUILayout.Button("Login"))
-        {
-            if (string.IsNullOrEmpty(JwtToken))
-            {
-                LoginAsync(_userName, _password).Forget();
-            }
-            else
-            {
-                LoginAsyncWithToken().Forget();
-            }
-        }
-        
-        if (GUILayout.Button("Create Account"))
-        {
-            CreateAccountAsync(_userName, _password, _nickname).Forget();
-        }
-        
-        GUILayout.EndArea();
-    }
-#endif
 }
