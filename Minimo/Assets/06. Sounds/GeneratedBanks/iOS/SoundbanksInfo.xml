@@ -22,6 +22,23 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
+		<SoundBank Id="3256634032" Type="User" Language="SFX" Hash="{951FCED2-C965-EF3A-58C0-EAAD0AC92360}">
+			<ShortName>Scene_Title</ShortName>
+			<Path>Scene_Title.bnk</Path>
+			<Media>
+				<File Id="954011123" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Main Theme-07.wav</ShortName>
+					<CachePath>SFX/Main Theme-07_FBC78EF0.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="737535402" Name="BGM_Title" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="954011123"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
 		<SoundBank Id="4072029455" Type="User" Language="SFX" Hash="{391E274F-FC5B-4778-09B5-9CBF305D7D98}">
 			<ShortName>New_SoundBank</ShortName>
 			<Path>New_SoundBank.bnk</Path>
@@ -40,5 +57,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{F59E9FDF-A265-9F28-4B70-98DF82A0E8EE}</FileHash>
+	<FileHash>{24E43D5A-9D75-A7F9-E894-7825F844094E}</FileHash>
 </SoundBanksInfo>

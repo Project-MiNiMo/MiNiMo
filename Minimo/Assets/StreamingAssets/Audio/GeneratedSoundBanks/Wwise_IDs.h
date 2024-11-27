@@ -13,6 +13,7 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID BGM_TITLE = 737535402U;
         static const AkUniqueID TESTEVENT = 1097980931U;
     } // namespace EVENTS
 
@@ -20,6 +21,7 @@ namespace AK
     {
         static const AkUniqueID INIT = 1355168291U;
         static const AkUniqueID NEW_SOUNDBANK = 4072029455U;
+        static const AkUniqueID SCENE_TITLE = 3256634032U;
     } // namespace BANKS
 
     namespace BUSSES

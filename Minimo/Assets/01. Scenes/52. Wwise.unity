@@ -306,12 +306,12 @@ MonoBehaviour:
   data:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 62c107e6b4cea3f479fa4058c7c6e928, type: 2}
+    WwiseObjectReference: {fileID: 11400000, guid: 00bbd18a1b1437f4bb082d061da371bb, type: 2}
   decodeBank: 0
   overrideLoadSetting: 0
   loadAsynchronous: 0
   saveDecodedBank: 0
-  unloadTriggerList: 958ca0ea
+  unloadTriggerList: 
   bankNameInternal: 
   valueGuidInternal: 
 --- !u!1 &205103412
@@ -553,7 +553,7 @@ MonoBehaviour:
   _testBtn: {fileID: 939275574}
   _playImg: {fileID: 2077568641}
   _notPlayImg: {fileID: 802820212}
-  _soundCode: TestEvent
+  _soundCode: BGM_Title
 --- !u!4 &684071113
 Transform:
   m_ObjectHideFlags: 0
