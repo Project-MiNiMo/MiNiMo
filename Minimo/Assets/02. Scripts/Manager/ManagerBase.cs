@@ -4,6 +4,13 @@ public class ManagerBase : MonoBehaviour
 {
     protected virtual void Awake()
     {
-        App.RegisterManager(this);
+        if (App.HasManager(GetType()))
+        {
+            Destroy(gameObject); 
+        }
+        else
+        {
+            App.RegisterManager(this);
+        }
     }
 }

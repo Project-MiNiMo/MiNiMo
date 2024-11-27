@@ -38,6 +38,16 @@ public class App : Singleton<App>
         Services = services.BuildServiceProvider();
     }
 
+    public static bool HasManager(Type type)
+    {
+        return _managers.ContainsKey(type);
+    }
+
+    public static bool HasData(Type type)
+    {
+        return _managers.ContainsKey(type);
+    }
+
     private static void Register(MonoBehaviour obj, Dictionary<Type, MonoBehaviour> dictionary)
     {
         var type = obj.GetType();
