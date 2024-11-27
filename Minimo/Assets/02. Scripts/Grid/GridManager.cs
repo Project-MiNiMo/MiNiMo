@@ -187,7 +187,7 @@ public class GridManager : ManagerBase, IEventListener
 
         if (!_currentObject.IsPlaced || keepObject)
         {
-            App.GetManager<UIManager>().GetPanel<StoragePanel>().AddObjectCount(_currentObject.name, 1);
+            //App.GetManager<UIManager>().GetPanel<StoragePanel>().AddObjectCount(_currentObject.name, 1);
             Destroy(_currentObject.gameObject);
         }
         else

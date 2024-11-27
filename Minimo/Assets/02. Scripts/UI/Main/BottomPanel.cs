@@ -52,7 +52,7 @@ public class BottomPanel : UIBase
 
     private void OnClickBuildingBtn()
     {
-
+        App.GetManager<UIManager>().GetPanel<BuildingPanel>().OpenPanel();
     }
 
     private void OnClickStorageBtn()
