@@ -16,6 +16,8 @@ public class Input_SelfIntroduction : InputBase
         placeHolder.text = App.GetData<TitleData>().GetString("STR_PROFILE_SELFINTRODUCTION_DEFAULT");
         _input.characterLimit = 99;
 
+        _input.onValueChanged.AddListener(UpdateStringCount);
+
         UpdateStringCount();
     }
 
@@ -29,5 +31,10 @@ public class Input_SelfIntroduction : InputBase
     private void UpdateStringCount()
     {
         _stringCountTMP.text = string.Format(STRING_COUNT, _input.text.Length, STRING_LIMIT);
+    }
+
+    private void UpdateStringCount(string text)
+    {
+        _stringCountTMP.text = string.Format(STRING_COUNT, text.Length, STRING_LIMIT);
     }
 }

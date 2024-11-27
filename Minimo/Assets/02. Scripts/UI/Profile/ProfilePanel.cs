@@ -40,17 +40,10 @@ public class ProfilePanel : UIBase
         _openBtn.onClick.AddListener(OpenPanel);
         _closeBtn.onClick.AddListener(ClosePanel);
 
-        _levelTMP.text = titleData.GetFormatString("STR_PROFILE_LEVEL", PLAYER_LEVEL.ToString());
-        _expTMP.text = titleData.GetFormatString("STR_PROFILE_EXP", PLAYER_EXP.ToString(), PLAYER_EXP_MAX.ToString());
+        SetString();
+        SetButtonEvent();
+
         UpdateExpProgressBar();
-
-        _followerDescTMP.text = titleData.GetString("STR_PROFILE_FOLLOWER");
-        _visitorDescTMP.text = titleData.GetString("STR_PROFILE_VISITOR");
-        _friendDescTMP.text = titleData.GetString("STR_PROFILE_FRIEND");
-
-        _followerTMP.text = PLAYER_FOLLOWER.ToString();
-        _visitorTMP.text = PLAYER_VISITOR.ToString();
-        _friendTMP.text = PLAYER_FRIEND.ToString();
     }
 
     public override void OpenPanel()
@@ -71,6 +64,30 @@ public class ProfilePanel : UIBase
         }
 
         _profileBack.SetActive(false);
+    }
+    #endregion
+
+    #region Initialize
+    private void SetString()
+    {
+        var titleData = App.GetData<TitleData>();
+
+        _levelTMP.text = titleData.GetFormatString("STR_PROFILE_LEVEL", PLAYER_LEVEL.ToString());
+        _expTMP.text = titleData.GetFormatString("STR_PROFILE_EXP", PLAYER_EXP.ToString(), PLAYER_EXP_MAX.ToString());
+
+        _followerDescTMP.text = titleData.GetString("STR_PROFILE_FOLLOWER");
+        _visitorDescTMP.text = titleData.GetString("STR_PROFILE_VISITOR");
+        _friendDescTMP.text = titleData.GetString("STR_PROFILE_FRIEND");
+
+        _followerTMP.text = PLAYER_FOLLOWER.ToString();
+        _visitorTMP.text = PLAYER_VISITOR.ToString();
+        _friendTMP.text = PLAYER_FRIEND.ToString();
+    }
+
+    private void SetButtonEvent()
+    {
+        _openBtn.onClick.AddListener(OpenPanel);
+        _closeBtn.onClick.AddListener(ClosePanel);
     }
     #endregion
 
