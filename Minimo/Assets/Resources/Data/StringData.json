@@ -868,6 +868,34 @@
     "Japanese": ""
   },
   {
+    "ID": "STR_MAIN_BOTTOM_FRIEND",
+    "Korean": "친구",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_MAIN_BOTTOM_MINIMO",
+    "Korean": "미니모",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_MAIN_BOTTOM_BUILDING",
+    "Korean": "건물",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_MAIN_BOTTOM_STORAGE",
+    "Korean": "창고",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
     "ID": "STR_PROFILE_LEVEL",
     "Korean": "Lv. {0}",
     "English": "Lv. {0}",
