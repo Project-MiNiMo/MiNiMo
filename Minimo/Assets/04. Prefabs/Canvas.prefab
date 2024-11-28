@@ -2491,9 +2491,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _confirmBtn: {fileID: 7820232994854365823}
-  _rotateBtn: {fileID: 0}
   _cancelBtn: {fileID: 1773701995075340330}
-  _keepBtn: {fileID: 8699741231937130174}
+  _moveBtn: {fileID: 8699741231937130174}
 --- !u!1 &862556170971081696
 GameObject:
   m_ObjectHideFlags: 0
