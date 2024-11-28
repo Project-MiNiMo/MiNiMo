@@ -2947,8 +2947,9 @@ GameObject:
   - component: {fileID: 216209803}
   - component: {fileID: 216209806}
   - component: {fileID: 216209805}
-  - component: {fileID: 216209804}
   - component: {fileID: 216209807}
+  - component: {fileID: 216209809}
+  - component: {fileID: 216209808}
   m_Layer: 0
   m_Name: GameSystem
   m_TagString: Untagged
@@ -2971,18 +2972,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &216209804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 216209802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6167c73895466e4fa8afc43481842e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &216209805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3049,6 +3038,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shootingStarPrefab: {fileID: 3721485543838847492, guid: 56465b84b74b9dc4d9b1f7a9bd614c5d, type: 3}
   _spawnInterval: 10
+--- !u!114 &216209808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216209802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe0de2eb17dcb6449b6c4de418aa8bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _markTilemap: {fileID: 530010180}
+  _possibleTile: {fileID: 11400000, guid: dc5ced259cfb1c94c96d7912acf42994, type: 2}
+  _impossibleTile: {fileID: 11400000, guid: edb64231bb43bef49ac938c9df40256b, type: 2}
+--- !u!114 &216209809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216209802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd58de9a39929794394668e802374520, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gridLayout: {fileID: 2027355858}
 --- !u!1 &224521363
 GameObject:
   m_ObjectHideFlags: 0
@@ -15714,10 +15731,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da906018d4920604d85ac1a85ba24500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rect: {fileID: 0}
   _confirmBtn: {fileID: 36029542}
-  _rotateBtn: {fileID: 418785889}
   _cancelBtn: {fileID: 1343182947}
-  _keepBtn: {fileID: 1009775988}
+  _moveBtn: {fileID: 0}
 --- !u!114 &1096951098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41558,7 +41575,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 34
+      m_TileSpriteIndex: 39
       m_TileMatrixIndex: 0
       m_TileColorIndex: 2
       m_TileObjectToInstantiateIndex: 65535
@@ -41568,7 +41585,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 28
+      m_TileSpriteIndex: 38
       m_TileMatrixIndex: 0
       m_TileColorIndex: 2
       m_TileObjectToInstantiateIndex: 65535
@@ -45298,7 +45315,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 10
-      m_TileSpriteIndex: 26
+      m_TileSpriteIndex: 37
       m_TileMatrixIndex: 0
       m_TileColorIndex: 2
       m_TileObjectToInstantiateIndex: 65535
@@ -45308,7 +45325,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 10
-      m_TileSpriteIndex: 25
+      m_TileSpriteIndex: 36
       m_TileMatrixIndex: 0
       m_TileColorIndex: 2
       m_TileObjectToInstantiateIndex: 65535
@@ -45528,7 +45545,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 10
-      m_TileSpriteIndex: 3
+      m_TileSpriteIndex: 34
       m_TileMatrixIndex: 0
       m_TileColorIndex: 2
       m_TileObjectToInstantiateIndex: 65535
@@ -46785,8 +46802,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 9f38a3922d2db19479ca03fc07cf2556, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: a6ff72e7595342e4aa758bb34d44c570, type: 3}
   - m_RefCount: 21
@@ -46829,14 +46846,14 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: a8bb0b833e65c814e90a5b7490816dae, type: 3}
   - m_RefCount: 678
     m_Data: {fileID: 21300000, guid: b06104107f64f3042bbbd6fd79208886, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 30b81785535daf84e941eeb6598f8dc4, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 75b78132417cd6e44874d85755ffdae3, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: 3cc0ba5f9e3710643a21b496927cbb58, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 83ab31cf6c2ad5b41ae9ee69c0cda01a, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 5
     m_Data: {fileID: 21300000, guid: 36bd2c1c6aea38943893e8ec93376cd5, type: 3}
   - m_RefCount: 26
@@ -46848,17 +46865,17 @@ Tilemap:
   - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: 8c1d69e0b21e452439b657738cffb3f6, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: b977bdcc82c4b7f4b944e49ad89a685a, type: 3}
+    m_Data: {fileID: 21300000, guid: 9f38a3922d2db19479ca03fc07cf2556, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: 21300000, guid: 2de1622a8c9689043943833d6ae0f83b, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 30b81785535daf84e941eeb6598f8dc4, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 75b78132417cd6e44874d85755ffdae3, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 83ab31cf6c2ad5b41ae9ee69c0cda01a, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: b977bdcc82c4b7f4b944e49ad89a685a, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 1202
     m_Data:
@@ -62878,11 +62895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _checkTilemap: {fileID: 1588932227}
-  _markTilemap: {fileID: 530010180}
-  _tileBases:
-  - {fileID: 11400000, guid: 18988b35f8e38424f8364214ee03f606, type: 2}
-  - {fileID: 11400000, guid: dc5ced259cfb1c94c96d7912acf42994, type: 2}
-  - {fileID: 11400000, guid: edb64231bb43bef49ac938c9df40256b, type: 2}
+  _emptyTile: {fileID: 11400000, guid: 18988b35f8e38424f8364214ee03f606, type: 2}
 --- !u!156049354 &2027355858
 Grid:
   m_ObjectHideFlags: 0
