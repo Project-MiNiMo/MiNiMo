@@ -145,7 +145,7 @@ public class BuildingBtn : MonoBehaviour
         if (gridObject != null)
         {
             gridObject.Initialize(_data, _iconImg.sprite);
-            App.GetManager<GridManager>().SetObject(gridObject, false);
+            App.GetManager<EditManager>().StartEdit(gridObject);
         }
         else
         {
