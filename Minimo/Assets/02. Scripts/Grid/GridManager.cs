@@ -111,7 +111,7 @@ public class GridManager : ManagerBase, IEventListener
         ClearArea();
 
         _currentObject.Area.position = _gridLayout.WorldToCell(_currentObject.transform.position);
-        _editCircle.SetPosition(_currentObject.transform);
+        //_editCircle.SetPosition(_currentObject.transform);
 
         BoundsInt buildingArea = _currentObject.Area;
 

@@ -24,6 +24,7 @@ public class BuildingBtn : MonoBehaviour
     [SerializeField] private Button _editBtn;
     [SerializeField] private TextMeshProUGUI _nameTMP;
     [SerializeField] private TextMeshProUGUI _countTMP;
+    [SerializeField] private TextMeshProUGUI _hpiTMP;
     [SerializeField] private Image _iconImg;
 
     [SerializeField] private GameObject[] _stateBacks;
@@ -70,6 +71,8 @@ public class BuildingBtn : MonoBehaviour
         _nameTMP.text = titleData.GetString(_data.Name);
         _lockNoticeTMP.text = titleData.GetFormatString("STR_BUILDING_UI_LOCK", _data.UnlockLevel.ToString());
         _unlockNoticeTMP.text = titleData.GetString("STR_BUILDING_UI_UNLOCKABLE");
+
+        _hpiTMP.text = _data.HPI.ToString();
     }
 
     private void SetRequireItem()
@@ -135,6 +138,8 @@ public class BuildingBtn : MonoBehaviour
 
     private void CreateObject()
     {
+        App.GetManager<UIManager>().GetPanel<BuildingPanel>().ClosePanel();
+
         var gridObject = Instantiate(_objectPrefab, _buildingGroup).GetComponentInChildren<GridObject>();
 
         if (gridObject != null)

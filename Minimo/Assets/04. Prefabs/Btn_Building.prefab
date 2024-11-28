@@ -1171,6 +1171,7 @@ MonoBehaviour:
   _editBtn: {fileID: 2339921409874147420}
   _nameTMP: {fileID: 3393451534270127552}
   _countTMP: {fileID: 7166792357947544885}
+  _hpiTMP: {fileID: 3186245877109643091}
   _iconImg: {fileID: 1320012318882763837}
   _stateBacks:
   - {fileID: 5498446041061673638}

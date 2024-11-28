@@ -973,15 +973,15 @@
     "Japanese": ""
   },
   {
-    "ID": "STR_UNLOCKABLE_DESC",
+    "ID": "STR_BUILDING_UI_UNLOCKABLE",
     "Korean": "해금 가능",
     "English": "UnLockable",
     "Chinese": -1,
     "Japanese": -1
   },
   {
-    "ID": "STR_LOCK_DESC",
-    "Korean": "해금 가능",
+    "ID": "STR_BUILDING_UI_LOCK",
+    "Korean": "Lv. {0} 해제",
     "English": "UnLockable",
     "Chinese": -1,
     "Japanese": -1
