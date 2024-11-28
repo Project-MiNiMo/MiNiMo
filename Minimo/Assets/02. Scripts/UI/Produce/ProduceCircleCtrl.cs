@@ -26,22 +26,22 @@ public class ProduceCircleCtrl : MonoBehaviour
 
     private void Update()
     {
-        if (_remainTimeObj.activeSelf && _remainTime > 0)
-        {
-            if (Time.time - _lastUpdateTime >= 1f)
-            {
-                _remainTime--;
-                _lastUpdateTime = Time.time;
-
-                _remainTimeTMP.text = FormatTime(_remainTime);
-
-                if (_remainTime <= 0)
-                {
-                    _remainTimeObj.SetActive(false);
-                    _remainTime = 0;
-                }
-            }
-        }
+        //if (_remainTimeObj.activeSelf && _remainTime > 0)
+        //{
+        //    if (Time.time - _lastUpdateTime >= 1f)
+        //    {
+        //        _remainTime--;
+        //        _lastUpdateTime = Time.time;
+//
+         //       _remainTimeTMP.text = FormatTime(_remainTime);
+//
+          //      if (_remainTime <= 0)
+          //      {
+          //          _remainTimeObj.SetActive(false);
+          //          _remainTime = 0;
+          //      }
+          //  }
+        //}
     }
 
     private string FormatTime(int timeInSeconds)

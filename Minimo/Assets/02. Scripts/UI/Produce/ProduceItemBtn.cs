@@ -35,7 +35,6 @@ public class ProduceItemBtn : MonoBehaviour
         }
         else
         {
-            _gridObject.StartProduce(10);
             App.GetManager<UIManager>().GetPanel<ProducePanel>().ClosePanel();
         }
     }

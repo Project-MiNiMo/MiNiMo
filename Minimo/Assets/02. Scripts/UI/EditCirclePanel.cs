@@ -1,51 +1,38 @@
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EditCirclePanel : UIBase
 {
+    [SerializeField] private RectTransform _rect;
+    
     [SerializeField] private Button _confirmBtn;
     [SerializeField] private Button _cancelBtn;
     [SerializeField] private Button _moveBtn;
-
-    private GridManager _gridManager;
-
-    private Camera _mainCamera;
-    private RectTransform _rect;
-
+    
+    private EditManager _editManager;
     private Transform _target;
 
     public override void Initialize()
     {
-        _gridManager = App.GetManager<GridManager>();
-        _confirmBtn.onClick.AddListener(() => _gridManager.ConfirmObject());
-        _cancelBtn.onClick.AddListener(() => _gridManager.CancelObject());
-        _moveBtn.onClick.AddListener(() => _gridManager.CancelObject(true));
-
-        _mainCamera = Camera.main;
-        _rect = GetComponent<RectTransform>();
-    }
-
-    private void Update()
-    {
-        if (_target == null || !gameObject.activeInHierarchy)
-        {
-            return;
-        }
-
-        SetPosition();
-    }
-
-    public void SetTarget(Transform target)
-    {
-        _target = target;
-    }
-
-    private void SetPosition()
-    {
-        Vector3 targetPosition = _target.position;
-        targetPosition.y += 0.5f;
-
-        Vector3 screenPos = _mainCamera.WorldToScreenPoint(targetPosition);
-        _rect.position = screenPos;
+        _editManager = App.GetManager<EditManager>();
+        
+        _editManager.IsEditing
+            .Subscribe((isEditing) =>
+            {
+                gameObject.SetActive(isEditing);
+            }).AddTo(gameObject);
+        
+        _editManager.CurrentCellPosition
+            .Subscribe((position) =>
+            {
+                position.y += 0.5f;
+                var screenPos = Camera.main.WorldToScreenPoint(position);
+                _rect.position = screenPos;
+            }).AddTo(gameObject);
+        
+        _confirmBtn.onClick.AddListener(() => _editManager.ConfirmEdit());
+        _cancelBtn.onClick.AddListener(() => _editManager.CancelEdit());
+        //_moveBtn.onClick.AddListener(() => _editManager.MoveObject());
     }
 }

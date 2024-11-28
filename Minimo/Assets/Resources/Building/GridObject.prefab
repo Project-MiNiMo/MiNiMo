@@ -227,6 +227,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _infoBtn: {fileID: 4165525927409155537}
   _harvestBtn: {fileID: 8328668298803694233}
+  _remainTimeObj: {fileID: 0}
+  _remainTimeTMP: {fileID: 0}
 --- !u!1 &3117385097758508696
 GameObject:
   m_ObjectHideFlags: 0
@@ -602,9 +604,6 @@ MonoBehaviour:
   Area:
     m_Position: {x: 0, y: 0, z: 0}
     m_Size: {x: 3, y: 3, z: 1}
-  _produceUI: {fileID: 2659704812487110767}
-  _completeUI: {fileID: 8365301187091642588}
-  _gridObjectUI: {fileID: 2675409709979949261}
 --- !u!1 &7417127583897252537
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,7 +817,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5507676788074980401
 RectTransform:
   m_ObjectHideFlags: 0
