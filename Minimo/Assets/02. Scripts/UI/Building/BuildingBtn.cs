@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +13,7 @@ public class BuildingBtn : MonoBehaviour
         Lock,
     }
 
+    [Serializable]
     public struct RequireItem
     {
         public GameObject ItemBack;
@@ -53,13 +54,59 @@ public class BuildingBtn : MonoBehaviour
 
         _buildingGroup = gridObjectGroup;
 
-        _nameTMP.text = App.GetData<TitleData>().GetString(data.Name);
-
         string spritePath = $"Building/Icon/{data.Icon}";
         _iconImg.sprite = Resources.Load<Sprite>(spritePath);
         _iconImg.SetNativeSize();
 
+        SetString();
+        SetRequireItem();
         SetBuildingState();
+    }
+
+    private void SetString()
+    {
+        var titleData = App.GetData<TitleData>();
+
+        _nameTMP.text = titleData.GetString(_data.Name);
+        _lockNoticeTMP.text = titleData.GetFormatString("STR_BUILDING_UI_LOCK", _data.UnlockLevel.ToString());
+        _unlockNoticeTMP.text = titleData.GetString("STR_BUILDING_UI_UNLOCKABLE");
+    }
+
+    private void SetRequireItem()
+    {
+        if (!App.GetData<TitleData>().Construct.TryGetValue(_data.ID, out var constructData))
+        {
+            Debug.LogError($"Can't Find ConstructData with ID : {_data.ID}");
+            return;
+        }
+
+        if (string.IsNullOrEmpty(constructData.MatCode1))
+        {
+            _requireItem1.ItemBack.SetActive(false);
+        }
+        else
+        {
+            _requireItem1.ItemBack.SetActive(true);
+
+            string spritePath = $"Item/Icon/{constructData.MatCode1}";
+            _requireItem1.IconImg.sprite = Resources.Load<Sprite>(spritePath);
+
+            _requireItem1.CountTMP.text = constructData.MatAmount1.ToString();
+        }
+
+        if (string.IsNullOrEmpty(constructData.MatCode2))
+        {
+            _requireItem2.ItemBack.SetActive(false);
+        }
+        else
+        {
+            _requireItem2.ItemBack.SetActive(true);
+
+            string spritePath = $"Item/Icon/{constructData.MatCode2}";
+            _requireItem2.IconImg.sprite = Resources.Load<Sprite>(spritePath);
+
+            _requireItem2.CountTMP.text = constructData.MatAmount2.ToString();
+        }
     }
 
     private void SetBuildingState()

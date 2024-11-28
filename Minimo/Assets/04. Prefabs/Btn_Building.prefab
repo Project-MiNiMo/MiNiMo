@@ -1109,8 +1109,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8152945715538508900}
-  - {fileID: 5879564887933191554}
   - {fileID: 5464628111360225087}
+  - {fileID: 5879564887933191554}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1176,8 +1176,16 @@ MonoBehaviour:
   - {fileID: 5498446041061673638}
   - {fileID: 974049977848017070}
   - {fileID: 8307879917076677468}
-  _lockNoticeTMP: {fileID: 0}
-  _unlockNoticeTMP: {fileID: 0}
+  _requireItem1:
+    ItemBack: {fileID: 1818889676589304690}
+    CountTMP: {fileID: 2815294396243655205}
+    IconImg: {fileID: 8013870970446776695}
+  _requireItem2:
+    ItemBack: {fileID: 1591712756903179876}
+    CountTMP: {fileID: 6886858376760486943}
+    IconImg: {fileID: 4033367152860960248}
+  _lockNoticeTMP: {fileID: 2426415914266080066}
+  _unlockNoticeTMP: {fileID: 3969548939660033941}
 --- !u!1 &4545178984247154332
 GameObject:
   m_ObjectHideFlags: 0

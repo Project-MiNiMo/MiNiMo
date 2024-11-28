@@ -938,6 +938,41 @@
     "Japanese": ""
   },
   {
+    "ID": "STR_BUILDING_UI_TITLE",
+    "Korean": "건물 관리",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_BUILDING_UI_PRODUCTION",
+    "Korean": "생산",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_BUILDING_UI_DECORATION",
+    "Korean": "꾸미기",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_BUILDING_UI_UTILITY",
+    "Korean": "기능성",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_BUILDING_UI_MINIMO",
+    "Korean": "미니모",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
     "ID": "STR_UNLOCKABLE_DESC",
     "Korean": "해금 가능",
     "English": "UnLockable",

@@ -134,6 +134,17 @@ public class ProduceMultipleData
 }
 
 [Serializable]
+public class ConstructData
+{
+    public string ID;
+    public string MatCode1;
+    public int MatAmount1;
+    public string MatCode2;
+    public int MatAmount2;
+    public int Duration;
+}
+
+[Serializable]
 public class StringData
 {
     public string ID;
@@ -151,6 +162,7 @@ public class TitleData : DataBase
     public Dictionary<int, StarTreeData> StarTree { get; private set; } = new();
     public Dictionary<string, ProduceSingleData> ProduceSingle { get; private set; } = new();
     public Dictionary<string, ProduceMultipleData> ProduceMultiple { get; private set; } = new();
+    public Dictionary<string, ConstructData> Construct { get; private set; } = new();
 
     private Dictionary<string, StringData> _string = new();
 
@@ -164,6 +176,7 @@ public class TitleData : DataBase
     private const string STARTREE_PATH = "Data/StarTreeData";
     private const string PRODUCESINGLE_PATH = "Data/ProduceSingleData";
     private const string PRODUCEMULTIPLE_PATH = "Data/ProduceMultipleData";
+    private const string CONSTRUCT_PATH = "Data/ConstructData";
     #endregion
 
     protected override void Awake()
@@ -187,6 +200,7 @@ public class TitleData : DataBase
         StarTree.Clear();
         ProduceSingle.Clear();
         ProduceMultiple.Clear();
+        Construct.Clear();
 
         var stringDataRaw = DataLoader.LoadData<StringData>(STRING_PATH);
         var commonDataRaw = DataLoader.LoadData<CommonData>(COMMON_PATH);
@@ -195,6 +209,7 @@ public class TitleData : DataBase
         var starTreeDataRaw = DataLoader.LoadData<StarTreeData>(STARTREE_PATH);
         var produceSingleDataRaw = DataLoader.LoadData<ProduceSingleData>(PRODUCESINGLE_PATH);
         var produceMultipleDataRaw = DataLoader.LoadData<ProduceMultipleData>(PRODUCEMULTIPLE_PATH);
+        var constructDataRaw = DataLoader.LoadData<ConstructData>(CONSTRUCT_PATH);
 
         foreach (var data in stringDataRaw)
         {
@@ -229,6 +244,11 @@ public class TitleData : DataBase
         foreach (var data in produceMultipleDataRaw)
         {
             ProduceMultiple.Add(data.ID, data);
+        }
+
+        foreach (var data in constructDataRaw)
+        {
+            Construct.Add(data.ID, data);
         }
 
         _isGameDataLoaded = true;

@@ -2,50 +2,72 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class BuildingPanel : UIBase
 {
-    [SerializeField] private Transform _buildingGroup;
-    [SerializeField] private GameObject _buildingBtnPrefab;
+    [SerializeField] private TextMeshProUGUI _titleTMP;
+    [SerializeField] private Button[] _buildingBtns;
+    [SerializeField] private GameObject[] _buildingBacks;
+    [SerializeField] private Sprite[] _btnSprites;
 
     [Header("Buttons")]
     [SerializeField] private Button _closeBtn;
 
-    private Dictionary<string, BuildingBtn> _btnDictionary = new();
-    private Transform _buildingObjectParent;
-
     public override void Initialize()
+    {
+        SetString();
+        SetButtonEvent();
+    }
+
+    public override void OpenPanel()
+    {
+        base.OpenPanel();
+
+        OnClickBuildingBtn(0);
+    }
+
+    private void SetString()
+    {
+        var titleData = App.GetData<TitleData>();
+
+        _titleTMP.text = titleData.GetString("STR_BUILDING_UI_TITLE");
+
+        _buildingBtns[0].GetComponentInChildren<TextMeshProUGUI>().text = titleData.GetString("STR_BUILDING_UI_PRODUCTION");
+        _buildingBtns[1].GetComponentInChildren<TextMeshProUGUI>().text = titleData.GetString("STR_BUILDING_UI_DECORATION");
+        _buildingBtns[2].GetComponentInChildren<TextMeshProUGUI>().text = titleData.GetString("STR_BUILDING_UI_UTILITY");
+        _buildingBtns[3].GetComponentInChildren<TextMeshProUGUI>().text = titleData.GetString("STR_BUILDING_UI_MINIMO");
+    }
+
+    private void SetButtonEvent()
     {
         _closeBtn.onClick.AddListener(ClosePanel);
 
-        _buildingObjectParent = GameObject.FindWithTag("BuildingObjectParent").transform;
+        for (int i = 0; i < _buildingBtns.Length; i++)
+        {
+            int idx = i;
 
-        InitStorageButtons();
+            _buildingBtns[idx].onClick.AddListener(() => OnClickBuildingBtn(idx));
+
+            _buildingBacks[idx].SetActive(true);
+            _buildingBacks[idx].SetActive(false);
+        }
     }
 
-    private void InitStorageButtons()
+    private void OnClickBuildingBtn(int index)
     {
-        var existingButtons = _buildingGroup.GetComponentsInChildren<BuildingBtn>(true);
-
-        int index = 0;
-
-        foreach (var data in App.GetData<TitleData>().Building.Values)
+        for (int i = 0; i < _buildingBtns.Length; i++)
         {
-            BuildingBtn storageBtn;
-
-            if (index < existingButtons.Length)
+            if (index == i)
             {
-                storageBtn = existingButtons[index];
+                _buildingBtns[i].image.sprite = _btnSprites[0];
+                _buildingBacks[i].SetActive(true);
             }
             else
             {
-                storageBtn = Instantiate(_buildingBtnPrefab, _buildingGroup).GetComponent<BuildingBtn>();
+                _buildingBtns[i].image.sprite = _btnSprites[1];
+                _buildingBacks[i].SetActive(false);
             }
-
-            storageBtn.Initialize(data, _buildingObjectParent);
-            _btnDictionary.Add(data.ID, storageBtn);
-
-            index++;
         }
     }
 }

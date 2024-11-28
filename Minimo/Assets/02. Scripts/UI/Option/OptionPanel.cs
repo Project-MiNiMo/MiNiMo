@@ -39,7 +39,7 @@ public class OptionPanel : UIBase
 
         _optionBack.SetActive(true);
 
-        OnClickOption(0);
+        OnClickOptionBtn(0);
     }
 
     public override void ClosePanel()
@@ -73,14 +73,14 @@ public class OptionPanel : UIBase
         {
             int idx = i;
 
-            _optionBtns[idx].onClick.AddListener(() => OnClickOption(idx));
+            _optionBtns[idx].onClick.AddListener(() => OnClickOptionBtn(idx));
 
             _optionBacks[idx].SetActive(true);
             _optionBacks[idx].SetActive(false);
         }
     }
 
-    private void OnClickOption(int index)
+    private void OnClickOptionBtn(int index)
     {
         for (int i = 0; i < _optionBtns.Length; i++)
         {
