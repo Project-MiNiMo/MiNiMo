@@ -1,6 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ShootingStar : MonoBehaviour
 {
@@ -26,6 +27,11 @@ public class ShootingStar : MonoBehaviour
 
     private void OnMouseUp()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+
         StartCoroutine(HarvestShootingStar());
     }
 

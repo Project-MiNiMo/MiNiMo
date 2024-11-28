@@ -7,5 +7,5 @@ using UnityEngine;
 /// </summary>
 public class PlayerData : DataBase
 {
-    public int PlayerLevel = 1;
+    public int PlayerLevel = 2;
 }
