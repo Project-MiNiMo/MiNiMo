@@ -89,7 +89,7 @@ public class LoginManager : ManagerBase
             _nickname = accountDTO.Nickname;
             IsLoggedIn = true;
             
-            Debug.Log($"Login With Token Success: Time: {time}, NickName: {_nickname}");
+            Debug.Log($"Login With Token Success: Token: {JwtToken} Time: {time} NickName: {_nickname}");
             
             return (true, $"Login Success: Time: {time}");
         }
