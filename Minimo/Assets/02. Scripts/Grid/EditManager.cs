@@ -1,3 +1,4 @@
+using System;
 using UniRx;
 using UnityEngine;
 
@@ -9,8 +10,16 @@ public class EditManager : ManagerBase
 
     [SerializeField] private GridLayout _gridLayout;
     
+    private InstallChecker _installChecker;
+
+    private void Start()
+    {
+        _installChecker = GetComponent<InstallChecker>();
+    }
+    
     public void StartEdit(GridObject gridObject)
     {
+        Debug.Log(CurrentEditObject == null);   
         if (CurrentEditObject && CurrentEditObject != gridObject)
         {
             CancelEdit();
@@ -20,18 +29,14 @@ public class EditManager : ManagerBase
         IsEditing.Value = true;
         
         CurrentEditObject.StartEdit();
+        CurrentCellPosition.Value = CurrentEditObject.transform.position;
+        
+        Debug.Log(CurrentEditObject == null);  
     }
 
     public void CancelEdit()
     {
-        if (CurrentEditObject.IsPlaced) 
-        {
-            Destroy(CurrentEditObject.gameObject);
-        }
-        else
-        {
-            CurrentEditObject.EndEdit();
-        }
+        CurrentEditObject.Cancel();
         
         CurrentEditObject = null;
         IsEditing.Value = false;
@@ -39,7 +44,7 @@ public class EditManager : ManagerBase
     
     public void ConfirmEdit()
     {
-        if (!App.GetManager<GridManager>().CheckCanInstall(CurrentEditObject))
+        if (!_installChecker.CheckCanInstall(CurrentEditObject))
         {
             return;
         }
@@ -48,13 +53,25 @@ public class EditManager : ManagerBase
         
         CurrentEditObject = null;
         IsEditing.Value = false;
+        
+        Debug.Log(CurrentEditObject == null);  
     }
 
-    public void MoveObject(Vector2 touchPosition)
+    public void MoveObject(Vector3 touchPosition)
     {
         var cellPosition = _gridLayout.WorldToCell(touchPosition);
-        CurrentEditObject.transform.position = _gridLayout.CellToWorld(cellPosition) + _gridLayout.cellSize * 0.5f;
-        CurrentEditObject.Area.position = cellPosition;
+        SetCurrentPosition(cellPosition);
+    }
+    
+    public void MoveObject(BoundsInt area)
+    {
+        SetCurrentPosition(area.position);
+    }
+    
+    private void SetCurrentPosition(Vector3Int position)
+    {
+        CurrentEditObject.transform.position = _gridLayout.CellToWorld(position) + _gridLayout.cellSize * 0.5f;
+        CurrentEditObject.Area.position = _gridLayout.WorldToCell(CurrentEditObject.transform.position);
         CurrentCellPosition.Value = CurrentEditObject.transform.position;
     }
 }

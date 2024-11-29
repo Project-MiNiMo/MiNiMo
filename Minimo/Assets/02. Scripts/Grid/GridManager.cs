@@ -1,37 +1,55 @@
-using System.Linq;
-
+using UniRx;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class GridManager : ManagerBase
+public class TileMarker : MonoBehaviour
 {
-    [SerializeField] private Tilemap _checkTilemap;
-    [SerializeField] private TileBase _emptyTile;
-
-    private GridLayout _gridLayout;
+    [SerializeField] private Tilemap _markTilemap;
+    [SerializeField] private TileBase _possibleTile;
+    [SerializeField] private TileBase _impossibleTile;
     
-    private TileBase[] _currentTiles;
-
-    private Camera _mainCamera;
-
+    private EditManager _editManager;
+    private InstallChecker _installChecker;
+    
     private void Start()
     {
-        _gridLayout = GetComponent<GridLayout>();
-        _mainCamera = Camera.main;
+        _installChecker = GetComponent<InstallChecker>();
+        _editManager = App.GetManager<EditManager>();
+
+        _editManager.IsEditing
+            .Subscribe((isEditing) =>
+            {
+                if (!isEditing)
+                {
+                    ClearMarkTiles();
+                }
+            }).AddTo((gameObject));
+
+        _editManager.CurrentCellPosition
+            .Subscribe((position) =>
+            {
+                if(!_editManager.CurrentEditObject)
+                {
+                    return;
+                }
+
+                SetMarkTiles(_editManager.CurrentEditObject);
+            }).AddTo(gameObject);
+    }
+    
+    private void ClearMarkTiles()
+    {
+        _markTilemap.ClearAllTiles();
     }
 
-    public bool CheckCanInstall(GridObject gridObject)
+    private void SetMarkTiles(GridObject gridObject)
     {
-        var buildingArea = gridObject.Area;
-        var baseArray = _checkTilemap.GetTilesBlock(buildingArea);
-   
-        return baseArray.All(tile => tile == _emptyTile);
-    }
+        ClearMarkTiles();
 
-    public bool CheckCanInstall(Vector3Int position)
-    {
-        var tile = _checkTilemap.GetTile(position);
-        
-        return tile == _emptyTile;
+        foreach (var position in gridObject.Area.allPositionsWithin)
+        {
+            _markTilemap.SetTile(position, _installChecker.CheckCanInstall(position) ? 
+                _possibleTile : _impossibleTile);
+        }
     }
 }

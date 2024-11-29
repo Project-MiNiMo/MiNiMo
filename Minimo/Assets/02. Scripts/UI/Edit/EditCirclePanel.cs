@@ -8,8 +8,7 @@ public class EditCirclePanel : UIBase
     
     [SerializeField] private Button _confirmBtn;
     [SerializeField] private Button _cancelBtn;
-    [SerializeField] private Button _moveBtn;
-    
+
     private EditManager _editManager;
     private Transform _target;
 
@@ -33,6 +32,5 @@ public class EditCirclePanel : UIBase
         
         _confirmBtn.onClick.AddListener(() => _editManager.ConfirmEdit());
         _cancelBtn.onClick.AddListener(() => _editManager.CancelEdit());
-        //_moveBtn.onClick.AddListener(() => _editManager.MoveObject());
     }
 }

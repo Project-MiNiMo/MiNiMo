@@ -7,11 +7,12 @@ public class GridObject : MonoBehaviour
 {
     [HideInInspector] public BoundsInt Area;
     public BoundsInt PreviousArea { get; private set; }
-    public bool IsPlaced { get; private set; } = false;
     public BuildingData Data { get; private set; }
 
+    private bool _isPlaced = false;
     private bool _isFlipped = false;
     private bool _isPressed = false;
+    private bool _isDragUI = false;
     private const float LONG_PRESS_THRESHOLD = 3f;
     private SpriteRenderer _spriteRenderer;
     
@@ -22,26 +23,29 @@ public class GridObject : MonoBehaviour
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     private void Start()
     {
         _editManager = App.GetManager<EditManager>();
         
-          var mouseDownStream = this.UpdateAsObservable()
-            .Where(_ => Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject());
+        // 마우스 눌렀을 때 스트림
+        var mouseDownStream = this.UpdateAsObservable()
+            .Where(_ => Input.GetMouseButtonDown(0));
 
         // 마우스 뗐을 때 스트림
         var mouseUpStream = this.UpdateAsObservable()
-            .Where(_ => Input.GetMouseButtonUp(0) && !EventSystem.current.IsPointerOverGameObject());
+            .Where(_ => Input.GetMouseButtonUp(0));
 
         // 마우스가 눌린 상태 스트림
         var mouseHoldStream = this.UpdateAsObservable()
-            .Where(_ => Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject());
+            .Where(_ => Input.GetMouseButton(0));
 
         // 편집 모드일 때: 터치 시
         mouseDownStream
             .Where(_ => _editManager.IsEditing.Value)
             .Subscribe(_ =>
             {
+                _isDragUI = EventSystem.current.IsPointerOverGameObject();
                 _editManager.StartEdit(this);
             })
             .AddTo(gameObject);
@@ -49,9 +53,11 @@ public class GridObject : MonoBehaviour
         // 편집 모드일 때: 드래그 시
         mouseHoldStream
             .Where(_ => _editManager.IsEditing.Value)
+            .Where(_ => !_isDragUI) 
             .Subscribe(_ =>
             {
                 var touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                touchPosition.z = 0;
                 _editManager.MoveObject(touchPosition);
             })
             .AddTo(gameObject);
@@ -59,6 +65,7 @@ public class GridObject : MonoBehaviour
         // 편집 모드가 아닐 때: 터치 시
         mouseDownStream
             .Where(_ => !_editManager.IsEditing.Value)
+            .Where(_ => !EventSystem.current.IsPointerOverGameObject())
             .Subscribe(_ =>
             {
                 _isPressed = true;
@@ -79,6 +86,7 @@ public class GridObject : MonoBehaviour
         mouseUpStream
             .Subscribe(_ =>
             {
+                _isDragUI = false;
                 _isPressed = false;
             })
             .AddTo(gameObject);
@@ -103,7 +111,7 @@ public class GridObject : MonoBehaviour
         SetTransparency(0.5f);
     }
 
-    public void EndEdit()
+    private void EndEdit()
     {
         SetTransparency(1f);
     }
@@ -117,10 +125,23 @@ public class GridObject : MonoBehaviour
 
     public void Place()
     {
-        IsPlaced = true;
+        _isPlaced = true;
         PreviousArea = Area;
 
         EndEdit();
+    }
+
+    public void Cancel()
+    {
+        if (_isPlaced)
+        {
+            _editManager.MoveObject(PreviousArea);
+            EndEdit();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void Rotate()
