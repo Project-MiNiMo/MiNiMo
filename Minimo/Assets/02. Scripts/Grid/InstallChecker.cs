@@ -9,7 +9,7 @@ public class InstallChecker : MonoBehaviour
     
     private TileBase[] _currentTiles;
     
-    public bool CheckCanInstall(GridObject gridObject)
+    public bool CheckCanInstall(BuildingObject gridObject)
     {
         var buildingArea = gridObject.Area;
         var baseArray = _checkTilemap.GetTilesBlock(buildingArea);

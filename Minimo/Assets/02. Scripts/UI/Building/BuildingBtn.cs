@@ -140,7 +140,7 @@ public class BuildingBtn : MonoBehaviour
     {
         App.GetManager<UIManager>().GetPanel<BuildingPanel>().ClosePanel();
 
-        var gridObject = Instantiate(_objectPrefab, _buildingGroup).GetComponentInChildren<GridObject>();
+        var gridObject = Instantiate(_objectPrefab, _buildingGroup).GetComponentInChildren<BuildingObject>();
 
         if (gridObject != null)
         {

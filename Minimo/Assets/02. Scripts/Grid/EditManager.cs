@@ -5,9 +5,9 @@ using UnityEngine;
 public class EditManager : ManagerBase
 {
     public ReactiveProperty<bool> IsEditing { get; } = new(false);
-    public GridObject CurrentEditObject { get; private set; }
     public ReactiveProperty<Vector3> CurrentCellPosition { get; } = new();
-
+    public BuildingObject CurrentEditObject { get; private set; }
+    
     [SerializeField] private GridLayout _gridLayout;
     
     private InstallChecker _installChecker;
@@ -17,9 +17,8 @@ public class EditManager : ManagerBase
         _installChecker = GetComponent<InstallChecker>();
     }
     
-    public void StartEdit(GridObject gridObject)
+    public void StartEdit(BuildingObject gridObject)
     {
-        Debug.Log(CurrentEditObject == null);   
         if (CurrentEditObject && CurrentEditObject != gridObject)
         {
             CancelEdit();
@@ -30,8 +29,6 @@ public class EditManager : ManagerBase
         
         CurrentEditObject.StartEdit();
         CurrentCellPosition.Value = CurrentEditObject.transform.position;
-        
-        Debug.Log(CurrentEditObject == null);  
     }
 
     public void CancelEdit()
@@ -49,12 +46,10 @@ public class EditManager : ManagerBase
             return;
         }
         
-        CurrentEditObject.Place();
+        CurrentEditObject.Install();
         
         CurrentEditObject = null;
         IsEditing.Value = false;
-        
-        Debug.Log(CurrentEditObject == null);  
     }
 
     public void MoveObject(Vector3 touchPosition)

@@ -42,7 +42,7 @@ public class TileMarker : MonoBehaviour
         _markTilemap.ClearAllTiles();
     }
 
-    private void SetMarkTiles(GridObject gridObject)
+    private void SetMarkTiles(BuildingObject gridObject)
     {
         ClearMarkTiles();
 

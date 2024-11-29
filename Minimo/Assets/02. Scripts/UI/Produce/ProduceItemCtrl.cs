@@ -30,7 +30,7 @@ public class ProduceItemCtrl : MonoBehaviour
         UpdateOpenCloseButtons();
     }
 
-    public void InitItemButtons(GridObject gridObject)
+    public void InitItemButtons(BuildingObject gridObject)
     {
         if (!App.GetData<TitleData>().ProduceSingle.TryGetValue(gridObject.Data.ID, out var produceData))
         {
