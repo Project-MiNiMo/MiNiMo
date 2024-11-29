@@ -6,14 +6,14 @@ public class ProduceItemBtn : MonoBehaviour
 {
     [SerializeField] private Image _objectImg;
 
-    private GridObject _gridObject;
+    private BuildingObject _gridObject;
 
     private void Start()
     {
         GetComponent<Button>().onClick.AddListener(StartProduce);
     }
 
-    public void Initialize(GridObject gridObject, string itemID)
+    public void Initialize(BuildingObject gridObject, string itemID)
     {
         _gridObject = gridObject;
 
