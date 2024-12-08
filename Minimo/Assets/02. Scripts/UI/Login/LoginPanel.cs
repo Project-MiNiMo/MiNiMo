@@ -47,7 +47,7 @@ public class LoginPanel : MonoBehaviour
         var result = await _loginManager.LoginAsync(id, pw);
         if(result.Item1)
         {
-            SceneManager.LoadScene("97. Client");
+            SceneManager.LoadScene("02. Game");
         }
         else
         {
