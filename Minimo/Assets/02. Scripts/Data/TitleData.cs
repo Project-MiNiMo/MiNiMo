@@ -134,6 +134,46 @@ public class ProduceMultipleData
 }
 
 [Serializable]
+public class FlatProduceData
+{
+    public string ID;
+    public string Materials;
+    public string Results;
+    public int Time;
+    public int EXP;
+}
+
+[Serializable]
+public class ProduceData
+{
+    public string ID;
+    public ProduceOption[] ProduceOptions;
+}
+
+[Serializable]
+public class ProduceOption
+{
+    public ProduceMaterial[] Materials;
+    public ProduceResult[] Results;
+    public int Time;
+    public int EXP;
+}
+
+[Serializable]
+public class ProduceMaterial
+{
+    public string Code;
+    public int Amount;
+}
+
+[Serializable]
+public class ProduceResult
+{
+    public string Code;
+    public int Amount;
+}
+
+[Serializable]
 public class ConstructData
 {
     public string ID;
@@ -163,6 +203,7 @@ public class TitleData : DataBase
     public Dictionary<string, ProduceSingleData> ProduceSingle { get; private set; } = new();
     public Dictionary<string, ProduceMultipleData> ProduceMultiple { get; private set; } = new();
     public Dictionary<string, ConstructData> Construct { get; private set; } = new();
+    public Dictionary<string, ProduceData> Produce { get; private set; } = new();
 
     private Dictionary<string, StringData> _string = new();
 
@@ -176,6 +217,7 @@ public class TitleData : DataBase
     private const string STARTREE_PATH = "Data/StarTreeData";
     private const string PRODUCESINGLE_PATH = "Data/ProduceSingleData";
     private const string PRODUCEMULTIPLE_PATH = "Data/ProduceMultipleData";
+    private const string PRODUCE_PATH = "Data/ProduceData";
     private const string CONSTRUCT_PATH = "Data/ConstructData";
     #endregion
 
@@ -200,6 +242,7 @@ public class TitleData : DataBase
         StarTree.Clear();
         ProduceSingle.Clear();
         ProduceMultiple.Clear();
+        Produce.Clear();
         Construct.Clear();
 
         var stringDataRaw = DataLoader.LoadData<StringData>(STRING_PATH);
@@ -209,6 +252,7 @@ public class TitleData : DataBase
         var starTreeDataRaw = DataLoader.LoadData<StarTreeData>(STARTREE_PATH);
         var produceSingleDataRaw = DataLoader.LoadData<ProduceSingleData>(PRODUCESINGLE_PATH);
         var produceMultipleDataRaw = DataLoader.LoadData<ProduceMultipleData>(PRODUCEMULTIPLE_PATH);
+        var produceDataRaw = DataGrouper.GroupData(PRODUCE_PATH);
         var constructDataRaw = DataLoader.LoadData<ConstructData>(CONSTRUCT_PATH);
 
         foreach (var data in stringDataRaw)
@@ -244,6 +288,11 @@ public class TitleData : DataBase
         foreach (var data in produceMultipleDataRaw)
         {
             ProduceMultiple.Add(data.ID, data);
+        }
+
+        foreach (var data in produceDataRaw)
+        {
+            Produce.Add(data.ID, data);       
         }
 
         foreach (var data in constructDataRaw)
