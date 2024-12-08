@@ -87,9 +87,9 @@ public class DataGrouper
     {
         if (string.IsNullOrEmpty(materialsRaw)) return Array.Empty<ProduceMaterial>();
 
-        return materialsRaw.Split(';').Select(mat =>
+        return materialsRaw.Split(',').Select(mat =>
         {
-            var parts = mat.Split(':');
+            var parts = mat.Split(':').Select(p => p.Trim()).ToArray();
             return new ProduceMaterial
             {
                 Code = parts[0],
@@ -102,9 +102,9 @@ public class DataGrouper
     {
         if (string.IsNullOrEmpty(resultsRaw)) return Array.Empty<ProduceResult>();
 
-        return resultsRaw.Split(';').Select(res =>
+        return resultsRaw.Split(',').Select(res =>
         {
-            var parts = res.Split(':');
+            var parts = res.Split(':').Select(p => p.Trim()).ToArray();
             return new ProduceResult
             {
                 Code = parts[0],

@@ -52,88 +52,6 @@ public class StarTreeData
 }
 
 [Serializable]
-public class ProduceSingleData
-{
-    public string ID;
-    public string Fst_MaterialCode;
-    public int Fst_MaterialAmount;
-    public string Fst_ResultCode;
-    public int Fst_ResultAmount;
-    public int Fst_Time;
-    public int Fst_EXP;
-    public string Snd_MaterialCode;
-    public int Snd_MaterialAmount;
-    public string Snd_ResultCode;
-    public int Snd_ResultAmount;
-    public int Snd_Time;
-    public int Snd_EXP;
-    public string Trd_MaterialCode;
-    public int Trd_MaterialAmount;
-    public string Trd_ResultCode;
-    public int Trd_ResultAmount;
-    public int Trd_Time;
-    public int Trd_EXP;
-    public string Fourth_MaterialCode;
-    public int Fourth_MaterialAmount;
-    public string Fourth_ResultCode;
-    public int Fourth_ResultAmount;
-    public int Fourth_Time;
-    public int Fourth_EXP;
-    public string Fifth_MaterialCode;
-    public int Fifth_MaterialAmount;
-    public string Fifth_ResultCode;
-    public int Fifth_ResultAmount;
-    public int Fifth_Time;
-    public int Fifth_EXP;
-}
-
-[Serializable]
-public class ProduceMultipleData
-{
-    public string ID;
-    public string Fst_MaterialCode1;
-    public int Fst_MaterialAmount1;
-    public string Fst_MaterialCode2;
-    public int Fst_MaterialAmount2;
-    public string Fst_ResultCode;
-    public int Fst_ResultAmount;
-    public int Fst_Time;
-    public int Fst_EXP;
-    public string Snd_MaterialCode1;
-    public int Snd_MaterialAmount1;
-    public string Snd_MaterialCode2;
-    public int Snd_MaterialAmount2;
-    public string Snd_ResultCode;
-    public int Snd_ResultAmount;
-    public int Snd_Time;
-    public int Snd_EXP;
-    public string Trd_MaterialCode1;
-    public int Trd_MaterialAmount1;
-    public string Trd_MaterialCode2;
-    public int Trd_MaterialAmount2;
-    public string Trd_ResultCode;
-    public int Trd_ResultAmount;
-    public int Trd_Time;
-    public int Trd_EXP;
-    public string Fourth_MaterialCode1;
-    public int Fourth_MaterialAmount1;
-    public string Fourth_MaterialCode2;
-    public int Fourth_MaterialAmount2;
-    public string Fourth_ResultCode;
-    public int Fourth_ResultAmount;
-    public int Fourth_Time;
-    public int Fourth_EXP;
-    public string Fifth_MaterialCode1;
-    public int Fifth_MaterialAmount1;
-    public string Fifth_MaterialCode2;
-    public int Fifth_MaterialAmount2;
-    public string Fifth_ResultCode;
-    public int Fifth_ResultAmount;
-    public int Fifth_Time;
-    public int Fifth_EXP;
-}
-
-[Serializable]
 public class FlatProduceData
 {
     public string ID;
@@ -200,8 +118,6 @@ public class TitleData : DataBase
     public Dictionary<string, BuildingData> Building { get; private set; } = new();
     public Dictionary<string, ItemData> Item { get; private set; } = new();
     public Dictionary<int, StarTreeData> StarTree { get; private set; } = new();
-    public Dictionary<string, ProduceSingleData> ProduceSingle { get; private set; } = new();
-    public Dictionary<string, ProduceMultipleData> ProduceMultiple { get; private set; } = new();
     public Dictionary<string, ConstructData> Construct { get; private set; } = new();
     public Dictionary<string, ProduceData> Produce { get; private set; } = new();
 
@@ -215,8 +131,6 @@ public class TitleData : DataBase
     private const string BUILDING_PATH = "Data/BuildingData";
     private const string ITEM_PATH = "Data/ItemData";
     private const string STARTREE_PATH = "Data/StarTreeData";
-    private const string PRODUCESINGLE_PATH = "Data/ProduceSingleData";
-    private const string PRODUCEMULTIPLE_PATH = "Data/ProduceMultipleData";
     private const string PRODUCE_PATH = "Data/ProduceData";
     private const string CONSTRUCT_PATH = "Data/ConstructData";
     #endregion
@@ -240,8 +154,6 @@ public class TitleData : DataBase
         Building.Clear();
         Item.Clear();
         StarTree.Clear();
-        ProduceSingle.Clear();
-        ProduceMultiple.Clear();
         Produce.Clear();
         Construct.Clear();
 
@@ -250,8 +162,6 @@ public class TitleData : DataBase
         var buildingDataRaw = DataLoader.LoadData<BuildingData>(BUILDING_PATH);
         var itemDataRaw = DataLoader.LoadData<ItemData>(ITEM_PATH);
         var starTreeDataRaw = DataLoader.LoadData<StarTreeData>(STARTREE_PATH);
-        var produceSingleDataRaw = DataLoader.LoadData<ProduceSingleData>(PRODUCESINGLE_PATH);
-        var produceMultipleDataRaw = DataLoader.LoadData<ProduceMultipleData>(PRODUCEMULTIPLE_PATH);
         var produceDataRaw = DataGrouper.GroupData(PRODUCE_PATH);
         var constructDataRaw = DataLoader.LoadData<ConstructData>(CONSTRUCT_PATH);
 
@@ -278,16 +188,6 @@ public class TitleData : DataBase
         foreach (var data in starTreeDataRaw)
         {
             StarTree.Add(data.ID, data);
-        }
-
-        foreach (var data in produceSingleDataRaw)
-        {
-            ProduceSingle.Add(data.ID, data);
-        }
-
-        foreach (var data in produceMultipleDataRaw)
-        {
-            ProduceMultiple.Add(data.ID, data);
         }
 
         foreach (var data in produceDataRaw)
