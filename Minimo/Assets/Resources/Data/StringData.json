@@ -646,91 +646,280 @@
   {
     "ID": "STR_BUILDING_FARM_NAME",
     "Korean": "밭",
-    "English": -1,
+    "English": "Farm",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_BUILDING_ORCHARD_NAME",
     "Korean": "과수원",
-    "English": -1,
+    "English": "Orchard",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_BUILDING_CROPFACILITY_NAME",
     "Korean": "작물공방",
-    "English": -1,
+    "English": "CropFacility",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_BUILDING_ORCHARDFACILITY_NAME",
     "Korean": "과수공방",
-    "English": -1,
+    "English": "OrchardFacility",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_BUILDING_BAKERY_NAME",
     "Korean": "베이커리",
-    "English": -1,
+    "English": "Bakery",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_BUILDING_STATIONERY_NAME",
     "Korean": "문구점",
-    "English": -1,
+    "English": "Stationery",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_BUILDING_TOYSHOP_NAME",
     "Korean": "장난감가게",
-    "English": -1,
+    "English": "ToyShop",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_BUILDING_LOGGINGCAMP_NAME",
     "Korean": "벌목장",
-    "English": -1,
+    "English": "LoggingCamp",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_YARDTILE_NAME",
+    "Korean": "들판타일",
+    "English": "YardTile",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_DIRTPATH_NAME",
+    "Korean": "흙길",
+    "English": "DirtPath",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_WOODENFENCE_NAME",
+    "Korean": "나무울타리",
+    "English": "WoodenFence",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_WILDFLOWERS_NAME",
+    "Korean": "들꽃",
+    "English": "WildFlowers",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_WOODENBENCH_NAME",
+    "Korean": "나무벤치",
+    "English": "WoodenBench",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_WOODENHOUSE_NAME",
+    "Korean": "나무집",
+    "English": "WoodenHouse",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_BUILDING_SCARECROW_NAME",
     "Korean": "허수아비",
-    "English": -1,
+    "English": "Scarecrow",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_KITE_NAME",
+    "Korean": "연",
+    "English": "Kite",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_MARBLETILE_NAME",
+    "Korean": "대리석타일",
+    "English": "MarbleTile",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_PAVEDROAD_NAME",
+    "Korean": "포장도로",
+    "English": "PavedRoad",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_MARBLEWALL_NAME",
+    "Korean": "대리석성벽",
+    "English": "MarbleWall",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_FOUNTAIN_NAME",
+    "Korean": "분수대",
+    "English": "Fountain",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_MURAL_NAME",
+    "Korean": "벽화",
+    "English": "Mural",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_PIANO_NAME",
+    "Korean": "피아노",
+    "English": "Piano",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_MUSEUM_NAME",
+    "Korean": "박물관",
+    "English": "Museum",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_SANDTILE_NAME",
+    "Korean": "모래타일",
+    "English": "SandTile",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_SANDPATH_NAME",
+    "Korean": "모래길",
+    "English": "SandPath",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_SANDWALL_NAME",
+    "Korean": "모래성벽",
+    "English": "SandWall",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_SANDCASTLE_NAME",
+    "Korean": "모래성",
+    "English": "SandCastle",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_WATERSKIING_NAME",
+    "Korean": "수상스키",
+    "English": "WaterSkiing",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_PARAGLIDING_NAME",
+    "Korean": "패러글라이딩",
+    "English": "Paragliding",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_WATERPARK_NAME",
+    "Korean": "워터파크",
+    "English": "WaterPark",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_LAPISTILE_NAME",
+    "Korean": "청금타일",
+    "English": "LapisTile",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_LAPISROAD_NAME",
+    "Korean": "청금도로",
+    "English": "LapisRoad",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_LAPISWALL_NAME",
+    "Korean": "청금성벽",
+    "English": "LapisWall",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_WISHLANTERN_NAME",
+    "Korean": "소원등불",
+    "English": "WishLantern",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_MAGICBOOK_NAME",
+    "Korean": "마법책",
+    "English": "MagicBook",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_FLOATINGISLAND_NAME",
+    "Korean": "부유섬",
+    "English": "FloatingIsland",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_BUILDING_WAREHOUSE_NAME",
     "Korean": "창고",
-    "English": -1,
+    "English": "Warehouse",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_BUILDING_CROPSHOP_NAME",
     "Korean": "농작물상점",
-    "English": -1,
+    "English": "CropShop",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_BUILDING_MINIMOOFFICE_NAME",
     "Korean": "미니모관리소",
-    "English": -1,
+    "English": "MinimoOffice",
     "Chinese": -1,
     "Japanese": -1
   },
   {
     "ID": "STR_BUILDING_MINIMOSHELTER_NAME",
     "Korean": "미니모쉼터",
-    "English": -1,
+    "English": "MinimoShelter",
     "Chinese": -1,
     "Japanese": -1
   },
@@ -1001,27 +1190,6 @@
     "Japanese": -1
   },
   {
-    "ID": "STR_POPUP_SPENDCASH_DESC1",
-    "Korean": "유료재화 사용",
-    "English": "Spend BlueStar",
-    "Chinese": -1,
-    "Japanese": -1
-  },
-  {
-    "ID": "STR_POPUP_SPENDCASH_DESC2",
-    "Korean": "부족한 자원 확보를 위해\n유료재화를 사용하시겠습니까?",
-    "English": "Would you like to use BlueStar\nto secure the lacking materials?",
-    "Chinese": -1,
-    "Japanese": -1
-  },
-  {
-    "ID": "STR_BUTTON_SPEND_NAME",
-    "Korean": "사용",
-    "English": "Spend",
-    "Chinese": -1,
-    "Japanese": -1
-  },
-  {
     "ID": "STR_EDITMODE_NAME",
     "Korean": "편집모드",
     "English": "Edit Mode",
@@ -1064,6 +1232,27 @@
     "Japanese": -1
   },
   {
+    "ID": "STR_FACILITY_SLOTSTATE_DESC1",
+    "Korean": "비어있음",
+    "English": "Empty",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_FACILITY_PRODSTATE_DESC1",
+    "Korean": "대기중",
+    "English": "Standby",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_FACILITY_PRODSTATE_DESC2",
+    "Korean": "생산완료",
+    "English": "Complete",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
     "ID": "STR_RECHARGECASH_DESC1",
     "Korean": "유료재화 충전",
     "English": "Recharge BlueStar",
@@ -1074,6 +1263,27 @@
     "ID": "STR_RECHARGECASH_DESC2",
     "Korean": "보유 중인\n유료재화가 부족합니다.\n충전하시겠습니까?",
     "English": "You don't have enough Blue Stars.\nWould you like to recharge them?",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_POPUP_SPENDCASH_DESC1",
+    "Korean": "유료재화 사용",
+    "English": "Spend BlueStar",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_POPUP_SPENDCASH_DESC2",
+    "Korean": "부족한 자원 확보를 위해\n유료재화를 사용하시겠습니까?",
+    "English": "Would you like to use BlueStar\nto secure the lacking materials?",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUTTON_SPEND_NAME",
+    "Korean": "사용",
+    "English": "Spend",
     "Chinese": -1,
     "Japanese": -1
   },

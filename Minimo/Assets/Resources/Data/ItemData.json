@@ -312,7 +312,7 @@
     "Description": "STR_ITEM_APPLESLICE_DESC"
   },
   {
-    "ID": "Item_BlueberryBerry",
+    "ID": "Item_BlueberryBits",
     "Type": 0,
     "Grade": 3,
     "MaxOverlap": 99,
@@ -320,9 +320,9 @@
     "BuyCost": 160,
     "SellCost": 80,
     "CashCost": 16,
-    "Icon": "BlueberryBerry",
-    "Name": "STR_ITEM_BLUEBERRYBERRY_NAME",
-    "Description": "STR_ITEM_BLUEBERRYBERRY_DESC"
+    "Icon": "BlueberryBits",
+    "Name": "STR_ITEM_BLUEBERRYBITS_NAME",
+    "Description": "STR_ITEM_BLUEBERRYBITS_DESC"
   },
   {
     "ID": "Item_PineappleSlice",
