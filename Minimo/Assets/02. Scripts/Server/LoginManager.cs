@@ -18,7 +18,8 @@ public class LoginManager : ManagerBase
     [SerializeField] private string _password = "";
     [SerializeField] private string _nickname = "";
     
-    private readonly string _endpoint = "api/login";
+    private readonly string _loginEndpoint = "api/login";
+    private readonly string _accountEndPoint = "api/accounts";
     
     public string JwtToken { get; private set; }
     private bool IsLoggedIn { get; set; } = false;
@@ -47,7 +48,7 @@ public class LoginManager : ManagerBase
         LoginDTO loginDto = new LoginDTO { Username = username, Password = password };
         try
         {
-            var response = await _gameClient.PostAsync<JObject>(_endpoint, loginDto);
+            var response = await _gameClient.PostAsync<JObject>(_loginEndpoint, loginDto);
             
             var token = response["token"].Value<string>();
             var time = response["time"].Value<DateTime>();
@@ -77,7 +78,7 @@ public class LoginManager : ManagerBase
             return (false, "Already Logged In");
         }
         
-        var endpoint = _endpoint + "/token";
+        var endpoint = _loginEndpoint + "/token";
         try
         {
             var response = await _gameClient.PostAsync<JObject>(endpoint, null);
@@ -105,7 +106,7 @@ public class LoginManager : ManagerBase
         var createAccountDto = new CreateAccountDTO { Username = username, Password = password, Nickname = nickname };
         try
         {
-            var createdAccount = await _gameClient.PostAsync<AccountDTO>(_endpoint, createAccountDto);
+            var createdAccount = await _gameClient.PostAsync<AccountDTO>(_accountEndPoint, createAccountDto);
             Debug.Log($"Created player: {createdAccount.Nickname} with ID: {createdAccount.ID}");
             return (true, $"Successfully registered.");
         }
