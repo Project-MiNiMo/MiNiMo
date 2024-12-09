@@ -18,6 +18,7 @@ public class ProduceInfoCtrl : MonoBehaviour
     {
         //_infoBtn.onClick.AddListener(() => App.GetManager<GridManager>().ConfirmObject());
         //_harvestBtn.onClick.AddListener(() => App.GetManager<GridManager>().RotateObject());
+        _rect = GetComponent<RectTransform>();
         
         _produceManager = App.GetManager<ProduceManager>();
         
@@ -33,8 +34,6 @@ public class ProduceInfoCtrl : MonoBehaviour
         _produceManager.CurrentRemainTime
             .Subscribe(SetRemainTime)
             .AddTo(gameObject);
-        
-        _rect = GetComponent<RectTransform>();
     }
     
     private void SetPosition()
