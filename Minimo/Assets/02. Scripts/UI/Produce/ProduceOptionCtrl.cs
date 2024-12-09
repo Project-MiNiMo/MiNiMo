@@ -25,7 +25,15 @@ public class ProduceOptionCtrl : MonoBehaviour
             {
                 if (isProducing)
                 {
-                    InitOptionButtons(_produceManager.CurrentProduceObject);
+                    if (_produceManager.CurrentProduceObject.IsProducing)
+                    {
+                        gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        gameObject.SetActive(true);
+                        InitOptionButtons(_produceManager.CurrentProduceObject);
+                    }
                 }
             }).AddTo(gameObject);
     }

@@ -1,16 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
+
 using UnityEngine;
 
 public class ProduceObject : BuildingObject
 {
     public ProduceData ProduceData { get; private set; }
-    public int RemainTime { get; private set; }
+    public ProduceOption CurrentOption { get; private set; }
+    public bool IsProducing => _remainTime > 0;
     
     private ProduceManager _produceManager;
-    private ProduceOption _currentOption;
     
+    private int _remainTime;
     private float _lastUpdateTime; 
     
     public override void Initialize(BuildingData data, Sprite sprite)
@@ -24,7 +24,7 @@ public class ProduceObject : BuildingObject
     //TODO : Connect with Server and remain time
     private void Update()
     {
-        if (_currentOption == null || RemainTime < 0) 
+        if (CurrentOption == null || _remainTime < 0) 
         {
             return;
         }
@@ -32,10 +32,11 @@ public class ProduceObject : BuildingObject
         if (Time.time - _lastUpdateTime >= 1f)
         {
             _lastUpdateTime = Time.time;
-
+            _remainTime--;
+            
             if (_produceManager.CurrentProduceObject == this)
             {
-                _produceManager.SetRemainTime(--RemainTime);
+                _produceManager.SetRemainTime(_remainTime);
             }
         }
     }
@@ -43,17 +44,24 @@ public class ProduceObject : BuildingObject
     protected override void OnClickWhenNotEditing()
     {
         _produceManager.ActiveProduce(this);
+        
+        _produceManager.SetRemainTime(_remainTime);
     }
     
     public void StartProduce(ProduceOption option)
     {
+        if (IsProducing) 
+        {
+            return;
+        }
+        
         if (!ProduceData.ProduceOptions.Contains(option))
         {
             return;
         }
         
-        _currentOption = option;
-        RemainTime = option.Time;
+        CurrentOption = option;
+        _remainTime = option.Time;
         
         Debug.Log("Start Produce : " + option.Results[0].Code);
     }

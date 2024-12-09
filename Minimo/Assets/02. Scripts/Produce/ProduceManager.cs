@@ -1,4 +1,3 @@
-using System;
 using UniRx;
 
 public class ProduceManager : ManagerBase
@@ -16,8 +15,6 @@ public class ProduceManager : ManagerBase
         
         CurrentProduceObject = produceObject;
         IsProducing.Value = true;
-        
-        CurrentRemainTime.Value = produceObject.RemainTime;
     }
     
     public void DeactiveProduce()

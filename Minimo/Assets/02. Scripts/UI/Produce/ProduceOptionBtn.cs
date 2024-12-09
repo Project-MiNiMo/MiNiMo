@@ -19,20 +19,15 @@ public class ProduceOptionBtn : MonoBehaviour
     [SerializeField] private ProduceOptionInfo[] _materials;
     [SerializeField] private TextMeshProUGUI _timeTMP;
     
-    private ProduceManager _produceManager;
     private TitleData _titleData;
-    private int currentIndex;
 
     private void Start()
-    {
-        _produceManager = App.GetManager<ProduceManager>();
+    { ;
         _titleData = App.GetData<TitleData>();
     }
 
     public void Initialize(int index, ProduceOption optionData)
     {
-        currentIndex = index;
-        
         _plantCtrl.Initialize(optionData);
 
         SetResultInfo(optionData.Results[0]);

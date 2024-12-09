@@ -5,29 +5,44 @@ using TMPro;
 
 public class ProduceInfoCtrl : MonoBehaviour
 {
-    [SerializeField] Button _infoBtn;
-    [SerializeField] Button _harvestBtn;
-    [SerializeField] GameObject _remainTimeObj;
-    [SerializeField] TextMeshProUGUI _remainTimeTMP;
+    [SerializeField] private TextMeshProUGUI _infoTMP;
+    [SerializeField] private Image _infoImage;
+    [SerializeField] private Button _starBtn;
+    [SerializeField] private Image _remainTimeImg;
+    [SerializeField] private TextMeshProUGUI _remainTimeTMP;
 
     private ProduceManager _produceManager;
+    private TitleData _titleData;
     
     private RectTransform _rect;
+    private ProduceOption _currentOption;
     
     private void Start()
     {
-        //_infoBtn.onClick.AddListener(() => App.GetManager<GridManager>().ConfirmObject());
-        //_harvestBtn.onClick.AddListener(() => App.GetManager<GridManager>().RotateObject());
         _rect = GetComponent<RectTransform>();
         
         _produceManager = App.GetManager<ProduceManager>();
+        _titleData = App.GetData<TitleData>();
+        
+        //_starBtn.onClick.AddListener(() => App.GetManager<GridManager>().RotateObject());
         
         _produceManager.IsProducing
             .Subscribe((isProducing) =>
             {
                 if (isProducing) 
                 {
-                    SetPosition();
+                    if (_produceManager.CurrentProduceObject.IsProducing)
+                    {
+                        gameObject.SetActive(true);
+                        _currentOption = _produceManager.CurrentProduceObject.CurrentOption;
+                        SetPosition();
+                        SetInfo();
+                    }
+                    else
+                    {
+                        gameObject.SetActive(false);
+                    }
+
                 }
             }).AddTo(gameObject);
         
@@ -39,22 +54,45 @@ public class ProduceInfoCtrl : MonoBehaviour
     private void SetPosition()
     {
         var position = _produceManager.CurrentProduceObject.transform.position;
-        position.y += 3f;
         var screenPos = Camera.main.WorldToScreenPoint(position);
         _rect.position = screenPos;
     }
 
+    private void SetInfo()
+    {
+        if (!_titleData.Item.TryGetValue(_currentOption.Results[0].Code, out var itemData))
+        {
+            Debug.LogError($"Cannot find item data with code : {_currentOption.Results[0].Code}");
+            return;
+        }
+        
+        _infoTMP.text = 
+            $"{_titleData.GetString(itemData.Name)} X{_currentOption.Results[0].Amount}";
+        _infoImage.sprite = Resources.Load<Sprite>($"Item/{itemData.ID}");
+    }
+
     private void SetRemainTime(int remainTime)
     {
-        _remainTimeObj.SetActive(remainTime < 0);
+        if (_currentOption == null)
+        {
+            return;
+        }
+
+        if (remainTime < 0)
+        {
+            gameObject.SetActive(false);
+        }
+
         _remainTimeTMP.text = FormatTime(remainTime);
+        _remainTimeImg.fillAmount = 1 - ((float)remainTime / _currentOption.Time);
     }
 
     private string FormatTime(int timeInSeconds)
     {
-        var minutes = timeInSeconds / 60;
+        var hours = timeInSeconds / 3600;
+        var minutes = (timeInSeconds % 3600) / 60;
         var seconds = timeInSeconds % 60;
-        
-        return $"{minutes:00}:{seconds:00}"; 
+    
+        return $"{hours:00}:{minutes:00}:{seconds:00}"; 
     }
 }
