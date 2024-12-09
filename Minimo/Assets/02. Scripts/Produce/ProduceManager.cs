@@ -32,9 +32,4 @@ public class ProduceManager : ManagerBase
     {
         CurrentRemainTime.Value = remainTime;
     }
-    
-    public void StartProduce(int optionNumber)
-    {
-        CurrentProduceObject.StartProduce(optionNumber);
-    }
 }

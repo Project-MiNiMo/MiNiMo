@@ -13,6 +13,7 @@ public class ProduceOptionBtn : MonoBehaviour
         public TextMeshProUGUI _text;
     }
     
+    [SerializeField] private ProducePlantCtrl _plantCtrl;
     [SerializeField] private TextMeshProUGUI _resultNameTMP;
     [SerializeField] private ProduceOptionInfo _result;
     [SerializeField] private ProduceOptionInfo[] _materials;
@@ -26,13 +27,13 @@ public class ProduceOptionBtn : MonoBehaviour
     {
         _produceManager = App.GetManager<ProduceManager>();
         _titleData = App.GetData<TitleData>();
-        
-        GetComponent<Button>().onClick.AddListener(StartProduce);
     }
 
     public void Initialize(int index, ProduceOption optionData)
     {
         currentIndex = index;
+        
+        _plantCtrl.Initialize(optionData);
 
         SetResultInfo(optionData.Results[0]);
         SetMaterialInfo(optionData.Materials);
@@ -68,11 +69,6 @@ public class ProduceOptionBtn : MonoBehaviour
         _resultNameTMP.text = _titleData.GetString(itemData.Name);
         _result._image.sprite = Resources.Load<Sprite>($"Item/{result.Code}");
         _result._text.text = $"X{result.Amount}";
-    }
-
-    private void StartProduce()
-    {
-        _produceManager.StartProduce(currentIndex);
     }
 }
 

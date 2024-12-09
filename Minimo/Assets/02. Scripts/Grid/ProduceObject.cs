@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ProduceObject : BuildingObject
@@ -44,11 +45,16 @@ public class ProduceObject : BuildingObject
         _produceManager.ActiveProduce(this);
     }
     
-    public void StartProduce(int optionNumber)
+    public void StartProduce(ProduceOption option)
     {
-        _currentOption = ProduceData.ProduceOptions[optionNumber];
-        RemainTime = _currentOption.Time;
+        if (!ProduceData.ProduceOptions.Contains(option))
+        {
+            return;
+        }
         
-        _produceManager.SetRemainTime(RemainTime);
+        _currentOption = option;
+        RemainTime = option.Time;
+        
+        Debug.Log("Start Produce : " + option.Results[0].Code);
     }
 }
