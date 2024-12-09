@@ -1,11 +1,18 @@
 using UniRx;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ProduceOptionCtrl : MonoBehaviour
 {
+    [SerializeField] private ScrollRect _scrollRect;
     private ProduceManager _produceManager;
     
     private ProduceOptionBtn[] _optionBtns;
+    
+    private void OnEnable()
+    {
+        _scrollRect.horizontalNormalizedPosition = 0;
+    }
 
     private void Start()
     {
