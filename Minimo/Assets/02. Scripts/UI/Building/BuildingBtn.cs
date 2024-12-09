@@ -44,9 +44,6 @@ public class BuildingBtn : MonoBehaviour
     private void Start()
     {
         _editBtn.onClick.AddListener(CreateObject);
-
-        string prefabPath = $"Building/GridObject";
-        _objectPrefab = Resources.Load<GameObject>(prefabPath);
     }
 
     public void Initialize(BuildingData data, Transform gridObjectGroup)
@@ -58,6 +55,9 @@ public class BuildingBtn : MonoBehaviour
         string spritePath = $"Building/Icon/{data.Icon}";
         _iconImg.sprite = Resources.Load<Sprite>(spritePath);
         _iconImg.SetNativeSize();
+        
+        string prefabPath = $"Building/{data.ID}";
+        _objectPrefab = Resources.Load<GameObject>(prefabPath);
 
         SetString();
         SetRequireItem();

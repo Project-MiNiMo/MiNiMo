@@ -39,7 +39,7 @@ public class BuildingObject : MonoBehaviour
         _spriteRenderer.transform.localPosition = new Vector3(0, yPosition, 0);
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (_isPressed && !_editManager.IsEditing.Value) 
         {

@@ -1,5 +1,6 @@
-using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 public class Produce_Farm : ProduceObject
@@ -13,7 +14,7 @@ public class Produce_Farm : ProduceObject
         Pepper
     }
     
-    [SerializeField] SpriteRenderer _cropSpriteRenderer;
+    [SerializeField] private SpriteRenderer _cropSpriteRenderer;
     
     private List<Sprite[]> _cropSprites;
    
@@ -23,7 +24,7 @@ public class Produce_Farm : ProduceObject
     public override void Initialize(BuildingData data, Sprite sprite)
     {
         base.Initialize(data, sprite);
-        
+
         _cropSprites = new List<Sprite[]>(ProduceData.ProduceOptions.Length)
         {
             Resources.LoadAll<Sprite>("Produce/Farm/Wheat"),
@@ -38,9 +39,14 @@ public class Produce_Farm : ProduceObject
     {
         base.Update();
         
-        var remainPercent = _remainTime / CurrentOption.Time;
+        if (_currentCropSprites == null || _remainTime < 0) 
+        {
+            return;
+        }
+        
+        var remainPercent = (float)_remainTime / CurrentOption.Time;
         int newSpriteIndex;
-
+        
         if (remainPercent >= 0.5f)
         {
             newSpriteIndex = 0;
@@ -65,7 +71,12 @@ public class Produce_Farm : ProduceObject
     {
         base.StartProduce(option);
         
-        _currentSpriteIndex = 0;
+        if (_currentCropSprites != null) 
+        {
+            return;
+        }
+     
+        _currentSpriteIndex = -1;
 
         var cropCode = option.Results[0].Code;
         var currentCropType = cropCode switch

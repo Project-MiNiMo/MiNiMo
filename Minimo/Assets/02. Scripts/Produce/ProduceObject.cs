@@ -22,8 +22,10 @@ public class ProduceObject : BuildingObject
     }
 
     //TODO : Connect with Server and remain time
-    protected virtual void Update()
+    protected override void Update()
     {
+        base.Update();
+        
         if (CurrentOption == null || _remainTime < 0) 
         {
             return;
