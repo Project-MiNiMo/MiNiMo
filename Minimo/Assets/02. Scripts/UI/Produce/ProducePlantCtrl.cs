@@ -4,6 +4,8 @@ using UnityEngine.EventSystems;
 
 public class ProducePlantCtrl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    [SerializeField] private LayerMask _targetLayerMask;
+    
     private RectTransform _rect;
     private Image _image;
     private Canvas _canvas;
@@ -36,7 +38,7 @@ public class ProducePlantCtrl : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         _rect.anchoredPosition += eventData.delta / _canvas.scaleFactor;
 
         Vector2 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Collider2D hit = Physics2D.OverlapPoint(worldPosition);
+        Collider2D hit = Physics2D.OverlapPoint(worldPosition, _targetLayerMask);
         if (hit != null && hit.TryGetComponent<ProduceObject>(out var component))
         {
             component.StartProduce(_currentOption);
