@@ -13,9 +13,9 @@ public class ProduceObject : BuildingObject
     private ProduceManager _produceManager;
     private float _lastUpdateTime; 
     
-    public override void Initialize(BuildingData data, Sprite sprite)
+    public override void Initialize(BuildingData data)
     {
-        base.Initialize(data, sprite);
+        base.Initialize(data);
 
         ProduceData = App.GetData<TitleData>().Produce[data.ID];
         _produceManager = App.GetManager<ProduceManager>();

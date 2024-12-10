@@ -21,9 +21,9 @@ public class Produce_Farm : ProduceObject
     private Sprite[] _currentCropSprites;
     private int _currentSpriteIndex;
     
-    public override void Initialize(BuildingData data, Sprite sprite)
+    public override void Initialize(BuildingData data)
     {
-        base.Initialize(data, sprite);
+        base.Initialize(data);
 
         _cropSprites = new List<Sprite[]>(ProduceData.ProduceOptions.Length)
         {

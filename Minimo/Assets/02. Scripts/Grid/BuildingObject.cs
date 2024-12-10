@@ -26,14 +26,12 @@ public class BuildingObject : MonoBehaviour
         _editManager = App.GetManager<EditManager>();
     }
 
-    public virtual void Initialize(BuildingData data, Sprite sprite)
+    public virtual void Initialize(BuildingData data)
     {
         Data = data;
 
         var size = new Vector3Int(data.SizeX, data.SizeY, 1);
         Area = new BoundsInt(Vector3Int.zero, size);
-
-        _spriteRenderer.sprite = sprite;
 
         var yPosition = (float)((data.SizeX - 1) * 0.5);
         _spriteRenderer.transform.localPosition = new Vector3(0, yPosition, 0);
