@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6314677405763876296}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6314677405763876296}
   - component: {fileID: 7782138920005508789}
-  - component: {fileID: 8559784029600353285}
+  - component: {fileID: 409299513420651592}
   m_Layer: 0
   m_Name: Building_Orchard
   m_TagString: GridObject
@@ -164,7 +164,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
---- !u!114 &8559784029600353285
+--- !u!114 &409299513420651592
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -173,13 +173,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6314677405763876294}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4569ae3f8b194394e99865b7136cb0ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 168031c60ca44dc42a012faf459d1429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Area:
     m_Position: {x: 0, y: 0, z: 0}
     m_Size: {x: 0, y: 0, z: 0}
-  _cropSpriteRenderer: {fileID: 7602783559982876341}
+  _fruitSpriteRenderer: {fileID: 7602783559982876341}
 --- !u!1 &7679093566653465226
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 2465788654581326482}
   - component: {fileID: 7602783559982876341}
   m_Layer: 0
-  m_Name: Crop
+  m_Name: Fruit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
