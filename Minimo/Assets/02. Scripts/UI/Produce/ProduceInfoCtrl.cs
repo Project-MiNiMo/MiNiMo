@@ -6,7 +6,7 @@ using TMPro;
 public class ProduceInfoCtrl : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _infoTMP;
-    [SerializeField] private Image _infoImage;
+    [SerializeField] private Image[] _infoImages;
     [SerializeField] private Button _starBtn;
     [SerializeField] private Image _remainTimeImg;
     [SerializeField] private TextMeshProUGUI _remainTimeTMP;
@@ -60,15 +60,32 @@ public class ProduceInfoCtrl : MonoBehaviour
 
     private void SetInfo()
     {
-        if (!_titleData.Item.TryGetValue(_currentOption.Results[0].Code, out var itemData))
-        {
-            Debug.LogError($"Cannot find item data with code : {_currentOption.Results[0].Code}");
-            return;
-        }
+        _infoTMP.text = string.Empty;
         
-        _infoTMP.text = 
-            $"{_titleData.GetString(itemData.Name)} X{_currentOption.Results[0].Amount}";
-        _infoImage.sprite = Resources.Load<Sprite>($"Item/{itemData.ID}");
+        var i = 0;
+        
+        for (; i < _currentOption.Results.Length; i++) 
+        {
+            if (!_titleData.Item.TryGetValue(_currentOption.Results[i].Code, out var itemData))
+            {
+                Debug.LogError($"Cannot find item data with code : {_currentOption.Results[i].Code}");
+                return;
+            }
+
+            if (i > 0) 
+            {
+                _infoTMP.text += " / ";
+            }
+            
+            _infoTMP.text += 
+                $"{_titleData.GetString(itemData.Name)} X{_currentOption.Results[i].Amount}";
+            _infoImages[i].sprite = Resources.Load<Sprite>($"Item/{itemData.ID}");
+        }
+
+        for (; i < _infoImages.Length; i++) 
+        {
+            _infoImages[i].gameObject.SetActive(false);
+        }
     }
 
     private void SetRemainTime(int remainTime)
