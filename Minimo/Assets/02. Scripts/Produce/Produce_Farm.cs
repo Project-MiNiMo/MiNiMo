@@ -35,7 +35,7 @@ public class Produce_Farm : ProduceObject
         };
     }
     
-    protected override void CheckInUpdate()
+    protected override void SetProduceSprite()
     {
         if (_currentCropSprites == null) 
         {
@@ -69,7 +69,7 @@ public class Produce_Farm : ProduceObject
     {
         base.SetupProduce();
         
-        _currentSpriteIndex = -1;
+        _currentSpriteIndex = 0;
 
         var cropCode = CurrentOption.Results[0].Code;
         var currentCropType = cropCode switch
@@ -83,6 +83,7 @@ public class Produce_Farm : ProduceObject
         };
         
         _currentCropSprites = _cropSprites[(int)currentCropType];
+        _cropSpriteRenderer.sprite = _currentCropSprites[_currentSpriteIndex];
     }
     
     protected override void SetupHarvest()

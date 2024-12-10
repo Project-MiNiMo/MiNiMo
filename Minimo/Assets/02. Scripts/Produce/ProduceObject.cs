@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 
 using UnityEngine;
@@ -17,32 +18,42 @@ public abstract class ProduceObject : BuildingObject
     
     protected int _remainTime;
     
-    private ProduceManager _produceManager;
-    private float _lastUpdateTime; 
+    protected ProduceManager _produceManager;
+    protected TimeManager _timeManager;
+    protected DateTime _lastUpdateTime; 
     
     public override void Initialize(BuildingData data)
     {
         base.Initialize(data);
 
-        ProduceData = App.GetData<TitleData>().Produce[data.ID];
-        _produceManager = App.GetManager<ProduceManager>();
-        
         CurrentState = ProduceState.Idle;
+        
+        ProduceData = App.GetData<TitleData>().Produce[data.ID];
+        
+        _produceManager = App.GetManager<ProduceManager>();
+        _timeManager = App.GetManager<TimeManager>();
     }
 
     //TODO : Connect with Server and remain time
     protected override void Update()
     {
         base.Update();
-        
-        if (CurrentState != ProduceState.Produce) 
+
+        if (IsNotProducing) 
         {
             return;
         }
         
-        if (Time.time - _lastUpdateTime >= 1f)
+        CheckRemainTime();
+    }
+    
+    protected virtual bool IsNotProducing => CurrentState != ProduceState.Produce;
+
+    protected virtual void CheckRemainTime()
+    {
+        if ((_timeManager.Time - _lastUpdateTime).TotalSeconds >= 1f)
         {
-            _lastUpdateTime = Time.time;
+            _lastUpdateTime = _timeManager.Time;
             _remainTime--;
             
             if (_produceManager.CurrentProduceObject == this)
@@ -55,11 +66,11 @@ public abstract class ProduceObject : BuildingObject
                 SetupHarvest();
             }
             
-            CheckInUpdate();
+            SetProduceSprite();
         }
     }
     
-    protected abstract void CheckInUpdate();
+    protected abstract void SetProduceSprite();
     
     protected override void OnClickWhenNotEditing()
     {
@@ -87,6 +98,7 @@ public abstract class ProduceObject : BuildingObject
         
         CurrentOption = option;
         _remainTime = option.Time;
+        _lastUpdateTime = _timeManager.Time;
         
         Debug.Log("Start Produce : " + option.Results[0].Code);
 
@@ -98,7 +110,7 @@ public abstract class ProduceObject : BuildingObject
         CurrentState = ProduceState.Produce;
     }
 
-    public void StartHarvest()
+    public virtual void StartHarvest()
     {
         if (CurrentState != ProduceState.Harvest) 
         {
