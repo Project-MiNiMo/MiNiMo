@@ -29,7 +29,6 @@ public class ItemData
 {
     public string ID;
     public int Type;
-    public int Grade;
     public int MaxOverlap;
     public bool CanSell;
     public int BuyCost;
@@ -114,7 +113,7 @@ public class StringData
 
 public class TitleData : DataBase
 {
-    [SerializeField] private ItemSO _itemSO;
+    public ItemSO ItemSO;
     public Dictionary<string, int> Common { get; private set; } = new();
     public Dictionary<string, BuildingData> Building { get; private set; } = new();
     public Dictionary<string, ItemData> Item { get; private set; } = new();
@@ -201,7 +200,7 @@ public class TitleData : DataBase
             Construct.Add(data.ID, data);
         }
 
-        foreach (var item in _itemSO.items) //TEMP
+        foreach (var item in ItemSO.items) //TEMP
         {
             item.SetData(Item[item.Code]);
         }

@@ -1288,6 +1288,55 @@
     "Japanese": -1
   },
   {
+    "ID": "STR_STORAGE_UI_TITLE",
+    "Korean": "창고",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_STORAGE_UI_ENTIRE",
+    "Korean": "전체",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_STORAGE_UI_RESOURCE",
+    "Korean": "자우너",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_STORAGE_UI_PRODUCT",
+    "Korean": "상품",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_STORAGE_UI_CONSTRUCTION",
+    "Korean": "건설 자재",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_STORAGE_UI_EXPAND",
+    "Korean": "확장",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_STORAGE_UI_SELL",
+    "Korean": "{0} 판매",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
     "ID": "STR_BUTTON_NO_NAME",
     "Korean": "아니오",
     "English": "No",
