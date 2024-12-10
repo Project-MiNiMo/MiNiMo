@@ -114,6 +114,7 @@ public class StringData
 
 public class TitleData : DataBase
 {
+    [SerializeField] private ItemSO _itemSO;
     public Dictionary<string, int> Common { get; private set; } = new();
     public Dictionary<string, BuildingData> Building { get; private set; } = new();
     public Dictionary<string, ItemData> Item { get; private set; } = new();
@@ -198,6 +199,11 @@ public class TitleData : DataBase
         foreach (var data in constructDataRaw)
         {
             Construct.Add(data.ID, data);
+        }
+
+        foreach (var item in _itemSO.items) //TEMP
+        {
+            item.SetData(Item[item.Code]);
         }
 
         _isGameDataLoaded = true;
