@@ -29,4 +29,10 @@ public class ProduceManager : ManagerBase
     {
         CurrentRemainTime.Value = remainTime;
     }
+
+    public void HarvestEarly()
+    {
+        CurrentProduceObject.HarvestEarly();
+        CurrentRemainTime.Value = -1;
+    }
 }

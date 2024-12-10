@@ -2,11 +2,18 @@ using System.Linq;
 
 using UnityEngine;
 
-public class ProduceObject : BuildingObject
+public enum ProduceState
+{
+    Idle,
+    Produce,
+    Harvest
+}
+
+public abstract class ProduceObject : BuildingObject
 {
     public ProduceData ProduceData { get; private set; }
     public ProduceOption CurrentOption { get; private set; }
-    public bool IsProducing => _remainTime > 0;
+    public ProduceState CurrentState { get; private set; }
     
     protected int _remainTime;
     
@@ -19,6 +26,8 @@ public class ProduceObject : BuildingObject
 
         ProduceData = App.GetData<TitleData>().Produce[data.ID];
         _produceManager = App.GetManager<ProduceManager>();
+        
+        CurrentState = ProduceState.Idle;
     }
 
     //TODO : Connect with Server and remain time
@@ -26,7 +35,7 @@ public class ProduceObject : BuildingObject
     {
         base.Update();
         
-        if (CurrentOption == null || _remainTime < 0) 
+        if (CurrentState != ProduceState.Produce) 
         {
             return;
         }
@@ -40,8 +49,17 @@ public class ProduceObject : BuildingObject
             {
                 _produceManager.SetRemainTime(_remainTime);
             }
+
+            if (_remainTime == 0)
+            {
+                SetupHarvest();
+            }
+            
+            CheckInUpdate();
         }
     }
+    
+    protected abstract void CheckInUpdate();
     
     protected override void OnClickWhenNotEditing()
     {
@@ -50,9 +68,14 @@ public class ProduceObject : BuildingObject
         _produceManager.SetRemainTime(_remainTime);
     }
     
-    public virtual void StartProduce(ProduceOption option)
+    protected virtual void SetupIdle()
     {
-        if (IsProducing) 
+        CurrentState = ProduceState.Idle;
+    }
+    
+    public void StartProduce(ProduceOption option)
+    {
+        if (CurrentState != ProduceState.Idle) 
         {
             return;
         }
@@ -66,5 +89,33 @@ public class ProduceObject : BuildingObject
         _remainTime = option.Time;
         
         Debug.Log("Start Produce : " + option.Results[0].Code);
+
+        SetupProduce();
+    }
+    
+    protected virtual void SetupProduce()
+    {
+        CurrentState = ProduceState.Produce;
+    }
+
+    public void StartHarvest()
+    {
+        if (CurrentState != ProduceState.Harvest) 
+        {
+            return;
+        }
+
+        SetupIdle();
+    }
+    
+    protected virtual void SetupHarvest()
+    {
+        CurrentState = ProduceState.Harvest;
+    }
+
+    public void HarvestEarly()
+    {
+        _remainTime = 0;
+        SetupHarvest();
     }
 }

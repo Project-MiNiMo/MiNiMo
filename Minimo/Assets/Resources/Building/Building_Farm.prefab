@@ -180,6 +180,7 @@ MonoBehaviour:
     m_Position: {x: 0, y: 0, z: 0}
     m_Size: {x: 0, y: 0, z: 0}
   _cropSpriteRenderer: {fileID: 7602783559982876341}
+  _harvestObj: {fileID: 0}
 --- !u!1 &7679093566653465226
 GameObject:
   m_ObjectHideFlags: 0

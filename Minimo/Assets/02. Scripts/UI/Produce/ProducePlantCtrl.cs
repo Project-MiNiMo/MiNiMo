@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 public class ProducePlantCtrl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    [SerializeField] private LayerMask _targetLayerMask;
+    private LayerMask _targetLayerMask;
     
     private RectTransform _rect;
     private Image _image;
@@ -16,6 +16,8 @@ public class ProducePlantCtrl : MonoBehaviour, IBeginDragHandler, IDragHandler, 
     
     private void Start()
     {
+        _targetLayerMask = LayerMask.GetMask("Building");
+        
         _rect = GetComponent<RectTransform>();
         _image = GetComponent<Image>();
         _canvas = GetComponentInParent<Canvas>();

@@ -13,7 +13,7 @@ public class Produce_Farm : ProduceObject
         Sugarcane,
         Pepper
     }
-    
+
     [SerializeField] private SpriteRenderer _cropSpriteRenderer;
     
     private List<Sprite[]> _cropSprites;
@@ -34,31 +34,22 @@ public class Produce_Farm : ProduceObject
             Resources.LoadAll<Sprite>("Produce/Farm/Pepper")
         };
     }
-
-    protected override void Update()
+    
+    protected override void CheckInUpdate()
     {
-        base.Update();
-        
-        if (_currentCropSprites == null || _remainTime < 0) 
+        if (_currentCropSprites == null) 
         {
             return;
         }
         
         var remainPercent = (float)_remainTime / CurrentOption.Time;
-        int newSpriteIndex;
-        
-        if (remainPercent >= 0.5f)
+
+        var newSpriteIndex = remainPercent switch
         {
-            newSpriteIndex = 0;
-        }
-        else if (remainPercent >= 0.01f)
-        {
-            newSpriteIndex = 1;
-        }
-        else
-        {
-            newSpriteIndex = 2;
-        }
+            >= 0.5f => 0,
+            >= 0.01f => 1,
+            _ => 2
+        };
 
         if (newSpriteIndex != _currentSpriteIndex)
         {
@@ -67,18 +58,20 @@ public class Produce_Farm : ProduceObject
         }
     }
     
-    public override void StartProduce(ProduceOption option)
+    protected override void SetupIdle()
     {
-        base.StartProduce(option);
+        base.SetupIdle();
+
+        _cropSpriteRenderer.sprite = null;
+    }
+    
+    protected override void SetupProduce()
+    {
+        base.SetupProduce();
         
-        if (_currentCropSprites != null) 
-        {
-            return;
-        }
-     
         _currentSpriteIndex = -1;
 
-        var cropCode = option.Results[0].Code;
+        var cropCode = CurrentOption.Results[0].Code;
         var currentCropType = cropCode switch
         {
             "Item_Wheat" => CropType.Wheat,
@@ -90,5 +83,19 @@ public class Produce_Farm : ProduceObject
         };
         
         _currentCropSprites = _cropSprites[(int)currentCropType];
+    }
+    
+    protected override void SetupHarvest()
+    {
+        base.SetupHarvest();
+        
+        //var result = CurrentOption.Results[0];
+        //var itemCode = result.Code;
+        //var amount = result.Amount;
+        
+        //App.GetManager<InventoryManager>().AddItem(itemCode, amount);
+        
+        _currentSpriteIndex = 2;
+        _cropSpriteRenderer.sprite = _currentCropSprites[_currentSpriteIndex];
     }
 }

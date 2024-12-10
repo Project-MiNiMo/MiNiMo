@@ -25,7 +25,7 @@ public class ProduceOptionCtrl : MonoBehaviour
             {
                 if (isProducing)
                 {
-                    if (_produceManager.CurrentProduceObject.IsProducing)
+                    if (_produceManager.CurrentProduceObject.CurrentState == ProduceState.Produce)
                     {
                         gameObject.SetActive(false);
                     }
