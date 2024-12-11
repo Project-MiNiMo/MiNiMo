@@ -1,0 +1,6 @@
+@MINIMO_ASP_HostAddress = http://localhost:5093
+
+GET {{MINIMO_ASP_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
