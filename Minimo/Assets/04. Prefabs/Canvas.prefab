@@ -315,6 +315,7 @@ GameObject:
   - component: {fileID: 6966116533494117726}
   - component: {fileID: 5651048873104831618}
   - component: {fileID: 1824908773173452982}
+  - component: {fileID: 3504844156447831418}
   m_Layer: 5
   m_Name: Back_Utility
   m_TagString: Untagged
@@ -425,6 +426,21 @@ MonoBehaviour:
   _buildingType: 2
   _buildingBtnParent: {fileID: 9030855136211934958}
   _buildingBtnPrefab: {fileID: 3918050097671688037, guid: 0ce0f7ecdbf716a458f1bcd5797eaa2e, type: 3}
+  _scrollUpObj: {fileID: 6356596788798315530}
+  _scrollDownObj: {fileID: 5739060420280467756}
+--- !u!114 &3504844156447831418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91823154204539847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62aabef7177dfaa4ba9d0790d7ac410d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scrollRect: {fileID: 5651048873104831618}
   _scrollUpObj: {fileID: 6356596788798315530}
   _scrollDownObj: {fileID: 5739060420280467756}
 --- !u!1 &134817714998139094
@@ -4363,8 +4379,6 @@ MonoBehaviour:
   _storageBtnParent: {fileID: 4923751417277810918}
   _storageBtnPrefab: {fileID: 5257376174168130367, guid: 2797ab095c93f864baf16b4156ad3bb2, type: 3}
   _scrollRect: {fileID: 2142839732051112340}
-  _scrollUpObj: {fileID: 6243158273882213972}
-  _scrollDownObj: {fileID: 8792835538508786870}
 --- !u!1 &1312335164608650896
 GameObject:
   m_ObjectHideFlags: 0
@@ -6940,6 +6954,7 @@ GameObject:
   - component: {fileID: 4639109197650124500}
   - component: {fileID: 5286778907046961543}
   - component: {fileID: 5346874385559809400}
+  - component: {fileID: 1555140937996449137}
   m_Layer: 5
   m_Name: Back_Minimo
   m_TagString: Untagged
@@ -7050,6 +7065,21 @@ MonoBehaviour:
   _buildingType: 3
   _buildingBtnParent: {fileID: 6538921573127319487}
   _buildingBtnPrefab: {fileID: 3918050097671688037, guid: 0ce0f7ecdbf716a458f1bcd5797eaa2e, type: 3}
+  _scrollUpObj: {fileID: 6356596788798315530}
+  _scrollDownObj: {fileID: 5739060420280467756}
+--- !u!114 &1555140937996449137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043412077517587022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62aabef7177dfaa4ba9d0790d7ac410d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scrollRect: {fileID: 5286778907046961543}
   _scrollUpObj: {fileID: 6356596788798315530}
   _scrollDownObj: {fileID: 5739060420280467756}
 --- !u!1 &2043480299551704607
@@ -8107,6 +8137,7 @@ GameObject:
   - component: {fileID: 2496114627002629767}
   - component: {fileID: 1417746016789744041}
   - component: {fileID: 2142839732051112340}
+  - component: {fileID: 2444794611900663959}
   m_Layer: 5
   m_Name: Back_Menu
   m_TagString: Untagged
@@ -8202,6 +8233,21 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2444794611900663959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2306234269466355932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62aabef7177dfaa4ba9d0790d7ac410d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scrollRect: {fileID: 2142839732051112340}
+  _scrollUpObj: {fileID: 6243158273882213972}
+  _scrollDownObj: {fileID: 8792835538508786870}
 --- !u!1 &2315310717135127401
 GameObject:
   m_ObjectHideFlags: 0
@@ -10430,6 +10476,7 @@ GameObject:
   - component: {fileID: 5164593121431553104}
   - component: {fileID: 6627040698159512532}
   - component: {fileID: 6762844330969149554}
+  - component: {fileID: 4751808805611232414}
   m_Layer: 5
   m_Name: Back_Decoration
   m_TagString: Untagged
@@ -10540,6 +10587,21 @@ MonoBehaviour:
   _buildingType: 1
   _buildingBtnParent: {fileID: 7148547604283115230}
   _buildingBtnPrefab: {fileID: 3918050097671688037, guid: 0ce0f7ecdbf716a458f1bcd5797eaa2e, type: 3}
+  _scrollUpObj: {fileID: 6356596788798315530}
+  _scrollDownObj: {fileID: 5739060420280467756}
+--- !u!114 &4751808805611232414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2685039705903037894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62aabef7177dfaa4ba9d0790d7ac410d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scrollRect: {fileID: 6627040698159512532}
   _scrollUpObj: {fileID: 6356596788798315530}
   _scrollDownObj: {fileID: 5739060420280467756}
 --- !u!1 &2694480931321947656
@@ -20493,6 +20555,7 @@ GameObject:
   - component: {fileID: 6494246002759196019}
   - component: {fileID: 414885891200405435}
   - component: {fileID: 9063044871273615234}
+  - component: {fileID: 8088493909179003015}
   m_Layer: 5
   m_Name: Back_Production
   m_TagString: Untagged
@@ -20603,6 +20666,21 @@ MonoBehaviour:
   _buildingType: 0
   _buildingBtnParent: {fileID: 7410441061097464987}
   _buildingBtnPrefab: {fileID: 3918050097671688037, guid: 0ce0f7ecdbf716a458f1bcd5797eaa2e, type: 3}
+  _scrollUpObj: {fileID: 6356596788798315530}
+  _scrollDownObj: {fileID: 5739060420280467756}
+--- !u!114 &8088493909179003015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5989379446365502462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62aabef7177dfaa4ba9d0790d7ac410d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scrollRect: {fileID: 414885891200405435}
   _scrollUpObj: {fileID: 6356596788798315530}
   _scrollDownObj: {fileID: 5739060420280467756}
 --- !u!1 &5990471857378874696

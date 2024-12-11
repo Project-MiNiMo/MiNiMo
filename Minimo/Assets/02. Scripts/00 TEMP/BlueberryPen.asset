@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa7b1557f36b4574a979bb48013f2744, type: 3}
   m_Name: BlueberryPen
   m_EditorClassIdentifier: 
-  Code: 
+  Code: Item_BlueberryPen
   Count: 0
