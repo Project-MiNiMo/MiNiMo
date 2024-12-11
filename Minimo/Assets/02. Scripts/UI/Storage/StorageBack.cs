@@ -17,7 +17,7 @@ public class StorageBack : MonoBehaviour
     [SerializeField] private GameObject _storageBtnPrefab;
 
     [Header("Scroll")]
-    [SerializeField] ScrollRect _scrollRect;
+    [SerializeField] private ScrollRect _scrollRect;
     
     private List<StorageBtn> _storageBtns;
 

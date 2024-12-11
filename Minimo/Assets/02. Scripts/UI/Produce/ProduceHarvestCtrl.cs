@@ -9,7 +9,8 @@ public class ProduceHarvestCtrl : MonoBehaviour, IBeginDragHandler, IDragHandler
     private ProduceManager _produceManager;
     
     private LayerMask _targetLayerMask;
-    
+
+    [SerializeField] private RectTransform _parentRect;
     [SerializeField] private RectTransform _rect;
     [SerializeField] private Image _image;
     private Canvas _canvas;
@@ -33,6 +34,7 @@ public class ProduceHarvestCtrl : MonoBehaviour, IBeginDragHandler, IDragHandler
                 {
                     var isHarvest = _produceManager.CurrentProduceObject.CurrentState == ProduceState.Harvest;
                     gameObject.SetActive(isHarvest);
+                    SetPosition();
                 }
             }).AddTo(gameObject);
         
@@ -46,6 +48,13 @@ public class ProduceHarvestCtrl : MonoBehaviour, IBeginDragHandler, IDragHandler
                 }
             })
             .AddTo(gameObject);
+    }
+    
+    private void SetPosition()
+    {
+        var position = _produceManager.CurrentProduceObject.transform.position;
+        var screenPos = Camera.main.WorldToScreenPoint(position);
+        _parentRect.position = screenPos;
     }
 
     public void OnBeginDrag(PointerEventData eventData)

@@ -56,15 +56,16 @@ public class StoragePanel : UIBase
     {
         for (int i = 0; i < _storageBtns.Length; i++)
         {
-            _storageBack.FilterStorageBtns(i);
+            var idx = i;
             
-            if (index == i)
+            if (index == idx)
             {
-                _storageBtns[i].image.sprite = _btnSprites[0];
+                _storageBtns[idx].image.sprite = _btnSprites[0];
+                _storageBack.FilterStorageBtns(idx);
             }
             else
             {
-                _storageBtns[i].image.sprite = _btnSprites[1];
+                _storageBtns[idx].image.sprite = _btnSprites[1];
             }
         }
     }
