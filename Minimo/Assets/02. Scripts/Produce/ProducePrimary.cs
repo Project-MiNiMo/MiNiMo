@@ -1,131 +1,86 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
-public class ProducePrimary : BuildingObject
+public abstract class ProducePrimary : ProduceObject
 {
-    public ProduceData ProduceData { get; private set; }
-    public ProduceOption CurrentOption { get; private set; }
-    public ProduceState CurrentState { get; private set; }
+    [SerializeField] private SpriteRenderer _cropSpriteRenderer;
     
-    protected int _remainTime;
-    
-    protected ProduceManager _produceManager;
-    protected TimeManager _timeManager;
-    protected DateTime _lastUpdateTime; 
-    
-    public override void Initialize(BuildingData data)
-    {
-        base.Initialize(data);
-
-        CurrentState = ProduceState.Idle;
-        
-        ProduceData = App.GetData<TitleData>().Produce[data.ID];
-        
-        _produceManager = App.GetManager<ProduceManager>();
-        _timeManager = App.GetManager<TimeManager>();
-    }
-
-    //TODO : Connect with Server and remain time
+    protected List<Sprite[]> _cropSprites;
+   
+    private Sprite[] _currentCropSprites;
+    private int _currentSpriteIndex;
+  
     protected override void Update()
     {
         base.Update();
-
-        if (IsNotProducing) 
-        {
-            return;
-        }
         
-        CheckRemainTime();
-    }
-    
-    protected virtual bool IsNotProducing => CurrentState != ProduceState.Produce;
-
-    protected virtual void CheckRemainTime()
-    {
-        if ((_timeManager.Time - _lastUpdateTime).TotalSeconds >= 1f)
-        {
-            _lastUpdateTime = _timeManager.Time;
-            _remainTime--;
-            
-            if (_produceManager.CurrentProduceObject == this)
-            {
-                _produceManager.SetRemainTime(_remainTime);
-            }
-
-            if (_remainTime == 0)
-            {
-                SetupHarvest();
-            }
-            
-            SetProduceSprite();
-        }
-    }
-    
-    protected abstract void SetProduceSprite();
-    
-    protected override void OnClickWhenNotEditing()
-    {
-        _produceManager.ActiveProduce(this);
-        
-        _produceManager.SetRemainTime(_remainTime);
-    }
-    
-    protected virtual void SetupIdle()
-    {
-        CurrentState = ProduceState.Idle;
-    }
-    
-    public void StartProduce(ProduceOption option)
-    {
-        if (CurrentState != ProduceState.Idle) 
-        {
-            return;
-        }
-        
-        if (!ProduceData.ProduceOptions.Contains(option))
-        {
-            return;
-        }
-        
-        CurrentOption = option;
-        _remainTime = option.Time;
-        _lastUpdateTime = _timeManager.Time;
-        
-        Debug.Log("Start Produce : " + option.Results[0].Code);
-
-        SetupProduce();
-    }
-    
-    protected virtual void SetupProduce()
-    {
-        CurrentState = ProduceState.Produce;
-    }
-
-    public virtual void StartHarvest()
-    {
-        if (CurrentState != ProduceState.Harvest) 
+        if (_currentCropSprites == null) 
         {
             return;
         }
 
-        SetupIdle();
-    }
-    
-    protected virtual void SetupHarvest()
-    {
-        foreach (var result in CurrentOption.Results)
+        if (CompleteTasks.Count > 0)
         {
-            var item = App.GetData<TitleData>().ItemSO.GetItem(result.Code);
-            item.Count = result.Amount;
+            return;
         }
-        
-        CurrentState = ProduceState.Harvest;
+
+        SetCropSprite();
     }
 
-    public void HarvestEarly()
+    private void SetCropSprite()
     {
-        _remainTime = 0;
-        SetupHarvest();
+        var remainPercent = (float)ActiveTask.RemainTime / ActiveTask.Data.Time;
+
+        var newSpriteIndex = remainPercent switch
+        {
+            >= 0.5f => 0,
+            >= 0.01f => 1,
+            _ => 2
+        };
+
+        if (newSpriteIndex != _currentSpriteIndex)
+        {
+            _currentSpriteIndex = newSpriteIndex;
+            _cropSpriteRenderer.sprite = _currentCropSprites[_currentSpriteIndex];
+        }
+    }
+    
+    public override void StartHarvest()
+    {
+        base.StartHarvest();
+
+        if (ActiveTask == null)
+        {
+            _cropSpriteRenderer.sprite = null;
+        }
+        else
+        {
+            SetCropSprite();
+        }
+    }
+    
+    public override bool StartProduce(ProduceOption option)
+    {
+        if (!base.StartProduce(option)) return false;
+        
+        _currentSpriteIndex = 0;
+
+        var cropCode = ActiveTask.Data.Results[0].Code;
+        _currentCropSprites = _cropSprites[GetCropType(cropCode)];
+        _cropSpriteRenderer.sprite = _currentCropSprites[_currentSpriteIndex];
+
+        return true;
+    }
+
+    protected abstract int GetCropType(string cropCode);
+
+    protected override void SetCompleteTask()
+    {
+        base.SetCompleteTask();
+        
+        _currentSpriteIndex = 2;
+        _cropSpriteRenderer.sprite = _currentCropSprites[_currentSpriteIndex];
     }
 }

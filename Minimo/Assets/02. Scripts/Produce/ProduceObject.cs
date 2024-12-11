@@ -8,13 +8,13 @@ public abstract class ProduceObject : BuildingObject
 {
     public ProduceData ProduceData { get; private set; }
     public ProduceTask ActiveTask { get; private set; }
+    public readonly List<ProduceTask> CompleteTasks  = new();
     
-    private readonly List<ProduceTask> _pendingTasks = new();
-    private readonly List<ProduceTask> _completeTasks = new();
+    protected readonly List<ProduceTask> _pendingTasks = new();
     
-    protected ProduceManager _produceManager;
-    protected TimeManager _timeManager;
-    protected DateTime _lastUpdateTime; 
+    private ProduceManager _produceManager;
+    private TimeManager _timeManager;
+    private DateTime _lastUpdateTime; 
     
     public override void Initialize(BuildingData data)
     {
@@ -43,6 +43,8 @@ public abstract class ProduceObject : BuildingObject
         _lastUpdateTime = _timeManager.Time;
         
         ActiveTask.UpdateHarvestTime();
+
+        SetRemainTime();
         
         if (ActiveTask.RemainTime == 0) 
         {
@@ -51,11 +53,19 @@ public abstract class ProduceObject : BuildingObject
         }
     }
 
-    private void SetCompleteTask()
+    private void SetRemainTime()
+    {
+        if (_produceManager.CurrentProduceObject == this)
+        {
+            _produceManager.SetRemainTime(ActiveTask.RemainTime);
+        }
+    }
+
+    protected virtual void SetCompleteTask()
     {
         if (ActiveTask != null) 
         {
-            _completeTasks.Add(ActiveTask);
+            CompleteTasks.Add(ActiveTask);
             ActiveTask = null;
         }
     }
@@ -68,24 +78,28 @@ public abstract class ProduceObject : BuildingObject
         {
             ActiveTask = _pendingTasks[0];
             _pendingTasks.RemoveAt(0);
+
+            SetRemainTime();
         }
     }
     
-    public void StartProduce(ProduceOption option)
+    public virtual bool StartProduce(ProduceOption option)
     {
         if (!ProduceData.ProduceOptions.Contains(option))
         {
-            return;
+            return false;
         }
  
         _pendingTasks.Add(new ProduceTask(option));
         SetActiveTask();
         Debug.Log("Start Produce : " + option.Results[0].Code);
+
+        return true;
     }
   
-    public void StartHarvest()
+    public virtual void StartHarvest()
     {
-        foreach (var task in _completeTasks)
+        foreach (var task in CompleteTasks)
         {
             foreach (var result in task.Data.Results)
             {
@@ -94,7 +108,7 @@ public abstract class ProduceObject : BuildingObject
             }
         }
         
-        _completeTasks.Clear();
+        CompleteTasks.Clear();
     }
 
     public void HarvestEarly()
@@ -102,6 +116,8 @@ public abstract class ProduceObject : BuildingObject
         if (ActiveTask == null) return;
         
         ActiveTask.HarvestEarly();
+        SetRemainTime();
+        
         SetCompleteTask();
         SetActiveTask();
     }
