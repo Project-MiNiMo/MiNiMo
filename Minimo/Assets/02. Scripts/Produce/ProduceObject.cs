@@ -8,9 +8,8 @@ public abstract class ProduceObject : BuildingObject
 {
     public ProduceData ProduceData { get; private set; }
     public ProduceTask ActiveTask { get; private set; }
-    public readonly List<ProduceTask> CompleteTasks  = new();
-    
-    protected readonly List<ProduceTask> _pendingTasks = new();
+    public List<ProduceTask> CompleteTasks { get; } = new();
+    public List<ProduceTask> PendingTasks { get; } = new();
     
     private ProduceManager _produceManager;
     private TimeManager _timeManager;
@@ -70,14 +69,14 @@ public abstract class ProduceObject : BuildingObject
         }
     }
 
-    private void SetActiveTask()
+    protected void SetActiveTask()
     {
         if (ActiveTask != null) return;
         
-        if (_pendingTasks.Count > 0)
+        if (PendingTasks.Count > 0)
         {
-            ActiveTask = _pendingTasks[0];
-            _pendingTasks.RemoveAt(0);
+            ActiveTask = PendingTasks[0];
+            PendingTasks.RemoveAt(0);
 
             SetRemainTime();
         }
@@ -90,7 +89,7 @@ public abstract class ProduceObject : BuildingObject
             return false;
         }
  
-        _pendingTasks.Add(new ProduceTask(option));
+        PendingTasks.Add(new ProduceTask(option));
         SetActiveTask();
         Debug.Log("Start Produce : " + option.Results[0].Code);
 
@@ -125,5 +124,10 @@ public abstract class ProduceObject : BuildingObject
     protected override void OnClickWhenNotEditing()
     {
         _produceManager.ActiveProduce(this);
+
+        if (ActiveTask != null) 
+        {
+            _produceManager.SetRemainTime(ActiveTask.RemainTime);
+        }
     }
 }

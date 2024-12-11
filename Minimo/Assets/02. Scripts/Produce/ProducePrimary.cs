@@ -1,7 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public abstract class ProducePrimary : ProduceObject
 {
@@ -15,6 +14,11 @@ public abstract class ProducePrimary : ProduceObject
     protected override void Update()
     {
         base.Update();
+        
+        if (ActiveTask == null)
+        {
+            return;
+        }
         
         if (_currentCropSprites == null) 
         {

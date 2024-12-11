@@ -1,4 +1,3 @@
-using System.Linq;
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -38,13 +37,15 @@ public class Produce_Farm : ProducePrimary
         _ => (int)CropType.Wheat
     };
     
-    public override void StartHarvest()
+    public override bool StartProduce(ProduceOption option)
     {
-        if (ActiveTask != null || CompleteTasks.Count >= 0)
+        if (ActiveTask != null || CompleteTasks.Count > 0)
         {
-            return;
+            return false;
         }
         
-        base.StartHarvest();
+        base.StartProduce(option);
+
+        return true;
     }
 }
