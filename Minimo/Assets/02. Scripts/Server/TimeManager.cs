@@ -65,7 +65,6 @@ public class TimeManager : ManagerBase
         try
         {
             var serverTime = await _gameClient.GetAsync<DateTime> ("api/time");
-            Debug.Log($"Server time: {serverTime}");
             var localTime = DateTime.UtcNow;
             _timeOffset = serverTime - localTime;
             _lastTime = Time;
