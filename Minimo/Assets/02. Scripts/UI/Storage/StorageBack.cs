@@ -12,100 +12,51 @@ public class StorageBack : MonoBehaviour
         Product,
         Construction
     }
-
-    [SerializeField] private Button[] _btns;
-
+    
     [SerializeField] private Transform _storageBtnParent;
     [SerializeField] private GameObject _storageBtnPrefab;
 
     [Header("Scroll")]
     [SerializeField] ScrollRect _scrollRect;
-
-    private RectTransform _contentRect;
-    private RectTransform _viewportRect;
-
+    
     private List<StorageBtn> _storageBtns;
-    
-    private void Start()
-    {
-        SetButtonEvent();
-        InitStorageBtns();
-    }
 
-    private void OnEnable()
+    public void InitStorageBtns()
     {
-        OnClickStorageBtn(0);
-    }
-    
-    private void SetButtonEvent()
-    {
-        for (int i = 0; i < _btns.Length; i++)
-        {
-            int idx = i;
-            _btns[idx].onClick.AddListener(() => OnClickStorageBtn(idx));
-        }
-    }
-
-    private void InitStorageBtns()
-    {
-        StorageBtn storageBtn;
-
         var existingButtons = GetComponentsInChildren<StorageBtn>(true);
-
         var items = App.GetData<TitleData>().ItemSO.items;
-        _storageBtns = new(items.Length);
+        
+        _storageBtns = new(items.Count);
 
-        int index = 0;
-
-        foreach (var item in items)
+        int i = 0;
+        
+        for (; i < items.Count; i++)
         {
-            if (index < existingButtons.Length)
-            {
-                storageBtn = existingButtons[index];
-            }
-            else
-            {
-                storageBtn = Instantiate(_storageBtnPrefab, _storageBtnParent).GetComponent<StorageBtn>();
-            }
+            var storageBtn = i < existingButtons.Length 
+                ? existingButtons[i] 
+                : Instantiate(_storageBtnPrefab, _storageBtnParent).GetComponent<StorageBtn>();
 
-            storageBtn.Initialize(item);
+            storageBtn.Initialize(items[i]);
             _storageBtns.Add(storageBtn);
-
-            index++;
         }
 
-        for (; index < existingButtons.Length; index++)
+        for (; i < existingButtons.Length; i++)
         {
-            existingButtons[index].gameObject.SetActive(false);
+            existingButtons[i].gameObject.SetActive(false);
         }
     }
     
-    private void OnClickStorageBtn(int index)
+    public void FilterStorageBtns(int index)
     {
-        if (_storageBtns == null) return;
-        
-        if ((StorageType)index == StorageType.Entire) 
-        {
-            foreach (var button in _storageBtns)
-            {
-                button.gameObject.SetActive(true);
-            }
-
-            _scrollRect.verticalNormalizedPosition = 1;
-            return;
-        }
+        var targetType = (StorageType)index;
         
         foreach (var button in _storageBtns)
         {
-            if (CheckType((ItemType)button.Item.Data.Type) == (StorageType)index) 
-            {
-                Debug.Log($"{CheckType((ItemType)button.Item.Data.Type)} : {(StorageType)index}");
-                button.gameObject.SetActive(true);
-            }
-            else
-            {
-                button.gameObject.SetActive(false);
-            }
+            bool isActive = 
+                targetType == StorageType.Entire 
+                || CheckType((ItemType)button.Item.Data.Type) == targetType;
+            
+            button.gameObject.SetActive(isActive);
         }
         
         _scrollRect.verticalNormalizedPosition = 1;

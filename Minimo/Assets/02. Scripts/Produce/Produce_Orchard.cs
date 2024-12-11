@@ -139,13 +139,7 @@ public class Produce_Orchard :ProduceObject
     protected override void SetupHarvest()
     {
         base.SetupHarvest();
-        
-        //var result = CurrentOption.Results[0];
-        //var itemCode = result.Code;
-        //var amount = result.Amount;
-        
-        //App.GetManager<InventoryManager>().AddItem(itemCode, amount);
-        
+
         _currentSpriteIndex = 2;
         _fruitSpriteRenderer.sprite = _currentFruitSprites[_currentSpriteIndex];
     }

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -26,8 +25,10 @@ public class StorageBtn : MonoBehaviour
     {
         if (Item?.Count <= 0)
         {
-            //gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
+
+        SetCountText();
     }
 
     public void Initialize(Item item)
@@ -36,11 +37,15 @@ public class StorageBtn : MonoBehaviour
         AnchoredPosition = GetComponent<RectTransform>().anchoredPosition;
         
         _iconImg.sprite = item.Icon;
-        _countTMP.text = item.Count.ToString();
     }
     
     private void OnClickInfoBtn()
     {
         _infoPanel.OpenPanel(this);
+    }
+
+    private void SetCountText()
+    {
+        _countTMP.text = Item?.Count.ToString();
     }
 }

@@ -7,6 +7,7 @@ public class StoragePanel : UIBase
     [SerializeField] private TextMeshProUGUI _titleTMP;
     [SerializeField] private Button[] _storageBtns;
     [SerializeField] private Sprite[] _btnSprites;
+    [SerializeField] private StorageBack _storageBack;
 
     [Header("Buttons")]
     [SerializeField] private Button _closeBtn;
@@ -15,6 +16,8 @@ public class StoragePanel : UIBase
     {
         SetString();
         SetButtonEvent();
+        
+        _storageBack.InitStorageBtns();
     }
 
     public override void OpenPanel()
@@ -22,6 +25,7 @@ public class StoragePanel : UIBase
         base.OpenPanel();
 
         OnClickStorageBtn(0);
+        _storageBack.FilterStorageBtns(0);
     }
 
     private void SetString()
@@ -52,6 +56,8 @@ public class StoragePanel : UIBase
     {
         for (int i = 0; i < _storageBtns.Length; i++)
         {
+            _storageBack.FilterStorageBtns(i);
+            
             if (index == i)
             {
                 _storageBtns[i].image.sprite = _btnSprites[0];

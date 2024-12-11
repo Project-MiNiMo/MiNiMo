@@ -122,6 +122,12 @@ public abstract class ProduceObject : BuildingObject
     
     protected virtual void SetupHarvest()
     {
+        foreach (var result in CurrentOption.Results)
+        {
+            var item = App.GetData<TitleData>().ItemSO.GetItem(result.Code);
+            item.Count = result.Amount;
+        }
+        
         CurrentState = ProduceState.Harvest;
     }
 

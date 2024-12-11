@@ -28,8 +28,6 @@ public class StorageSellCtrl : MonoBehaviour
     private void AddCurrentCount(int amount)
     {
         _currentCount += amount;
-        _countText.text = _currentCount.ToString();
+        _countText.text = $"X{_currentCount}";
     }
-    
-    
 }

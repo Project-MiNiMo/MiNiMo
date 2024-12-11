@@ -426,8 +426,6 @@ MonoBehaviour:
   _buildingType: 2
   _buildingBtnParent: {fileID: 9030855136211934958}
   _buildingBtnPrefab: {fileID: 3918050097671688037, guid: 0ce0f7ecdbf716a458f1bcd5797eaa2e, type: 3}
-  _scrollUpObj: {fileID: 6356596788798315530}
-  _scrollDownObj: {fileID: 5739060420280467756}
 --- !u!114 &3504844156447831418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2914,12 +2912,12 @@ GameObject:
   - component: {fileID: 8278662209395335976}
   - component: {fileID: 6706139351011711865}
   m_Layer: 5
-  m_Name: Back_StorageInfo
+  m_Name: Panel_StorageInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8278662209395335976
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2933,7 +2931,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8735782008452230885}
-  - {fileID: 5995296041656195422}
+  - {fileID: 953854672757921233}
   m_Father: {fileID: 6044111954838304090}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4371,11 +4369,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c79b66b90390c4e4d813fe48a793cf51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _btns:
-  - {fileID: 6815361241518519670}
-  - {fileID: 3314743905484767366}
-  - {fileID: 3278974353178409279}
-  - {fileID: 1927734231495595375}
   _storageBtnParent: {fileID: 4923751417277810918}
   _storageBtnPrefab: {fileID: 5257376174168130367, guid: 2797ab095c93f864baf16b4156ad3bb2, type: 3}
   _scrollRect: {fileID: 2142839732051112340}
@@ -4868,11 +4861,11 @@ RectTransform:
   - {fileID: 4917813687806055913}
   - {fileID: 2953856780290876731}
   - {fileID: 169160683808351343}
-  m_Father: {fileID: 5995296041656195422}
+  m_Father: {fileID: 8278662209395335976}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 125, y: -125}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 500, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7462665053640599718
@@ -5614,6 +5607,7 @@ MonoBehaviour:
   _btnSprites:
   - {fileID: 21300000, guid: b347d5c8496ca3e4e81ce274d345c813, type: 3}
   - {fileID: 21300000, guid: 8f3177d7bf48218428ca9bc2cc116f1e, type: 3}
+  _storageBack: {fileID: 8141342806314303648}
   _closeBtn: {fileID: 2392317807583252565}
 --- !u!1 &1715413579362352914
 GameObject:
@@ -7065,8 +7059,6 @@ MonoBehaviour:
   _buildingType: 3
   _buildingBtnParent: {fileID: 6538921573127319487}
   _buildingBtnPrefab: {fileID: 3918050097671688037, guid: 0ce0f7ecdbf716a458f1bcd5797eaa2e, type: 3}
-  _scrollUpObj: {fileID: 6356596788798315530}
-  _scrollDownObj: {fileID: 5739060420280467756}
 --- !u!114 &1555140937996449137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10587,8 +10579,6 @@ MonoBehaviour:
   _buildingType: 1
   _buildingBtnParent: {fileID: 7148547604283115230}
   _buildingBtnPrefab: {fileID: 3918050097671688037, guid: 0ce0f7ecdbf716a458f1bcd5797eaa2e, type: 3}
-  _scrollUpObj: {fileID: 6356596788798315530}
-  _scrollDownObj: {fileID: 5739060420280467756}
 --- !u!114 &4751808805611232414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16850,42 +16840,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &4671599552505896541
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5995296041656195422}
-  m_Layer: 5
-  m_Name: Back_Info
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &5995296041656195422
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4671599552505896541}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 953854672757921233}
-  m_Father: {fileID: 8278662209395335976}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -305}
-  m_SizeDelta: {x: 1150, y: 1721.843}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4707625217506420779
 GameObject:
   m_ObjectHideFlags: 0
@@ -20666,8 +20620,6 @@ MonoBehaviour:
   _buildingType: 0
   _buildingBtnParent: {fileID: 7410441061097464987}
   _buildingBtnPrefab: {fileID: 3918050097671688037, guid: 0ce0f7ecdbf716a458f1bcd5797eaa2e, type: 3}
-  _scrollUpObj: {fileID: 6356596788798315530}
-  _scrollDownObj: {fileID: 5739060420280467756}
 --- !u!114 &8088493909179003015
 MonoBehaviour:
   m_ObjectHideFlags: 0

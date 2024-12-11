@@ -89,13 +89,7 @@ public class Produce_Farm : ProduceObject
     protected override void SetupHarvest()
     {
         base.SetupHarvest();
-        
-        //var result = CurrentOption.Results[0];
-        //var itemCode = result.Code;
-        //var amount = result.Amount;
-        
-        //App.GetManager<InventoryManager>().AddItem(itemCode, amount);
-        
+
         _currentSpriteIndex = 2;
         _cropSpriteRenderer.sprite = _currentCropSprites[_currentSpriteIndex];
     }
