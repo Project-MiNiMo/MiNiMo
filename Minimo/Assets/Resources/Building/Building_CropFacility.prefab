@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 874ae367de9771542a6bc2c230a33d20, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7e01d2b4662a8dd44bcdb8520dababd0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6314677405763876296}
-  - component: {fileID: 7782138920005508789}
+  - component: {fileID: 300050482602119651}
   - component: {fileID: 8559784029600353285}
   m_Layer: 0
   m_Name: Building_CropFacility
@@ -119,8 +119,8 @@ Transform:
   - {fileID: 2465788654581326482}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &7782138920005508789
-BoxCollider2D:
+--- !u!60 &300050482602119651
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -161,9 +161,18 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.8724898, y: 1.9862928}
+      - {x: -1.7657553, y: 1.0383127}
+      - {x: -1.5832956, y: -0.19677421}
+      - {x: -2.0166454, y: -0.7457932}
+      - {x: -0.13192195, y: -1.9683259}
+      - {x: 1.9780934, y: -0.6883345}
+      - {x: 1.2706033, y: -0.01239574}
+      - {x: 0.9150318, y: 1.7896035}
+      - {x: 0.14179063, y: 1.2194413}
+  m_UseDelaunayMesh: 0
 --- !u!114 &8559784029600353285
 MonoBehaviour:
   m_ObjectHideFlags: 0
