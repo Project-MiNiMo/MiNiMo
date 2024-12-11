@@ -31,10 +31,10 @@ public class ProduceInfoCtrl : MonoBehaviour
             {
                 if (isProducing) 
                 {
-                    if (_produceManager.CurrentProduceObject.CurrentState == ProduceState.Produce)
+                    if (_produceManager.CurrentProduceObject.ActiveTask != null)
                     {
                         gameObject.SetActive(true);
-                        _currentOption = _produceManager.CurrentProduceObject.CurrentOption;
+                        _currentOption = _produceManager.CurrentProduceObject.ActiveTask.Data;
                         SetPosition();
                         SetInfo();
                     }

@@ -134,7 +134,7 @@ MonoBehaviour:
   Area:
     m_Position: {x: 0, y: 0, z: 0}
     m_Size: {x: 0, y: 0, z: 0}
-  _fruitSpriteRenderer: {fileID: 7602783559982876341}
+  _cropSpriteRenderer: {fileID: 7602783559982876341}
 --- !u!60 &2790358462205813101
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 2465788654581326482}
   - component: {fileID: 7602783559982876341}
   m_Layer: 0
-  m_Name: Fruit
+  m_Name: Crop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
