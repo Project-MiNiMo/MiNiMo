@@ -1,56 +1,26 @@
-using UniRx;
+using System.Linq;
+
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class InstallChecker : MonoBehaviour
 {
-    [SerializeField] private Tilemap _markTilemap;
-    [SerializeField] private TileBase _possibleTile;
-    [SerializeField] private TileBase _impossibleTile;
-
-    private EditManager _editManager;
-    private GridManager _gridManager;
-
-    private void Start()
-    {
-        _editManager = App.GetManager<EditManager>();
-        _gridManager = App.GetManager<GridManager>();
-        
-        _editManager.IsEditing
-            .Subscribe((isEditing) =>
-            {
-                if (!isEditing)
-                {
-                    ClearMarkTiles();
-                }
-            }).AddTo((gameObject));
-
-        _editManager.CurrentCellPosition
-            .Subscribe((position) =>
-            {
-                Debug.Log("편집중");
-                if(!_editManager.CurrentEditObject)
-                {
-                    return;
-                }
-                Debug.Log("하는 중");
-                SetMarkTiles(_editManager.CurrentEditObject);
-            }).AddTo(gameObject);
-    }
+    [SerializeField] private Tilemap _checkTilemap;
     
-    private void ClearMarkTiles()
+    private TileBase[] _currentTiles;
+    
+    public bool CheckCanInstall(BuildingObject gridObject)
     {
-        _markTilemap.ClearAllTiles();
+        var buildingArea = gridObject.Area;
+        var baseArray = _checkTilemap.GetTilesBlock(buildingArea);
+   
+        return baseArray.All(tile => tile);
     }
 
-    private void SetMarkTiles(GridObject gridObject)
+    public bool CheckCanInstall(Vector3Int position)
     {
-        ClearMarkTiles();
-        Debug.Log("체크중");
-        foreach (var position in gridObject.Area.allPositionsWithin)
-        {
-            _markTilemap.SetTile(position, _gridManager.CheckCanInstall(position) ? 
-                _possibleTile : _impossibleTile);
-        }
+        var tile = _checkTilemap.GetTile(position);
+        
+        return tile;
     }
 }

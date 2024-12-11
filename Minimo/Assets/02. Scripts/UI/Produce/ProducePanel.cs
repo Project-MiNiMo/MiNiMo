@@ -40,7 +40,7 @@ public class ProducePanel : UIBase, IEventListener
         }
     }
 
-    public void StartManageBuilding(GridObject gridObject)
+    public void StartManageBuilding(BuildingObject gridObject)
     {
         OpenPanel();
 
@@ -49,7 +49,7 @@ public class ProducePanel : UIBase, IEventListener
         _itemCtrl.InitItemButtons(gridObject);
     }
 
-    public void StartManageBuildingOnProduce(GridObject gridObject, int remainTime)
+    public void StartManageBuildingOnProduce(BuildingObject gridObject, int remainTime)
     {
         OpenPanel();
 
