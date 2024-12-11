@@ -1,8 +1,5 @@
 using System;
-using UniRx;
-using UniRx.Triggers;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class BuildingObject : MonoBehaviour
 {
@@ -13,7 +10,6 @@ public class BuildingObject : MonoBehaviour
     private bool _isPlaced = false;
     private bool _isFlipped = false;
     private bool _isPressed = false;
-    private bool _isDragUI = false;
     private const float LONG_PRESS_THRESHOLD = 3f;
     private float _pressTime = 0f;
     
@@ -25,26 +21,23 @@ public class BuildingObject : MonoBehaviour
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
-    // ReSharper disable Unity.PerformanceAnalysis
     private void Start()
     {
         _editManager = App.GetManager<EditManager>();
     }
 
-    public void Initialize(BuildingData data, Sprite sprite)
+    public virtual void Initialize(BuildingData data)
     {
         Data = data;
 
         var size = new Vector3Int(data.SizeX, data.SizeY, 1);
         Area = new BoundsInt(Vector3Int.zero, size);
 
-        _spriteRenderer.sprite = sprite;
-
         var yPosition = (float)((data.SizeX - 1) * 0.5);
         _spriteRenderer.transform.localPosition = new Vector3(0, yPosition, 0);
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (_isPressed && !_editManager.IsEditing.Value) 
         {
@@ -61,11 +54,16 @@ public class BuildingObject : MonoBehaviour
     {
         _isPressed = false;
         _pressTime = 0f;
+
+        if (!_editManager.IsEditing.Value)
+        {
+            OnClickWhenNotEditing();
+        }
     }
 
     private void OnMouseDown()
     {
-        if (true)
+        if (!_editManager.IsEditing.Value)
         {
             Debug.Log("OnMouseDown");
             _isPressed = true;
@@ -134,4 +132,6 @@ public class BuildingObject : MonoBehaviour
         _isFlipped = !_isFlipped;
     }
     #endregion
+
+    protected virtual void OnClickWhenNotEditing() { }
 }
