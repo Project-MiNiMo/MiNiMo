@@ -10,21 +10,25 @@ public class StorageSellCtrl : MonoBehaviour
     [SerializeField] private Button _sellBtn;
     [SerializeField] private TextMeshProUGUI _priceText;
 
+    private Item _item;
     private int _currentCount;
-
-    private void Start()
-    {
-        
-    }
 
     public void Initialize(Item item)
     {
-        _countText.text = 1.ToString();
+        _item = item;
+        _currentCount = (item.Count / 2) + 1;
+        _countText.text = _currentCount.ToString();
         _priceText.text = item.Data.ToString();
-        
-        //_increaseBtn.onClick.AddListener(OnClickIncreaseBtn);
-        //_decreaseBtn.onClick.AddListener(OnClickDecreaseBtn);
+
+        _increaseBtn.onClick.AddListener(() => AddCurrentCount(1));
+        _decreaseBtn.onClick.AddListener(() => AddCurrentCount(-1));
         //_sellBtn.onClick.AddListener(OnClickSellBtn);
+    }
+
+    private void AddCurrentCount(int amount)
+    {
+        _currentCount += amount;
+        _countText.text = _currentCount.ToString();
     }
     
     

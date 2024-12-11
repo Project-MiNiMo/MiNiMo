@@ -34,7 +34,6 @@ public class ItemData
     public int BuyCost;
     public int SellCost;
     public int CashCost;
-    public string Icon;
     public string Name;
     public string Description;
 }

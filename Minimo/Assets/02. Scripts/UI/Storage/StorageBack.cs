@@ -42,6 +42,7 @@ public class StorageBack : MonoBehaviour
         if (_scrollRect == null) return;
 
         _scrollRect.verticalNormalizedPosition = 1;
+        OnClickStorageBtn(0);
     }
     
     private void SetButtonEvent()
@@ -49,7 +50,6 @@ public class StorageBack : MonoBehaviour
         for (int i = 0; i < _btns.Length; i++)
         {
             int idx = i;
-
             _btns[idx].onClick.AddListener(() => OnClickStorageBtn(idx));
         }
     }
@@ -77,6 +77,7 @@ public class StorageBack : MonoBehaviour
             }
 
             storageBtn.Initialize(item);
+            _storageBtns.Add(storageBtn);
 
             index++;
         }
@@ -89,6 +90,8 @@ public class StorageBack : MonoBehaviour
     
     private void OnClickStorageBtn(int index)
     {
+        if (_storageBtns == null) return;
+        
         if ((StorageType)index == StorageType.Entire) 
         {
             foreach (var button in _storageBtns)
@@ -104,6 +107,7 @@ public class StorageBack : MonoBehaviour
         {
             if (CheckType((ItemType)button.Item.Data.Type) == (StorageType)index) 
             {
+                Debug.Log($"{CheckType((ItemType)button.Item.Data.Type)} : {(StorageType)index}");
                 button.gameObject.SetActive(true);
             }
             else

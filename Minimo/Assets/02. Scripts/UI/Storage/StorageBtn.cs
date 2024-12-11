@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -5,12 +6,13 @@ using TMPro;
 public class StorageBtn : MonoBehaviour
 {
     public Item Item { get; private set; }
+    public Vector2 AnchoredPosition { get; private set; }
+    
     [SerializeField] private Button _infoBtn;
     
     [SerializeField] private Image _iconImg;
     [SerializeField] private TextMeshProUGUI _countTMP;
 
-    private Item _item;
     private StorageInfoPanel _infoPanel;
 
     private void Start()
@@ -20,17 +22,25 @@ public class StorageBtn : MonoBehaviour
         _infoBtn.onClick.AddListener(OnClickInfoBtn);
     }
 
+    private void OnEnable()
+    {
+        if (Item?.Count <= 0)
+        {
+            //gameObject.SetActive(false);
+        }
+    }
+
     public void Initialize(Item item)
     {
-        _item = item;
-
-        string spritePath = $"Item/Icon/{item.Icon}";
-        _iconImg.sprite = Resources.Load<Sprite>(spritePath);
-        _countTMP.text = 1.ToString();
+        Item = item;
+        AnchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+        
+        _iconImg.sprite = item.Icon;
+        _countTMP.text = item.Count.ToString();
     }
     
     private void OnClickInfoBtn()
     {
-        _infoPanel.OpenPanel(_item);
+        _infoPanel.OpenPanel(this);
     }
 }

@@ -7,7 +7,6 @@
     "BuyCost": -1,
     "SellCost": -1,
     "CashCost": -1,
-    "Icon": "Item_WheatSeed",
     "Name": "STR_ITEM_WHEATSEED_NAME",
     "Description": "STR_ITEM_WHEATSEED_DESC"
   },
@@ -19,7 +18,6 @@
     "BuyCost": -1,
     "SellCost": -1,
     "CashCost": -1,
-    "Icon": "Item_CornSeed",
     "Name": "STR_ITEM_CORNSEED_NAME",
     "Description": "STR_ITEM_CORNSEED_DESC"
   },
@@ -31,7 +29,6 @@
     "BuyCost": -1,
     "SellCost": -1,
     "CashCost": -1,
-    "Icon": "Item_PumpkinSeed",
     "Name": "STR_ITEM_PUMPKINSEED_NAME",
     "Description": "STR_ITEM_PUMPKINSEED_DESC"
   },
@@ -43,7 +40,6 @@
     "BuyCost": -1,
     "SellCost": -1,
     "CashCost": -1,
-    "Icon": "Item_SugarcaneSeed",
     "Name": "STR_ITEM_SUGARCANESEED_NAME",
     "Description": "STR_ITEM_SUGARCANESEED_DESC"
   },
@@ -55,7 +51,6 @@
     "BuyCost": -1,
     "SellCost": -1,
     "CashCost": -1,
-    "Icon": "Item_PepperSeed",
     "Name": "STR_ITEM_PEPPERSEED_NAME",
     "Description": "STR_ITEM_PEPPERSEED_DESC"
   },
@@ -67,7 +62,6 @@
     "BuyCost": -1,
     "SellCost": -1,
     "CashCost": -1,
-    "Icon": "Item_AppleSeed",
     "Name": "STR_ITEM_APPLESEED_NAME",
     "Description": "STR_ITEM_APPLESEED_DESC"
   },
@@ -79,7 +73,6 @@
     "BuyCost": -1,
     "SellCost": -1,
     "CashCost": -1,
-    "Icon": "Item_BlueberrySeed",
     "Name": "STR_ITEM_BLUEBERRYSEED_NAME",
     "Description": "STR_ITEM_BLUEBERRYSEED_DESC"
   },
@@ -91,7 +84,6 @@
     "BuyCost": -1,
     "SellCost": -1,
     "CashCost": -1,
-    "Icon": "Item_PineappleSeed",
     "Name": "STR_ITEM_PINEAPPLESEED_NAME",
     "Description": "STR_ITEM_PINEAPPLESEED_DESC"
   },
@@ -103,7 +95,6 @@
     "BuyCost": 10,
     "SellCost": 5,
     "CashCost": 1,
-    "Icon": "Item_Wheat",
     "Name": "STR_ITEM_WHEAT_NAME",
     "Description": "STR_ITEM_WHEAT_DESC"
   },
@@ -115,7 +106,6 @@
     "BuyCost": 20,
     "SellCost": 10,
     "CashCost": 2,
-    "Icon": "Item_Corn",
     "Name": "STR_ITEM_CORN_NAME",
     "Description": "STR_ITEM_CORN_DESC"
   },
@@ -127,7 +117,6 @@
     "BuyCost": 40,
     "SellCost": 20,
     "CashCost": 4,
-    "Icon": "Item_Pumpkin",
     "Name": "STR_ITEM_PUMPKIN_NAME",
     "Description": "STR_ITEM_PUMPKIN_DESC"
   },
@@ -139,7 +128,6 @@
     "BuyCost": 80,
     "SellCost": 40,
     "CashCost": 8,
-    "Icon": "Item_Sugarcane",
     "Name": "STR_ITEM_SUGARCANE_NAME",
     "Description": "STR_ITEM_SUGARCANE_DESC"
   },
@@ -151,7 +139,6 @@
     "BuyCost": 160,
     "SellCost": 80,
     "CashCost": 16,
-    "Icon": "Item_Pepper",
     "Name": "STR_ITEM_PEPPER_NAME",
     "Description": "STR_ITEM_PEPPER_DESC"
   },
@@ -163,7 +150,6 @@
     "BuyCost": 20,
     "SellCost": 10,
     "CashCost": 2,
-    "Icon": "Item_OrchardWood",
     "Name": "STR_ITEM_ORCHARDWOOD_NAME",
     "Description": "STR_ITEM_ORCHARDWOOD_DESC"
   },
@@ -175,7 +161,6 @@
     "BuyCost": 40,
     "SellCost": 20,
     "CashCost": 4,
-    "Icon": "Item_Apple",
     "Name": "STR_ITEM_APPLE_NAME",
     "Description": "STR_ITEM_APPLE_DESC"
   },
@@ -187,7 +172,6 @@
     "BuyCost": 80,
     "SellCost": 40,
     "CashCost": 8,
-    "Icon": "Item_Blueberry",
     "Name": "STR_ITEM_BLUEBERRY_NAME",
     "Description": "STR_ITEM_BLUEBERRY_DESC"
   },
@@ -199,7 +183,6 @@
     "BuyCost": 160,
     "SellCost": 80,
     "CashCost": 16,
-    "Icon": "Item_Pineapple",
     "Name": "STR_ITEM_PINEAPPLE_NAME",
     "Description": "STR_ITEM_PINEAPPLE_DESC"
   },
@@ -211,7 +194,6 @@
     "BuyCost": 20,
     "SellCost": 10,
     "CashCost": 2,
-    "Icon": "Item_WheatFlour",
     "Name": "STR_ITEM_WHEATFLOUR_NAME",
     "Description": "STR_ITEM_WHEATFLOUR_DESC"
   },
@@ -223,7 +205,6 @@
     "BuyCost": 40,
     "SellCost": 20,
     "CashCost": 4,
-    "Icon": "Item_CornKernel",
     "Name": "STR_ITEM_CORNKERNEL_NAME",
     "Description": "STR_ITEM_CORNKERNEL_DESC"
   },
@@ -235,7 +216,6 @@
     "BuyCost": 80,
     "SellCost": 40,
     "CashCost": 8,
-    "Icon": "Item_PumpkinSlice",
     "Name": "STR_ITEM_PUMPKINSLICE_NAME",
     "Description": "STR_ITEM_PUMPKINSLICE_DESC"
   },
@@ -247,7 +227,6 @@
     "BuyCost": 160,
     "SellCost": 80,
     "CashCost": 16,
-    "Icon": "Item_Sugar",
     "Name": "STR_ITEM_SUGAR_NAME",
     "Description": "STR_ITEM_SUGAR_DESC"
   },
@@ -259,7 +238,6 @@
     "BuyCost": 320,
     "SellCost": 160,
     "CashCost": 32,
-    "Icon": "Item_PepperSlice",
     "Name": "STR_ITEM_PEPPERSLICE_NAME",
     "Description": "STR_ITEM_PEPPERSLICE_DESC"
   },
@@ -271,7 +249,6 @@
     "BuyCost": 40,
     "SellCost": 20,
     "CashCost": 4,
-    "Icon": "Item_WoodPiece",
     "Name": "STR_ITEM_WOODPIECE_NAME",
     "Description": "STR_ITEM_WOODPIECE_DESC"
   },
@@ -283,7 +260,6 @@
     "BuyCost": 80,
     "SellCost": 40,
     "CashCost": 8,
-    "Icon": "Item_AppleSlice",
     "Name": "STR_ITEM_APPLESLICE_NAME",
     "Description": "STR_ITEM_APPLESLICE_DESC"
   },
@@ -295,7 +271,6 @@
     "BuyCost": 160,
     "SellCost": 80,
     "CashCost": 16,
-    "Icon": "Item_BlueberryBits",
     "Name": "STR_ITEM_BLUEBERRYBITS_NAME",
     "Description": "STR_ITEM_BLUEBERRYBITS_DESC"
   },
@@ -307,7 +282,6 @@
     "BuyCost": 320,
     "SellCost": 160,
     "CashCost": 32,
-    "Icon": "Item_PineappleSlice",
     "Name": "STR_ITEM_PINEAPPLESLICE_NAME",
     "Description": "STR_ITEM_PINEAPPLESLICE_DESC"
   },
@@ -319,7 +293,6 @@
     "BuyCost": 40,
     "SellCost": 20,
     "CashCost": 4,
-    "Icon": "Item_Baguette",
     "Name": "STR_ITEM_BAGUETTE_NAME",
     "Description": "STR_ITEM_BAGUETTE_DESC"
   },
@@ -331,7 +304,6 @@
     "BuyCost": 80,
     "SellCost": 40,
     "CashCost": 8,
-    "Icon": "Item_CornBread",
     "Name": "STR_ITEM_CORNBREAD_NAME",
     "Description": "STR_ITEM_CORNBREAD_DESC"
   },
@@ -343,7 +315,6 @@
     "BuyCost": 160,
     "SellCost": 80,
     "CashCost": 16,
-    "Icon": "Item_PumpkinTart",
     "Name": "STR_ITEM_PUMPKINTART_NAME",
     "Description": "STR_ITEM_PUMPKINTART_DESC"
   },
@@ -355,7 +326,6 @@
     "BuyCost": 160,
     "SellCost": 80,
     "CashCost": 16,
-    "Icon": "Item_ApplePie",
     "Name": "STR_ITEM_APPLEPIE_NAME",
     "Description": "STR_ITEM_APPLEPIE_DESC"
   },
@@ -367,7 +337,6 @@
     "BuyCost": 680,
     "SellCost": 340,
     "CashCost": 68,
-    "Icon": "Item_BlueberryCake",
     "Name": "STR_ITEM_BLUEBERRYCAKE_NAME",
     "Description": "STR_ITEM_BLUEBERRYCAKE_DESC"
   },
@@ -379,7 +348,6 @@
     "BuyCost": 1320,
     "SellCost": 660,
     "CashCost": 132,
-    "Icon": "Item_PineapplePizza",
     "Name": "STR_ITEM_PINEAPPLEPIZZA_NAME",
     "Description": "STR_ITEM_PINEAPPLEPIZZA_DESC"
   },
@@ -391,7 +359,6 @@
     "BuyCost": 80,
     "SellCost": 40,
     "CashCost": 8,
-    "Icon": "Item_WoodNote",
     "Name": "STR_ITEM_WOODNOTE_NAME",
     "Description": "STR_ITEM_WOODNOTE_DESC"
   },
@@ -403,7 +370,6 @@
     "BuyCost": 160,
     "SellCost": 80,
     "CashCost": 16,
-    "Icon": "Item_ApplePencil",
     "Name": "STR_ITEM_APPLEPENCIL_NAME",
     "Description": "STR_ITEM_APPLEPENCIL_DESC"
   },
@@ -415,7 +381,6 @@
     "BuyCost": 320,
     "SellCost": 160,
     "CashCost": 32,
-    "Icon": "Item_BlueberryPen",
     "Name": "STR_ITEM_BLUEBERRYPEN_NAME",
     "Description": "STR_ITEM_BLUEBERRYPEN_DESC"
   },
@@ -427,7 +392,6 @@
     "BuyCost": 640,
     "SellCost": 320,
     "CashCost": 64,
-    "Icon": "Item_PineappleCase",
     "Name": "STR_ITEM_PINEAPPLECASE_NAME",
     "Description": "STR_ITEM_PINEAPPLECASE_DESC"
   },
@@ -439,7 +403,6 @@
     "BuyCost": 80,
     "SellCost": 40,
     "CashCost": 8,
-    "Icon": "Item_WoodDoll",
     "Name": "STR_ITEM_WOODDOLL_NAME",
     "Description": "STR_ITEM_WOODDOLL_DESC"
   },
@@ -451,7 +414,6 @@
     "BuyCost": 160,
     "SellCost": 80,
     "CashCost": 16,
-    "Icon": "Item_CornBear",
     "Name": "STR_ITEM_CORNBEAR_NAME",
     "Description": "STR_ITEM_CORNBEAR_DESC"
   },
@@ -463,7 +425,6 @@
     "BuyCost": 240,
     "SellCost": 120,
     "CashCost": 24,
-    "Icon": "Item_PumpkinDino",
     "Name": "STR_ITEM_PUMPKINDINO_NAME",
     "Description": "STR_ITEM_PUMPKINDINO_DESC"
   },
@@ -475,7 +436,6 @@
     "BuyCost": 400,
     "SellCost": 200,
     "CashCost": 40,
-    "Icon": "Item_SugarPrincess",
     "Name": "STR_ITEM_SUGARPRINCESS_NAME",
     "Description": "STR_ITEM_SUGARPRINCESS_DESC"
   },
@@ -487,7 +447,6 @@
     "BuyCost": 720,
     "SellCost": 360,
     "CashCost": 64,
-    "Icon": "Item_PepperRobot",
     "Name": "STR_ITEM_PEPPERROBOT_NAME",
     "Description": "STR_ITEM_PEPPERROBOT_DESC"
   },
@@ -499,7 +458,6 @@
     "BuyCost": 20,
     "SellCost": 10,
     "CashCost": 2,
-    "Icon": "Item_Timber",
     "Name": "STR_ITEM_TIMBER_NAME",
     "Description": "STR_ITEM_TIMBER_DESC"
   },
@@ -511,7 +469,6 @@
     "BuyCost": 60,
     "SellCost": 120,
     "CashCost": 6,
-    "Icon": "Item_Stone",
     "Name": "STR_ITEM_STONE_NAME",
     "Description": "STR_ITEM_STONE_DESC"
   },
@@ -523,7 +480,6 @@
     "BuyCost": 180,
     "SellCost": 90,
     "CashCost": 18,
-    "Icon": "Item_Iron",
     "Name": "STR_ITEM_IRON_NAME",
     "Description": "STR_ITEM_IRON_DESC"
   },
@@ -535,7 +491,6 @@
     "BuyCost": 540,
     "SellCost": 270,
     "CashCost": 54,
-    "Icon": "Item_Gold",
     "Name": "STR_ITEM_GOLD_NAME",
     "Description": "STR_ITEM_GOLD_DESC"
   },
@@ -547,7 +502,6 @@
     "BuyCost": 1620,
     "SellCost": 810,
     "CashCost": 162,
-    "Icon": "Item_Diamond",
     "Name": "STR_ITEM_DIAMOND_NAME",
     "Description": "STR_ITEM_DIAMOND_DESC"
   }

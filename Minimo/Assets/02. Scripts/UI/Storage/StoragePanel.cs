@@ -21,7 +21,7 @@ public class StoragePanel : UIBase
     {
         base.OpenPanel();
 
-        OnClickBuildingBtn(0);
+        OnClickStorageBtn(0);
     }
 
     private void SetString()
@@ -44,11 +44,11 @@ public class StoragePanel : UIBase
         {
             int idx = i;
 
-            _storageBtns[idx].onClick.AddListener(() => OnClickBuildingBtn(idx));
+            _storageBtns[idx].onClick.AddListener(() => OnClickStorageBtn(idx));
         }
     }
 
-    private void OnClickBuildingBtn(int index)
+    private void OnClickStorageBtn(int index)
     {
         for (int i = 0; i < _storageBtns.Length; i++)
         {

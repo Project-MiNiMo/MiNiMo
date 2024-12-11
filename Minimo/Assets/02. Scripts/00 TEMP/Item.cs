@@ -24,6 +24,6 @@ public class Item : ScriptableObject
         Data = _data;
         Count = 0;
 
-        Icon = Resources.Load<Sprite>($"Item/Icon/{_data.Icon}");
+        Icon = Resources.Load<Sprite>($"Item/{_data.ID}");
     }
 }
