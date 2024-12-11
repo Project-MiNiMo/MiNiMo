@@ -12,11 +12,23 @@
     "Value": 2
   },
   {
-    "ID": "Item_SellCost",
-    "Value": 2
+    "ID": "ShootingStarTypeProb",
+    "Value": 50
   },
   {
-    "ID": "Item_CashCost",
+    "ID": "Nomal_ItemTypeProb",
+    "Value": 70
+  },
+  {
+    "ID": "Epic_ItemTypeProb",
+    "Value": 30
+  },
+  {
+    "ID": "Nomal_QuestTypeProb",
+    "Value": 90
+  },
+  {
+    "ID": "Epic_QuestTypeProb",
     "Value": 10
   },
   {
@@ -24,7 +36,15 @@
     "Value": 172800
   },
   {
-    "ID": "BlueStarCost",
+    "ID": "BlueStarValue",
     "Value": 30
+  },
+  {
+    "ID": "SlotExpandCost",
+    "Value": 100
+  },
+  {
+    "ID": "WareHouseExpandCost",
+    "Value": 20
   }
 ]

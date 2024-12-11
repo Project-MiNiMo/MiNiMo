@@ -57,6 +57,6 @@ public class BottomPanel : UIBase
 
     private void OnClickStorageBtn()
     {
-
+        App.GetManager<UIManager>().GetPanel<StoragePanel>().OpenPanel();
     }
 }
