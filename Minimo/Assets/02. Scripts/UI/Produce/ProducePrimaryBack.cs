@@ -40,8 +40,8 @@ public class ProducePrimaryBack : MonoBehaviour
 
     private void ShowUI(MonoBehaviour targetUI)
     {
-        _harvestCtrl.gameObject.SetActive(targetUI == _harvestCtrl);
-        _optionCtrl.gameObject.SetActive(targetUI == _optionCtrl);
-        _infoCtrl.gameObject.SetActive(targetUI == _infoCtrl);
+        _harvestCtrl.SetActive(targetUI == _harvestCtrl);
+        _optionCtrl.SetActive(targetUI == _optionCtrl);
+        _infoCtrl.SetActive(targetUI == _infoCtrl);
     }
 }
