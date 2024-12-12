@@ -43,6 +43,7 @@ namespace MinimoServer
             services.AddControllers();
             services.AddScoped<TimeService>();
             services.AddScoped<JwtService>();
+            services.AddSingleton<TableDataService>(new TableDataService());
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Minimo Server API", Version = "v1" });
