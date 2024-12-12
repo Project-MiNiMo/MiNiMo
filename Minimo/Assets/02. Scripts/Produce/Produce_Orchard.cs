@@ -34,17 +34,17 @@ public class Produce_Orchard :ProducePrimary
     
     public override bool StartProduce(ProduceOption option)
     {
-        if (PendingTasks.Count > 0 || CompleteTasks.Count > 0)
+        if (AllTasks.Count > 0)
         {
             return false;
         }
 
         if (base.StartProduce(option))
         {
-            PendingTasks.Add(new ProduceTask(option));
-            PendingTasks.Add(new ProduceTask(option));
-            PendingTasks.Add(new ProduceTask(option));
-            PendingTasks.Add(new ProduceTask(option));
+            for (int i = 0; i < 4; i++) 
+            {
+                AllTasks.Add(new ProduceTask(option));
+            }
         }
 
         return true;

@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-
+using System.Linq;
 using UnityEngine;
 
 public abstract class ProducePrimary : ProduceObject
@@ -14,8 +14,8 @@ public abstract class ProducePrimary : ProduceObject
     protected override void Update()
     {
         base.Update();
-        
-        if (ActiveTask == null)
+
+        if (ActiveTaskIndex < 0) 
         {
             return;
         }
@@ -25,7 +25,7 @@ public abstract class ProducePrimary : ProduceObject
             return;
         }
 
-        if (CompleteTasks.Count > 0)
+        if (AllTasks.Any(task => task.RemainTime <= 0))
         {
             return;
         }
@@ -35,7 +35,8 @@ public abstract class ProducePrimary : ProduceObject
 
     private void SetCropSprite()
     {
-        var remainPercent = (float)ActiveTask.RemainTime / ActiveTask.Data.Time;
+        var activeTask = AllTasks[ActiveTaskIndex];
+        var remainPercent = (float)activeTask.RemainTime / activeTask.Data.Time;
 
         var newSpriteIndex = remainPercent switch
         {
@@ -55,7 +56,7 @@ public abstract class ProducePrimary : ProduceObject
     {
         base.StartHarvest();
 
-        if (ActiveTask == null)
+        if (ActiveTaskIndex < 0)
         {
             _cropSpriteRenderer.sprite = null;
         }
@@ -71,7 +72,7 @@ public abstract class ProducePrimary : ProduceObject
         
         _currentSpriteIndex = 0;
 
-        var cropCode = ActiveTask.Data.Results[0].Code;
+        var cropCode = AllTasks[ActiveTaskIndex].Data.Results[0].Code;
         _currentCropSprites = _cropSprites[GetCropType(cropCode)];
         _cropSpriteRenderer.sprite = _currentCropSprites[_currentSpriteIndex];
 

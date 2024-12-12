@@ -16,7 +16,7 @@ public class ProduceTask
     
     public void UpdateHarvestTime()
     { 
-        --RemainTime;
+        RemainTime = Mathf.Max(0, RemainTime - 1);
     }
     
     public void HarvestEarly()

@@ -30,7 +30,7 @@ public class ProduceHarvestCtrl : MonoBehaviour, IBeginDragHandler, IDragHandler
         _produceManager.CurrentRemainTime
             .Subscribe((remainTime) =>
             {
-                if (_produceManager.CurrentProduceObject?.ActiveTask != null 
+                if (_produceManager.CurrentProduceObject?.ActiveTaskIndex >= 0 
                     && remainTime <= 0)
                 {
                     gameObject.SetActive(true);

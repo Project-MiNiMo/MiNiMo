@@ -22,12 +22,13 @@ public class ProducePrimaryBack : MonoBehaviour
         if (isActive)
         {
             var currentObject = _produceManager.CurrentProduceObject;
+            Debug.Log(currentObject.ActiveTaskIndex);
 
-            if (currentObject.CompleteTasks.Count > 0)
+            if (currentObject.ActiveTaskIndex > 0)
             {
                 ShowUI(_harvestCtrl);
             }
-            else if (currentObject.ActiveTask != null)
+            else if (currentObject.ActiveTaskIndex >= 0)
             {
                 ShowUI(_infoCtrl);
             }

@@ -34,18 +34,9 @@ public class ProduceAdvancedBack : MonoBehaviour
     private void InitTaskBtns()
     {
         int i = 0;
-        foreach (var completeTask in App.GetManager<ProduceManager>().CurrentProduceObject.CompleteTasks)
+        foreach (var task in App.GetManager<ProduceManager>().CurrentProduceObject.AllTasks)
         {
-            _taskBtns[i].Initialize(completeTask);
-            i++;
-        }
-        
-        _taskBtns[i].Initialize(App.GetManager<ProduceManager>().CurrentProduceObject.ActiveTask);
-        i++;
-        
-        foreach (var completeTask in App.GetManager<ProduceManager>().CurrentProduceObject.PendingTasks)
-        {
-            _taskBtns[i].Initialize(completeTask);
+            _taskBtns[i].Initialize(task);
             i++;
         }
     }
