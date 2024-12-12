@@ -7,7 +7,6 @@ public class ProduceInfoCtrl : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _infoTMP;
     [SerializeField] private Image[] _infoImages;
-    [SerializeField] private Button _starBtn;
     [SerializeField] private Image _remainTimeImg;
     [SerializeField] private TextMeshProUGUI _remainTimeTMP;
 
@@ -23,32 +22,22 @@ public class ProduceInfoCtrl : MonoBehaviour
         
         _produceManager = App.GetManager<ProduceManager>();
         _titleData = App.GetData<TitleData>();
-        
-        //_starBtn.onClick.AddListener(() => App.GetManager<GridManager>().RotateObject());
-        
-        _produceManager.IsProducing
-            .Subscribe((isProducing) =>
-            {
-                if (isProducing) 
-                {
-                    if (_produceManager.CurrentProduceObject.ActiveTask != null)
-                    {
-                        gameObject.SetActive(true);
-                        _currentOption = _produceManager.CurrentProduceObject.ActiveTask.Data;
-                        SetPosition();
-                        SetInfo();
-                    }
-                    else
-                    {
-                        gameObject.SetActive(false);
-                    }
-
-                }
-            }).AddTo(gameObject);
-        
+  
         _produceManager.CurrentRemainTime
             .Subscribe(SetRemainTime)
             .AddTo(gameObject);
+    }
+
+    public void SetActive(bool isActive)
+    {
+        gameObject.SetActive(isActive);
+
+        if (isActive)
+        {
+            _currentOption = _produceManager.CurrentProduceObject.ActiveTask.Data;
+            SetPosition();
+            SetInfo();
+        }
     }
     
     private void SetPosition()

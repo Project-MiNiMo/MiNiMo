@@ -1,13 +1,12 @@
-using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ProduceOptionCtrl : MonoBehaviour
 {
     [SerializeField] private ScrollRect _scrollRect;
-    private ProduceManager _produceManager;
     
     private ProduceOptionBtn[] _optionBtns;
+    private ProduceManager _produceManager;
     
     private void OnEnable()
     {
@@ -17,31 +16,22 @@ public class ProduceOptionCtrl : MonoBehaviour
     private void Start()
     {
         _optionBtns = GetComponentsInChildren<ProduceOptionBtn>(true);
-        
         _produceManager = App.GetManager<ProduceManager>();
-        
-        _produceManager.IsProducing
-            .Subscribe((isProducing) =>
-            {
-                if (isProducing)
-                {
-                    if (_produceManager.CurrentProduceObject.ActiveTask == null 
-                        && _produceManager.CurrentProduceObject.CompleteTasks.Count <= 0)
-                    {
-                        gameObject.SetActive(true);
-                        InitOptionButtons(_produceManager.CurrentProduceObject);
-                    }
-                    else
-                    {
-                        gameObject.SetActive(false);
-                    }
-                }
-            }).AddTo(gameObject);
     }
 
-    private void InitOptionButtons(ProduceObject produceObject)
+    public void SetActive(bool isActive) 
     {
-        var options = produceObject.ProduceData.ProduceOptions;
+        gameObject.SetActive(isActive);
+
+        if (isActive) 
+        {
+            InitOptionButtons();
+        }
+    }
+
+    private void InitOptionButtons()
+    {
+        var options = _produceManager.CurrentProduceObject.ProduceData.ProduceOptions;
 
         var i = 0;
         
