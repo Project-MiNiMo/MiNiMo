@@ -13,13 +13,10 @@ public class ProduceInfoCtrl : MonoBehaviour
     private ProduceManager _produceManager;
     private TitleData _titleData;
     
-    private RectTransform _rect;
     private ProduceOption _currentOption;
     
     private void Start()
     {
-        _rect = GetComponent<RectTransform>();
-        
         _produceManager = App.GetManager<ProduceManager>();
         _titleData = App.GetData<TitleData>();
   
@@ -36,16 +33,8 @@ public class ProduceInfoCtrl : MonoBehaviour
         {
             var currentObject = _produceManager.CurrentProduceObject;
             _currentOption = currentObject.AllTasks[currentObject.ActiveTaskIndex].Data;
-            SetPosition();
             SetInfo();
         }
-    }
-    
-    private void SetPosition()
-    {
-        var position = _produceManager.CurrentProduceObject.transform.position;
-        var screenPos = Camera.main.WorldToScreenPoint(position);
-        _rect.position = screenPos;
     }
 
     private void SetInfo()

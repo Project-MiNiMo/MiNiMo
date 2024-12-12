@@ -106,6 +106,7 @@ public abstract class ProduceObject : BuildingObject
         }
 
         AllTasks.RemoveAll(t => t.RemainTime <= 0);
+        ActiveTaskIndex = AllTasks.FindIndex(t => t.RemainTime > 0);
     }
 
     public void HarvestEarly()

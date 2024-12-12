@@ -14,20 +14,6 @@ public class ProduceTaskBtn : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _remainTimeTMP;
 
     private int _currentRemainTime;
-    private ProduceAdvancedBack _produceAdvancedBack;
-
-    public void Setup(ProduceAdvancedBack produceAdvancedBack)
-    {
-        _produceTask = null;
-        _produceAdvancedBack = produceAdvancedBack;
-        _taskBtn.onClick.AddListener(()=>
-        {
-            if (_produceTask == null)
-            {
-                _produceAdvancedBack.ShowOptionCtrl();
-            }
-        });
-    }
     
     public void Initialize(ProduceTask produceTask)
     {
