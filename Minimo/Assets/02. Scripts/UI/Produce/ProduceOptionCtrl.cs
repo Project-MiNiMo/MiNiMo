@@ -25,7 +25,8 @@ public class ProduceOptionCtrl : MonoBehaviour
             {
                 if (isProducing)
                 {
-                    if (_produceManager.CurrentProduceObject.CurrentState == ProduceState.Idle)
+                    if (_produceManager.CurrentProduceObject.ActiveTask == null 
+                        && _produceManager.CurrentProduceObject.CompleteTasks.Count <= 0)
                     {
                         gameObject.SetActive(true);
                         InitOptionButtons(_produceManager.CurrentProduceObject);

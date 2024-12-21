@@ -32,7 +32,7 @@ public class ProduceHarvestCtrl : MonoBehaviour, IBeginDragHandler, IDragHandler
             {
                 if (isProducing)
                 {
-                    var isHarvest = _produceManager.CurrentProduceObject.CurrentState == ProduceState.Harvest;
+                    var isHarvest = _produceManager.CurrentProduceObject.CompleteTasks.Count > 0;
                     gameObject.SetActive(isHarvest);
                     SetPosition();
                 }
@@ -41,7 +41,7 @@ public class ProduceHarvestCtrl : MonoBehaviour, IBeginDragHandler, IDragHandler
         _produceManager.CurrentRemainTime
             .Subscribe((remainTime) =>
             {
-                if (_produceManager.CurrentProduceObject?.CurrentState == ProduceState.Produce 
+                if (_produceManager.CurrentProduceObject?.ActiveTask != null 
                     && remainTime <= 0)
                 {
                     gameObject.SetActive(true);

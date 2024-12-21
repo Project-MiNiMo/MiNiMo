@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProduceAdvanced : ProduceObject
+public class ProduceAdvanced : BuildingObject
 {
-    protected override void SetProduceSprite(){ }
+    
     
     
 }
