@@ -16,18 +16,21 @@ namespace MinimoServer
     {
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Time> Time { get; set; }
-        public DbSet<Building> Buildings { get; set; }
-        
         public GameDbContext(DbContextOptions<GameDbContext> options) : base(options) { }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Account>().ToTable("Players");
+            modelBuilder.Entity<Account>(account => 
+            {
+                account.ToTable("Players");
+                account.OwnsMany(a => a.Buildings, building =>
+                {
+                    building.WithOwner().HasForeignKey("AccountId");
+                    building.Property<int>("Id");
+                    building.HasKey("Id");
+                });
+            });
             modelBuilder.Entity<Time>().ToTable("Time");
-            modelBuilder.Entity<Building>()
-                .HasOne(b => b.Account)
-                .WithMany(a => a.Buildings)
-                .HasForeignKey(b => b.AccountId);
         }
 
     }
@@ -47,6 +50,33 @@ namespace MinimoServer
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Minimo Server API", Version = "v1" });
+                
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "JWT Authorization header using the Bearer scheme. Example: 'Bearer {token}'",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        Array.Empty<string>()
+                    }
+                });
+
+                // IgnoreAuthFilter 추가
+                c.OperationFilter<IgnoreAuthFilter>();
             }); 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>

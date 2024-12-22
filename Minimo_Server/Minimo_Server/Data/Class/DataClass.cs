@@ -220,29 +220,29 @@ public class StringData
     public string Japanese;
 }
 
-public class ItemSO
-{
-    public List<Item> items;
-    
-    public Item GetItem(string code)
-    {
-        return items.Find(item => item.Code == code);
-    }
-}
-
-public class Item
-{
-    public string Code;
-    public int Count;
-
-    public ItemData Data { get; private set; }
-    //public Sprite Icon { get; private set; }
-
-    public void SetData(ItemData _data)
-    {
-        Data = _data;
-        Count = 0;
-
-        //Icon = Resources.Load<Sprite>($"Item/{_data.ID}");
-    }
-}
+// public class ItemSO
+// {
+//     public List<Item> items;
+//     
+//     public Item GetItem(string code)
+//     {
+//         return items.Find(item => item.Code == code);
+//     }
+// }
+//
+// public class Item
+// {
+//     public string Code;
+//     public int Count;
+//
+//     public ItemData Data { get; private set; }
+//     //public Sprite Icon { get; private set; }
+//
+//     public void SetData(ItemData _data)
+//     {
+//         Data = _data;
+//         Count = 0;
+//
+//         //Icon = Resources.Load<Sprite>($"Item/{_data.ID}");
+//     }
+// }
