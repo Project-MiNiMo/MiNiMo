@@ -5,7 +5,6 @@ namespace MinimoServer.Services;
 
 public class TableDataService
 {
-    public ItemSO ItemSO;
     public Dictionary<string, int> Common { get; private set; } = new();
     public Dictionary<string, BuildingData> Building { get; private set; } = new();
     public Dictionary<string, ItemData> Item { get; private set; } = new();
@@ -92,7 +91,5 @@ public class TableDataService
 
         _isGameDataLoaded = true;
     }
-
-
 }
 

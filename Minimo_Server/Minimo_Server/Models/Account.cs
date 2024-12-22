@@ -17,5 +17,7 @@ public class Account
     public DateTime LastLogin { get; set; }
     
     // 건물
-    public ICollection<Building> Buildings { get; set; }
+    public List<Building> Buildings { get; set; }
+    
+    // 
 }

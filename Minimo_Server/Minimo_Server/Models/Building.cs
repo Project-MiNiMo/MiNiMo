@@ -25,11 +25,6 @@ public class Building
     public int RecipeIndex { get; set; } // 레시피 인덱스
     
     public DateTime ProduceStartAt { get; set; } // 생산 시작 시간
-
-    // Account와의 관계를 위한 외래 키
-    [ForeignKey("Account")]
-    public int AccountId { get; set; }
-    public Account Account { get; set; } // 탐색 속성
     
     [NotMapped]
     public Vector3 PositionVector

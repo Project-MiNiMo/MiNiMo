@@ -27,7 +27,7 @@ namespace MinimoServer.Controllers;
         }
 
         // Get account by ID (returns AccountDTO)
-        [Authorize]
+        //[Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<AccountDTO>> GetAccount(int id)
         {
