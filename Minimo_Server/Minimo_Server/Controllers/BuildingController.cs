@@ -13,9 +13,22 @@ namespace MinimoServer.Controllers;
 [Route("api/[controller]")]
 public class BuildingController(GameDbContext context, TimeService timeService) : ControllerBase
 {
+    /// <summary>
+    /// 요청한 계정의 건물 목록을 반환합니다.
+    /// </summary>
+    /// <param name="accountId"></param>
+    /// <returns></returns>
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<BuildingDTO>>> GetBuildings(int accountId)
+    public async Task<ActionResult<IEnumerable<BuildingDTO>>> GetBuildings()
     {
+        var accountClaim = User.Claims.FirstOrDefault(c => c.Type == "AccountId");
+        if (accountClaim == null)
+        {
+            return Unauthorized("AccountId claim not found");
+        }
+        
+        var accountId = int.Parse(accountClaim.Value);
+        
         var account = await context.Accounts
             .Include(a => a.Buildings)
             .FirstOrDefaultAsync(a => a.Id == accountId);
@@ -28,12 +41,25 @@ public class BuildingController(GameDbContext context, TimeService timeService) 
         return Ok(account.Buildings.Select(BuildingMapper.ToBuildingDTO));
     }
     
+    /// <summary>
+    /// 요청한 계정의 id에 해당하는 건물을 반환합니다.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     [HttpGet("{id}")]
     public async Task<ActionResult<BuildingDTO>> GetBuilding(int id)
     {
+        var accountClaim = User.Claims.FirstOrDefault(c => c.Type == "AccountId");
+        if (accountClaim == null)
+        {
+            return Unauthorized("AccountId claim not found");
+        }   
+        
+        var accountId = int.Parse(accountClaim.Value);
+        
         var account = await context.Accounts
             .Include(a => a.Buildings)
-            .FirstOrDefaultAsync(a => a.Id == id);
+            .FirstOrDefaultAsync(a => a.Id == accountId);
         if (account == null)
         {
             return NotFound(new { message = "Account not found" });
@@ -48,6 +74,11 @@ public class BuildingController(GameDbContext context, TimeService timeService) 
         return Ok(BuildingMapper.ToBuildingDTO(building));
     }
     
+    /// <summary>
+    /// 건물을 생성합니다. TODO: 추후 자원 확인 필요
+    /// </summary>
+    /// <param name="buildingDto"></param>
+    /// <returns></returns>
     [HttpPost]
     public async Task<ActionResult<Building>> CreateBuilding(BuildingDTO buildingDto)
     {
@@ -85,6 +116,11 @@ public class BuildingController(GameDbContext context, TimeService timeService) 
         return CreatedAtAction(nameof(GetBuilding), new { accountId = accountId }, building);
     }
 
+    /// <summary>
+    /// 건물을 업데이트합니다.
+    /// </summary>
+    /// <param name="updateParameter"></param>
+    /// <returns></returns>
     [HttpPut]
     public async Task<ActionResult<Building>> UpdateBuilding(JObject updateParameter)
     {
@@ -135,7 +171,4 @@ public class BuildingController(GameDbContext context, TimeService timeService) 
 
         return Ok(BuildingMapper.ToBuildingDTO(building));
     }
-    
-    
-    
 }

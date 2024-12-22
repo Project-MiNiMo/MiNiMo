@@ -69,8 +69,9 @@ namespace MinimoServer
                     Description = "JWT Authorization header using the Bearer scheme. Example: 'Bearer {token}'",
                     Name = "Authorization",
                     In = ParameterLocation.Header,
-                    Type = SecuritySchemeType.ApiKey,
-                    Scheme = "Bearer"
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT"
                 });
 
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement
@@ -101,7 +102,8 @@ namespace MinimoServer
                         ValidateLifetime = false,
                         ValidateIssuerSigningKey = true,
                         // jwt:key
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"] ?? throw new InvalidOperationException()))
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"] ?? throw new InvalidOperationException())),
+                        NameClaimType = "AccountId" // AccountId 클레임을 User.Identity.Name으로 매핑
                     };
                 });
         }
@@ -128,6 +130,17 @@ namespace MinimoServer
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+            
+            app.Use(async (context, next) =>
+            {
+                var headers = context.Request.Headers;
+                Console.WriteLine("Request Headers:");
+                foreach (var header in headers)
+                {
+                    Console.WriteLine($"{header.Key}: {header.Value}");
+                }
+                await next.Invoke();
             });
         }
     }

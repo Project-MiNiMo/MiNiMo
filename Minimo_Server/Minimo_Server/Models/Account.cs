@@ -17,7 +17,7 @@ public class Account
     public DateTime LastLogin { get; set; }
     
     // 재화
-    public Currency Currency { get; set; }
+    public Currency Currency { get; set; } = new Currency();
     
     // 건물
     public List<Building> Buildings { get; set; }
