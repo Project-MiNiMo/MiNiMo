@@ -18,16 +18,29 @@ namespace MinimoServer
         public DbSet<Time> Time { get; set; }
         public GameDbContext(DbContextOptions<GameDbContext> options) : base(options) { }
         
+        // Owns : Currency
+        // OwnsMany : Buildings / Items
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Account>(account => 
             {
                 account.ToTable("Players");
+                account.OwnsOne(a => a.Currency, currency =>
+                {
+                    currency.Property<int>("Id");
+                    currency.HasKey("Id");
+                });
                 account.OwnsMany(a => a.Buildings, building =>
                 {
                     building.WithOwner().HasForeignKey("AccountId");
                     building.Property<int>("Id");
                     building.HasKey("Id");
+                });
+                account.OwnsMany(a => a.Items, item =>
+                {
+                    item.WithOwner().HasForeignKey("AccountId");
+                    item.Property<int>("Id");
+                    item.HasKey("Id");
                 });
             });
             modelBuilder.Entity<Time>().ToTable("Time");

@@ -16,6 +16,20 @@ public class BuildingMapper
             ProduceStartAt = building.ProduceStartAt
         };
     }
+    
+    public static Building ToBuilding(BuildingDTO buildingDTO)
+    {
+        return new Building
+        {
+            Id = buildingDTO.Id,
+            Name = buildingDTO.Name,
+            IsInstalled = buildingDTO.IsInstalled,
+            PositionVector = buildingDTO.Position,
+            ProduceStatus = buildingDTO.ProduceStatus,
+            RecipeIndex = buildingDTO.RecipeIndex,
+            ProduceStartAt = buildingDTO.ProduceStartAt
+        };
+    }
 
     public static IEnumerable<BuildingDTO> ToBuildingDTOs(IEnumerable<Building> buildings)
     {

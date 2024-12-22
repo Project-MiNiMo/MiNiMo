@@ -120,6 +120,11 @@ public class BuildingController(GameDbContext context, TimeService timeService) 
             return NotFound(new { message = "Building not found" });
         }
         
+        if (updateParameter["isInstalled"] != null)
+        {
+            building.IsInstalled = updateParameter["isInstalled"].Value<bool>();
+        }
+        
         if (updateParameter["position"] != null)
         {
             var position = updateParameter["position"].Value<Vector3>();
@@ -127,8 +132,8 @@ public class BuildingController(GameDbContext context, TimeService timeService) 
         }
         
         await context.SaveChangesAsync();
-        
-        return Ok(building);
+
+        return Ok(BuildingMapper.ToBuildingDTO(building));
     }
     
     

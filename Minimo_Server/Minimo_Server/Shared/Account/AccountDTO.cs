@@ -1,4 +1,6 @@
-﻿namespace MinimoShared
+﻿using MinimoServer.Shared;
+
+namespace MinimoShared
 {
     public class AccountDTO
     {
@@ -6,5 +8,11 @@
         public string Nickname { get; set; }
         public int Level { get; set; }
         public int Experience { get; set; }
+        
+        public CurrencyDTO Currency { get; set; }
+        
+        public List<BuildingDTO> Buildings { get; set; }
+        
+        public List<ItemDTO> Items { get; set; }
     }
 }

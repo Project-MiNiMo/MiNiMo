@@ -101,7 +101,7 @@ namespace MinimoServer.Controllers;
 
         // Delete an account
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Deleteaccount(int id)
+        public async Task<IActionResult> DeleteAccount(int id)
         {
             var account = await _context.Accounts.FindAsync(id);
             if (account == null)
