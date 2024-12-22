@@ -6,7 +6,6 @@ namespace MinimoServer.Models;
 
 public class Building
 {
-    [Key]
     public int Id { get; set; }
 
     [Required]
