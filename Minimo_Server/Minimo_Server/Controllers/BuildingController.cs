@@ -119,19 +119,13 @@ public class BuildingController(GameDbContext context, TimeService timeService) 
     }
 
     /// <summary>
-    /// 건물의 상태를 업데이트합니다.
+    /// 건물의 상태(설치여부, 위치)를 업데이트합니다.
     /// </summary>
-    /// <param name="updateParameter">JObject {id: 업데이트할 빌딩 id, isInstalled: 설치 여부, position: 설치 위치}</param>
+    /// <param name="updateParameter">UpdateBuildingParameter</param>
     /// <returns>BuildingDTO(검증용)</returns>
     [HttpPut]
-    public async Task<ActionResult<Building>> UpdateBuilding(JObject updateParameter)
+    public async Task<ActionResult<Building>> UpdateBuilding(UpdateBuildingParameter updateParameter)
     {
-        var buildingId = updateParameter["id"]?.Value<int>();
-        if (buildingId == null)
-        {
-            return BadRequest(new { message = "Building ID not found" });
-        }
-        
         var accountIdClaim = User.Claims.FirstOrDefault(c => c.Type == "AccountId");
         if (accountIdClaim == null)
         {
@@ -146,27 +140,27 @@ public class BuildingController(GameDbContext context, TimeService timeService) 
         var account = await context.Accounts
             .Include(a => a.Buildings)
             .FirstOrDefaultAsync(a => a.Id == accountId);
-        
+
         if (account == null)
         {
             return NotFound(new { message = "Account not found" });
         }
         
+        var buildingId = updateParameter.Id;
         var building = account.Buildings.FirstOrDefault(b => b.Id == buildingId);
         if (building == null)
         {
             return NotFound(new { message = "Building not found" });
         }
         
-        if (updateParameter["isInstalled"] != null)
+        if (updateParameter.IsInstalled.HasValue)
         {
-            building.IsInstalled = updateParameter["isInstalled"].Value<bool>();
+            building.IsInstalled = updateParameter.IsInstalled.Value;
         }
         
-        if (updateParameter["position"] != null)
+        if (updateParameter.Position.HasValue)
         {
-            var position = updateParameter["position"].Value<Vector3>();
-            building.PositionVector = position;
+            building.PositionVector = updateParameter.Position.Value;
         }
         
         await context.SaveChangesAsync();
