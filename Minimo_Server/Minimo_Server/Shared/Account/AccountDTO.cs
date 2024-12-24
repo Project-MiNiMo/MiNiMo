@@ -1,5 +1,4 @@
-﻿using MinimoServer.Shared;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace MinimoShared
 {

@@ -1,5 +1,5 @@
 using MinimoServer.Models;
-using MinimoServer.Shared;
+using MinimoShared;
 
 public static class CurrencyMapper
 {
