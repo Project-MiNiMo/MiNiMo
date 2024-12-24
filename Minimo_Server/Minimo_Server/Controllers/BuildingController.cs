@@ -121,8 +121,8 @@ public class BuildingController(GameDbContext context, TimeService timeService) 
     /// <summary>
     /// 건물의 상태를 업데이트합니다.
     /// </summary>
-    /// <param name="updateParameter"></param>
-    /// <returns></returns>
+    /// <param name="updateParameter">JObject {id: 업데이트할 빌딩 id, isInstalled: 설치 여부, position: 설치 위치}</param>
+    /// <returns>BuildingDTO(검증용)</returns>
     [HttpPut]
     public async Task<ActionResult<Building>> UpdateBuilding(JObject updateParameter)
     {
