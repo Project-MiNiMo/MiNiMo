@@ -5,11 +5,12 @@ using Microsoft.Extensions.DependencyInjection;
 using MinimoShared;
 using UnityEngine;
 
-public class BuildingManager : MonoBehaviour
+[DefaultExecutionOrder(-30)]
+public class BuildingManager : ManagerBase
 {
     private GameClient _gameClient;
 
-    private const string BuildingEndpoint = "api/buildings";
+    private const string BuildingEndpoint = "api/building";
 
     private void Start()
     {

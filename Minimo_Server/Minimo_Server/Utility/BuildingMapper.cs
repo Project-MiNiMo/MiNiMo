@@ -1,4 +1,5 @@
-﻿using MinimoServer.Models;
+﻿using System.Numerics;
+using MinimoServer.Models;
 using MinimoShared;
 
 public class BuildingMapper
@@ -23,11 +24,11 @@ public class BuildingMapper
         {
             Id = buildingDTO.Id,
             Name = buildingDTO.Name,
-            IsInstalled = buildingDTO.IsInstalled,
-            PositionVector = buildingDTO.Position,
-            ProduceStatus = buildingDTO.ProduceStatus,
-            RecipeIndex = buildingDTO.RecipeIndex,
-            ProduceStartAt = buildingDTO.ProduceStartAt
+            IsInstalled = buildingDTO.IsInstalled ?? false,
+            PositionVector = buildingDTO.Position ?? Vector3.Zero, // 기본값으로 Vector3.zero 사용
+            ProduceStatus = buildingDTO.ProduceStatus ?? false, // 기본값으로 false 사용
+            RecipeIndex = buildingDTO.RecipeIndex ?? 0, // 기본값으로 0 사용
+            ProduceStartAt = buildingDTO.ProduceStartAt ?? DateTime.MinValue // 기본값으로 최소값 사용
         };
     }
 

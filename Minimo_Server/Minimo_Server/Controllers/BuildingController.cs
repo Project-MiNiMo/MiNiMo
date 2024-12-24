@@ -109,7 +109,8 @@ public class BuildingController(GameDbContext context, TimeService timeService) 
             Name = buildingDto.Name,
             Level = 1,
             CreatedAt = timeService.CurrentTime,
-            PositionVector = buildingDto.Position,
+            PositionVector = Vector3.Zero,
+            ProduceStartAt = DateTime.MinValue,
         };
         
         account.Buildings.Add(building);
