@@ -18,7 +18,10 @@ namespace MinimoServer.Controllers;
             _context = context;
         }
 
-        // Get all accounts (returns AccountDTOs)
+        /// <summary>
+        /// 모든 계정 목록을 반환합니다.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AccountDTO>>> GetAccounts()
         {
@@ -26,12 +29,16 @@ namespace MinimoServer.Controllers;
             return Ok(AccountMapper.ToAccountDTOs(accounts));  // Use the accountMapper to convert
         }
 
-        // Get account by ID (returns AccountDTO)
+        /// <summary>
+        /// 주어진 index에 해당하는 계정을 반환합니다.
+        /// </summary>
+        /// <param name="index">계정 index</param>
+        /// <returns></returns>
         //[Authorize]
-        [HttpGet("{id}")]
-        public async Task<ActionResult<AccountDTO>> GetAccount(int id)
+        [HttpGet("{index}")]
+        public async Task<ActionResult<AccountDTO>> GetAccount(int index)
         {
-            var account = await _context.Accounts.FindAsync(id);
+            var account = await _context.Accounts.FindAsync(index);
 
             if (account == null)
             {
@@ -41,7 +48,12 @@ namespace MinimoServer.Controllers;
             return Ok(AccountMapper.ToAccountDTO(account));  // Use the AccountMapper to convert
         }
 
-        // Create a new account using AccountDTO
+        /// <summary>
+        /// 계정을 생성하고, 생성된 계정을 반환합니다.
+        /// TODO: 이미 존재하는 계정인지 확인
+        /// </summary>
+        /// <param name="createAccountDto">CreateAccountDTO</param>
+        /// <returns>AccountDTO</returns>
         [HttpPost]
         public async Task<ActionResult<AccountDTO>> CreateAccount(CreateAccountDTO createAccountDto)
         {
@@ -67,12 +79,27 @@ namespace MinimoServer.Controllers;
             return CreatedAtAction(nameof(GetAccount), new { id = accountDto.ID }, accountDto);
         }
 
-        // Update nickname
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateNickname(int id, string newNickname)
+        /// <summary>
+        /// 계정의 닉네임을 변경합니다.
+        /// </summary>
+        /// <param name="newNickname">변경할 닉네임</param>
+        /// <returns></returns>
+        [HttpPut("{index}")]
+        public async Task<IActionResult> UpdateNickname(string newNickname)
         {
+            var accountIdClaim = User.Claims.FirstOrDefault(c => c.Type == "AccountId");
+            if (accountIdClaim == null)
+            {
+                return Unauthorized("AccountId claim not found");
+            }
+            
+            if (!int.TryParse(accountIdClaim.Value, out var index))
+            {
+                return Unauthorized("AccountId claim is not an integer");
+            }
+            
             // Find the account by ID
-            var account = await _context.Accounts.FindAsync(id);
+            var account = await _context.Accounts.FindAsync(index);
             if (account == null)
             {
                 return NotFound(new { message = "account not found" });
@@ -99,11 +126,25 @@ namespace MinimoServer.Controllers;
             return Ok(new { message = "Nickname updated" });
         }
 
-        // Delete an account
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAccount(int id)
+        /// <summary>
+        /// 요청한 계정을 삭제합니다.
+        /// </summary>
+        /// <returns></returns>
+        [HttpDelete]
+        public async Task<IActionResult> DeleteAccount()
         {
-            var account = await _context.Accounts.FindAsync(id);
+            var accountIdClaim = User.Claims.FirstOrDefault(c => c.Type == "AccountId");
+            if (accountIdClaim == null)
+            {
+                return Unauthorized("AccountId claim not found");
+            }
+            
+            if (!int.TryParse(accountIdClaim.Value, out var index))
+            {
+                return Unauthorized("AccountId claim is not an integer");
+            }
+            
+            var account = await _context.Accounts.FindAsync(index);
             if (account == null)
             {
                 return NotFound(new { message = "account not found" });

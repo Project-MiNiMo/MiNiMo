@@ -16,6 +16,11 @@ namespace MinimoServer.Controllers;
 public class LoginController(JwtService jwtService, GameDbContext context, TimeService timeService)
     : ControllerBase
 {
+    /// <summary>
+    /// 로그인을 시도하고, 성공 시 jwt 토큰과 현재시간, 계정정보를 반환합니다.
+    /// </summary>
+    /// <param name="loginDto">LoginDTO</param>
+    /// <returns>{Token: string, Time: DateTime, Account: AccountDTO}</returns>
     [HttpPost]
     public async Task<IActionResult> Login(LoginDTO loginDto)
     {
@@ -29,6 +34,10 @@ public class LoginController(JwtService jwtService, GameDbContext context, TimeS
         return Unauthorized();
     }
 
+    /// <summary>
+    /// 토큰을 이용하여 로그인하고, 성공 시 현재시간과 계정정보를 반환합니다.
+    /// </summary>
+    /// <returns>{Time: DateTime, Account: AccountDTO}</returns>
     [Authorize]
     [HttpPost("token")]
     public async Task<IActionResult> LoginWithToken()
@@ -45,6 +54,7 @@ public class LoginController(JwtService jwtService, GameDbContext context, TimeS
         return Unauthorized();
     }
 
+    
     private async Task<Account?> GetValidUser(string username, string password)
     {
         // 데이터베이스에서 사용자를 찾고, 비밀번호가 일치하는지 확인

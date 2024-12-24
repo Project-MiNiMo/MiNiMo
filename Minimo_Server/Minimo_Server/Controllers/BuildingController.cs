@@ -14,10 +14,10 @@ namespace MinimoServer.Controllers;
 public class BuildingController(GameDbContext context, TimeService timeService) : ControllerBase
 {
     /// <summary>
-    /// 요청한 계정의 건물 목록을 반환합니다.
+    /// 건물 목록을 반환합니다.
     /// </summary>
-    /// <param name="accountId"></param>
-    /// <returns></returns>
+    /// <returns>List(BuildingDTO)</returns>
+    [Authorize]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<BuildingDTO>>> GetBuildings()
     {
@@ -42,10 +42,11 @@ public class BuildingController(GameDbContext context, TimeService timeService) 
     }
     
     /// <summary>
-    /// 요청한 계정의 id에 해당하는 건물을 반환합니다.
+    /// 주어진 id에 해당하는 건물을 반환합니다.
     /// </summary>
-    /// <param name="id"></param>
-    /// <returns></returns>
+    /// <param name="id">건물의 id</param>
+    /// <returns>BuildingDTO</returns>
+    [Authorize]
     [HttpGet("{id}")]
     public async Task<ActionResult<BuildingDTO>> GetBuilding(int id)
     {
@@ -75,10 +76,11 @@ public class BuildingController(GameDbContext context, TimeService timeService) 
     }
     
     /// <summary>
-    /// 건물을 생성합니다. TODO: 추후 자원 확인 필요
+    /// 건물을 생성하고, 생성된 건물의 정보를 반환합니다.
+    /// TODO: 자원이 부족할 경우 400 Bad Request를 반환합니다.
     /// </summary>
-    /// <param name="buildingDto"></param>
-    /// <returns></returns>
+    /// <param name="buildingDto">BuildingDTO</param>
+    /// <returns>BuildingDTO</returns>
     [HttpPost]
     public async Task<ActionResult<Building>> CreateBuilding(BuildingDTO buildingDto)
     {
@@ -117,7 +119,7 @@ public class BuildingController(GameDbContext context, TimeService timeService) 
     }
 
     /// <summary>
-    /// 건물을 업데이트합니다.
+    /// 건물의 상태를 업데이트합니다.
     /// </summary>
     /// <param name="updateParameter"></param>
     /// <returns></returns>

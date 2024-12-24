@@ -91,6 +91,10 @@ namespace MinimoServer
 
                 // IgnoreAuthFilter 추가
                 c.OperationFilter<IgnoreAuthFilter>();
+                
+                var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             }); 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>

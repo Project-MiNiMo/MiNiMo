@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace MinimoShared
 {
+    /// <summary>
+    /// 계정의 정보를 담는 DTO. ID, 닉네임, 레벨, 경험치, 보유한 건물, 아이템 정보를 담고 있다. 
+    /// </summary>
     public class AccountDTO
     {
         public int ID { get; set; }

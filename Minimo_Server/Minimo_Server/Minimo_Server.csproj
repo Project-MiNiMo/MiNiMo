@@ -39,4 +39,8 @@
         <SharedSources Include="Shared/**/*.cs" />
     </ItemGroup>
 
+    <PropertyGroup>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+
 </Project>
