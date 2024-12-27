@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 3689406654390886512}
   - component: {fileID: 9084859069638607427}
   m_Layer: 5
-  m_Name: Btn_ProduceOption
+  m_Name: Back_PlantOption
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -379,7 +379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2046d104cd2952b439bf05127702b2f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _plantCtrl: {fileID: 689198271730968895}
+  _plantHandler: {fileID: 689198271730968895}
   _resultNameTMP: {fileID: 8580430194155534969}
   _result:
     _gameObject: {fileID: 7752795024905339349}
@@ -688,9 +688,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f85d2b39157fa4f44ae7421915bb0fee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!1 &8614686373143349221
 GameObject:
   m_ObjectHideFlags: 0

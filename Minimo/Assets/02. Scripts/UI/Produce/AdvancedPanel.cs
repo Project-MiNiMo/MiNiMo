@@ -37,6 +37,7 @@ public class AdvancedPanel : UIBase
             }).AddTo(gameObject);
         
         _taskBtns = GetComponentsInChildren<ProduceTaskBtn>(true);
+        _closeBtn.onClick.AddListener(ClosePanel);
     }
 
     public override void OpenPanel()

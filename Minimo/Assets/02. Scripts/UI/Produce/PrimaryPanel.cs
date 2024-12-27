@@ -6,9 +6,9 @@ public class PrimaryPanel : UIBase
 {
     [SerializeField] private ProduceHarvestCtrl _harvestCtrl;
     [SerializeField] private ProduceInfoCtrl _infoCtrl;
-    [SerializeField] private ProduceOptionCtrl _optionCtrl;
     [SerializeField] private RectTransform _rect;
     private ProduceManager _produceManager;
+    private PlantPanel _plantPanel;
 
     public override void Initialize()
     {
@@ -34,6 +34,8 @@ public class PrimaryPanel : UIBase
                     ClosePanel();
                 }
             }).AddTo(gameObject);
+
+        _plantPanel = App.GetManager<UIManager>().GetPanel<PlantPanel>();
     }
     
     private void Update()
@@ -68,14 +70,14 @@ public class PrimaryPanel : UIBase
         }
         else
         {
-            ShowUI(_optionCtrl);
+            _plantPanel.OpenPanel();
+            ShowUI(_plantPanel);
         }
     }
 
     private void ShowUI(MonoBehaviour targetUI)
     {
         _harvestCtrl.gameObject.SetActive(targetUI == _harvestCtrl);
-        _optionCtrl.SetActive(targetUI == _optionCtrl);
         _infoCtrl.SetActive(targetUI == _infoCtrl);
     }
     

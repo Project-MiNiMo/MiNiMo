@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class ProducePlantCtrl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class PlantHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private LayerMask _targetLayerMask;
     

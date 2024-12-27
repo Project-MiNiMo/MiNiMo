@@ -14,6 +14,7 @@ public class ProduceTaskBtn : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _remainTimeTMP;
 
     private int _currentRemainTime;
+    private PlantPanel _plantPanel;
     
     public void Initialize(ProduceTask produceTask)
     {
@@ -23,6 +24,14 @@ public class ProduceTaskBtn : MonoBehaviour
         }
         _produceTask = produceTask;
         SetRemainTime(produceTask.RemainTime);
+        
+        _plantPanel = App.GetManager<UIManager>().GetPanel<PlantPanel>();
+        
+        _taskBtn.onClick.AddListener(() =>
+        {
+            if (_produceTask == null)
+                _plantPanel.OpenPanel();
+        });
     }
     
     private void Update()
