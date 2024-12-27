@@ -16,18 +16,34 @@ namespace MinimoServer
     {
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Time> Time { get; set; }
-        public DbSet<Building> Buildings { get; set; }
-        
         public GameDbContext(DbContextOptions<GameDbContext> options) : base(options) { }
         
+        // Owns : Currency
+        // OwnsMany : Buildings / Items
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Account>().ToTable("Players");
+            modelBuilder.Entity<Account>(account => 
+            {
+                account.ToTable("Players");
+                account.OwnsOne(a => a.Currency, currency =>
+                {
+                    currency.Property<int>("Id");
+                    currency.HasKey("Id");
+                });
+                account.OwnsMany(a => a.Buildings, building =>
+                {
+                    building.WithOwner().HasForeignKey("AccountId");
+                    building.Property<int>("Id");
+                    building.HasKey("Id");
+                });
+                account.OwnsMany(a => a.Items, item =>
+                {
+                    item.WithOwner().HasForeignKey("AccountId");
+                    item.Property<int>("Id");
+                    item.HasKey("Id");
+                });
+            });
             modelBuilder.Entity<Time>().ToTable("Time");
-            modelBuilder.Entity<Building>()
-                .HasOne(b => b.Account)
-                .WithMany(a => a.Buildings)
-                .HasForeignKey(b => b.AccountId);
         }
 
     }
@@ -43,9 +59,42 @@ namespace MinimoServer
             services.AddControllers();
             services.AddScoped<TimeService>();
             services.AddScoped<JwtService>();
+            services.AddSingleton<TableDataService>(new TableDataService());
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Minimo Server API", Version = "v1" });
+                
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "JWT Authorization header using the Bearer scheme. Example: 'Bearer {token}'",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT"
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        Array.Empty<string>()
+                    }
+                });
+
+                // IgnoreAuthFilter 추가
+                c.OperationFilter<IgnoreAuthFilter>();
+                
+                var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             }); 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
@@ -57,7 +106,8 @@ namespace MinimoServer
                         ValidateLifetime = false,
                         ValidateIssuerSigningKey = true,
                         // jwt:key
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"] ?? throw new InvalidOperationException()))
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"] ?? throw new InvalidOperationException())),
+                        NameClaimType = "AccountId" // AccountId 클레임을 User.Identity.Name으로 매핑
                     };
                 });
         }
@@ -85,6 +135,17 @@ namespace MinimoServer
             {
                 endpoints.MapControllers();
             });
+            
+            app.Use(async (context, next) =>
+            {
+                var headers = context.Request.Headers;
+                Console.WriteLine("Request Headers:");
+                foreach (var header in headers)
+                {
+                    Console.WriteLine($"{header.Key}: {header.Value}");
+                }
+                await next.Invoke();
+            });
         }
     }
 
@@ -110,7 +171,7 @@ namespace MinimoServer
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    
+                    webBuilder.UseUrls("http://localhost:5093");
                 });
     }
 }

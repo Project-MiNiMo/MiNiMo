@@ -16,6 +16,15 @@ public class Account
     public int Experience { get; set; }
     public DateTime LastLogin { get; set; }
     
+    // 재화
+    public Currency Currency { get; set; } = new Currency();
+    
     // 건물
-    public ICollection<Building> Buildings { get; set; }
+    public List<Building> Buildings { get; set; }
+    
+    // 아이템
+    public List<Item> Items { get; set; }
+    
+    // 미니모
+    // 친구
 }

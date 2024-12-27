@@ -12,7 +12,10 @@ public static class AccountMapper
             ID = account.Id,
             Nickname = account.Nickname,
             Level = account.Level,
-            Experience = account.Experience
+            Experience = account.Experience,
+            Currency = CurrencyMapper.ToCurrencyDTO(account.Currency),
+            Buildings = account.Buildings?.Select(BuildingMapper.ToBuildingDTO).ToList() ?? new List<BuildingDTO>(),
+            Items = account.Items?.Select(ItemMapper.ToItemDTO).ToList() ?? new List<ItemDTO>()
         };
     }
 
@@ -25,7 +28,10 @@ public static class AccountMapper
             Nickname = accountDto.Nickname,
             Level = accountDto.Level,
             Experience = accountDto.Experience,
-            LastLogin = DateTime.UtcNow // Setting LastLogin to current date-time
+            LastLogin = DateTime.UtcNow, // Setting LastLogin to current date-time
+            Currency = accountDto.Currency != null ? CurrencyMapper.ToCurrency(accountDto.Currency) : null,
+            Buildings = accountDto.Buildings?.Select(BuildingMapper.ToBuilding).ToList(),
+            Items = accountDto.Items?.Select(ItemMapper.ToItem).ToList()
         };
     }
 
@@ -33,5 +39,10 @@ public static class AccountMapper
     public static IEnumerable<AccountDTO> ToAccountDTOs(IEnumerable<Account> players)
     {
         return players.Select(player => ToAccountDTO(player)).ToList();
+    }
+    
+    public static IEnumerable<Account> ToAccounts(IEnumerable<AccountDTO> playerDtos)
+    {
+        return playerDtos.Select(ToAccount).ToList();
     }
 }
