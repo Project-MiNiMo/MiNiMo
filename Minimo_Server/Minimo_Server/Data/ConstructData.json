@@ -1,0 +1,106 @@
+[
+  {
+    "ID": "Building_Farm",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": 300
+  },
+  {
+    "ID": "Building_Orchard",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": 300
+  },
+  {
+    "ID": "Building_CropFacility",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": 600
+  },
+  {
+    "ID": "Building_OrchardFacility",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": 600
+  },
+  {
+    "ID": "Building_Bakery",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": 800
+  },
+  {
+    "ID": "Building_Stationery",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": 800
+  },
+  {
+    "ID": "Building_ToyShop",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": 800
+  },
+  {
+    "ID": "Building_LoggingCamp",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": 300
+  },
+  {
+    "ID": "Building_Scarecrow",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": -1
+  },
+  {
+    "ID": "Building_Warehouse",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": 600
+  },
+  {
+    "ID": "Building_CropShop",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": 600
+  },
+  {
+    "ID": "Building_MinimoOffice",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": 600
+  },
+  {
+    "ID": "Building_MinimoShelter",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": 600
+  }
+]

@@ -50,6 +50,7 @@ public class App : Singleton<App>
         {
             dictionary[type] = obj;
         }
+        Debug.Log($"{type.Name} registered.");
     }
 
     public static void RegisterManager(MonoBehaviour manager)
