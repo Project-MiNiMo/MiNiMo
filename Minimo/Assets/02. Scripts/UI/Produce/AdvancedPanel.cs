@@ -37,7 +37,12 @@ public class AdvancedPanel : UIBase
             }).AddTo(gameObject);
         
         _taskBtns = GetComponentsInChildren<ProduceTaskBtn>(true);
-        _closeBtn.onClick.AddListener(ClosePanel);
+        _closeBtn.onClick.AddListener(()=>
+        {
+            ClosePanel();
+            
+            _produceManager.DeactiveProduce();
+        });
     }
 
     public override void OpenPanel()
@@ -49,11 +54,9 @@ public class AdvancedPanel : UIBase
 
     private void InitTaskBtns()
     {
-        int i = 0;
-        foreach (var task in _produceManager.CurrentProduceObject.AllTasks)
+        foreach (var taskBtn in _taskBtns)
         {
-            _taskBtns[i].Initialize(task);
-            i++;
+            taskBtn.Initialize(_produceManager.CurrentProduceObject);
         }
     }
 }

@@ -1,4 +1,4 @@
-using System;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -9,59 +9,96 @@ public class ProduceTaskBtn : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _taskText;
     
     private ProduceTask _produceTask;
-    
-    [SerializeField] private Image _remainTimeImg;
-    [SerializeField] private TextMeshProUGUI _remainTimeTMP;
+    [SerializeField] private RemainTimeUpdater _remainTimeUpdater;
 
     private int _currentRemainTime;
     private PlantPanel _plantPanel;
-    
-    public void Initialize(ProduceTask produceTask)
+
+    private ProduceManager _produceManager;
+    private int _taskIndex;
+    private ProduceObject _produceObject;
+
+    private void Start()
     {
-        if (produceTask == null)
-        {
-            return;
-        }
-        _produceTask = produceTask;
-        SetRemainTime(produceTask.RemainTime);
-        
+        _taskIndex = transform.GetSiblingIndex();
         _plantPanel = App.GetManager<UIManager>().GetPanel<PlantPanel>();
         
         _taskBtn.onClick.AddListener(() =>
         {
-            if (_produceTask == null)
+            if (_produceTask == null) 
+            {
                 _plantPanel.OpenPanel();
+                return;
+            }
+            
+            if (_produceTask?.CurrentState is PendingState)
+            {
+                //취소?
+            }
+            else if (_produceTask?.CurrentState is ActiveState)
+            {
+                //중간 수확 기능 구현
+            }
+            else if (_produceTask?.CurrentState is CompletedState)
+            {
+                //수확 기능 구현
+            }
         });
+        
+        _produceManager = App.GetManager<ProduceManager>();
+  
+        _produceManager.CurrentRemainTime
+            .Subscribe(SetRemainTime)
+            .AddTo(gameObject);
     }
-    
+
     private void Update()
     {
-        if (_produceTask == null) 
+        if (_produceObject == null)
+        {
+            return;
+        }
+
+        if (_produceObject.AllTasks.Count <= _taskIndex) 
         {
             return;
         }
         
-        if (_currentRemainTime != _produceTask.RemainTime)
+        var tempTask = _produceObject.AllTasks[_taskIndex];
+        
+        if (!Equals(_produceTask, tempTask))
         {
-            _currentRemainTime = _produceTask.RemainTime;
-            SetRemainTime(_currentRemainTime);
+            _produceTask = tempTask;
         }
-    }
-
-    private void SetRemainTime(int remainTime)
-    {
-        if (remainTime <= 0)
-        {
-            gameObject.SetActive(false);
-        }
-
-        _remainTimeTMP.text = FormatTime(remainTime);
-        _remainTimeImg.fillAmount = 1 - ((float)remainTime / _produceTask.Data.Time);
     }
     
-    private string FormatTime(int time)
+    public void Initialize(ProduceObject produceObject)
     {
-        var timeSpan = TimeSpan.FromSeconds(time);
-        return $"{timeSpan.Hours:D2}:{timeSpan.Minutes:D2}:{timeSpan.Seconds:D2}";
+        _produceObject = produceObject;
+    }
+    
+    private void SetRemainTime(int remainTime)
+    {
+        if (_produceObject == null)
+        {
+            return;
+        }
+ 
+        if (_produceTask?.CurrentState is PendingState)
+        {
+            _remainTimeUpdater.SetPending();
+        }
+        else if (_produceTask?.CurrentState is ActiveState)
+        {
+            _remainTimeUpdater.SetRemainTime(remainTime, _produceTask.Data.Time);
+        }
+        else if (_produceTask?.CurrentState is CompletedState)
+        {
+            _remainTimeUpdater.SetComplete();
+        }
+        else
+        {
+            _remainTimeUpdater.SetEmpty();
+        }
     }
 }

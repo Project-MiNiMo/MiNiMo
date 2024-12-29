@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -13,10 +15,12 @@ public class PlantHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     private Vector3 _startPosition;
 
     private ProduceOption _currentOption;
+    private ProduceManager _produceManager;
     
     private void Start()
     {
         _targetLayerMask = LayerMask.GetMask("Building");
+        _produceManager = App.GetManager<ProduceManager>();
         
         _rect = GetComponent<RectTransform>();
         _image = GetComponent<Image>();
@@ -40,6 +44,7 @@ public class PlantHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         _rect.anchoredPosition += eventData.delta / _canvas.scaleFactor;
 
         Vector2 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        
         Collider2D hit = Physics2D.OverlapPoint(worldPosition, _targetLayerMask);
         if (hit != null && hit.TryGetComponent<ProduceObject>(out var component))
         {
@@ -49,6 +54,18 @@ public class PlantHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        List<RaycastResult> raycastResults = new();
+        GraphicRaycaster raycaster = _canvas.GetComponent<GraphicRaycaster>();
+        raycaster.Raycast(eventData, raycastResults);
+        foreach (var result in raycastResults)
+        {
+            if (result.gameObject.CompareTag("ProduceTaskBtn"))
+            {
+                _produceManager.CurrentProduceObject.StartProduce(_currentOption);
+                break; 
+            }
+        }
+        
         _image.raycastTarget = true;
         _rect.anchoredPosition = _startPosition;
     }

@@ -297,9 +297,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3885915674627547548}
   - component: {fileID: 2015521378399141603}
+  - component: {fileID: 1220628655657987346}
   m_Layer: 5
-  m_Name: Btn_Produce
-  m_TagString: Untagged
+  m_Name: Btn_ProduceTask
+  m_TagString: ProduceTaskBtn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -340,6 +341,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _taskBtn: {fileID: 2804424786360048353}
   _taskText: {fileID: 888225183087282377}
+  _remainTimeUpdater: {fileID: 1220628655657987346}
+--- !u!114 &1220628655657987346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4308375601269385198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0152aa03384dfe649ba764e627745994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _remainTimeImg: {fileID: 5427313007345665321}
   _remainTimeTMP: {fileID: 888225183087282377}
 --- !u!1 &6065657998301556589
@@ -412,7 +426,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 1
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -431,7 +445,7 @@ GameObject:
   - component: {fileID: 2804424786360048353}
   m_Layer: 5
   m_Name: Button
-  m_TagString: Untagged
+  m_TagString: ProduceTaskBtn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

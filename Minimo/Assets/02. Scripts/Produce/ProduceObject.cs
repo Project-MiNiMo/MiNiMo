@@ -41,7 +41,7 @@ public abstract class ProduceObject : BuildingObject
         _lastUpdateTime = _timeManager.Time;
 
         var activeTask = AllTasks[ActiveTaskIndex];
-        activeTask.UpdateHarvestTime();
+        activeTask.Update();
 
         SetRemainTime(activeTask);
 
@@ -114,7 +114,7 @@ public abstract class ProduceObject : BuildingObject
         if (ActiveTaskIndex < 0) return;
 
         var activeTask = AllTasks[ActiveTaskIndex];
-        activeTask.HarvestEarly();
+        activeTask.Harvest();
         SetRemainTime(activeTask);
 
         SetCompleteTask();

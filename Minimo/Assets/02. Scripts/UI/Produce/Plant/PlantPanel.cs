@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 public class PlantPanel : UIBase
 {
     [SerializeField] private ScrollRect _scrollRect;
+    [SerializeField] private Button _closeBtn;
     
     private PlantOptionSlot[] _plantOptionSlots;
     private ProduceManager _produceManager;
@@ -18,21 +19,10 @@ public class PlantPanel : UIBase
         {
             slot.Start();
         }
+        
+        _closeBtn.onClick.AddListener(ClosePanel);
     }
-    
-    private void Update()
-    {
-        if (!gameObject.activeSelf)
-        {
-            return;
-        }
-
-        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
-        {
-            gameObject.SetActive(false);
-        }
-    }
-
+   
     public override void OpenPanel()
     {
         base.OpenPanel();
