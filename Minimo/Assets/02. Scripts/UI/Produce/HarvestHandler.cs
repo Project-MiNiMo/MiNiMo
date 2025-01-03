@@ -1,17 +1,14 @@
-using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class ProduceHarvestCtrl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class HarvestHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private ProduceManager _produceManager;
-    
-    private LayerMask _targetLayerMask;
-
     [SerializeField] private RectTransform _rect;
     [SerializeField] private Image _image;
+    
     private Canvas _canvas;
+    private LayerMask _targetLayerMask;
     
     private Vector3 _startPosition;
 
@@ -22,19 +19,6 @@ public class ProduceHarvestCtrl : MonoBehaviour, IBeginDragHandler, IDragHandler
         _canvas = GetComponentInParent<Canvas>();
         
         _startPosition = _rect.anchoredPosition;
-        
-        _produceManager = App.GetManager<ProduceManager>();
- 
-        _produceManager.CurrentRemainTime
-            .Subscribe((remainTime) =>
-            {
-                if (_produceManager.CurrentProduceObject?.ActiveTaskIndex >= 0 
-                    && remainTime <= 0)
-                {
-                    gameObject.SetActive(true);
-                }
-            })
-            .AddTo(gameObject);
     }
 
     public void OnBeginDrag(PointerEventData eventData)

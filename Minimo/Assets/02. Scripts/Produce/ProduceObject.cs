@@ -1,14 +1,15 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public abstract class ProduceObject : BuildingObject
 {
     public ProduceData ProduceData { get; private set; }
     public List<ProduceTask> AllTasks { get; } = new(); 
-    public int ActiveTaskIndex { get; private set; } = -1; 
+    public ProduceTask ActiveTask { get; private set; }
+    public virtual bool IsPrimary => false;
 
     private ProduceManager _produceManager;
     private TimeManager _timeManager;
@@ -22,112 +23,106 @@ public abstract class ProduceObject : BuildingObject
 
         _produceManager = App.GetManager<ProduceManager>();
         _timeManager = App.GetManager<TimeManager>();
+        _lastUpdateTime = _timeManager.Time;
     }
 
     protected override void Update()
     {
         base.Update();
-
-        if (ActiveTaskIndex >= 0) 
-        {
-            UpdateProduceTasks();
-        }
-    }
-
-    private void UpdateProduceTasks()
-    {
+        
         if ((_timeManager.Time - _lastUpdateTime).TotalSeconds < 1f) return;
 
         _lastUpdateTime = _timeManager.Time;
 
-        var activeTask = AllTasks[ActiveTaskIndex];
-        activeTask.Update();
-
-        SetRemainTime(activeTask);
-
-        if (activeTask.RemainTime <= 0) 
+        if (ActiveTask == null) return;
+        
+        ActiveTask.Update();
+        UpdateRemainTime();
+        
+        if (ActiveTask is { RemainTime: <= 0 })
         {
-            SetCompleteTask();
-            SetActiveTask();
+            CompleteActiveTask();
         }
     }
-
-    private void SetRemainTime(ProduceTask task)
+    
+    protected virtual void CompleteActiveTask()
     {
-        if (_produceManager.CurrentProduceObject == this)
+        ActiveTask?.Harvest();
+        ActiveTask = null;
+
+        SetNextActiveTask();
+    }
+    
+    private void SetNextActiveTask()
+    {
+        if (ActiveTask != null)
         {
-            _produceManager.SetRemainTime(task.RemainTime);
+            return;
+        }
+        
+        ActiveTask = AllTasks.FirstOrDefault(task => task.CurrentState is PendingState);
+
+        if (ActiveTask != null)
+        {
+            ActiveTask.ChangeState(new ActiveState());
+            UpdateRemainTime();
         }
     }
-
-    protected virtual void SetCompleteTask()
+    
+    private void UpdateRemainTime()
     {
-        if (ActiveTaskIndex >= 0) 
+        if (_produceManager.CurrentProduceObject == this && ActiveTask != null)
         {
-            ActiveTaskIndex = -1;
-        }
-    }
-
-    protected void SetActiveTask()
-    {
-        if (ActiveTaskIndex >= 0) return;
-
-        var nextTaskIndex = AllTasks.FindIndex(t => t.RemainTime > 0);
-        if (nextTaskIndex >= 0)
-        {
-            ActiveTaskIndex = nextTaskIndex;
-            SetRemainTime(AllTasks[ActiveTaskIndex]);
+            _produceManager.SetRemainTime(ActiveTask.RemainTime);
         }
     }
 
     public virtual bool StartProduce(ProduceOption option)
     {
+        Debug.Log("3 : Start Produce");
         if (!ProduceData.ProduceOptions.Contains(option))
         {
+            Debug.Log("3-1 : Invalid Produce Option");
             return false;
         }
 
         AllTasks.Add(new ProduceTask(option));
-        SetActiveTask();
-        Debug.Log("Start Produce : " + option.Results[0].Code);
-
+        Debug.Log($"4 : {AllTasks.Count} Tasks Added");
+        SetNextActiveTask();
+        Debug.Log("5 : Start Produce : " + option.Results[0].Code);
+        
         return true;
     }
 
     public virtual void StartHarvest()
     {
-        foreach (var task in AllTasks.Where(t => t.RemainTime <= 0))
+        for (var i = AllTasks.Count - 1; i >= 0; i--)
         {
-            foreach (var result in task.Data.Results)
+            var task = AllTasks[i];
+            if (task.CurrentState is CompletedState)
             {
-                var item = App.GetData<TitleData>().ItemSO.GetItem(result.Code);
-                item.Count += result.Amount;
+                task.Harvest();
+                AllTasks.RemoveAt(i);
             }
         }
 
-        AllTasks.RemoveAll(t => t.RemainTime <= 0);
-        ActiveTaskIndex = AllTasks.FindIndex(t => t.RemainTime > 0);
+        SetNextActiveTask();
     }
 
     public void HarvestEarly()
     {
-        if (ActiveTaskIndex < 0) return;
+        if (ActiveTask == null) return;
 
-        var activeTask = AllTasks[ActiveTaskIndex];
-        activeTask.Harvest();
-        SetRemainTime(activeTask);
-
-        SetCompleteTask();
-        SetActiveTask();
+        CompleteActiveTask();
     }
 
     protected override void OnClickWhenNotEditing()
     {
         _produceManager.ActiveProduce(this);
 
-        if (ActiveTaskIndex >= 0) 
+        if (ActiveTask != null) 
         {
-            _produceManager.SetRemainTime(AllTasks[ActiveTaskIndex].RemainTime);
+            _produceManager.SetRemainTime(ActiveTask.RemainTime);
         }
     }
 }

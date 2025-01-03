@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class ProducePrimary : ProduceObject
 {
+    public override bool IsPrimary => true;
+    
     [SerializeField] private SpriteRenderer _cropSpriteRenderer;
     
     protected List<Sprite[]> _cropSprites;
@@ -15,7 +17,7 @@ public abstract class ProducePrimary : ProduceObject
     {
         base.Update();
 
-        if (ActiveTaskIndex < 0) 
+        if (AllTasks.Count == 0) 
         {
             return;
         }
@@ -35,8 +37,7 @@ public abstract class ProducePrimary : ProduceObject
 
     private void SetCropSprite()
     {
-        var activeTask = AllTasks[ActiveTaskIndex];
-        var remainPercent = (float)activeTask.RemainTime / activeTask.Data.Time;
+        var remainPercent = (float)ActiveTask.RemainTime / ActiveTask.Data.Time;
 
         var newSpriteIndex = remainPercent switch
         {
@@ -52,11 +53,19 @@ public abstract class ProducePrimary : ProduceObject
         }
     }
     
+    protected override void CompleteActiveTask()
+    {
+        base.CompleteActiveTask();
+        
+        _currentSpriteIndex = 2;
+        _cropSpriteRenderer.sprite = _currentCropSprites[_currentSpriteIndex];
+    }
+    
     public override void StartHarvest()
     {
         base.StartHarvest();
 
-        if (ActiveTaskIndex < 0)
+        if (ActiveTask == null)
         {
             _cropSpriteRenderer.sprite = null;
         }
@@ -72,7 +81,7 @@ public abstract class ProducePrimary : ProduceObject
         
         _currentSpriteIndex = 0;
 
-        var cropCode = AllTasks[ActiveTaskIndex].Data.Results[0].Code;
+        var cropCode = ActiveTask.Data.Results[0].Code;
         _currentCropSprites = _cropSprites[GetCropType(cropCode)];
         _cropSpriteRenderer.sprite = _currentCropSprites[_currentSpriteIndex];
 
@@ -80,12 +89,4 @@ public abstract class ProducePrimary : ProduceObject
     }
 
     protected abstract int GetCropType(string cropCode);
-
-    protected override void SetCompleteTask()
-    {
-        base.SetCompleteTask();
-        
-        _currentSpriteIndex = 2;
-        _cropSpriteRenderer.sprite = _currentCropSprites[_currentSpriteIndex];
-    }
 }

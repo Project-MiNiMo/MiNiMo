@@ -32,7 +32,7 @@ public class ProduceInfoCtrl : MonoBehaviour
         if (isActive)
         {
             var currentObject = _produceManager.CurrentProduceObject;
-            _currentOption = currentObject.AllTasks[currentObject.ActiveTaskIndex].Data;
+            _currentOption = currentObject.ActiveTask.Data;
             SetInfo();
         }
     }

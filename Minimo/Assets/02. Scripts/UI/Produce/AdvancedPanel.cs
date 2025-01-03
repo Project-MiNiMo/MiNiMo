@@ -39,8 +39,6 @@ public class AdvancedPanel : UIBase
         _taskBtns = GetComponentsInChildren<ProduceTaskBtn>(true);
         _closeBtn.onClick.AddListener(()=>
         {
-            ClosePanel();
-            
             _produceManager.DeactiveProduce();
         });
     }

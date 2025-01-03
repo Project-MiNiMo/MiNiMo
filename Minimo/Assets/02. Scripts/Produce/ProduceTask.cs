@@ -3,7 +3,7 @@ using UnityEngine;
 public class ProduceTask
 {
     public ProduceOption Data { get; private set; }
-    public int RemainTime;
+    public int RemainTime { get; private set; }
     public ITaskState CurrentState { get; private set; }
 
     public ProduceTask(ProduceOption produceOption)
@@ -28,6 +28,11 @@ public class ProduceTask
     {
         CurrentState = newState;
     }
+
+    public void ReduceRemainTime(int amount)
+    {
+        RemainTime = Mathf.Max(0, RemainTime - amount);
+    }
 }
 
 public interface ITaskState
@@ -38,22 +43,16 @@ public interface ITaskState
 
 public class PendingState : ITaskState
 {
-    public void OnUpdate(ProduceTask task)
-    {
+    public void OnUpdate(ProduceTask task) { }
 
-    }
-
-    public void OnHarvest(ProduceTask task)
-    {
-
-    }
+    public void OnHarvest(ProduceTask task) { }
 }
 
 public class ActiveState : ITaskState
 {
     public void OnUpdate(ProduceTask task)
     {
-        task.RemainTime = Mathf.Max(0, task.RemainTime - 1);
+        task.ReduceRemainTime(1);
         if (task.RemainTime <= 0)
         {
             task.ChangeState(new CompletedState());
@@ -62,20 +61,25 @@ public class ActiveState : ITaskState
 
     public void OnHarvest(ProduceTask task)
     {
-        task.RemainTime = 0;
+        task.ReduceRemainTime(task.RemainTime);
         task.ChangeState(new CompletedState());
     }
 }
 
 public class CompletedState : ITaskState
 {
-    public void OnUpdate(ProduceTask task)
-    {
-
-    }
+    public void OnUpdate(ProduceTask task) { }
 
     public void OnHarvest(ProduceTask task)
     {
         Debug.Log($"Harvested: {task.Data.Results}");
+
+        var titleData = App.GetData<TitleData>();
+        
+        foreach (var result in task.Data.Results)
+        {
+            var item = titleData.ItemSO.GetItem(result.Code);
+            item.Count += result.Amount;
+        }
     }
 }

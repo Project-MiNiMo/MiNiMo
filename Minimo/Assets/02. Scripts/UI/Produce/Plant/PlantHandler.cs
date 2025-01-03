@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -61,7 +61,17 @@ public class PlantHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         {
             if (result.gameObject.CompareTag("ProduceTaskBtn"))
             {
-                _produceManager.CurrentProduceObject.StartProduce(_currentOption);
+                Debug.Log($"1 : {_currentOption.Results[0].Code}");
+                Debug.Log($"2 : {_produceManager.CurrentProduceObject.name}");
+                Debug.Log($"2-1 : Current Option Valid: {_produceManager.CurrentProduceObject.ProduceData.ProduceOptions.Contains(_currentOption)}");
+                
+                var currentObject = _produceManager.CurrentProduceObject;
+                
+                Debug.Log(currentObject.name);
+                Debug.Log(currentObject.StartProduce(_currentOption).ToString());
+                //currentObject.StartProduce(_currentOption);
+                
+                Debug.Log("6 : Produce Start");
                 break; 
             }
         }

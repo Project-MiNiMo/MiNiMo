@@ -54,6 +54,11 @@ public class ProduceTaskBtn : MonoBehaviour
 
     private void Update()
     {
+        if (gameObject.activeSelf == false) 
+        {
+            return;
+        }
+        
         if (_produceObject == null)
         {
             return;
@@ -69,6 +74,7 @@ public class ProduceTaskBtn : MonoBehaviour
         if (!Equals(_produceTask, tempTask))
         {
             _produceTask = tempTask;
+            SetRemainTime(_produceTask.RemainTime);
         }
     }
     
