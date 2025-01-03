@@ -7,55 +7,34 @@ public class ProduceInfoCtrl : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _infoTMP;
     [SerializeField] private Image[] _infoImages;
-    [SerializeField] private Button _starBtn;
     [SerializeField] private Image _remainTimeImg;
     [SerializeField] private TextMeshProUGUI _remainTimeTMP;
 
     private ProduceManager _produceManager;
     private TitleData _titleData;
     
-    private RectTransform _rect;
     private ProduceOption _currentOption;
     
     private void Start()
     {
-        _rect = GetComponent<RectTransform>();
-        
         _produceManager = App.GetManager<ProduceManager>();
         _titleData = App.GetData<TitleData>();
-        
-        //_starBtn.onClick.AddListener(() => App.GetManager<GridManager>().RotateObject());
-        
-        _produceManager.IsProducing
-            .Subscribe((isProducing) =>
-            {
-                if (isProducing) 
-                {
-                    if (_produceManager.CurrentProduceObject.ActiveTask != null)
-                    {
-                        gameObject.SetActive(true);
-                        _currentOption = _produceManager.CurrentProduceObject.ActiveTask.Data;
-                        SetPosition();
-                        SetInfo();
-                    }
-                    else
-                    {
-                        gameObject.SetActive(false);
-                    }
-
-                }
-            }).AddTo(gameObject);
-        
+  
         _produceManager.CurrentRemainTime
             .Subscribe(SetRemainTime)
             .AddTo(gameObject);
     }
-    
-    private void SetPosition()
+
+    public void SetActive(bool isActive)
     {
-        var position = _produceManager.CurrentProduceObject.transform.position;
-        var screenPos = Camera.main.WorldToScreenPoint(position);
-        _rect.position = screenPos;
+        gameObject.SetActive(isActive);
+
+        if (isActive)
+        {
+            var currentObject = _produceManager.CurrentProduceObject;
+            _currentOption = currentObject.ActiveTask.Data;
+            SetInfo();
+        }
     }
 
     private void SetInfo()

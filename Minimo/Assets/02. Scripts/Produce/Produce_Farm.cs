@@ -39,7 +39,7 @@ public class Produce_Farm : ProducePrimary
     
     public override bool StartProduce(ProduceOption option)
     {
-        if (ActiveTask != null || CompleteTasks.Count > 0)
+        if (AllTasks.Count > 0)
         {
             return false;
         }
