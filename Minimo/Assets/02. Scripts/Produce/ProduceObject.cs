@@ -47,7 +47,6 @@ public abstract class ProduceObject : BuildingObject
     
     protected virtual void CompleteActiveTask()
     {
-        ActiveTask?.Harvest();
         ActiveTask = null;
 
         SetNextActiveTask();
@@ -79,17 +78,13 @@ public abstract class ProduceObject : BuildingObject
 
     public virtual bool StartProduce(ProduceOption option)
     {
-        Debug.Log("3 : Start Produce");
         if (!ProduceData.ProduceOptions.Contains(option))
         {
-            Debug.Log("3-1 : Invalid Produce Option");
             return false;
         }
 
         AllTasks.Add(new ProduceTask(option));
-        Debug.Log($"4 : {AllTasks.Count} Tasks Added");
         SetNextActiveTask();
-        Debug.Log("5 : Start Produce : " + option.Results[0].Code);
         
         return true;
     }
@@ -114,6 +109,11 @@ public abstract class ProduceObject : BuildingObject
         if (ActiveTask == null) return;
 
         CompleteActiveTask();
+    }
+    
+    public void OrganizeTasks()
+    {
+        AllTasks.RemoveAll(task => task.CurrentState is EndState);
     }
 
     protected override void OnClickWhenNotEditing()

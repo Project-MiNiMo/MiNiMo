@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class ProduceTask
 {
-    public ProduceOption Data { get; private set; }
+    public ProduceOption Data { get; }
     public int RemainTime { get; private set; }
     public ITaskState CurrentState { get; private set; }
-
+    
     public ProduceTask(ProduceOption produceOption)
     {
         Data = produceOption;
         RemainTime = produceOption.Time;
-
+        
         CurrentState = new PendingState();
     }
 
@@ -81,5 +81,14 @@ public class CompletedState : ITaskState
             var item = titleData.ItemSO.GetItem(result.Code);
             item.Count += result.Amount;
         }
+        
+        task.ChangeState(new EndState());
     }
+}
+
+public class EndState : ITaskState
+{
+    public void OnUpdate(ProduceTask task) { }
+
+    public void OnHarvest(ProduceTask task) { }
 }

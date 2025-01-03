@@ -2,6 +2,7 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class ProduceTaskBtn : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class ProduceTaskBtn : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _taskText;
     
     private ProduceTask _produceTask;
+    [SerializeField] private ItemInfoUpdater _itemInfoUpdater;
     [SerializeField] private RemainTimeUpdater _remainTimeUpdater;
 
     private int _currentRemainTime;
@@ -41,7 +43,8 @@ public class ProduceTaskBtn : MonoBehaviour
             }
             else if (_produceTask?.CurrentState is CompletedState)
             {
-                //수확 기능 구현
+                _produceTask.Harvest();
+                _produceObject.OrganizeTasks();
             }
         });
         
@@ -49,6 +52,11 @@ public class ProduceTaskBtn : MonoBehaviour
   
         _produceManager.CurrentRemainTime
             .Subscribe(SetRemainTime)
+            .AddTo(gameObject);
+
+        _produceManager.IsProducing
+            .Subscribe((produceObject) => 
+                SetRemainTime(_produceManager.CurrentRemainTime.Value))
             .AddTo(gameObject);
     }
 
@@ -74,6 +82,7 @@ public class ProduceTaskBtn : MonoBehaviour
         if (!Equals(_produceTask, tempTask))
         {
             _produceTask = tempTask;
+            _itemInfoUpdater.SetTaskItem(_produceTask);
             SetRemainTime(_produceTask.RemainTime);
         }
     }
@@ -105,6 +114,7 @@ public class ProduceTaskBtn : MonoBehaviour
         else
         {
             _remainTimeUpdater.SetEmpty();
+            _itemInfoUpdater.SetItemEmpty();
         }
     }
 }
