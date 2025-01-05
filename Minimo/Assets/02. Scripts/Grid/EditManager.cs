@@ -10,10 +10,12 @@ public class EditManager : ManagerBase
     [SerializeField] private GridLayout _gridLayout;
     
     private InstallChecker _installChecker;
+    private TileStateModifier _tileStateModifier;
 
     private void Start()
     {
         _installChecker = GetComponent<InstallChecker>();
+        _tileStateModifier = GetComponent<TileStateModifier>();
     }
     
     public void StartEdit(BuildingObject gridObject)
@@ -28,6 +30,8 @@ public class EditManager : ManagerBase
         
         CurrentEditObject.StartEdit();
         CurrentCellPosition.Value = CurrentEditObject.transform.position;
+        
+        _tileStateModifier.ModifyTileState(CurrentEditObject.Area, TileState.Empty);
     }
 
     public void CancelEdit()
@@ -45,6 +49,7 @@ public class EditManager : ManagerBase
             return;
         }
         
+        _tileStateModifier.ModifyTileState(CurrentEditObject.Area, TileState.Installed);
         CurrentEditObject.Install();
         
         CurrentEditObject = null;
