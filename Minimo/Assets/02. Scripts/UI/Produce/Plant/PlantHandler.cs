@@ -29,7 +29,7 @@ public class PlantHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         _startPosition = _rect.anchoredPosition;
     }
 
-    public void Initialize(ProduceOption option)
+    public void SetOption(ProduceOption option)
     {
         _currentOption = option;
     }
