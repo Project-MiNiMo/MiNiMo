@@ -107,7 +107,8 @@ public abstract class ProduceObject : BuildingObject
     public void HarvestEarly()
     {
         if (ActiveTask == null) return;
-
+        
+        ActiveTask.Harvest();
         CompleteActiveTask();
     }
     

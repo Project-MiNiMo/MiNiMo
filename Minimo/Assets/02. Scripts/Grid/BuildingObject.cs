@@ -1,5 +1,5 @@
-using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class BuildingObject : MonoBehaviour
 {
@@ -52,6 +52,8 @@ public class BuildingObject : MonoBehaviour
 
     private void OnMouseUp()
     {
+        if (EventSystem.current.IsPointerOverGameObject()) return;
+        
         _isPressed = false;
         _pressTime = 0f;
 
@@ -63,6 +65,8 @@ public class BuildingObject : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (EventSystem.current.IsPointerOverGameObject()) return;
+        
         if (!_editManager.IsEditing.Value)
         {
             Debug.Log("OnMouseDown");
@@ -79,6 +83,8 @@ public class BuildingObject : MonoBehaviour
 
     private void OnMouseDrag()
     {
+        if (EventSystem.current.IsPointerOverGameObject()) return;
+        
         if (_editManager.IsEditing.Value)
         {
             var touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
