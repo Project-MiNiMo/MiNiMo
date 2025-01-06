@@ -31,9 +31,9 @@ public class TimeController : ControllerBase
     /// <param name="targetTime">DateTime</param>
     /// <returns></returns>
     [HttpPut]
-    public IActionResult SetTime([FromBody] DateTime targetTime)
+    public ActionResult<DateTime> SetTime([FromBody] DateTime targetTime)
     {
         _timeService.SetTime(targetTime);
-        return Ok();
+        return Ok(_timeService.CurrentTime);
     }
 }

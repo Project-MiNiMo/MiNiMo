@@ -27,13 +27,13 @@ public class LoginPanel : MonoBehaviour
         if (!String.IsNullOrEmpty(_loginManager.JwtToken))
         {
             var result = await _loginManager.LoginWithTokenAsync();
-            if (result.Item1)
+            if (result.IsSuccess)
             {
                 SceneManager.LoadScene("97. Client");
             }
             else
             {
-                _resultText.text = result.Item2;
+                _resultText.text = result.Message;
             }
         }
     }
@@ -45,13 +45,13 @@ public class LoginPanel : MonoBehaviour
 
         // 로그인 요청
         var result = await _loginManager.LoginAsync(id, pw);
-        if(result.Item1)
+        if(result.IsSuccess)
         {
             SceneManager.LoadScene("02. Game");
         }
         else
         {
-            _resultText.text = result.Item2;
+            _resultText.text = result.Message;
         }
     }
     
@@ -63,7 +63,7 @@ public class LoginPanel : MonoBehaviour
         
         // 회원가입 요청
         var result = await _loginManager.CreateAccountAsync(id, pw, randomNickname);
-        _resultText.text = result.Item2;
+        _resultText.text = result.Message;
     }
 }
 

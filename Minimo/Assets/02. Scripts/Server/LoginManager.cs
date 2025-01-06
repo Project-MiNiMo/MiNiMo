@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MinimoShared;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -38,18 +39,17 @@ public class LoginManager : ManagerBase
         IsLoggedIn = false;
     }
     
-    public async UniTask<(bool, string)> LoginAsync(string username, string password)
+    public async UniTask<ApiResult<JObject>> LoginAsync(string username, string password)
     {
         if(IsLoggedIn)
         {
-            return (false, "Already Logged In");
+            return new ApiResult<JObject> { IsSuccess = false, Message = "Already Logged In" };
         }
         
         LoginDTO loginDto = new LoginDTO { Username = username, Password = password };
-        try
+        var result = await _gameClient.PostAsync<JObject>(_loginEndpoint, loginDto);
+        if(result.IsSuccess && result.Data is {} response)
         {
-            var response = await _gameClient.PostAsync<JObject>(_loginEndpoint, loginDto);
-            
             var token = response["token"].Value<string>();
             var time = response["time"].Value<DateTime>();
             var accountDTO = response["account"].ToObject<AccountDTO>();
@@ -60,29 +60,28 @@ public class LoginManager : ManagerBase
             PlayerPrefs.SetString("JwtToken", JwtToken);
             PlayerPrefs.Save();
             IsLoggedIn = true;
-            
-            return (true, $"Login Success: Token: {token}, Time: {time}, NickName: {_nickname}");
-            
+
+            return result;
+
         }
-        catch (System.Exception ex)
+        else
         {
-            Debug.LogError($"Login Failed: {ex.Message}");
-            return (false, $"Login Failed.");
+            Debug.LogError($"Login Failed: {result.Message}");
+            return result;
         }   
     }
 
-    public async UniTask<(bool, string)> LoginWithTokenAsync()
+    public async UniTask<ApiResult<JObject>> LoginWithTokenAsync()
     {
         if(IsLoggedIn)
         {
-            return (false, "Already Logged In");
+            return new ApiResult<JObject> { IsSuccess = false, Message = "Already Logged In" };
         }
         
         var endpoint = _loginEndpoint + "/token";
-        try
+        var result = await _gameClient.PostAsync<JObject>(endpoint, null);
+        if(result.IsSuccess && result.Data is {} response)
         {
-            var response = await _gameClient.PostAsync<JObject>(endpoint, null);
-            
             var time = response["time"].Value<DateTime>();
             var accountDTO = response["account"].ToObject<AccountDTO>();
             
@@ -91,29 +90,18 @@ public class LoginManager : ManagerBase
             IsLoggedIn = true;
             
             Debug.Log($"Login With Token Success: Token: {JwtToken} Time: {time} NickName: {_nickname}");
-            
-            return (true, $"Login Success: Time: {time}");
+            return result;
         }
-        catch (System.Exception ex)
+        else
         {
-            Debug.LogError($"Login Failed: {ex.Message}");
-            return (false, $"Login Failed.");
+            Debug.LogError($"Login Failed: {result.Message}");
+            return result;
         }
     }
     
-    public async UniTask<(bool, string)> CreateAccountAsync(string username, string password, string nickname)
+    public async UniTask<ApiResult<AccountDTO>> CreateAccountAsync(string username, string password, string nickname)
     {
         var createAccountDto = new CreateAccountDTO { Username = username, Password = password, Nickname = nickname };
-        try
-        {
-            var createdAccount = await _gameClient.PostAsync<AccountDTO>(_accountEndPoint, createAccountDto);
-            Debug.Log($"Created player: {createdAccount.Nickname} with ID: {createdAccount.ID}");
-            return (true, $"Successfully registered.");
-        }
-        catch (System.Exception ex)
-        {
-            Debug.LogError($"Failed to create account: {ex.Message}");
-            return (false, $"Failed to register the account.");
-        }
+        return await _gameClient.PostAsync<AccountDTO>(_accountEndPoint, createAccountDto);
     }
 }

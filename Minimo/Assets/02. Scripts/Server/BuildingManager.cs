@@ -23,15 +23,15 @@ public class BuildingManager : ManagerBase
     /// <returns>건물 DTO 목록</returns>
     public async UniTask<List<BuildingDTO>> GetBuildingsAsync()
     {
-        try
+        var result = await _gameClient.GetAsync<List<BuildingDTO>>(BuildingEndpoint);
+        if(result.IsSuccess && result.Data is {} buildings)
         {
-            var buildings = await _gameClient.GetAsync<List<BuildingDTO>>(BuildingEndpoint);
             Debug.Log($"Retrieved {buildings.Count} buildings from the server.");
             return buildings;
         }
-        catch (System.Exception ex)
+        else
         {
-            Debug.LogError($"Failed to fetch buildings: {ex.Message}");
+            Debug.LogError($"Failed to fetch buildings: {result.Message}");
             return new List<BuildingDTO>();
         }
     }
@@ -43,16 +43,16 @@ public class BuildingManager : ManagerBase
     /// <returns>건물 DTO</returns>
     public async UniTask<BuildingDTO> GetBuildingAsync(int buildingId)
     {
-        try
+        var endpoint = $"{BuildingEndpoint}/{buildingId}";
+        var result = await _gameClient.GetAsync<BuildingDTO>(endpoint);
+        if(result.IsSuccess && result.Data is {} building)
         {
-            var endpoint = $"{BuildingEndpoint}/{buildingId}";
-            var building = await _gameClient.GetAsync<BuildingDTO>(endpoint);
             Debug.Log($"Retrieved building {building.Name} (ID: {building.Id})");
             return building;
         }
-        catch (System.Exception ex)
+        else
         {
-            Debug.LogError($"Failed to fetch building with ID {buildingId}: {ex.Message}");
+            Debug.LogError($"Failed to fetch building with ID {buildingId}: {result.Message}");
             return null;
         }
     }
@@ -64,15 +64,15 @@ public class BuildingManager : ManagerBase
     /// <returns>생성된 건물 DTO</returns>
     public async UniTask<BuildingDTO> CreateBuildingAsync(BuildingDTO buildingDto)
     {
-        try
+        var result = await _gameClient.PostAsync<BuildingDTO>(BuildingEndpoint, buildingDto);
+        if(result.IsSuccess && result.Data is {} createdBuildingDto)
         {
-            var createdBuilding = await _gameClient.PostAsync<BuildingDTO>(BuildingEndpoint, buildingDto);
-            Debug.Log($"Created building {createdBuilding.Name} (ID: {createdBuilding.Id})");
-            return createdBuilding;
+            Debug.Log($"Created building {createdBuildingDto.Name} (ID: {createdBuildingDto.Id})");
+            return createdBuildingDto;
         }
-        catch (System.Exception ex)
+        else
         {
-            Debug.LogError($"Failed to create building: {ex.Message}");
+            Debug.LogError($"Failed to create building: {result.Message}");
             return null;
         }
     }
@@ -84,15 +84,15 @@ public class BuildingManager : ManagerBase
     /// <returns>업데이트된 건물 DTO</returns>
     public async UniTask<BuildingDTO> UpdateBuildingAsync(UpdateBuildingParameter updateParameter)
     {
-        try
+        var result = await _gameClient.PutAsync<BuildingDTO>(BuildingEndpoint, updateParameter);
+        if(result.IsSuccess && result.Data is {} updatedBuildingDto)
         {
-            await _gameClient.PutAsync(BuildingEndpoint, updateParameter);
             Debug.Log($"Updated building with ID {updateParameter.Id}");
-            return await GetBuildingAsync(updateParameter.Id);
+            return updatedBuildingDto;
         }
-        catch (System.Exception ex)
+        else
         {
-            Debug.LogError($"Failed to update building: {ex.Message}");
+            Debug.LogError($"Failed to update building: {result.Message}");
             return null;
         }
     }
@@ -104,24 +104,16 @@ public class BuildingManager : ManagerBase
     /// <returns>삭제 성공 여부</returns>
     public async UniTask<bool> DeleteBuildingAsync(int buildingId)
     {
-        try
+        var endpoint = $"{BuildingEndpoint}/{buildingId}";
+        var result = await _gameClient.DeleteAsync(endpoint);
+        if(result.IsSuccess)
         {
-            var endpoint = $"{BuildingEndpoint}/{buildingId}";
-            var success = await _gameClient.DeleteAsync(endpoint);
-            if (success)
-            {
-                Debug.Log($"Deleted building with ID {buildingId}");
-            }
-            else
-            {
-                Debug.LogError($"Failed to delete building with ID {buildingId}");
-            }
-            return success;
+            Debug.Log($"Deleted building with ID {buildingId}");
         }
-        catch (System.Exception ex)
+        else
         {
-            Debug.LogError($"Failed to delete building: {ex.Message}");
-            return false;
+            Debug.LogError($"Failed to delete building with ID {buildingId}: {result.Message}");
         }
+        return result.IsSuccess;
     }
 }
