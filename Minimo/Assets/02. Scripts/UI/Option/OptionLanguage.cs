@@ -72,6 +72,6 @@ public class OptionLanguage : OptionBase
     {
         _setting.Language = _language.LeftToggle.isOn ? SystemLanguage.English : SystemLanguage.Korean;
 
-        App.LoadScene(SceneName.Developer);
+        App.LoadScene(SceneName.Title);
     }
 }

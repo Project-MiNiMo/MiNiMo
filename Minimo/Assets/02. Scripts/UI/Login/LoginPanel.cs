@@ -6,6 +6,8 @@ using TMPro;
 
 public class LoginPanel : MonoBehaviour
 {
+    [SerializeField] private GameObject _loginPanel;
+    [SerializeField] private TitlePanel _titlePanel;
     [SerializeField] private TMP_InputField _idInputField;
     [SerializeField] private TMP_InputField _pwInputField;
     [SerializeField] private Button _loginBtn;
@@ -26,11 +28,12 @@ public class LoginPanel : MonoBehaviour
             var result = await _loginManager.LoginWithTokenAsync();
             if (result.Item1)
             {
-                App.LoadScene(SceneName.Game);
+                _titlePanel.ShowTitle();
             }
             else
             {
                 _resultText.text = result.Item2;
+                _loginPanel.SetActive(true);
             }
         }
     }
@@ -44,7 +47,7 @@ public class LoginPanel : MonoBehaviour
         var result = await _loginManager.LoginAsync(id, pw);
         if(result.Item1)
         {
-            App.LoadScene(SceneName.Game);
+            _titlePanel.ShowTitle();
         }
         else
         {
