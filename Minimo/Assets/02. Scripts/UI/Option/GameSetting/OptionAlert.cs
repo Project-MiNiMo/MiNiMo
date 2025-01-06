@@ -25,7 +25,6 @@ public class OptionAlert : OptionBase
 
     protected override void SetValueFromData()
     {
-        _push.LeftToggle.SetIsOnWithoutNotify(_setting.Alert.Push);
         OnPushChange(_setting.Alert.Push, false);
     }
 
@@ -44,6 +43,9 @@ public class OptionAlert : OptionBase
         {
             //TODO : Set PushAlert On/Off
         }
+        
+        _push.LeftToggle.SetIsOnWithoutNotify(isOn);
+        _push.RightToggle.SetIsOnWithoutNotify(!isOn);
 
         _push.LeftToggle.interactable = !isOn;
         _push.RightToggle.interactable = isOn;

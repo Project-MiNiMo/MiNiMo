@@ -31,10 +31,7 @@ public class OptionScreen : OptionBase
 
     protected override void SetValueFromData()
     {
-        _frame.LeftToggle.SetIsOnWithoutNotify(_setting.Screen.Frame);
         OnFrameChange(_setting.Screen.Frame, false);
-
-        _graphics.LeftToggle.SetIsOnWithoutNotify(_setting.Screen.Graphics);
         OnGraphicsChange(_setting.Screen.Graphics, false);
     }
 
@@ -55,6 +52,9 @@ public class OptionScreen : OptionBase
             Application.targetFrameRate = isOn ? 60 : 30;
         }
 
+        _frame.LeftToggle.SetIsOnWithoutNotify(isOn);
+        _frame.RightToggle.SetIsOnWithoutNotify(!isOn);
+        
         _frame.LeftToggle.interactable = !isOn;
         _frame.RightToggle.interactable = isOn;
     }
@@ -66,6 +66,9 @@ public class OptionScreen : OptionBase
             //TODO : Set Graphics Settings (ex. On/Off Shaders, Lights)
         }
 
+        _graphics.LeftToggle.SetIsOnWithoutNotify(isOn);
+        _graphics.RightToggle.SetIsOnWithoutNotify(!isOn);
+        
         _graphics.LeftToggle.interactable = !isOn;
         _graphics.RightToggle.interactable = isOn;
     }

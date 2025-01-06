@@ -26,16 +26,13 @@ public class OptionSound : OptionBase
 
     protected override void SetEvent()
     {
-        _bgm.LeftToggle.onValueChanged.AddListener((bool isOn) => OnBGMChange(isOn));
-        _sfx.LeftToggle.onValueChanged.AddListener((bool isOn) => OnSFXChange(isOn));
+        _bgm.LeftToggle.onValueChanged.AddListener((isOn) => OnBGMChange(isOn));
+        _sfx.LeftToggle.onValueChanged.AddListener((isOn) => OnSFXChange(isOn));
     }
 
     protected override void SetValueFromData()
     {
-        _bgm.LeftToggle.SetIsOnWithoutNotify(_setting.Sound.BGM);
         OnBGMChange(_setting.Sound.BGM, false);
-
-        _sfx.LeftToggle.SetIsOnWithoutNotify(_setting.Sound.SFX);
         OnSFXChange(_setting.Sound.SFX, false);
     }
 
@@ -55,6 +52,9 @@ public class OptionSound : OptionBase
         {
             //TODO : Set BGM On/Off
         }
+        
+        _bgm.LeftToggle.SetIsOnWithoutNotify(isOn);
+        _bgm.RightToggle.SetIsOnWithoutNotify(!isOn);
 
         _bgm.LeftToggle.interactable = !isOn;
         _bgm.RightToggle.interactable = isOn; 
@@ -66,6 +66,9 @@ public class OptionSound : OptionBase
         {
             //TODO : Set SFX On/Off
         }
+        
+        _sfx.LeftToggle.SetIsOnWithoutNotify(isOn);
+        _sfx.RightToggle.SetIsOnWithoutNotify(!isOn);
 
         _sfx.LeftToggle.interactable = !isOn;
         _sfx.RightToggle.interactable = isOn; 

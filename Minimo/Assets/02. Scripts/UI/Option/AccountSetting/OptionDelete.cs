@@ -25,11 +25,11 @@ public class OptionDelete : OptionBase
     {
         var titleData = App.GetData<TitleData>();
 
-        _titleTMP.text = titleData.GetString("STR_OPTION_ACCOUNTSETTING_LOGOUT");
-        _deleteBtn.GetComponentInChildren<TextMeshProUGUI>().text = titleData.GetString("STR_OPTION_ACCOUNTSETTING_LOGOUT_DESC");
+        _titleTMP.text = titleData.GetString("STR_OPTION_ACCOUNTSETTING_DELETE");
+        _deleteBtn.GetComponentInChildren<TextMeshProUGUI>().text = titleData.GetString("STR_OPTION_ACCOUNTSETTING_DELETE_DESC");
         
-        _popuUpTitleTMP.text = titleData.GetString("STR_OPTION_ACCOUNTSETTING_LOGOUT_POPUP");
-        _popuUpContentTMP.text = titleData.GetString("STR_OPTION_ACCOUNTSETTING_LOGOUT_POPUP_DESC");
+        _popuUpTitleTMP.text = titleData.GetString("STR_OPTION_ACCOUNTSETTING_DELETE_POPUP");
+        _popuUpContentTMP.text = titleData.GetString("STR_OPTION_ACCOUNTSETTING_DELETE_POPUP_DESC");
 
         _yesBtn.GetComponentInChildren<TextMeshProUGUI>().text = titleData.GetString("STR_BUTTON_YES");
         _noBtn.GetComponentInChildren<TextMeshProUGUI>().text = titleData.GetString("STR_BUTTON_NO");
