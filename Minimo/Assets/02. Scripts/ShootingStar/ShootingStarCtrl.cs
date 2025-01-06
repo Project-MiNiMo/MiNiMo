@@ -6,6 +6,7 @@ public class ShootingStarCtrl : MonoBehaviour
 {
     [SerializeField] private GameObject _shootingStarPrefab;
     [SerializeField] private float _spawnInterval = 10f;
+    [SerializeField] private InstallChecker _installChecker;
 
     private TimeManager _timeManager;
     private DateTime _lastSpawnTime;
@@ -51,18 +52,10 @@ public class ShootingStarCtrl : MonoBehaviour
 
     private void SpawnShootingStar()
     {
-        Vector2 spawnPosition = GetRandomSpawnPosition();
+        var spawnPositions = _installChecker.GetInstallablePositions();
+        var spawnPosition = spawnPositions[UnityEngine.Random.Range(0, spawnPositions.Count)];
         Instantiate(_shootingStarPrefab, spawnPosition, Quaternion.identity).GetComponent<ShootingStar>().Initialize(this);
         _currentStarCount++;
-    }
-
-    private Vector2 GetRandomSpawnPosition()
-    {
-        // Returns a random location on the map
-        // TODO: Consider locations that do not overlap with objects
-        float x = UnityEngine.Random.Range(-5f, 5f); // TODO: Needs to be adjusted to map size
-        float y = UnityEngine.Random.Range(-5f, 5f);
-        return new Vector2(x, y);
     }
 
     /// <summary>

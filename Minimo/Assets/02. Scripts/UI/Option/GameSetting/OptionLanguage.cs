@@ -31,8 +31,8 @@ public class OptionLanguage : OptionBase
         _titleTMP.text = titleData.GetString("STR_OPTION_GAMESETTING_LANGUAGE_POPUP");
         _contentTMP.text = titleData.GetString("STR_OPTION_GAMESETTING_LANGUAGE_POPUP_CONTENT");
 
-        _yesBtn.GetComponentInChildren<TextMeshProUGUI>().text = titleData.GetString("STR_OPTION_GAMESETTING_LANGUAGE_POPUP_YES");
-        _noBtn.GetComponentInChildren<TextMeshProUGUI>().text = titleData.GetString("STR_OPTION_GAMESETTING_LANGUAGE_POPUP_NO");
+        _yesBtn.GetComponentInChildren<TextMeshProUGUI>().text = titleData.GetString("STR_BUTTON_YES");
+        _noBtn.GetComponentInChildren<TextMeshProUGUI>().text = titleData.GetString("STR_BUTTON_NO");
     }
 
     protected override void SetEvent()
