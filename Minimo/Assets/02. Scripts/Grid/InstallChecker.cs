@@ -6,21 +6,25 @@ using UnityEngine.Tilemaps;
 public class InstallChecker : MonoBehaviour
 {
     [SerializeField] private Tilemap _checkTilemap;
+    [SerializeField] private Tilemap _installTilemap;
     
-    private TileBase[] _currentTiles;
+    [SerializeField] private TileBase _checkTile;
     
     public bool CheckCanInstall(BuildingObject gridObject)
     {
         var buildingArea = gridObject.Area;
-        var baseArray = _checkTilemap.GetTilesBlock(buildingArea);
+        
+        var checkArray = _checkTilemap.GetTilesBlock(buildingArea);
+        var installArray = _installTilemap.GetTilesBlock(buildingArea);
    
-        return baseArray.All(tile => tile);
+        return checkArray.All(tile => tile == _checkTile) && installArray.All(tile => tile == null);
     }
 
     public bool CheckCanInstall(Vector3Int position)
     {
-        var tile = _checkTilemap.GetTile(position);
+        var checkTile = _checkTilemap.GetTile(position);
+        var installTile = _installTilemap.GetTile(position);
         
-        return tile;
+        return checkTile == _checkTile && installTile == null;
     }
 }

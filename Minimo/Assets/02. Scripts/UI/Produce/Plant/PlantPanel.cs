@@ -17,7 +17,7 @@ public class PlantPanel : UIBase
 
         foreach (var slot in _plantOptionSlots)
         {
-            slot.Start();
+            slot.Initialize();
         }
         
         _closeBtn.onClick.AddListener(ClosePanel);
@@ -41,7 +41,7 @@ public class PlantPanel : UIBase
         {
             var option = options[i];
             _plantOptionSlots[i].gameObject.SetActive(true);
-            _plantOptionSlots[i].Initialize(option);
+            _plantOptionSlots[i].SetOption(option);
         }
 
         for (; i < _plantOptionSlots.Length; i++) 

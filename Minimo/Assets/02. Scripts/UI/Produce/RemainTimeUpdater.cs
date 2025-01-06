@@ -24,11 +24,6 @@ public class RemainTimeUpdater : MonoBehaviour
     
     public void SetRemainTime(int remainTime, int fullTime)
     {
-        if (remainTime <= 0)
-        {
-            gameObject.SetActive(false);
-        }
-
         _remainTimeTMP.text = FormatTime(remainTime);
         _remainTimeImg.fillAmount = 1 - ((float)remainTime / fullTime);
     }
