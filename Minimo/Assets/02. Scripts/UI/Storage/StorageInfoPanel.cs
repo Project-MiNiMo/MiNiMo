@@ -27,7 +27,7 @@ public class StorageInfoPanel : UIBase
         
         SetInfo(storageBtn.Item);
         _sellCtrl.Initialize(storageBtn.Item);
-        _infoRect.anchoredPosition = storageBtn.AnchoredPosition;
+        _infoRect.position = storageBtn.Position;
     }
 
     private void SetInfo(Item item)

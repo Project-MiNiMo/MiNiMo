@@ -4895,7 +4895,7 @@ GameObject:
   - component: {fileID: 6749244109715579892}
   - component: {fileID: 5102215789042377902}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Txt_Capacity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7371,6 +7371,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b2321e4bdad81d41b75b77729fa2916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StorageChanged:
+    value: 0
   _titleTMP: {fileID: 8459284747762680325}
   _storageBtns:
   - {fileID: 6815361241518519670}
@@ -10567,7 +10569,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 30
+  m_ScrollSensitivity: 100
   m_Viewport: {fileID: 6126384976500871385}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -23239,7 +23241,7 @@ GameObject:
   - component: {fileID: 7051036207861047140}
   - component: {fileID: 8209547003769771306}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Back_Capacity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31584,7 +31586,7 @@ GameObject:
   - component: {fileID: 4675095554367055986}
   - component: {fileID: 6443024917724962149}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Btn_Expand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40908,51 +40910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d85f48322031a14da29250a357ddda6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prologCuts:
-  - Back: {fileID: 7580410368749518651}
-    Details:
-    - {fileID: 5237107807741469434}
-    - {fileID: 6980621747606841136}
-    - {fileID: 4327508337389034934}
-    - {fileID: 1581120254463422134}
-    - {fileID: 6539951697642653209}
-    - {fileID: 2670069068295273657}
-    - {fileID: 1922817717390725966}
-    - {fileID: 14907646720565269}
-  - Back: {fileID: 8251054670024175151}
-    Details:
-    - {fileID: 1568200870173555521}
-    - {fileID: 8655258218706908365}
-    - {fileID: 2126298418582809786}
-  - Back: {fileID: 7215389577729200788}
-    Details:
-    - {fileID: 1034609119761247595}
-    - {fileID: 2361466296645946842}
-    - {fileID: 2544195049132049748}
-    - {fileID: 7031563566763220646}
-    - {fileID: 7075451006928499881}
-    - {fileID: 4441260451705995402}
-    - {fileID: 6263304432156728688}
-    - {fileID: 525345474095851642}
-    - {fileID: 1762039385249044028}
-  - Back: {fileID: 4028932696668594880}
-    Details:
-    - {fileID: 6600647327927457395}
-    - {fileID: 5932582075247408218}
-    - {fileID: 6206697058563644348}
-    - {fileID: 1890013434257811147}
-    - {fileID: 2760045771920158660}
-    - {fileID: 2398751018701120989}
-    - {fileID: 6259544589544822769}
-  - Back: {fileID: 8864880041877434522}
-    Details:
-    - {fileID: 7729315948356340387}
-    - {fileID: 7922295415050848437}
-    - {fileID: 7866965672760219459}
-    - {fileID: 1116262804360135746}
-    - {fileID: 6343087484090734858}
-    - {fileID: 6552189754360144056}
-    - {fileID: 7091743333853828751}
+  _prologBases: []
 --- !u!1 &9055957784798776815
 GameObject:
   m_ObjectHideFlags: 0

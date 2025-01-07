@@ -1,9 +1,12 @@
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public class StoragePanel : UIBase
 {
+    public ReactiveProperty<int> StorageChanged = new ReactiveProperty<int>(0);
+    
     [SerializeField] private TextMeshProUGUI _titleTMP;
     [SerializeField] private Button[] _storageBtns;
     [SerializeField] private Sprite[] _btnSprites;
@@ -68,5 +71,10 @@ public class StoragePanel : UIBase
                 _storageBtns[idx].image.sprite = _btnSprites[1];
             }
         }
+    }
+    
+    public void OnStorageChanged()
+    {
+        StorageChanged.Value++;
     }
 }
