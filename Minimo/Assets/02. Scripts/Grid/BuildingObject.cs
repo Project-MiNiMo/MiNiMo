@@ -50,7 +50,7 @@ public class BuildingObject : MonoBehaviour
         _id = buildingDto.Id;
         _isPlaced = true;
         
-        var buildingData = App.GetData<TitleData>().Building[buildingDto.Name];
+        var buildingData = App.GetData<TitleData>().Building[buildingDto.BuildingType];
         Initialize(buildingData);
     }
 
@@ -144,14 +144,14 @@ public class BuildingObject : MonoBehaviour
     {
         var newBuildingRequest = new BuildingDTO
         {
-            Name = Data.ID,
-            Position = new System.Numerics.Vector3(Area.position.x, Area.position.y, Area.position.x),
+            BuildingType = Data.ID,
+            Position = new int[] {Area.position.x, Area.position.y, Area.position.x},
         };
         
         var newBuildingDto = await _buildingManager.CreateBuildingAsync(newBuildingRequest);
         if (newBuildingDto != null)
         {
-            Debug.Log($"Building created: {newBuildingDto.Name} (ID: {newBuildingDto.Id})");
+            Debug.Log($"Building created: {newBuildingDto.BuildingType} (ID: {newBuildingDto.Id})");
 
             _id = newBuildingDto.Id;
             _isPlaced = true;
@@ -172,13 +172,13 @@ public class BuildingObject : MonoBehaviour
         var updateBuildingParameter = new UpdateBuildingParameter
         {
             Id = _id,
-            Position = new System.Numerics.Vector3(Area.position.x, Area.position.y, Area.position.x),
+            Position = new int[] {Area.position.x, Area.position.y, Area.position.x},
         };
 
         var updatedBuilding = await _buildingManager.UpdateBuildingAsync(updateBuildingParameter);
         if (updatedBuilding != null)
         {
-            Debug.Log($"Building updated: {updatedBuilding.Name} (ID: {updatedBuilding.Id})");
+            Debug.Log($"Building updated: {updatedBuilding.BuildingType} (ID: {updatedBuilding.Id})");
             PreviousArea = Area;
 
             EndEdit();

@@ -15,9 +15,7 @@ public class Building
 
     public DateTime CreatedAt { get; set; } // 건물 생성일
     
-    public bool IsInstalled { get; set; } // 건물 설치 여부
-    
-    public string Position { get; set; } // 건물 위치 "x,y,z"
+    public int[] Position { get; set; } = new int[3];
     
     public bool ProduceStatus { get; set; } // 생산 상태
     
@@ -30,13 +28,17 @@ public class Building
     {
         get
         {
-            var parts = Position.Split(',');
             return new Vector3(
-                float.Parse(parts[0]),
-                float.Parse(parts[1]),
-                float.Parse(parts[2])
+                Position[0],
+                Position[1],
+                Position[2]
             );
         }
-        set => Position = $"{value.X},{value.Y},{value.Z}";
+        set
+        {
+            Position[0] = (int)value.X;
+            Position[1] = (int)value.Y;
+            Position[2] = (int)value.Z;
+        }
     }
 }
