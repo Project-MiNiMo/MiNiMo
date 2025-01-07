@@ -1239,14 +1239,14 @@
     "Japanese": -1
   },
   {
-    "ID": "STR_FACILITY_PRODSTATE_DESC2",
+    "ID": "STR_FACILITY_PRODSTATE_DESC1",
     "Korean": "대기중",
     "English": "Standby",
     "Chinese": -1,
     "Japanese": -1
   },
   {
-    "ID": "STR_FACILITY_PRODSTATE_DESC3",
+    "ID": "STR_FACILITY_PRODSTATE_DESC2",
     "Korean": "생산완료",
     "English": "Complete",
     "Chinese": -1,
@@ -1337,14 +1337,14 @@
     "Japanese": ""
   },
   {
-    "ID": "STR_BUTTON_NO_NAME",
+    "ID": "STR_BUTTON_NO",
     "Korean": "아니오",
     "English": "No",
     "Chinese": -1,
     "Japanese": -1
   },
   {
-    "ID": "STR_BUTTON_YES_NAME",
+    "ID": "STR_BUTTON_YES",
     "Korean": "예",
     "English": "Yes",
     "Chinese": -1,
@@ -1510,6 +1510,76 @@
     "English": "Account",
     "Chinese": -1,
     "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_ACCOUNTSETTING_LINK",
+    "Korean": "계정연동",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_OPTION_ACCOUNTSETTING_LINK_DESC",
+    "Korean": "계정 연동하기",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_OPTION_ACCOUNTSETTING_LOGOUT",
+    "Korean": "로그아웃",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_OPTION_ACCOUNTSETTING_LOGOUT_DESC",
+    "Korean": "계정 로그아웃하기",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_OPTION_ACCOUNTSETTING_LOGOUT_POPUP",
+    "Korean": "로그아웃",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_OPTION_ACCOUNTSETTING_LOGOUT_POPUP_DESC",
+    "Korean": "로그아웃시 게임이 재시작됩니다.\n하시겠습니까?",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_OPTION_ACCOUNTSETTING_DELETE",
+    "Korean": "계정삭제",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_OPTION_ACCOUNTSETTING_DELETE_DESC",
+    "Korean": "계정 삭제하기",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_OPTION_ACCOUNTSETTING_DELETE_POPUP",
+    "Korean": "계정삭제",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_OPTION_ACCOUNTSETTING_DELETE_POPUP_DESC",
+    "Korean": "계정 삭제 시 복구할 수 없습니다.\n하시겠습니까?",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
   },
   {
     "ID": "STR_OPTION_SERVICECENTER",

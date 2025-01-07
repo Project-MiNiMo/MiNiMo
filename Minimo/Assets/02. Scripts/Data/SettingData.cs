@@ -25,7 +25,8 @@ public struct AlertData
 
 public class SettingData : DataBase
 {
-    private struct GameData
+    [Serializable]
+    public struct GameData
     {
         public string UDID;
         public string Version;
@@ -42,7 +43,7 @@ public class SettingData : DataBase
     public ScreenData DefaultScreen => _default.Screen;
     public AlertData DefaultAlert => _default.Alert;
 
-    private GameData _data;
+    public GameData _data;
 
     private string _dataPath;
     private bool _isDataMessy;

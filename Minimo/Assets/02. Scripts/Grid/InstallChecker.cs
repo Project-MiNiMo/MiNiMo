@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -26,5 +27,20 @@ public class InstallChecker : MonoBehaviour
         var installTile = _installTilemap.GetTile(position);
         
         return checkTile == _checkTile && installTile == null;
+    }
+    
+    public List<Vector3> GetInstallablePositions()
+    {
+        var positions = new List<Vector3>();
+        
+        foreach (var position in _installTilemap.cellBounds.allPositionsWithin)
+        {
+            if (CheckCanInstall(position))
+            {
+                positions.Add(position);
+            }
+        }
+
+        return positions;
     }
 }
