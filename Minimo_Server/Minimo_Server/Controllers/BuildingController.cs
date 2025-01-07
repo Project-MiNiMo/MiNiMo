@@ -67,10 +67,10 @@ public class BuildingController(GameDbContext context, TimeService timeService) 
 
         var building = new Building
         {
-            Name = buildingDto.Name,
+            Name = buildingDto.BuildingType,
             Level = 1,
             CreatedAt = _timeService.CurrentTime,
-            PositionVector = Vector3.Zero,
+            Position = buildingDto.Position ?? new int[3],
             ProduceStartAt = DateTime.MinValue,
         };
 
@@ -93,8 +93,7 @@ public class BuildingController(GameDbContext context, TimeService timeService) 
         var building = account.Buildings.FirstOrDefault(b => b.Id == updateParameter.Id);
         if (building == null) return NotFound(new { message = "Building not found" });
 
-        if (updateParameter.IsInstalled.HasValue) building.IsInstalled = updateParameter.IsInstalled.Value;
-        if (updateParameter.Position.HasValue) building.PositionVector = updateParameter.Position.Value;
+        if (updateParameter.Position != null) building.PositionVector = updateParameter.PositionVector;
 
         await _context.SaveChangesAsync();
 

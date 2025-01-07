@@ -68,17 +68,19 @@ public class ServerTest : MonoBehaviour
         var buildings = await buildingManager.GetBuildingsAsync();
         foreach (var building in buildings)
         {
-            Debug.Log($"Building: {building.Name} (ID: {building.Id}), Installed: {building.IsInstalled}, Position: {building.Position}");
+            Debug.Log($"Building: {building.BuildingType} (ID: {building.Id}), Position: {building.Position}");
         }
 
+        var randomPosition = new int[] {UnityEngine.Random.Range(-10, 10), 0, UnityEngine.Random.Range(-10, 10)};
         var newBuildingRequest = new BuildingDTO
         {
-            Name = "TestBuilding",
+            BuildingType = "TestBuilding",
+            Position = randomPosition
         };
         var newBuildingDto = await buildingManager.CreateBuildingAsync(newBuildingRequest);
         if (newBuildingDto != null)
         {
-            Debug.Log($"Building created: {newBuildingDto.Name} (ID: {newBuildingDto.Id})");
+            Debug.Log($"Building created: {newBuildingDto.BuildingType} (ID: {newBuildingDto.Id}), Position: ({newBuildingDto.Position[0]}, {newBuildingDto.Position[1]}, {newBuildingDto.Position[2]})");
         }
         else
         {
@@ -86,19 +88,17 @@ public class ServerTest : MonoBehaviour
         }
 
         // update cratedBuilding to install
-        var randomPosition =
-            new System.Numerics.Vector3(UnityEngine.Random.Range(-10, 10), 0, UnityEngine.Random.Range(-10, 10));
-        Debug.Log("Updating first building state...");
+        randomPosition = new int[] {UnityEngine.Random.Range(-10, 10), 0, UnityEngine.Random.Range(-10, 10)};
+        Debug.Log("Updating just created building state...");
         var updateBuildingParameter = new UpdateBuildingParameter()
         {
             Id = newBuildingDto.Id,
-            IsInstalled = newBuildingDto.IsInstalled.HasValue ? !newBuildingDto.IsInstalled : true,
             Position = randomPosition
         };
         var updatedBuilding = await buildingManager.UpdateBuildingAsync(updateBuildingParameter);
         if (updatedBuilding != null)
         {
-            Debug.Log($"Building updated: {updatedBuilding.Name} (ID: {updatedBuilding.Id}), Installed: {updatedBuilding.IsInstalled}, Position: {updatedBuilding.Position}");
+            Debug.Log($"Building updated: {updatedBuilding.BuildingType} (ID: {updatedBuilding.Id}), Position: ({updatedBuilding.Position[0]}, {updatedBuilding.Position[1]}, {updatedBuilding.Position[2]})");
         }
         else
         {

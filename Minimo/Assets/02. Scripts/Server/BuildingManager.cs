@@ -47,7 +47,7 @@ public class BuildingManager : ManagerBase
         var result = await _gameClient.GetAsync<BuildingDTO>(endpoint);
         if(result.IsSuccess && result.Data is {} building)
         {
-            Debug.Log($"Retrieved building {building.Name} (ID: {building.Id})");
+            Debug.Log($"Retrieved building {building.BuildingType} (ID: {building.Id})");
             return building;
         }
         else
@@ -67,7 +67,7 @@ public class BuildingManager : ManagerBase
         var result = await _gameClient.PostAsync<BuildingDTO>(BuildingEndpoint, buildingDto);
         if(result.IsSuccess && result.Data is {} createdBuildingDto)
         {
-            Debug.Log($"Created building {createdBuildingDto.Name} (ID: {createdBuildingDto.Position})");
+            Debug.Log($"Created building {createdBuildingDto.BuildingType} (ID: {createdBuildingDto.Position})");
             return createdBuildingDto;
         }
         else

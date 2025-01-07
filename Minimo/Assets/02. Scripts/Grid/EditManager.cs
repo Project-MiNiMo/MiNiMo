@@ -28,15 +28,15 @@ public class EditManager : ManagerBase
         
         foreach (var building in buildings)
         {
-            if (building.Name == "TestBuilding")
+            if (building.BuildingType == "TestBuilding")
             {
                 continue;
             }
-            var prefabPath = $"Building/{building.Name}";
-            Debug.Log(building.Name);
+            var prefabPath = $"Building/{building.BuildingType}";
+            Debug.Log(building.BuildingType);
             var objectPrefab = Resources.Load<GameObject>(prefabPath);
-            var position = building.Position.HasValue 
-                ? new Vector3(building.Position.Value.X, building.Position.Value.Y, building.Position.Value.Z) 
+            var position = building.Position != null
+                ? new Vector3(building.Position[0], building.Position[1], building.Position[2])
                 : Vector3.zero;
             var buildingObject = Instantiate(objectPrefab, position, Quaternion.identity).GetComponent<BuildingObject>();
             buildingObject.Initialize(building);

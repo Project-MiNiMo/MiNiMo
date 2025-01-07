@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿#nullable enable
+using System.Numerics;
 using System;
 
 namespace MinimoShared
@@ -8,10 +9,9 @@ namespace MinimoShared
     /// </summary>
     public class BuildingDTO
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public bool? IsInstalled { get; set; }
-        public Vector3? Position { get; set; }
+        public int Id { get; set; } // DB 내부 ID
+        public string BuildingType { get; set; } // BuildingTable ID
+        public int[]? Position { get; set; }
 
         public bool? ProduceStatus { get; set; }
 
