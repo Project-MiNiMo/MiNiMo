@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6314677405763876296}
   - component: {fileID: 7782138920005508789}
-  - component: {fileID: 8559784029600353285}
+  - component: {fileID: 4622559017909009272}
   m_Layer: 0
   m_Name: Building_Stationery
   m_TagString: GridObject
@@ -164,7 +164,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
---- !u!114 &8559784029600353285
+--- !u!114 &4622559017909009272
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -173,13 +173,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6314677405763876294}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4569ae3f8b194394e99865b7136cb0ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e04fc2879a1241438590fe38d4f91cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Area:
     m_Position: {x: 0, y: 0, z: 0}
     m_Size: {x: 0, y: 0, z: 0}
-  _cropSpriteRenderer: {fileID: 7602783559982876341}
 --- !u!1 &7679093566653465226
 GameObject:
   m_ObjectHideFlags: 0

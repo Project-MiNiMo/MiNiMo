@@ -2,34 +2,25 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class ProducePlantCtrl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class HarvestHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private LayerMask _targetLayerMask;
+    [SerializeField] private RectTransform _rect;
+    [SerializeField] private Image _image;
     
-    private RectTransform _rect;
-    private Image _image;
     private Canvas _canvas;
+    private LayerMask _targetLayerMask;
     
     private Vector3 _startPosition;
 
-    private ProduceOption _currentOption;
-    
     private void Start()
     {
         _targetLayerMask = LayerMask.GetMask("Building");
-        
-        _rect = GetComponent<RectTransform>();
-        _image = GetComponent<Image>();
+  
         _canvas = GetComponentInParent<Canvas>();
         
         _startPosition = _rect.anchoredPosition;
     }
 
-    public void Initialize(ProduceOption option)
-    {
-        _currentOption = option;
-    }
-    
     public void OnBeginDrag(PointerEventData eventData)
     {
         _image.raycastTarget = false;
@@ -43,7 +34,7 @@ public class ProducePlantCtrl : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         Collider2D hit = Physics2D.OverlapPoint(worldPosition, _targetLayerMask);
         if (hit != null && hit.TryGetComponent<ProduceObject>(out var component))
         {
-            component.StartProduce(_currentOption);
+            component.StartHarvest();
         }
     }
 
@@ -53,3 +44,4 @@ public class ProducePlantCtrl : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         _rect.anchoredPosition = _startPosition;
     }
 }
+

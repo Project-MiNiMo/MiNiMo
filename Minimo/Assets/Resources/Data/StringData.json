@@ -1239,14 +1239,14 @@
     "Japanese": -1
   },
   {
-    "ID": "STR_FACILITY_PRODSTATE_DESC1",
+    "ID": "STR_FACILITY_PRODSTATE_DESC2",
     "Korean": "대기중",
     "English": "Standby",
     "Chinese": -1,
     "Japanese": -1
   },
   {
-    "ID": "STR_FACILITY_PRODSTATE_DESC2",
+    "ID": "STR_FACILITY_PRODSTATE_DESC3",
     "Korean": "생산완료",
     "English": "Complete",
     "Chinese": -1,
@@ -1303,7 +1303,7 @@
   },
   {
     "ID": "STR_STORAGE_UI_RESOURCE",
-    "Korean": "자우너",
+    "Korean": "자원",
     "English": "",
     "Chinese": "",
     "Japanese": ""

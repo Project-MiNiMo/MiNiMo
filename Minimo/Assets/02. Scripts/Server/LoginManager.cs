@@ -1,14 +1,11 @@
-﻿
-using System;
-using System.Text;
+﻿using System;
 using Cysharp.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using MinimoShared;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Unity.PlasticSCM.Editor.WebApi;
+
 using UnityEngine;
-using UnityEngine.Networking;
 
 [DefaultExecutionOrder(-30)]
 public class LoginManager : ManagerBase
@@ -27,6 +24,7 @@ public class LoginManager : ManagerBase
     
     private void Start()
     {
+        Debug.Log("LoginManager initialized.");
         _gameClient = App.Services.GetRequiredService<GameClient>();
         JwtToken = PlayerPrefs.GetString("JwtToken");
     }

@@ -1,39 +1,47 @@
 using System;
+
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ProduceOptionBtn : MonoBehaviour
+public class PlantOptionSlot : MonoBehaviour
 {
     [Serializable]
-    private struct ProduceOptionInfo
+    private struct PlantInfo
     {
         public GameObject _gameObject;
         public Image _image;
         public TextMeshProUGUI _text;
     }
     
-    [SerializeField] private ProducePlantCtrl _plantCtrl;
     [SerializeField] private TextMeshProUGUI _resultNameTMP;
-    [SerializeField] private ProduceOptionInfo _result;
-    [SerializeField] private ProduceOptionInfo[] _materials;
+    [SerializeField] private PlantInfo _result;
+    [SerializeField] private PlantInfo[] _materials;
     [SerializeField] private TextMeshProUGUI _timeTMP;
+    [SerializeField] private TextMeshProUGUI _storageTMP;
     
     private TitleData _titleData;
+    [SerializeField] private PlantHandler _plantHandler;
 
-    private void Start()
-    { ;
+    public void Initialize()
+    {
         _titleData = App.GetData<TitleData>();
+        _plantHandler = GetComponentInChildren<PlantHandler>(true);
     }
 
-    public void Initialize(int index, ProduceOption optionData)
+    public void SetOption(ProduceOption optionData)
     {
-        _plantCtrl.Initialize(optionData);
+        _plantHandler.SetOption(optionData);
 
         SetResultInfo(optionData.Results[0]);
         SetMaterialInfo(optionData.Materials);
         
         _timeTMP.text = optionData.Time.ToString();
+        Debug.Log(_titleData == null);
+        Debug.Log(_titleData.ItemSO == null);
+        Debug.Log(_titleData.ItemSO.GetItem(optionData.Results[0].Code) == null);
+        Debug.Log(_storageTMP == null);
+        _storageTMP.text = _titleData.ItemSO.GetItem(optionData.Results[0].Code).Count.ToString();
     }
 
     private void SetMaterialInfo(ProduceMaterial[] materials)

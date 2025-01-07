@@ -1,9 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
@@ -29,7 +26,7 @@ public class LoginPanel : MonoBehaviour
             var result = await _loginManager.LoginWithTokenAsync();
             if (result.IsSuccess)
             {
-                SceneManager.LoadScene("97. Client");
+                App.LoadScene(SceneName.Game);
             }
             else
             {
@@ -47,7 +44,7 @@ public class LoginPanel : MonoBehaviour
         var result = await _loginManager.LoginAsync(id, pw);
         if(result.IsSuccess)
         {
-            SceneManager.LoadScene("02. Game");
+            App.LoadScene(SceneName.Game);
         }
         else
         {

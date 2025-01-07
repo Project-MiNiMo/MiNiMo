@@ -1,9 +1,11 @@
 using System.Collections.Generic;
-
+using System.Linq;
 using UnityEngine;
 
 public abstract class ProducePrimary : ProduceObject
 {
+    public override bool IsPrimary => true;
+    
     [SerializeField] private SpriteRenderer _cropSpriteRenderer;
     
     protected List<Sprite[]> _cropSprites;
@@ -14,8 +16,8 @@ public abstract class ProducePrimary : ProduceObject
     protected override void Update()
     {
         base.Update();
-        
-        if (ActiveTask == null)
+
+        if (AllTasks.Count == 0) 
         {
             return;
         }
@@ -25,7 +27,7 @@ public abstract class ProducePrimary : ProduceObject
             return;
         }
 
-        if (CompleteTasks.Count > 0)
+        if (AllTasks.Any(task => task.RemainTime <= 0))
         {
             return;
         }
@@ -49,6 +51,14 @@ public abstract class ProducePrimary : ProduceObject
             _currentSpriteIndex = newSpriteIndex;
             _cropSpriteRenderer.sprite = _currentCropSprites[_currentSpriteIndex];
         }
+    }
+    
+    protected override void CompleteActiveTask()
+    {
+        base.CompleteActiveTask();
+        
+        _currentSpriteIndex = 2;
+        _cropSpriteRenderer.sprite = _currentCropSprites[_currentSpriteIndex];
     }
     
     public override void StartHarvest()
@@ -79,12 +89,4 @@ public abstract class ProducePrimary : ProduceObject
     }
 
     protected abstract int GetCropType(string cropCode);
-
-    protected override void SetCompleteTask()
-    {
-        base.SetCompleteTask();
-        
-        _currentSpriteIndex = 2;
-        _cropSpriteRenderer.sprite = _currentCropSprites[_currentSpriteIndex];
-    }
 }
