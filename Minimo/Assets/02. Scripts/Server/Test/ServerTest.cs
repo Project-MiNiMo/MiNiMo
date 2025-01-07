@@ -29,33 +29,33 @@ public class ServerTest : MonoBehaviour
     {
         var loginManager = App.GetManager<LoginManager>();
         var loginResult = await loginManager.LoginAsync(testAcocntID, testPassword);
-        if (loginResult.Item1)
+        if (loginResult.IsSuccess)
         {
             Debug.Log("Login Success");
         }
         else
         {
-            Debug.Log($"Login Failed: {loginResult.Item2}");
+            Debug.Log($"Login Failed: {loginResult.Message}");
             Debug.Log("Creating new account...");
             var createAccountResult = await loginManager.CreateAccountAsync(testAcocntID, testPassword, "TestAccount");
-            if (createAccountResult.Item1)
+            if (createAccountResult.IsSuccess)
             {
                 Debug.Log("Account created successfully");
                 // Try to login again
                 loginResult = await loginManager.LoginAsync(testAcocntID, testPassword);
-                if (loginResult.Item1)
+                if (loginResult.IsSuccess)
                 {
                     Debug.Log("Login Success");
                 }
                 else
                 {
-                    Debug.LogError($"Login Failed: {loginResult.Item2}");
+                    Debug.LogError($"Login Failed: {loginResult.Message}");
                     return;
                 }
             }
             else
             {
-                Debug.LogError($"Failed to create account: {createAccountResult.Item2}");
+                Debug.LogError($"Failed to create account: {createAccountResult.Message}");
                 return;
             }
         }
@@ -70,27 +70,19 @@ public class ServerTest : MonoBehaviour
         {
             Debug.Log($"Building: {building.Name} (ID: {building.Id}), Installed: {building.IsInstalled}, Position: {building.Position}");
         }
-        BuildingDTO firstBuilding;
-        if (buildings.Count == 0)
+
+        var newBuildingRequest = new BuildingDTO
         {
-            Debug.Log("No buildings found. Creating a new building...");
-            var newBuilding = new BuildingDTO
-            {
-                Name = "TestBuilding",
-            };
-            firstBuilding = await buildingManager.CreateBuildingAsync(newBuilding);
-            if (firstBuilding != null)
-            {
-                Debug.Log($"Building created: {firstBuilding.Name} (ID: {firstBuilding.Id})");
-            }
-            else
-            {
-                Debug.LogError("Failed to create building");
-            }
+            Name = "TestBuilding",
+        };
+        var newBuildingDto = await buildingManager.CreateBuildingAsync(newBuildingRequest);
+        if (newBuildingDto != null)
+        {
+            Debug.Log($"Building created: {newBuildingDto.Name} (ID: {newBuildingDto.Id})");
         }
         else
         {
-            firstBuilding = buildings[0];
+            Debug.LogError("Failed to create building");
         }
 
         // update cratedBuilding to install
@@ -99,8 +91,8 @@ public class ServerTest : MonoBehaviour
         Debug.Log("Updating first building state...");
         var updateBuildingParameter = new UpdateBuildingParameter()
         {
-            Id = firstBuilding.Id,
-            IsInstalled = firstBuilding.IsInstalled.HasValue ? !firstBuilding.IsInstalled : true,
+            Id = newBuildingDto.Id,
+            IsInstalled = newBuildingDto.IsInstalled.HasValue ? !newBuildingDto.IsInstalled : true,
             Position = randomPosition
         };
         var updatedBuilding = await buildingManager.UpdateBuildingAsync(updateBuildingParameter);
@@ -116,18 +108,17 @@ public class ServerTest : MonoBehaviour
 
     private async UniTask FetchAccounts()
     {
-        try
+        var result = await _gameClient.GetAsync<List<AccountDTO>>(_endpoint);
+        if(result.IsSuccess && result.Data is {} accounts)
         {
-            // Get all accounts
-            var accounts = await _gameClient.GetAsync<List<AccountDTO>>(_endpoint);
             foreach (var account in accounts)
             {
                 Debug.Log($"account: {account.Nickname}, Level: {account.Level}");
             }
         }
-        catch (Exception ex)
+        else
         {
-            Debug.LogError($"Failed to fetch accounts: {ex.Message}");
+            Debug.LogError($"Failed to fetch accounts: {result.Message}");
         }
     }
 }
