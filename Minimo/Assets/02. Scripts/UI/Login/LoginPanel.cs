@@ -32,7 +32,7 @@ public class LoginPanel : MonoBehaviour
             }
             else
             {
-                _resultText.text = result.Item2;
+                _resultText.text = result.Message;
                 _loginPanel.SetActive(true);
             }
         }

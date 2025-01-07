@@ -1,4 +1,5 @@
 using UniRx;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EditManager : ManagerBase
@@ -16,6 +17,31 @@ public class EditManager : ManagerBase
     {
         _installChecker = GetComponent<InstallChecker>();
         _tileStateModifier = GetComponent<TileStateModifier>();
+
+        InstallExistBuildings();
+    }
+    
+    private async void InstallExistBuildings()
+    {
+        var buildingManager = App.GetManager<BuildingManager>();
+        var buildings = await buildingManager.GetBuildingsAsync();
+        
+        foreach (var building in buildings)
+        {
+            if (building.Name == "TestBuilding")
+            {
+                continue;
+            }
+            var prefabPath = $"Building/{building.Name}";
+            Debug.Log(building.Name);
+            var objectPrefab = Resources.Load<GameObject>(prefabPath);
+            var position = building.Position.HasValue 
+                ? new Vector3(building.Position.Value.X, building.Position.Value.Y, building.Position.Value.Z) 
+                : Vector3.zero;
+            var buildingObject = Instantiate(objectPrefab, position, Quaternion.identity).GetComponent<BuildingObject>();
+            buildingObject.Initialize(building);
+            _tileStateModifier.ModifyTileState(buildingObject.Area, TileState.Installed);
+        }
     }
     
     public void StartEdit(BuildingObject gridObject)
@@ -42,18 +68,20 @@ public class EditManager : ManagerBase
         IsEditing.Value = false;
     }
     
-    public void ConfirmEdit()
+    public async void ConfirmEdit()
     {
         if (!_installChecker.CheckCanInstall(CurrentEditObject))
         {
             return;
         }
-        
-        _tileStateModifier.ModifyTileState(CurrentEditObject.Area, TileState.Installed);
-        CurrentEditObject.Install();
-        
-        CurrentEditObject = null;
-        IsEditing.Value = false;
+
+        if (await CurrentEditObject.Install())
+        {
+            _tileStateModifier.ModifyTileState(CurrentEditObject.Area, TileState.Installed);
+            
+            CurrentEditObject = null;
+            IsEditing.Value = false;
+        }
     }
 
     public void MoveObject(Vector3 touchPosition)
