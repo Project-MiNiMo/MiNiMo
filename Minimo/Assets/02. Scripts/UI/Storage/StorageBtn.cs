@@ -1,3 +1,4 @@
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -5,7 +6,7 @@ using TMPro;
 public class StorageBtn : MonoBehaviour
 {
     public Item Item { get; private set; }
-    public Vector2 AnchoredPosition { get; private set; }
+    public Vector2 Position { get; private set; }
     
     [SerializeField] private Button _infoBtn;
     
@@ -19,22 +20,19 @@ public class StorageBtn : MonoBehaviour
         _infoPanel= App.GetManager<UIManager>().GetPanel<StorageInfoPanel>();
         
         _infoBtn.onClick.AddListener(OnClickInfoBtn);
+        
+        App.GetManager<UIManager>().GetPanel<StoragePanel>().StorageChanged.Subscribe(_ => SetCount()).AddTo(gameObject);;
     }
 
     private void OnEnable()
     {
-        if (Item?.Count <= 0)
-        {
-            gameObject.SetActive(false);
-        }
-
-        SetCountText();
+        SetCount();
     }
 
     public void Initialize(Item item)
     {
         Item = item;
-        AnchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+        Position = GetComponent<RectTransform>().position;
         
         _iconImg.sprite = item.Icon;
     }
@@ -44,8 +42,14 @@ public class StorageBtn : MonoBehaviour
         _infoPanel.OpenPanel(this);
     }
 
-    private void SetCountText()
+    private void SetCount()
     {
+        if (Item?.Count <= 0)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+        
         _countTMP.text = Item?.Count.ToString();
     }
 }

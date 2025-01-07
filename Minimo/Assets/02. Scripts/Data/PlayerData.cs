@@ -8,4 +8,6 @@ using UnityEngine;
 public class PlayerData : DataBase
 {
     public int PlayerLevel = 2;
+    public int BlueStar = 0;
+    public int DiamondStar = 0;
 }
