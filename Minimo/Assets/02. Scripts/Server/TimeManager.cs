@@ -62,21 +62,18 @@ public class TimeManager : ManagerBase
         }
 
         _isSyncing = true;
-        try
+        var result = await _gameClient.GetAsync<DateTime> ("api/time");
+        if(result.IsSuccess && result.Data is {} serverTime)
         {
-            var serverTime = await _gameClient.GetAsync<DateTime> ("api/time");
             var localTime = DateTime.UtcNow;
             _timeOffset = serverTime - localTime;
             _lastTime = Time;
         }
-        catch (Exception ex)
+        else
         {
-            Debug.LogError($"Failed to sync time: {ex.Message}");
+            Debug.LogError($"Failed to sync time: {result.Message}");
         }
-        finally
-        {
-            _isSyncing = false;
-        }
+        _isSyncing = false;
     }
 
     private void ValidateTime()
@@ -142,22 +139,22 @@ public class TimeManager : ManagerBase
             Debug.LogError("TimeManager is not processing");
             return;
         }
-        
-        try
+
+        if (DateTime.TryParse(targetTime, out var time))
         {
-            if (DateTime.TryParse(targetTime, out var time))
+            var result = await _gameClient.PutAsync<DateTime>("api/time", time);
+            if (result.IsSuccess && result.Data is { } newServerTime)
             {
-                await _gameClient.PutAsync("api/time", time);
-                await SyncTime();
+                SyncTime(newServerTime);
             }
             else
             {
-                Debug.LogError("Invalid time format");
+                Debug.LogError("Failed To Set Cheat Time: {result.Message}");
             }
         }
-        catch (Exception ex)
+        else
         {
-            Debug.LogError($"Failed to set cheat time: {ex.Message}");
+            Debug.LogError("Invalid time format");
         }
     }
 #endif
