@@ -1253,36 +1253,36 @@
     "Japanese": -1
   },
   {
-    "ID": "STR_RECHARGECASH_DESC1",
+    "ID": "STR_CHARGECASH_TITLE",
     "Korean": "유료재화 충전",
     "English": "Recharge BlueStar",
     "Chinese": -1,
     "Japanese": -1
   },
   {
-    "ID": "STR_RECHARGECASH_DESC2",
+    "ID": "STR_CHARGECASH_DESC",
     "Korean": "보유 중인\n유료재화가 부족합니다.\n충전하시겠습니까?",
     "English": "You don't have enough Blue Stars.\nWould you like to recharge them?",
     "Chinese": -1,
     "Japanese": -1
   },
   {
-    "ID": "STR_POPUP_SPENDCASH_DESC1",
+    "ID": "STR_SPENDCASH_TITLE",
     "Korean": "유료재화 사용",
     "English": "Spend BlueStar",
     "Chinese": -1,
     "Japanese": -1
   },
   {
-    "ID": "STR_POPUP_SPENDCASH_DESC2",
+    "ID": "STR_SPENDCASH_DESC_PRODUCE",
     "Korean": "부족한 자원 확보를 위해\n유료재화를 사용하시겠습니까?",
     "English": "Would you like to use BlueStar\nto secure the lacking materials?",
     "Chinese": -1,
     "Japanese": -1
   },
   {
-    "ID": "STR_BUTTON_SPEND_NAME",
-    "Korean": "사용",
+    "ID": "STR_SPENDCASH_BUTTON",
+    "Korean": "{0} 사용",
     "English": "Spend",
     "Chinese": -1,
     "Japanese": -1
