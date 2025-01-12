@@ -58,7 +58,7 @@ public class PrimaryPanel : UIBase
         
         var currentObject = _produceManager.CurrentProduceObject;
         var currentIndex = currentObject.AllTasks.IndexOf(currentObject.ActiveTask);
-        if (currentIndex > 0)
+        if (currentIndex > 0 || (currentObject.ActiveTask is null && currentObject.AllTasks.Count > 0))
         {
             ShowUI(_harvestCtrl);
         }
