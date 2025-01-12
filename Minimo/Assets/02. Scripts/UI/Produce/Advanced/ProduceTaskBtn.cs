@@ -6,6 +6,8 @@ using Unity.VisualScripting;
 
 public class ProduceTaskBtn : MonoBehaviour
 {
+    public bool IsActive => gameObject.activeSelf;
+    
     [SerializeField] private Button _taskBtn;
     [SerializeField] private TextMeshProUGUI _taskText;
     

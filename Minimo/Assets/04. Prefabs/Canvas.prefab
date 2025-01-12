@@ -27211,6 +27211,7 @@ GameObject:
   - component: {fileID: 5623982039541234695}
   - component: {fileID: 3925756605747884104}
   - component: {fileID: 2327397519480523825}
+  - component: {fileID: 5819651098929251905}
   m_Layer: 5
   m_Name: Btn_Expand
   m_TagString: Untagged
@@ -27322,6 +27323,23 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5819651098929251905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5897797269668851752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aed64fcd11305c488759e64262a882f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _expandBtn: {fileID: 2327397519480523825}
+  _expandBack: {fileID: 4317731455300926423}
+  _confirmBtn: {fileID: 1810255664678681144}
+  _cancelBtn: {fileID: 2831136670792956472}
+  _priceTMP: {fileID: 1110650864897106733}
 --- !u!1 &5951588420888979450
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using System;
+
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -6,6 +7,7 @@ using TMPro;
 public enum UseDiamondType
 {
     Produce,
+    ProduceExpand,
 }
 
 public class DiamondPanel : UIBase
