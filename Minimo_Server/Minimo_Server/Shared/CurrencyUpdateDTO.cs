@@ -1,3 +1,5 @@
+using System;
+
 namespace MinimoShared
 {
     public class CurrencyUpdateDTO

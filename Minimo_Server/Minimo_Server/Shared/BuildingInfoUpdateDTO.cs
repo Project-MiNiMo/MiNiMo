@@ -1,4 +1,4 @@
-using MinimoServer.Models;
+using System;
 
 namespace MinimoShared
 {

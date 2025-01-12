@@ -1,4 +1,5 @@
 namespace MinimoShared;
+using System.Collections.Generic;
 
 public class RewardDTO
 {
