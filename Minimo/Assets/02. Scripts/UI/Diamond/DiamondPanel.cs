@@ -15,12 +15,14 @@ public class DiamondPanel : UIBase
     [SerializeField] private TextMeshProUGUI _useDescriptionTMP;
     [SerializeField] private TextMeshProUGUI _diamondCountTMP;
     [SerializeField] private Button _useBtn;
+    [SerializeField] private Button _useCloseBtn;
     
     [SerializeField] private GameObject _chargeBack;
     [SerializeField] private TextMeshProUGUI _chargeTitleTMP;
     [SerializeField] private TextMeshProUGUI _chargeDescriptionTMP;
     [SerializeField] private Button _chargeYesBtn;
     [SerializeField] private Button _chargeNoBtn;
+    [SerializeField] private Button _chargeCloseBtn;
     
     private PlayerData _playerData;
     private TitleData _titleData;
@@ -55,8 +57,12 @@ public class DiamondPanel : UIBase
     private void SetEvent()
     {
         _useBtn.onClick.AddListener(OnClickUse);
+        
         _chargeYesBtn.onClick.AddListener(OnClickChargeYes);
         _chargeNoBtn.onClick.AddListener(OnClickChargeNo);
+        
+        _useCloseBtn.onClick.AddListener(ClosePanel);
+        _chargeCloseBtn.onClick.AddListener(ClosePanel);
     }
     
     public void OpenPanel(UseDiamondType type, int count, Action useAction)

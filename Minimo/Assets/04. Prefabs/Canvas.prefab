@@ -7349,11 +7349,13 @@ MonoBehaviour:
   _useDescriptionTMP: {fileID: 3046039686830177827}
   _diamondCountTMP: {fileID: 8889297502662383318}
   _useBtn: {fileID: 6043173346241497804}
+  _useCloseBtn: {fileID: 7895803718449368837}
   _chargeBack: {fileID: 329367741861936526}
   _chargeTitleTMP: {fileID: 1011185899627811263}
   _chargeDescriptionTMP: {fileID: 1621864324999907331}
   _chargeYesBtn: {fileID: 1116364316302718490}
   _chargeNoBtn: {fileID: 6832499694156132540}
+  _chargeCloseBtn: {fileID: 5742959070139797107}
 --- !u!1 &1642151832623680710
 GameObject:
   m_ObjectHideFlags: 0
