@@ -5,7 +5,7 @@ namespace MinimoShared
     /// </summary>
     public class ItemDTO
     {
-        public string ItemID { get; set; }
+        public string ItemType { get; set; }
         public int Count { get; set; }
     }
 }
