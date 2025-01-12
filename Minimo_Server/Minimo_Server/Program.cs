@@ -19,7 +19,7 @@ namespace MinimoServer
         public GameDbContext(DbContextOptions<GameDbContext> options) : base(options) { }
         
         // Owns : Currency
-        // OwnsMany : Buildings / Items
+        // OwnsMany : Buildings / Items / RealEstates
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Account>(account => 
@@ -41,6 +41,12 @@ namespace MinimoServer
                     item.WithOwner().HasForeignKey("AccountId");
                     item.Property<int>("Id");
                     item.HasKey("Id");
+                });
+                account.OwnsMany(a => a.BuildingInfos, realEstate =>
+                {
+                    realEstate.WithOwner().HasForeignKey("AccountId");
+                    realEstate.Property<int>("Id");
+                    realEstate.HasKey("Id");
                 });
             });
             modelBuilder.Entity<Time>().ToTable("Time");

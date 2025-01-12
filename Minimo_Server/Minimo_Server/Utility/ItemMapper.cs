@@ -10,7 +10,7 @@ public static class ItemMapper
     {
         return new ItemDTO
         {
-            ItemID = item.ItemID,
+            ItemType = item.ItemType,
             Count = item.Count
         };
     }
@@ -20,7 +20,7 @@ public static class ItemMapper
     {
         return new Item
         {
-            ItemID = itemDto.ItemID,
+            ItemType = itemDto.ItemType,
             Count = itemDto.Count
         };
     }

@@ -22,6 +22,9 @@ public class Account
     // 건물
     public List<Building> Buildings { get; set; }
     
+    // 건물 정보(소유, 해금)
+    public List<BuildingInfo> BuildingInfos { get; set; }
+
     // 아이템
     public List<Item> Items { get; set; }
     

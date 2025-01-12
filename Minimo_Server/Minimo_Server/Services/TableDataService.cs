@@ -12,6 +12,8 @@ public class TableDataService
     public Dictionary<string, ConstructData> Construct { get; private set; } = new();
     public Dictionary<string, ProduceData> Produce { get; private set; } = new();
 
+    public int MaxBuildingCount => 5;
+
     private Dictionary<string, StringData> _string = new();
 
     private bool _isGameDataLoaded = false;

@@ -9,7 +9,7 @@ public class BuildingMapper
         return new BuildingDTO
         {
             Id = building.Id,
-            BuildingType = building.Name,
+            BuildingType = building.Type,
             Position = building.Position,
             ProduceStatus = building.ProduceStatus,
             RecipeIndex = building.RecipeIndex,
@@ -22,7 +22,7 @@ public class BuildingMapper
         return new Building
         {
             Id = buildingDTO.Id,
-            Name = buildingDTO.BuildingType,
+            Type = buildingDTO.BuildingType,
             Position = buildingDTO.Position ?? new int[3],
             ProduceStatus = buildingDTO.ProduceStatus ?? false, // 기본값으로 false 사용
             RecipeIndex = buildingDTO.RecipeIndex ?? 0, // 기본값으로 0 사용
@@ -33,5 +33,26 @@ public class BuildingMapper
     public static IEnumerable<BuildingDTO> ToBuildingDTOs(IEnumerable<Building> buildings)
     {
         return buildings.Select(ToBuildingDTO);
+    }
+    
+    // BuildingOwnInfo
+    public static BuildingInfoDTO ToBuildingInfoDTO(BuildingInfo buildingInfo)
+    {
+        return new BuildingInfoDTO
+        {
+            BuildingType = buildingInfo.BuildingType,
+            OwnCount = buildingInfo.OwnCount,
+            MaxCount = buildingInfo.MaxCount,
+        };
+    }
+    
+    public static BuildingInfo ToBuildingOwnInfo(BuildingInfoDTO buildingInfoDto)
+    {
+        return new BuildingInfo
+        {
+            BuildingType = buildingInfoDto.BuildingType,
+            OwnCount = buildingInfoDto.OwnCount,
+            MaxCount = buildingInfoDto.MaxCount,
+        };
     }
 }

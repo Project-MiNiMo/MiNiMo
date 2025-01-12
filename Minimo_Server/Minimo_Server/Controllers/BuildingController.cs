@@ -10,22 +10,8 @@ namespace MinimoServer.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class BuildingController(GameDbContext context, TimeService timeService) : ControllerBase
+public class BuildingController(GameDbContext context, TimeService timeService) : BaseController
 {
-    private readonly GameDbContext _context = context;
-    private readonly TimeService _timeService = timeService;
-
-    private int? GetAccountIdFromClaims()
-    {
-        var accountClaim = User.Claims.FirstOrDefault(c => c.Type == "AccountId");
-        return accountClaim != null && int.TryParse(accountClaim.Value, out var accountId) 
-            ? accountId 
-            : null;
-    }
-
-    private async Task<Account?> GetAccountAsync(int accountId) =>
-        await _context.Accounts.Include(a => a.Buildings).FirstOrDefaultAsync(a => a.Id == accountId);
-
     [Authorize]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<BuildingDTO>>> GetBuildings()
@@ -43,11 +29,8 @@ public class BuildingController(GameDbContext context, TimeService timeService) 
     [HttpGet("{id}")]
     public async Task<ActionResult<BuildingDTO>> GetBuilding(int id)
     {
-        var accountId = GetAccountIdFromClaims();
-        if (accountId == null) return Unauthorized("AccountId claim not found or invalid");
-
-        var account = await GetAccountAsync(accountId.Value);
-        if (account == null) return NotFound(new { message = "Account not found" });
+        var account = await GetAuthorizedAccountAsync();
+        if (account == null) return Unauthorized("Account not found");
 
         var building = account.Buildings.FirstOrDefault(b => b.Id == id);
         return building == null
@@ -59,15 +42,12 @@ public class BuildingController(GameDbContext context, TimeService timeService) 
     [HttpPost]
     public async Task<ActionResult<BuildingDTO>> CreateBuilding(BuildingDTO buildingDto)
     {
-        var accountId = GetAccountIdFromClaims();
-        if (accountId == null) return Unauthorized("AccountId claim not found or invalid");
-
-        var account = await GetAccountAsync(accountId.Value);
-        if (account == null) return NotFound(new { message = "Account not found" });
+        var account = await GetAuthorizedAccountAsync();
+        if (account == null) return Unauthorized("Account not found");
 
         var building = new Building
         {
-            Name = buildingDto.BuildingType,
+            Type = buildingDto.BuildingType,
             Level = 1,
             CreatedAt = _timeService.CurrentTime,
             Position = buildingDto.Position ?? new int[3],
@@ -84,11 +64,8 @@ public class BuildingController(GameDbContext context, TimeService timeService) 
     [HttpPut]
     public async Task<ActionResult<Building>> UpdateBuilding(UpdateBuildingParameter updateParameter)
     {
-        var accountId = GetAccountIdFromClaims();
-        if (accountId == null) return Unauthorized("AccountId claim not found or invalid");
-
-        var account = await GetAccountAsync(accountId.Value);
-        if (account == null) return NotFound(new { message = "Account not found" });
+        var account = await GetAuthorizedAccountAsync();
+        if (account == null) return Unauthorized("Account not found");
 
         var building = account.Buildings.FirstOrDefault(b => b.Id == updateParameter.Id);
         if (building == null) return NotFound(new { message = "Building not found" });

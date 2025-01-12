@@ -9,7 +9,7 @@ public class Building
     public int Id { get; set; }
 
     [Required]
-    public string Name { get; set; } // 건물 이름
+    public string Type { get; set; } // 건물 이름
 
     public int Level { get; set; } // 건물 레벨
 
