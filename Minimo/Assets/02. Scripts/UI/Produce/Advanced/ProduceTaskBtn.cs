@@ -101,7 +101,8 @@ public class ProduceTaskBtn : MonoBehaviour
  
         if (_produceTask?.CurrentState is PendingState)
         {
-            _remainTimeUpdater.SetPending();
+            _remainTimeUpdater.SetFillAmount(0);
+            _remainTimeUpdater.SetRemainText(TaskState.Pending);
         }
         else if (_produceTask?.CurrentState is ActiveState)
         {
@@ -109,11 +110,13 @@ public class ProduceTaskBtn : MonoBehaviour
         }
         else if (_produceTask?.CurrentState is CompletedState)
         {
-            _remainTimeUpdater.SetComplete();
+            _remainTimeUpdater.SetFillAmount(1);
+            _remainTimeUpdater.SetRemainText(TaskState.Complete);
         }
         else
         {
-            _remainTimeUpdater.SetEmpty();
+            _remainTimeUpdater.SetFillAmount(0);
+            _remainTimeUpdater.SetRemainText(TaskState.Empty);
             _itemInfoUpdater.SetItemEmpty();
         }
     }

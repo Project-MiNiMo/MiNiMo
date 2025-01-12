@@ -4,6 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+public enum TaskState
+{
+    Empty,
+    Pending,
+    Produce,
+    Complete,
+}
+
 public class RemainTimeUpdater : MonoBehaviour
 {
     [SerializeField] private Image _remainTimeImg;
@@ -17,9 +25,10 @@ public class RemainTimeUpdater : MonoBehaviour
     {
         _remainTimeTMP.text = string.Empty;
         
-        _emptyString = App.GetData<TitleData>().GetString("STR_FACILITY_SLOTSTATE_DESC1");
-        _pendingString = App.GetData<TitleData>().GetString("STR_FACILITY_PRODSTATE_DESC2");
-        _completeString = App.GetData<TitleData>().GetString("STR_FACILITY_PRODSTATE_DESC3");
+        var titleData = App.GetData<TitleData>();
+        _emptyString = titleData.GetString("STR_PRODUCE_SLOTSTATE_EMPTY");
+        _pendingString = titleData.GetString("STR_PRODUCE_SLOTSTATE_PENDING");
+        _completeString = titleData.GetString("STR_PRODUCE_SLOTSTATE_COMPLETE");
     }
     
     public void SetRemainTime(int remainTime, int fullTime)
@@ -34,21 +43,29 @@ public class RemainTimeUpdater : MonoBehaviour
         return $"{timeSpan.Hours:D2}:{timeSpan.Minutes:D2}:{timeSpan.Seconds:D2}";
     }
 
-    public void SetEmpty()
+    public void SetFillAmount(int fillAmount)
     {
-        _remainTimeTMP.text = _emptyString;
-        _remainTimeImg.fillAmount = 0;
+        _remainTimeImg.fillAmount = fillAmount;
     }
     
-    public void SetPending()
+    public void SetRemainText(TaskState state)
     {
-        _remainTimeTMP.text = _pendingString;
-        _remainTimeImg.fillAmount = 0;
-    }
-    
-    public void SetComplete()
-    {
-        _remainTimeTMP.text = _completeString;
-        _remainTimeImg.fillAmount = 1;
+        switch (state)
+        {
+            case TaskState.Empty:
+                _remainTimeTMP.text = _emptyString;
+                break;
+            
+            case TaskState.Pending:
+                _remainTimeTMP.text = _pendingString;
+                break;
+            
+            case TaskState.Produce:
+                break;
+            
+            case TaskState.Complete:
+                _remainTimeTMP.text = _completeString;
+                break;
+        }
     }
 }

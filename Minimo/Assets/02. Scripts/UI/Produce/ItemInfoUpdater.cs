@@ -1,11 +1,10 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public class ItemInfoUpdater : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _infoTMP;
+    [SerializeField] private TextMeshProUGUI[] _infoTMP;
     [SerializeField] private Image[] _infoImages;
     
     private TitleData _titleData;
@@ -20,13 +19,12 @@ public class ItemInfoUpdater : MonoBehaviour
     public void SetTaskItem(ProduceTask produceTask)
     {
         _currentOption = produceTask.Data;
+        
         SetInfo();
     }
     
     private void SetInfo()
     {
-        _infoTMP.text = string.Empty;
-        
         var i = 0;
         
         for (; i < _currentOption.Results.Length; i++) 
@@ -36,14 +34,8 @@ public class ItemInfoUpdater : MonoBehaviour
                 Debug.LogError($"Cannot find item data with code : {_currentOption.Results[i].Code}");
                 return;
             }
-
-            if (i > 0) 
-            {
-                _infoTMP.text += " / ";
-            }
             
-            _infoTMP.text += 
-                $"X{_currentOption.Results[i].Amount}";
+            _infoTMP[i].text = $"X{_currentOption.Results[i].Amount}";
             _infoImages[i].sprite = Resources.Load<Sprite>($"Item/{itemData.ID}");
         }
 
@@ -55,7 +47,7 @@ public class ItemInfoUpdater : MonoBehaviour
 
     public void SetItemEmpty()
     {
-        _infoTMP.text = string.Empty;
+        _infoTMP[0].text = string.Empty;
         _infoImages[0].sprite = null;
     }
 }
