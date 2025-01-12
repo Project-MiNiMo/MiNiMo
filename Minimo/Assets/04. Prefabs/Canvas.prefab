@@ -3690,7 +3690,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8278662209395335976
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24386,7 +24386,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _capacityTMP: {fileID: 5102215789042377902}
   _expandBtn: {fileID: 6443024917724962149}
-  _expandBack: {fileID: 5710233700907441284}
   _storageParent: {fileID: 4923751417277810918}
 --- !u!1 &5431289488299625304
 GameObject:
