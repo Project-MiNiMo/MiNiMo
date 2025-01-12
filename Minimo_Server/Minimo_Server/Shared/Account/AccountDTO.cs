@@ -16,6 +16,8 @@ namespace MinimoShared
         
         public List<BuildingDTO> Buildings { get; set; }
         
+        public List<BuildingInfoDTO> BuildingInfos { get; set; }
+        
         public List<ItemDTO> Items { get; set; }
     }
 }

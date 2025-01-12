@@ -78,7 +78,7 @@ public class CheatController : BaseController
         }
         else
         {
-            buildingInfo = BuildingMapper.ToBuildingOwnInfo(buildingInfoDto);
+            buildingInfo = BuildingMapper.ToBuildingInfo(buildingInfoDto);
             account.BuildingInfos.Add(buildingInfo);
         }
         await _context.SaveChangesAsync();

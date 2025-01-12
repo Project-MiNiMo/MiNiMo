@@ -46,7 +46,7 @@ public class BuildingMapper
         };
     }
     
-    public static BuildingInfo ToBuildingOwnInfo(BuildingInfoDTO buildingInfoDto)
+    public static BuildingInfo ToBuildingInfo(BuildingInfoDTO buildingInfoDto)
     {
         return new BuildingInfo
         {
