@@ -13,8 +13,9 @@ public class BuildingMapper
             ActivatedAt = building.ActivatedAt,
             Position = building.Position,
             ProduceStatus = building.ProduceStatus,
-            RecipeIndex = building.RecipeIndex,
-            ProduceStartAt = building.ProduceStartAt
+            Recipes = building.Recipes,
+            ProduceStartAt = building.ProduceStartAt,
+            ProduceEndAt = building.ProduceEndAt
         };
     }
     
@@ -26,9 +27,10 @@ public class BuildingMapper
             Type = buildingDTO.BuildingType,
             ActivatedAt = buildingDTO.ActivatedAt ?? DateTime.MinValue, // 기본값으로 최소값 사용
             Position = buildingDTO.Position ?? new int[3],
-            ProduceStatus = buildingDTO.ProduceStatus ?? false, // 기본값으로 false 사용
-            RecipeIndex = buildingDTO.RecipeIndex ?? 0, // 기본값으로 0 사용
-            ProduceStartAt = buildingDTO.ProduceStartAt ?? DateTime.MinValue // 기본값으로 최소값 사용
+            ProduceStatus = buildingDTO.ProduceStatus ?? new bool[5],
+            Recipes = buildingDTO.Recipes ?? new int[5],
+            ProduceStartAt = buildingDTO.ProduceStartAt ?? new DateTime[5],
+            ProduceEndAt = buildingDTO.ProduceEndAt ?? new DateTime[5]
         };
     }
 

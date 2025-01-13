@@ -94,7 +94,6 @@ public class BuildingController(GameDbContext context, TimeService timeService) 
             Level = 1,
             CreatedAt = _timeService.CurrentTime,
             Position = buildingDto.Position ?? new int[3],
-            ProduceStartAt = DateTime.MinValue,
         };
         account.Buildings.Add(building);
         buildingInfo.InstallCount++;
@@ -115,7 +114,7 @@ public class BuildingController(GameDbContext context, TimeService timeService) 
     /// <returns></returns>
     [Authorize]
     [HttpPut]
-    public async Task<ActionResult<Building>> UpdateBuilding(UpdateBuildingParameter updateParameter)
+    public async Task<ActionResult<BuildingDTO>> UpdateBuilding(UpdateBuildingParameter updateParameter)
     {
         var account = await GetAuthorizedAccountAsync();
         if (account == null) return Unauthorized("Account not found");
@@ -128,5 +127,107 @@ public class BuildingController(GameDbContext context, TimeService timeService) 
         await _context.SaveChangesAsync();
 
         return Ok(BuildingMapper.ToBuildingDTO(building));
+    }
+    
+    /// <summary>
+    /// 빌딩을 제거합니다.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [Authorize]
+    [HttpDelete]
+    public async Task<ActionResult<BuildingDTO>> DeleteBuilding(int id)
+    {
+        var account = await GetAuthorizedAccountAsync();
+        if (account == null) return Unauthorized("Account not found");
+
+        var building = account.Buildings.FirstOrDefault(b => b.Id == id);
+        if (building == null) return NotFound(new { message = "Building not found" });
+        
+        var buildingInfo = account.BuildingInfos.FirstOrDefault(b => b.BuildingType == building.Type);
+        if (buildingInfo == null) return BadRequest("BuildingInfo not found");
+
+        account.Buildings.Remove(building);
+        buildingInfo.InstallCount--;
+        await _context.SaveChangesAsync();
+
+        return Ok(BuildingMapper.ToBuildingDTO(building));
+    }
+    
+    /// <summary>
+    /// 주어진 슬롯과 레시피로 제조를 시작합니다
+    /// </summary>
+    /// <param name="startProduceDto"></param>
+    /// <returns></returns>
+    [Authorize]
+    [HttpPost("recipe")]
+    public async Task<ActionResult<BuildingDTO>> StartProduce(BuildingStartProduceDTO startProduceDto)
+    {
+        var account = await GetAuthorizedAccountAsync();
+        if (account == null) return Unauthorized("Account not found");
+
+        var building = account.Buildings.FirstOrDefault(b => b.Id == startProduceDto.BuildingId);
+        if (building == null) return NotFound(new { message = "Building not found" });
+        
+        var buildingInfo = account.BuildingInfos.FirstOrDefault(b => b.BuildingType == building.Type);
+        if (buildingInfo == null) return BadRequest("BuildingInfo not found");
+        
+        var slotIndex = startProduceDto.SlotIndex;
+        if (slotIndex < 0 || slotIndex >= buildingInfo.ProduceSlotCount) return BadRequest("Invalid slot index");
+        
+        if (building.ProduceStatus[slotIndex]) return BadRequest("Already producing");
+        
+        // TODO : 자원 충분한 지 확인
+        // TODO : 자원 차감
+        
+        // 레시피 building에 저장
+        building.Recipes[slotIndex] = startProduceDto.RecipeId;
+        building.ProduceStartAt[slotIndex] = _timeService.CurrentTime;
+        building.ProduceStatus[slotIndex] = true;
+        
+        await _context.SaveChangesAsync();
+
+        return Ok(BuildingMapper.ToBuildingDTO(building));
+    }
+    
+    /// <summary>
+    /// 주어진 슬롯의 제조를 완료하고 자원을 획득합니다.
+    /// </summary>
+    /// <param name="completeProduceDto"></param>
+    /// <returns></returns>
+    [Authorize]
+    [HttpPost("recipe/complete")]
+    public async Task<ActionResult<BuildingCompleteProduceResultDTO>> CompleteProduce(BuildingCompleteProduceDTO completeProduceDto)
+    {
+        var account = await GetAuthorizedAccountAsync();
+        if (account == null) return Unauthorized("Account not found");
+
+        var building = account.Buildings.FirstOrDefault(b => b.Id == completeProduceDto.BuildingId);
+        if (building == null) return NotFound(new { message = "Building not found" });
+        
+        var buildingInfo = account.BuildingInfos.FirstOrDefault(b => b.BuildingType == building.Type);
+        if (buildingInfo == null) return BadRequest("BuildingInfo not found");
+        
+        var slotIndex = completeProduceDto.SlotIndex;
+        if (slotIndex < 0 || slotIndex >= buildingInfo.ProduceSlotCount) return BadRequest("Invalid slot index");
+        
+        if (!building.ProduceStatus[slotIndex]) return BadRequest("Not producing");
+        
+        if (_timeService.CurrentTime < building.ProduceEndAt[slotIndex]) return BadRequest("Production not completed yet");
+        
+        // TODO 자원 추가
+        
+        // 레시피 building에 저장
+        building.Recipes[slotIndex] = 0;
+        building.ProduceStatus[slotIndex] = false;
+        
+        await _context.SaveChangesAsync();
+        
+        var resultDTO = new BuildingCompleteProduceResultDTO()
+        {
+            UpdatedBuilding = BuildingMapper.ToBuildingDTO(building),
+        };
+
+        return Ok(resultDTO);
     }
 }

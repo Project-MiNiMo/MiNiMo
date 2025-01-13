@@ -17,12 +17,13 @@ public class Building
     public DateTime ActivatedAt { get; set; } // 건물 활성화 시점
     
     public int[] Position { get; set; } = new int[3];
-    
-    public bool ProduceStatus { get; set; } // 생산 상태
-    
-    public int RecipeIndex { get; set; } // 레시피 인덱스
-    
-    public DateTime ProduceStartAt { get; set; } // 생산 시작 시간
+
+    // TODO 아.. 이건 리팩토링..해야해....
+    public bool[] ProduceStatus { get; set; } = new bool[5];// 생산 상태
+
+    public int[] Recipes { get; set; } = new int[5];
+    public DateTime[] ProduceStartAt { get; set; } = new DateTime[5]; // 생산 시작 시간
+    public DateTime[] ProduceEndAt { get; set; } = new DateTime[5]; // 생산 완료 시간
     
     [NotMapped]
     public Vector3 PositionVector
