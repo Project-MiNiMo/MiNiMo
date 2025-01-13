@@ -9,7 +9,7 @@ namespace MinimoServer.Controllers;
 public class CheatController : BaseController
 {
     /// <summary>
-    /// 재화(Star, BlueStar, Heart)를 강제로 업데이트한다.
+    /// 재화(Star, BlueStar, Heart, HPI)를 강제로 업데이트합니다.
     /// </summary>
     /// <param name="currencyDto"></param>
     /// <returns></returns>
@@ -27,7 +27,7 @@ public class CheatController : BaseController
     }
     
     /// <summary>
-    /// 아이템을 강제로 업데이트한다.(없으면 추가)
+    /// 아이템을 강제로 업데이트합니다.(없으면 추가합니다.)
     /// </summary>
     /// <param name="itemDto"></param>
     /// <returns></returns>
@@ -53,7 +53,7 @@ public class CheatController : BaseController
     }
     
     /// <summary>
-    /// 건물 정보를 강제로 업데이트한다.(없으면 추가)
+    /// 건물 정보를 강제로 업데이트합니다.(없으면 추가합니다.)
     /// </summary>
     /// <param name="buildingInfoDto"></param>
     /// <returns></returns>

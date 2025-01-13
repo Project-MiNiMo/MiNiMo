@@ -29,6 +29,11 @@ public class BuildingController(GameDbContext context, TimeService timeService) 
             : Ok(account.Buildings.Select(BuildingMapper.ToBuildingDTO));
     }
 
+    /// <summary>
+    /// 해당 id의 건물을 반환합니다.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     [Authorize]
     [HttpGet("{id}")]
     public async Task<ActionResult<BuildingDTO>> GetBuilding(int id)

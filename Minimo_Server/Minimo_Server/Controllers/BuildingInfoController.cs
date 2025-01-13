@@ -13,8 +13,8 @@ namespace MinimoServer.Controllers;
 public class BuildingInfoController(GameDbContext context, TimeService timeService) : BaseController
 {
     /// <summary>
-    /// 건물 해금(최초)을 진행한다.(행복도 차감)
-    /// 만약 이미 건물이 있다면 오류
+    /// 건물 해금(최초)을 진행합니다.
+    /// 만약 이미 건물이 있거나 행복도가 충분하지 않으면 오류를 반환합니다.
     /// </summary>
     /// <param name="buildingType"></param>
     /// <returns></returns>
@@ -52,8 +52,8 @@ public class BuildingInfoController(GameDbContext context, TimeService timeServi
     }
     
     /// <summary>
-    /// 건물 최대 보유 개수를 증가시킨다.(행복도 차감)
-    /// 만약 최대 개수에 도달했을 경우 오류
+    /// 건물 최대 보유 개수를 증가시킵니다.
+    /// 만약 최대 개수에 도달했거나 행복도가 충분하지 않으면 오류를 반환합니다.
     /// </summary>
     /// <param name="buildingType"></param>
     /// <returns></returns>
