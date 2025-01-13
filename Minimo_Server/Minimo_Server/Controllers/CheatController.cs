@@ -57,16 +57,22 @@ public class CheatController : BaseController
     /// </summary>
     /// <param name="buildingInfoDto"></param>
     /// <returns></returns>
-    [HttpPost("building")]
+    [HttpPost("buildinginfo")]
     public async Task<ActionResult<BuildingInfoDTO>> UpdateBuildingInfo([FromBody] BuildingInfoDTO buildingInfoDto)
     {
         var account = await GetAuthorizedAccountAsync();
         if (account == null) return Unauthorized("Account not found");
         
-        // check valid buildingInfoDto (매직넘버를 사용하지 않도록 별도의 테이블이 필요할듯)
+        // 유효 검사 1: 소유 개수가 최대 개수보다 많거나 최대 개수가 최대 건물 개수보다 많을 경우 오류
         if (buildingInfoDto.OwnCount > buildingInfoDto.MaxCount || buildingInfoDto.MaxCount > _tableDataService.MaxBuildingCount)
         {
             return BadRequest("Invalid BuildingInfoDTO. Check the ownCount and maxCount.");
+        }
+        
+        // 유효 검사 2: ProduceSlotCount가 최대값보다 큰 경우 오류
+        if (buildingInfoDto.ProduceSlotCount > _tableDataService.MaxProduceSlotCount)
+        {
+            return BadRequest("Invalid BuildingInfoDTO. Check the produceSlotCount.");
         }
         
         // find the buildingOwnInfo
@@ -75,10 +81,12 @@ public class CheatController : BaseController
         {
             buildingInfo.OwnCount = buildingInfoDto.OwnCount;
             buildingInfo.MaxCount = buildingInfoDto.MaxCount;
+            buildingInfo.ProduceSlotCount = buildingInfoDto.ProduceSlotCount;
         }
         else
         {
             buildingInfo = BuildingMapper.ToBuildingInfo(buildingInfoDto);
+            buildingInfo.InstallCount = 0;
             account.BuildingInfos.Add(buildingInfo);
         }
         await _context.SaveChangesAsync();

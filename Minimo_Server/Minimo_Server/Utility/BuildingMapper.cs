@@ -10,6 +10,7 @@ public class BuildingMapper
         {
             Id = building.Id,
             BuildingType = building.Type,
+            ActivatedAt = building.ActivatedAt,
             Position = building.Position,
             ProduceStatus = building.ProduceStatus,
             RecipeIndex = building.RecipeIndex,
@@ -23,6 +24,7 @@ public class BuildingMapper
         {
             Id = buildingDTO.Id,
             Type = buildingDTO.BuildingType,
+            ActivatedAt = buildingDTO.ActivatedAt ?? DateTime.MinValue, // 기본값으로 최소값 사용
             Position = buildingDTO.Position ?? new int[3],
             ProduceStatus = buildingDTO.ProduceStatus ?? false, // 기본값으로 false 사용
             RecipeIndex = buildingDTO.RecipeIndex ?? 0, // 기본값으로 0 사용
@@ -43,6 +45,8 @@ public class BuildingMapper
             BuildingType = buildingInfo.BuildingType,
             OwnCount = buildingInfo.OwnCount,
             MaxCount = buildingInfo.MaxCount,
+            InstallCount = buildingInfo.InstallCount,
+            ProduceSlotCount = buildingInfo.ProduceSlotCount
         };
     }
     
@@ -53,6 +57,8 @@ public class BuildingMapper
             BuildingType = buildingInfoDto.BuildingType,
             OwnCount = buildingInfoDto.OwnCount,
             MaxCount = buildingInfoDto.MaxCount,
+            InstallCount = buildingInfoDto.InstallCount,
+            ProduceSlotCount = buildingInfoDto.ProduceSlotCount
         };
     }
 }

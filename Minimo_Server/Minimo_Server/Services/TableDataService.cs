@@ -13,6 +13,8 @@ public class TableDataService
     public Dictionary<string, ProduceData> Produce { get; private set; } = new();
 
     public int MaxBuildingCount => 5;
+    public int DefaultProduceSlotCount => 3;
+    public int MaxProduceSlotCount => 5;
 
     private Dictionary<string, StringData> _string = new();
 

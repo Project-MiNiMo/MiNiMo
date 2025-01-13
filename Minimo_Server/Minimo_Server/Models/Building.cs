@@ -14,6 +14,7 @@ public class Building
     public int Level { get; set; } // 건물 레벨
 
     public DateTime CreatedAt { get; set; } // 건물 생성일
+    public DateTime ActivatedAt { get; set; } // 건물 활성화 시점
     
     public int[] Position { get; set; } = new int[3];
     

@@ -12,6 +12,10 @@ namespace MinimoServer.Controllers;
 [Route("api/[controller]")]
 public class BuildingController(GameDbContext context, TimeService timeService) : BaseController
 {
+    /// <summary>
+    /// 건물 목록을 반환합니다.
+    /// </summary>
+    /// <returns></returns>
     [Authorize]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<BuildingDTO>>> GetBuildings()
@@ -38,13 +42,52 @@ public class BuildingController(GameDbContext context, TimeService timeService) 
             : Ok(BuildingMapper.ToBuildingDTO(building));
     }
 
+    /// <summary>
+    /// 새 건물을 생성합니다.
+    /// 설치 개수가 최대 개수에 도달했거나 자원이 부족할 경우 오류를 반환합니다.
+    /// </summary>
+    /// <param name="buildingDto"></param>
+    /// <returns></returns>
     [Authorize]
     [HttpPost]
-    public async Task<ActionResult<BuildingDTO>> CreateBuilding(BuildingDTO buildingDto)
+    public async Task<ActionResult<BuildingCreateResultDTO>> CreateBuilding(BuildingDTO buildingDto)
     {
         var account = await GetAuthorizedAccountAsync();
         if (account == null) return Unauthorized("Account not found");
+        
+        // 설치 개수가 최대 개수에 도달했을 경우 오류
+        var buildingInfo = account.BuildingInfos.FirstOrDefault(b => b.BuildingType == buildingDto.BuildingType);
+        if (buildingInfo == null) return BadRequest("BuildingInfo not found");
+        else if (buildingInfo.InstallCount >= buildingInfo.MaxCount) return BadRequest("Max building count reached");
+        
+        // 만약 설치 개수가 소유 개수에 도달했을 경우 자원이 충분한지 확인 후 차감
+        if (buildingInfo.InstallCount >= buildingInfo.OwnCount)
+        {
+            var constructInfo = _tableDataService.Construct[buildingDto.BuildingType];
+            var item1Id = constructInfo.MatCode1;
+            var item1Require = constructInfo.MatAmount1;
+            var item2Id = constructInfo.MatCode2;
+            var item2Require = constructInfo.MatAmount2;
 
+            if (item1Require > 0)
+            {
+                if(account.Items.First(i => i.ItemType == item1Id) is not { } item1 || item1.Count < item1Require)
+                {
+                    return BadRequest("Not enough item1");
+                }
+                item1.Count -= item1Require;
+            }
+            if (item2Require > 0)
+            {
+                if(account.Items.First(i => i.ItemType == item2Id) is not { } item2 || item2.Count < item2Require)
+                {
+                    return BadRequest("Not enough item2");
+                }
+                item2.Count -= item2Require;
+            }
+            buildingInfo.OwnCount++;
+        }
+        
         var building = new Building
         {
             Type = buildingDto.BuildingType,
@@ -53,13 +96,23 @@ public class BuildingController(GameDbContext context, TimeService timeService) 
             Position = buildingDto.Position ?? new int[3],
             ProduceStartAt = DateTime.MinValue,
         };
-
         account.Buildings.Add(building);
+        buildingInfo.InstallCount++;
         await _context.SaveChangesAsync();
 
-        return Ok(BuildingMapper.ToBuildingDTO(building));
+        var resultDto = new BuildingCreateResultDTO()
+        {
+            CreatedBuilding = BuildingMapper.ToBuildingDTO(building),
+            BuildingInfoDto = BuildingMapper.ToBuildingInfoDTO(buildingInfo),
+        };
+        return Ok(resultDto);
     }
 
+    /// <summary>
+    /// 빌딩의 위치를 업데이트합니다.
+    /// </summary>
+    /// <param name="updateParameter"></param>
+    /// <returns></returns>
     [Authorize]
     [HttpPut]
     public async Task<ActionResult<Building>> UpdateBuilding(UpdateBuildingParameter updateParameter)
