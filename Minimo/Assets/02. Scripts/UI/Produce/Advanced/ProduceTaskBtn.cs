@@ -6,10 +6,11 @@ using Unity.VisualScripting;
 
 public class ProduceTaskBtn : MonoBehaviour
 {
+    public bool IsActive => gameObject.activeSelf;
+    
     [SerializeField] private Button _taskBtn;
     [SerializeField] private TextMeshProUGUI _taskText;
     
-    private ProduceTask _produceTask;
     [SerializeField] private ItemInfoUpdater _itemInfoUpdater;
     [SerializeField] private RemainTimeUpdater _remainTimeUpdater;
 
@@ -17,8 +18,9 @@ public class ProduceTaskBtn : MonoBehaviour
     private PlantPanel _plantPanel;
 
     private ProduceManager _produceManager;
-    private int _taskIndex;
     private ProduceObject _produceObject;
+    private ProduceTask _produceTask;
+    private int _taskIndex;
 
     private void Start()
     {
@@ -59,7 +61,12 @@ public class ProduceTaskBtn : MonoBehaviour
                 SetRemainTime(_produceManager.CurrentRemainTime.Value))
             .AddTo(gameObject);
     }
-
+    
+    public void Initialize(ProduceObject produceObject)
+    {
+        _produceObject = produceObject;
+    }
+    
     private void Update()
     {
         if (gameObject.activeSelf == false) 
@@ -74,6 +81,10 @@ public class ProduceTaskBtn : MonoBehaviour
 
         if (_produceObject.AllTasks.Count <= _taskIndex) 
         {
+            _remainTimeUpdater.SetFillAmount(0);
+            _remainTimeUpdater.SetRemainText(TaskState.Empty);
+            _itemInfoUpdater.SetItemEmpty();
+            _produceTask = null;
             return;
         }
         
@@ -87,21 +98,12 @@ public class ProduceTaskBtn : MonoBehaviour
         }
     }
     
-    public void Initialize(ProduceObject produceObject)
-    {
-        _produceObject = produceObject;
-    }
-    
     private void SetRemainTime(int remainTime)
     {
-        if (_produceObject == null)
-        {
-            return;
-        }
- 
         if (_produceTask?.CurrentState is PendingState)
         {
-            _remainTimeUpdater.SetPending();
+            _remainTimeUpdater.SetFillAmount(0);
+            _remainTimeUpdater.SetRemainText(TaskState.Pending);
         }
         else if (_produceTask?.CurrentState is ActiveState)
         {
@@ -109,11 +111,13 @@ public class ProduceTaskBtn : MonoBehaviour
         }
         else if (_produceTask?.CurrentState is CompletedState)
         {
-            _remainTimeUpdater.SetComplete();
+            _remainTimeUpdater.SetFillAmount(1);
+            _remainTimeUpdater.SetRemainText(TaskState.Complete);
         }
         else
         {
-            _remainTimeUpdater.SetEmpty();
+            _remainTimeUpdater.SetFillAmount(0);
+            _remainTimeUpdater.SetRemainText(TaskState.Empty);
             _itemInfoUpdater.SetItemEmpty();
         }
     }

@@ -5,8 +5,10 @@ using TMPro;
 
 public class StorageBtn : MonoBehaviour
 {
+    public bool CanShow => Item?.Count > 0;
     public Item Item { get; private set; }
     public Vector2 Position { get; private set; }
+    public int SibilingsIndex => transform.GetSiblingIndex() % 4;
     
     [SerializeField] private Button _infoBtn;
     
@@ -44,7 +46,7 @@ public class StorageBtn : MonoBehaviour
 
     private void SetCount()
     {
-        if (Item?.Count <= 0)
+        if (CanShow == false)
         {
             gameObject.SetActive(false);
             return;

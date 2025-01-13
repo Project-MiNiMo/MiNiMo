@@ -1,3 +1,5 @@
+using System.Linq;
+
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
@@ -56,5 +58,19 @@ public class AdvancedPanel : UIBase
         {
             taskBtn.Initialize(_produceManager.CurrentProduceObject);
         }
+    }
+    
+    public bool ExpandTaskBtn()
+    {
+        foreach (var taskBtn in _taskBtns)
+        {
+            if (!taskBtn.IsActive)
+            {
+                taskBtn.gameObject.SetActive(true);
+                break;
+            }
+        }
+        
+        return  _taskBtns.Any(btn => !btn.IsActive);
     }
 }

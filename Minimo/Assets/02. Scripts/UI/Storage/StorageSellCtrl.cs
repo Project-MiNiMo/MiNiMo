@@ -19,7 +19,7 @@ public class StorageSellCtrl : MonoBehaviour
     private int _currentCount;
     private string _sellText;
 
-    private void Start()
+    public void Setup()
     {
         _playerData = App.GetData<PlayerData>();
         _storagePanel = App.GetManager<UIManager>().GetPanel<StoragePanel>();

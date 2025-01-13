@@ -19,6 +19,10 @@ public class StorageInfoPanel : UIBase
     {
         _titleData = App.GetData<TitleData>();
         _closeBtn.onClick.AddListener(ClosePanel);
+
+        _sellCtrl.Setup();
+        
+        ClosePanel();
     }
 
     public void OpenPanel(StorageBtn storageBtn)
@@ -27,7 +31,15 @@ public class StorageInfoPanel : UIBase
         
         SetInfo(storageBtn.Item);
         _sellCtrl.Initialize(storageBtn.Item);
-        _infoRect.position = storageBtn.Position;
+        
+        Debug.Log(storageBtn.SibilingsIndex);
+        Debug.Log(storageBtn.Position.y);
+        
+        var newPosition = new Vector2(GetPositionBySiblingIndex(storageBtn.SibilingsIndex), 0);
+        _infoRect.anchoredPosition = newPosition;
+
+        newPosition = new Vector2(_infoRect.position.x, storageBtn.Position.y - 100);
+        _infoRect.position = newPosition;
     }
 
     private void SetInfo(Item item)
@@ -36,4 +48,13 @@ public class StorageInfoPanel : UIBase
         _descriptionTMP.text = _titleData.GetString(item.Data.Description);
         _iconImg.sprite = item.Icon;
     }
+
+    private int GetPositionBySiblingIndex(int index) => index switch
+    {
+        0 => -50,
+        1 => 250,
+        2 => -250,
+        3 => 50,
+        _ => 0
+    };
 }

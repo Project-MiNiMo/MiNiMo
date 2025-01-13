@@ -37,10 +37,6 @@ public class PlantOptionSlot : MonoBehaviour
         SetMaterialInfo(optionData.Materials);
         
         _timeTMP.text = optionData.Time.ToString();
-        Debug.Log(_titleData == null);
-        Debug.Log(_titleData.ItemSO == null);
-        Debug.Log(_titleData.ItemSO.GetItem(optionData.Results[0].Code) == null);
-        Debug.Log(_storageTMP == null);
         _storageTMP.text = _titleData.ItemSO.GetItem(optionData.Results[0].Code).Count.ToString();
     }
 

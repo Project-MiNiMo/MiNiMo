@@ -84,6 +84,8 @@ public abstract class ProduceObject : BuildingObject
         }
 
         AllTasks.Add(new ProduceTask(option));
+        Debug.Log($"ProduceTask Added : {option.Results[0].Code}");
+        
         SetNextActiveTask();
         
         return true;
