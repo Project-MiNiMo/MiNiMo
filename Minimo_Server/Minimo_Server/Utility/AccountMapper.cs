@@ -15,6 +15,7 @@ public static class AccountMapper
             Experience = account.Experience,
             Currency = CurrencyMapper.ToCurrencyDTO(account.Currency),
             Buildings = account.Buildings?.Select(BuildingMapper.ToBuildingDTO).ToList() ?? new List<BuildingDTO>(),
+            BuildingInfos = account.BuildingInfos?.Select(BuildingMapper.ToBuildingInfoDTO).ToList() ?? new List<BuildingInfoDTO>(),
             Items = account.Items?.Select(ItemMapper.ToItemDTO).ToList() ?? new List<ItemDTO>()
         };
     }
@@ -31,6 +32,7 @@ public static class AccountMapper
             LastLogin = DateTime.UtcNow, // Setting LastLogin to current date-time
             Currency = accountDto.Currency != null ? CurrencyMapper.ToCurrency(accountDto.Currency) : null,
             Buildings = accountDto.Buildings?.Select(BuildingMapper.ToBuilding).ToList(),
+            BuildingInfos = accountDto.BuildingInfos?.Select(BuildingMapper.ToBuildingInfo).ToList(),
             Items = accountDto.Items?.Select(ItemMapper.ToItem).ToList()
         };
     }

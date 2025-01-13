@@ -10,7 +10,8 @@ public static class CurrencyMapper
         {
             Star = currency.Star,
             BlueStar = currency.BlueStar,
-            Heart = currency.Heart
+            Heart = currency.Heart,
+            HPI = currency.HPI
         };
     }
 
@@ -21,7 +22,8 @@ public static class CurrencyMapper
         {
             Star = currencyDto.Star,
             BlueStar = currencyDto.BlueStar,
-            Heart = currencyDto.Heart
+            Heart = currencyDto.Heart,
+            HPI = currencyDto.HPI
         };
     }
 }
