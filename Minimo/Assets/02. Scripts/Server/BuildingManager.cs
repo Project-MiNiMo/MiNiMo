@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using MinimoShared;
 using UnityEngine;
 
-[DefaultExecutionOrder(-30)]
 public class BuildingManager : ManagerBase
 {
     private GameClient _gameClient;

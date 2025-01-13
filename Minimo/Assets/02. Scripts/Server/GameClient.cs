@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 using Cysharp.Threading.Tasks;
+using MinimoShared;
 using Newtonsoft.Json;
 
 public class GameClient
 {
+    public AccountDTO AccountInfo { get; set; }
+
     private readonly string _baseUrl;
 
     public GameClient(string baseUrl)
