@@ -11,10 +11,11 @@ public abstract class BaseController : ControllerBase
     protected readonly TimeService _timeService;
     protected readonly TableDataService _tableDataService;
     
-    protected BaseController(GameDbContext context, TimeService timeService)
+    protected BaseController(GameDbContext context, TimeService timeService, TableDataService tableDataService)
     {
         _context = context;
         _timeService = timeService;
+        _tableDataService = tableDataService;
     }
 
     protected BaseController()
