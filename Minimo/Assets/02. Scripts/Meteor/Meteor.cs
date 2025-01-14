@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public enum ShootingStarType
+public enum MeteorType
 {
     Quest,
     SpecialQuest,
@@ -9,15 +9,15 @@ public enum ShootingStarType
     SpecialResource
 }
 
-public class ShootingStar : MonoBehaviour
+public class Meteor : MonoBehaviour
 {
     public bool IsLanded => gameObject.activeSelf;
 
-    private PickShootingStarPanel _pickShootingStarPanel;
+    private PickMeteorPanel _pickMeteorPanel;
  
     private void Start()
     {
-        _pickShootingStarPanel = App.GetManager<UIManager>().GetPanel<PickShootingStarPanel>();
+        _pickMeteorPanel = App.GetManager<UIManager>().GetPanel<PickMeteorPanel>();
         gameObject.SetActive(false);
     }
 
@@ -35,11 +35,11 @@ public class ShootingStar : MonoBehaviour
         }
 
         var type = GetRandomType();
-        _pickShootingStarPanel.OpenPanel(type);
+        _pickMeteorPanel.OpenPanel(type);
     }
 
-    private ShootingStarType GetRandomType()
+    private MeteorType GetRandomType()
     {
-         return (ShootingStarType)UnityEngine.Random.Range(0, 4);
+         return (MeteorType)Random.Range(0, 4);
     }
 }

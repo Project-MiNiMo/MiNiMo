@@ -4,13 +4,13 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public class ShootingStarCtrl : MonoBehaviour
+public class MeteorCtrl : MonoBehaviour
 {
-    [SerializeField] private GameObject _shootingStarPrefab;
+    [SerializeField] private GameObject _meteorPrefab;
     [SerializeField] private float _spawnInterval = 10f;
     [SerializeField] private InstallChecker _installChecker;
 
-    private List<ShootingStar> _shootingStars;
+    private List<Meteor> _meteors;
     
     private TimeManager _timeManager;
     private DateTime _lastSpawnTime;
@@ -20,12 +20,12 @@ public class ShootingStarCtrl : MonoBehaviour
 
     private void Start()
     {
-        var maxStarLimit = App.GetData<TitleData>().Common["MaxStarLimit"];
+        var maxStarLimit = App.GetData<TitleData>().Common["MeteorLimit"];
         
-        _shootingStars = new List<ShootingStar>();
+        _meteors = new List<Meteor>();
         for (var i = 0; i < maxStarLimit; i++)
         {
-            _shootingStars.Add(Instantiate(_shootingStarPrefab, Vector3.zero, Quaternion.identity).GetComponent<ShootingStar>());
+            _meteors.Add(Instantiate(_meteorPrefab, Vector3.zero, Quaternion.identity).GetComponent<Meteor>());
         }
         
         _timeManager = App.GetManager<TimeManager>();
@@ -59,7 +59,7 @@ public class ShootingStarCtrl : MonoBehaviour
     
     private bool CheckRemainingShootingStars()
     {
-        return _shootingStars.Any(star => !star.IsLanded);
+        return _meteors.Any(star => !star.IsLanded);
     }
 
     private void SpawnShootingStar()
@@ -67,7 +67,7 @@ public class ShootingStarCtrl : MonoBehaviour
         var spawnPositions = _installChecker.GetInstallablePositions();
         var spawnPosition = spawnPositions[UnityEngine.Random.Range(0, spawnPositions.Count)];
         
-        var shootingStar = _shootingStars.FirstOrDefault(star => star.IsLanded);
+        var shootingStar = _meteors.FirstOrDefault(star => star.IsLanded);
         shootingStar?.Land(spawnPosition);
     }
 }
