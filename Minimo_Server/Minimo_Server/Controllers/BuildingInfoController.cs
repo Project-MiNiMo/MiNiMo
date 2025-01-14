@@ -10,7 +10,7 @@ namespace MinimoServer.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class BuildingInfoController(GameDbContext context, TimeService timeService) : BaseController
+public class BuildingInfoController(GameDbContext context, TimeService timeService, TableDataService tableDataService) : BaseController(context, timeService, tableDataService)
 {
     /// <summary>
     /// 건물 해금(최초)을 진행합니다.

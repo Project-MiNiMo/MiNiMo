@@ -1,12 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using MinimoServer.Models;
+using MinimoServer.Services;
 using MinimoShared;
 
 namespace MinimoServer.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class CheatController : BaseController
+public class CheatController(GameDbContext context, TimeService timeService, TableDataService tableDataService) : BaseController(context, timeService, tableDataService)
 {
     /// <summary>
     /// 재화(Star, BlueStar, Heart, HPI)를 강제로 업데이트합니다.
@@ -36,8 +37,14 @@ public class CheatController : BaseController
     {
         var account = await GetAuthorizedAccountAsync();
         if (account == null) return Unauthorized("Account not found");
+        
+        // 아이템이 유효한지 검사
+        if(_tableDataService.Item.ContainsKey(itemDto.ItemType) == false)
+        {
+            return BadRequest("Invalid ItemType");
+        }
 
-        // if item already exists, increase the count
+        // 아이템이 이미 존재하는 경우, 개수만 업데이트
         var item = account.Items.Find(i => i.ItemType == itemDto.ItemType);
         if (item != null)
         {
