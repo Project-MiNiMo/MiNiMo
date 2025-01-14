@@ -2,13 +2,7 @@ using UnityEngine;
 
 public abstract class UIBase : MonoBehaviour
 {
-    public virtual UIState UIState => UIState.Normal;
-
-    /// <summary>
-    /// Is Panel need to add ui stack?
-    /// </summary>
-    /// <returns></returns>
-    public virtual bool IsAddUIStack => false;
+    protected virtual GameObject Panel => gameObject;
 
     /// <summary>
     /// Initialize Panel.
@@ -18,21 +12,11 @@ public abstract class UIBase : MonoBehaviour
 
     public virtual void OpenPanel()
     {
-        if (IsAddUIStack && !gameObject.activeSelf)
-        {
-            App.GetManager<UIManager>().PushUIState(UIState);
-        }
-
-        gameObject.SetActive(true);
+        Panel.SetActive(true);
     }
 
     public virtual void ClosePanel()
     {
-        if (IsAddUIStack && gameObject.activeSelf)
-        {
-            App.GetManager<UIManager>().PopUIState(UIState);
-        }
-
-        gameObject.SetActive(false);
+        Panel.SetActive(false);
     }
 }
