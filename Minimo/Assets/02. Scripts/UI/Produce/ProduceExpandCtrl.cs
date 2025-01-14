@@ -10,7 +10,7 @@ public class ProduceExpandCtrl : MonoBehaviour
     [SerializeField] private Button _cancelBtn;
     [SerializeField] private TextMeshProUGUI _priceTMP;
     
-    private DiamondPanel _diamondPanel;
+    private UseCashPanel _useCashPanel;
     private AdvancedPanel _advancedPanel;
 
     private int _currentPrice = 100;
@@ -19,7 +19,7 @@ public class ProduceExpandCtrl : MonoBehaviour
     {
         var uiManager = App.GetManager<UIManager>();
         
-        _diamondPanel = uiManager.GetPanel<DiamondPanel>();
+        _useCashPanel = uiManager.GetPanel<UseCashPanel>();
         _advancedPanel = uiManager.GetPanel<AdvancedPanel>();
         
         _expandBtn.onClick.AddListener(OnClickConfirm);
@@ -29,7 +29,7 @@ public class ProduceExpandCtrl : MonoBehaviour
     
     private void OnClickConfirm()
     {
-        _diamondPanel.OpenPanel(UseDiamondType.ProduceExpand, 
+        _useCashPanel.OpenPanel(UseCashType.ProduceExpand, 
             _currentPrice, 
             Expand);
     }

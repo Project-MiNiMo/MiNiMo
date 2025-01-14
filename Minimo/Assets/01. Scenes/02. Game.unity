@@ -383,7 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea730450353907640a42aa89ed32357a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shootingStarPrefab: {fileID: 3721485543838847492, guid: 56465b84b74b9dc4d9b1f7a9bd614c5d, type: 3}
+  _meteorPrefab: {fileID: 3721485543838847492, guid: 56465b84b74b9dc4d9b1f7a9bd614c5d, type: 3}
   _spawnInterval: 10
   _installChecker: {fileID: 538196022}
 --- !u!114 &216209808

@@ -4,6 +4,8 @@ using TMPro;
 
 public class ProfilePanel : UIBase
 {
+    protected override GameObject Panel => _profileBack;
+    
     [SerializeField] private Button _openBtn;
     [SerializeField] private Button _closeBtn;
     [SerializeField] private GameObject _profileBack;
@@ -31,8 +33,7 @@ public class ProfilePanel : UIBase
     private const int PLAYER_VISITOR = 10;
     private const int PLAYER_FRIEND = 15;
     #endregion
-
-    #region Override
+    
     public override void Initialize()
     {
         var titleData = App.GetData<TitleData>();
@@ -45,27 +46,6 @@ public class ProfilePanel : UIBase
 
         UpdateExpProgressBar();
     }
-
-    public override void OpenPanel()
-    {
-        if (IsAddUIStack && !_profileBack.activeSelf)
-        {
-            App.GetManager<UIManager>().PushUIState(UIState);
-        }
-
-        _profileBack.SetActive(true);
-    }
-
-    public override void ClosePanel()
-    {
-        if (IsAddUIStack && _profileBack.activeSelf)
-        {
-            App.GetManager<UIManager>().PopUIState(UIState);
-        }
-
-        _profileBack.SetActive(false);
-    }
-    #endregion
 
     #region Initialize
     private void SetString()
