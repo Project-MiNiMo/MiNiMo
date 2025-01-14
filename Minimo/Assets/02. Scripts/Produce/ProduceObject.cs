@@ -11,9 +11,11 @@ public abstract class ProduceObject : BuildingObject
     public ProduceTask ActiveTask { get; private set; }
     public virtual bool IsPrimary => false;
 
+    private PlantHelper _plantHelper;
+    
     private ProduceManager _produceManager;
     private TimeManager _timeManager;
-    private DateTime _lastUpdateTime; 
+    private DateTime _lastUpdateTime;
 
     public override void Initialize(BuildingData data)
     {
@@ -21,6 +23,8 @@ public abstract class ProduceObject : BuildingObject
 
         ProduceData = App.GetData<TitleData>().Produce[data.ID];
 
+        _plantHelper = new PlantHelper();
+        
         _produceManager = App.GetManager<ProduceManager>();
         _timeManager = App.GetManager<TimeManager>();
         _lastUpdateTime = _timeManager.Time;
@@ -76,19 +80,27 @@ public abstract class ProduceObject : BuildingObject
         }
     }
 
-    public virtual bool StartProduce(ProduceOption option)
+    public void StartProduce(ProduceOption option)
     {
         if (!ProduceData.ProduceOptions.Contains(option))
         {
-            return false;
+            return;
         }
+        
+        _plantHelper.TryPlant(
+            option,
+            task =>
+            {
+                OnPlant(task);
+            }
+        );
+    }
 
-        AllTasks.Add(new ProduceTask(option));
-        Debug.Log($"ProduceTask Added : {option.Results[0].Code}");
-        
+    protected virtual void OnPlant(ProduceTask task)
+    {
+        AllTasks.Add(task);
+        Debug.Log($"ProduceTask Added : {task.Data.Results[0].Code}");
         SetNextActiveTask();
-        
-        return true;
     }
 
     public virtual void StartHarvest()

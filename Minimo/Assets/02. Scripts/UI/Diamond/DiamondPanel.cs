@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +9,7 @@ public enum UseDiamondType
 {
     Produce,
     ProduceExpand,
+    ProduceMaterial,
 }
 
 public class DiamondPanel : UIBase
@@ -79,6 +81,20 @@ public class DiamondPanel : UIBase
         
         _useAction = useAction;
         _useCount = count;
+    }
+    
+    public void OpenPanel(List<(Item, int)> items, Action useAction)
+    {
+        base.OpenPanel();
+        
+        _useBack.SetActive(true);
+        _chargeBack.SetActive(false);
+        
+        _useDescriptionTMP.text = _titleData.GetString(GetUseDescription(UseDiamondType.Produce));
+        _diamondCountTMP.text = string.Format(_diamondCountString, items.Count);
+        
+        _useAction = useAction;
+        _useCount = items.Count;
     }
     
     private string GetUseDescription(UseDiamondType type) => type switch

@@ -61,6 +61,22 @@ public abstract class ProducePrimary : ProduceObject
         _cropSpriteRenderer.sprite = _currentCropSprites[_currentSpriteIndex];
     }
     
+    protected override void OnPlant(ProduceTask task)
+    {
+        if (AllTasks.Count > 0)
+        {
+            return;
+        }
+        
+        base.OnPlant(task);
+        
+        _currentSpriteIndex = 0;
+
+        var cropCode = ActiveTask.Data.Results[0].Code;
+        _currentCropSprites = _cropSprites[GetCropType(cropCode)];
+        _cropSpriteRenderer.sprite = _currentCropSprites[_currentSpriteIndex];
+    }
+    
     public override void StartHarvest()
     {
         base.StartHarvest();
@@ -73,19 +89,6 @@ public abstract class ProducePrimary : ProduceObject
         {
             SetCropSprite();
         }
-    }
-    
-    public override bool StartProduce(ProduceOption option)
-    {
-        if (!base.StartProduce(option)) return false;
-        
-        _currentSpriteIndex = 0;
-
-        var cropCode = ActiveTask.Data.Results[0].Code;
-        _currentCropSprites = _cropSprites[GetCropType(cropCode)];
-        _cropSpriteRenderer.sprite = _currentCropSprites[_currentSpriteIndex];
-
-        return true;
     }
 
     protected abstract int GetCropType(string cropCode);

@@ -36,16 +36,4 @@ public class Produce_Farm : ProducePrimary
         "Item_Pepper" => (int)CropType.Pepper,
         _ => (int)CropType.Wheat
     };
-    
-    public override bool StartProduce(ProduceOption option)
-    {
-        if (AllTasks.Count > 0)
-        {
-            return false;
-        }
-        
-        base.StartProduce(option);
-
-        return true;
-    }
 }

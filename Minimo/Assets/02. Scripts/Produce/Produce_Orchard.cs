@@ -1,6 +1,6 @@
 using System.Linq;
 using System.Collections.Generic;
-
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Produce_Orchard :ProducePrimary
@@ -32,21 +32,19 @@ public class Produce_Orchard :ProducePrimary
         _ => (int)FruitType.Apple
     };
     
-    public override bool StartProduce(ProduceOption option)
+    protected override void OnPlant(ProduceTask task)
     {
         if (AllTasks.Count > 0)
         {
-            return false;
+            return;
         }
-
-        if (base.StartProduce(option))
+        
+        base.OnPlant(task);
+        
+        for (var i = 0; i < 4; i++)
         {
-            for (int i = 0; i < 4; i++) 
-            {
-                AllTasks.Add(new ProduceTask(option));
-            }
+            var newTask = new ProduceTask(task.Data);
+            AllTasks.Add(newTask);
         }
-
-        return true;
     }
 }
