@@ -6,12 +6,12 @@ using UnityEngine;
 public class PlantHelper 
 {
     private readonly ItemSO _itemSO;
-    private readonly DiamondPanel _diamondPanel;
+    private readonly UseCashPanel _useCashPanel;
 
     public PlantHelper()
     {
         _itemSO = App.GetData<TitleData>().ItemSO;
-        _diamondPanel = App.GetManager<UIManager>().GetPanel<DiamondPanel>();
+        _useCashPanel = App.GetManager<UIManager>().GetPanel<UseCashPanel>();
     }
     
     public void TryPlant(
@@ -22,7 +22,7 @@ public class PlantHelper
 
         if (lackItems.Count > 0)
         {
-            _diamondPanel.OpenPanel(lackItems, () =>
+            _useCashPanel.OpenPanel(lackItems, () =>
             {
                 CreateTask(option, onTaskCreated);
             });

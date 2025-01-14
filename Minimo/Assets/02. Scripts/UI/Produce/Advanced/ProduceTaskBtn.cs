@@ -14,7 +14,7 @@ public class ProduceTaskBtn : MonoBehaviour
     [SerializeField] private ItemInfoUpdater _itemInfoUpdater;
     [SerializeField] private RemainTimeUpdater _remainTimeUpdater;
 
-    private int _currentRemainTime;
+    private int _currentRemainTime; 
     private PlantPanel _plantPanel;
 
     private ProduceManager _produceManager;
