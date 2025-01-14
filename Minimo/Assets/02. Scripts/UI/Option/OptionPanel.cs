@@ -4,6 +4,8 @@ using TMPro;
 
 public class OptionPanel : UIBase
 {
+    protected override GameObject Panel => _optionBack;
+    
     [Header("Buttons")]
     [SerializeField] private Button _openBtn;
     [SerializeField] private Button _closeBtn;
@@ -32,13 +34,8 @@ public class OptionPanel : UIBase
 
     public override void OpenPanel()
     {
-        if (IsAddUIStack && !_optionBack.activeSelf)
-        {
-            App.GetManager<UIManager>().PushUIState(UIState);
-        }
-
-        _optionBack.SetActive(true);
-
+        base.OpenPanel();
+        
         OnClickOptionBtn(0);
     }
 
@@ -46,12 +43,7 @@ public class OptionPanel : UIBase
     {
         SaveOptionData();
 
-        if (IsAddUIStack && _optionBack.activeSelf)
-        {
-            App.GetManager<UIManager>().PopUIState(UIState);
-        }
-
-        _optionBack.SetActive(false);
+        base.ClosePanel();
     }
     #endregion
 

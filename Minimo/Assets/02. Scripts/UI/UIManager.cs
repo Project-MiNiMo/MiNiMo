@@ -5,11 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public enum UIState
-{
-    Normal,
-}
-
 public class UIManager : ManagerBase
 {
     [SerializeField] private Image _blackBlur;
