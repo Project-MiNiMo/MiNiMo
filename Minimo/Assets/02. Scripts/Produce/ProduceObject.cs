@@ -67,7 +67,7 @@ public abstract class ProduceObject : BuildingObject
 
         if (ActiveTask != null)
         {
-            ActiveTask.ChangeState(new ActiveState());
+            ActiveTask.ChangeState(ActiveState.Instance);
             UpdateRemainTime();
         }
     }
@@ -89,10 +89,7 @@ public abstract class ProduceObject : BuildingObject
         
         _plantHelper.TryPlant(
             option,
-            task =>
-            {
-                OnPlant(task);
-            }
+            OnPlant
         );
     }
 

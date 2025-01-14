@@ -11,7 +11,7 @@ public class ProduceTask
         Data = produceOption;
         RemainTime = produceOption.Time;
         
-        CurrentState = new PendingState();
+        CurrentState = PendingState.Instance;
     }
 
     public void Update()
@@ -43,6 +43,9 @@ public interface ITaskState
 
 public class PendingState : ITaskState
 {
+    public static readonly PendingState Instance = new();
+    private PendingState() { }
+    
     public void OnUpdate(ProduceTask task) { }
 
     public void OnHarvest(ProduceTask task) { }
@@ -50,24 +53,30 @@ public class PendingState : ITaskState
 
 public class ActiveState : ITaskState
 {
+    public static readonly ActiveState Instance = new();
+    private ActiveState() { }
+    
     public void OnUpdate(ProduceTask task)
     {
         task.ReduceRemainTime(1);
         if (task.RemainTime <= 0)
         {
-            task.ChangeState(new CompletedState());
+            task.ChangeState(CompletedState.Instance);
         }
     }
 
     public void OnHarvest(ProduceTask task)
     {
         task.ReduceRemainTime(task.RemainTime);
-        task.ChangeState(new CompletedState());
+        task.ChangeState(CompletedState.Instance);
     }
 }
 
 public class CompletedState : ITaskState
 {
+    public static readonly CompletedState Instance = new();
+    private CompletedState() { }
+    
     public void OnUpdate(ProduceTask task) { }
 
     public void OnHarvest(ProduceTask task)
@@ -82,12 +91,15 @@ public class CompletedState : ITaskState
             item.Count += result.Amount;
         }
         
-        task.ChangeState(new EndState());
+        task.ChangeState(EndState.Instance);
     }
 }
 
 public class EndState : ITaskState
 {
+    public static readonly EndState Instance = new();
+    private EndState() { }
+    
     public void OnUpdate(ProduceTask task) { }
 
     public void OnHarvest(ProduceTask task) { }
