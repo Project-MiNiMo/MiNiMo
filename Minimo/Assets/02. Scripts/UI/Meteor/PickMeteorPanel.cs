@@ -11,20 +11,28 @@ public class PickMeteorPanel : UIBase
     [SerializeField] private GameObject _pickBack;
     
     private readonly Dictionary<MeteorType, Action> _shootingStarActions = new(4);
+    private RandomItemSelector _randomItemSelector;
 
     private QuestPanel _questPanel;
-    private ResourcePanel _resourcePanel;
+    private GetItemPanel _getItemPanel;
     
     public override void Initialize()
     {
+        _randomItemSelector = new RandomItemSelector();
+        
         var uiManager = App.GetManager<UIManager>();
         _questPanel = uiManager.GetPanel<QuestPanel>();
-        _resourcePanel = uiManager.GetPanel<ResourcePanel>();
+        _getItemPanel = uiManager.GetPanel<GetItemPanel>();
 
-        _shootingStarActions[MeteorType.Quest] = () => _questPanel.OpenPanel(QuestType.Quest);
-        _shootingStarActions[MeteorType.SpecialQuest] = () => _questPanel.OpenPanel(QuestType.SpecialQuest);
-        _shootingStarActions[MeteorType.Resource] = _resourcePanel.OpenPanel;
-        _shootingStarActions[MeteorType.SpecialResource] = _resourcePanel.OpenPanel;
+        _shootingStarActions[MeteorType.Quest] = 
+            () => _questPanel.OpenPanel(QuestType.Quest);
+        _shootingStarActions[MeteorType.SpecialQuest] = 
+            () => _questPanel.OpenPanel(QuestType.SpecialQuest);
+        
+        _shootingStarActions[MeteorType.Resource] = 
+            () => _getItemPanel.OpenPanel(_randomItemSelector.GetRandomItems(ResourceType.Resource));
+        _shootingStarActions[MeteorType.SpecialResource] = 
+            () => _getItemPanel.OpenPanel(_randomItemSelector.GetRandomItems(ResourceType.SpecialResource));
     }
 
     public void OpenPanel(MeteorType type)

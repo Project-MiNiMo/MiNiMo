@@ -5,15 +5,9 @@ using UnityEngine;
 
 public class PlantHelper 
 {
-    private readonly ItemSO _itemSO;
-    private readonly UseCashPanel _useCashPanel;
+    private readonly ItemSO _itemSO = App.GetData<TitleData>().ItemSO;
+    private readonly UseCashPanel _useCashPanel = App.GetManager<UIManager>().GetPanel<UseCashPanel>();
 
-    public PlantHelper()
-    {
-        _itemSO = App.GetData<TitleData>().ItemSO;
-        _useCashPanel = App.GetManager<UIManager>().GetPanel<UseCashPanel>();
-    }
-    
     public void TryPlant(
         ProduceOption option,
         Action<ProduceTask> onTaskCreated)
