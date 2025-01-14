@@ -20,11 +20,11 @@ public class PickMeteorPanel : UIBase
         var uiManager = App.GetManager<UIManager>();
         _questPanel = uiManager.GetPanel<QuestPanel>();
         _resourcePanel = uiManager.GetPanel<ResourcePanel>();
-        
-        _shootingStarActions[MeteorType.Quest] = _questPanel.ShowNewQuest;
-        _shootingStarActions[MeteorType.SpecialQuest] = _questPanel.ShowNewQuest;
-        _shootingStarActions[MeteorType.Resource] = _resourcePanel.ShowGetResource;
-        _shootingStarActions[MeteorType.SpecialResource] = _resourcePanel.ShowGetResource;
+
+        _shootingStarActions[MeteorType.Quest] = () => _questPanel.OpenPanel(QuestType.Quest);
+        _shootingStarActions[MeteorType.SpecialQuest] = () => _questPanel.OpenPanel(QuestType.SpecialQuest);
+        _shootingStarActions[MeteorType.Resource] = _resourcePanel.OpenPanel;
+        _shootingStarActions[MeteorType.SpecialResource] = _resourcePanel.OpenPanel;
     }
 
     public void OpenPanel(MeteorType type)

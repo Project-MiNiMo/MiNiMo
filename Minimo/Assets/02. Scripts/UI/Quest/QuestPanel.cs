@@ -1,7 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+public enum QuestType
+{
+    Quest,
+    SpecialQuest
+}
 
 public class QuestPanel : UIBase
 {
@@ -10,22 +14,22 @@ public class QuestPanel : UIBase
 
     public override void Initialize() 
     {
-        _confirmBtn.onClick.AddListener(OnClickConfirmBtn);
-        _denyBtn.onClick.AddListener(OnClickDenyBtn);
+        _confirmBtn.onClick.AddListener(OnClickConfirm);
+        _denyBtn.onClick.AddListener(OnClickDeny);
+    }
+    
+    public void OpenPanel(QuestType type)
+    {
+        base.OpenPanel();
     }
 
-    private void OnClickConfirmBtn()
+    private void OnClickConfirm()
     {
         ClosePanel();
     }
 
-    private void OnClickDenyBtn()
+    private void OnClickDeny()
     {
         ClosePanel();
-    }
-
-    public void ShowNewQuest()
-    {
-        OpenPanel();
     }
 }
