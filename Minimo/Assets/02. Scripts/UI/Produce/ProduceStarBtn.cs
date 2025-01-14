@@ -9,14 +9,14 @@ public class ProduceStarBtn : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _starText;
 
     private ProduceManager _produceManager;
-    private DiamondPanel _diamondPanel;
+    private UseCashPanel _useCashPanel;
     
     private int _starValue;
     private int _currentStarCount;
     
     private void Start()
     {
-        _diamondPanel = App.GetManager<UIManager>().GetPanel<DiamondPanel>();
+        _useCashPanel = App.GetManager<UIManager>().GetPanel<UseCashPanel>();
         
         _starValue = App.GetData<TitleData>().Common["BlueStarValue"];
 
@@ -30,7 +30,7 @@ public class ProduceStarBtn : MonoBehaviour
 
     private void OnClickStarBtn()
     {
-        _diamondPanel.OpenPanel(UseDiamondType.Produce, 
+        _useCashPanel.OpenPanel(UseCashType.Produce, 
             _currentStarCount, 
             ()=>_produceManager.HarvestEarly());
     }
