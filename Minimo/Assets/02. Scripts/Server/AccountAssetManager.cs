@@ -69,9 +69,9 @@ public class AccountAssetManager : ManagerBase
         {
             UpdateCurrency(assetUpdate.CurrencyUpdate.CurrentCurrency);
         }
-        if(assetUpdate.BuildingInfosUpdate != null)
+        if(assetUpdate.BuildingsUpdate != null)
         {
-            foreach(var buildingUpdateInfo in assetUpdate.BuildingInfosUpdate)
+            foreach(var buildingUpdateInfo in assetUpdate.BuildingsUpdate)
             {
                 UpdateBuildingInfo(buildingUpdateInfo.CurrentBuildingInfo);
             }

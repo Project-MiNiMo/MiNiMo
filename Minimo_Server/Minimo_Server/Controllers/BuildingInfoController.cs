@@ -65,7 +65,7 @@ public class BuildingInfoController(GameDbContext context, TimeService timeServi
     /// <returns></returns>
     [Authorize]
     [HttpPost("upgrademax")]
-    public async Task<ActionResult<BuildingInfoUpgradResultDTO>> UpgradeBuildingInfoMaxCount(string buildingType)
+    public async Task<ActionResult<BuildingInfoUpgradeResultDTO>> UpgradeBuildingInfoMaxCount(string buildingType)
     {
         var account = await GetAuthorizedAccountAsync();
         if (account == null) return Unauthorized("Account not found");
@@ -94,7 +94,7 @@ public class BuildingInfoController(GameDbContext context, TimeService timeServi
         buildingInfo.MaxCount++;
         await _context.SaveChangesAsync();
 
-        var buildingInfoResultDto = new BuildingInfoUpgradResultDTO()
+        var buildingInfoResultDto = new BuildingInfoUpgradeResultDTO()
         {
             BuildingInfo = BuildingMapper.ToBuildingInfoDTO(buildingInfo),
             UpdatedCurrency = CurrencyMapper.ToCurrencyDTO(account.Currency),

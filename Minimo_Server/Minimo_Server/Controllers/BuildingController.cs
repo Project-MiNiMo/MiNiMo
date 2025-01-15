@@ -183,11 +183,13 @@ public class BuildingController(GameDbContext context, TimeService timeService) 
         if (building.ProduceStatus[slotIndex]) return BadRequest("Already producing");
         
         // TODO : 자원 충분한 지 확인
+        
         // TODO : 자원 차감
         
         // 레시피 building에 저장
         building.Recipes[slotIndex] = startProduceDto.RecipeId;
         building.ProduceStartAt[slotIndex] = _timeService.CurrentTime;
+        building.ProduceEndAt[slotIndex] = _timeService.CurrentTime.AddSeconds(10); // TODO : 제조 시간 설정
         building.ProduceStatus[slotIndex] = true;
         
         await _context.SaveChangesAsync();

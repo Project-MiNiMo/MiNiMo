@@ -9,5 +9,6 @@ namespace MinimoShared
         public int Star { get; set; }
         public int BlueStar { get; set; }
         public int Heart { get; set; }
+        public int HPI { get; set; }
     }
 }
