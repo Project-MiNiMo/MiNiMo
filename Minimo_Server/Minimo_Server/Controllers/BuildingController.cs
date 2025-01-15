@@ -76,7 +76,7 @@ public class BuildingController(GameDbContext context, TimeService timeService) 
 
             if (item1Require > 0)
             {
-                if(account.Items.First(i => i.ItemType == item1Id) is not { } item1 || item1.Count < item1Require)
+                if(account.Items.FirstOrDefault(i => i.ItemType == item1Id) is not { } item1 || item1.Count < item1Require)
                 {
                     return BadRequest("Not enough item1");
                 }
@@ -84,7 +84,7 @@ public class BuildingController(GameDbContext context, TimeService timeService) 
             }
             if (item2Require > 0)
             {
-                if(account.Items.First(i => i.ItemType == item2Id) is not { } item2 || item2.Count < item2Require)
+                if(account.Items.FirstOrDefault(i => i.ItemType == item2Id) is not { } item2 || item2.Count < item2Require)
                 {
                     return BadRequest("Not enough item2");
                 }

@@ -25,6 +25,12 @@ public class BuildingInfoController(GameDbContext context, TimeService timeServi
         var account = await GetAuthorizedAccountAsync();
         if (account == null) return Unauthorized("Account not found");
         
+        // 건물 타입이 유효하지 않으면 오류
+        if (!_tableDataService.Building.TryGetValue(buildingType, out Data.Class.BuildingData? value))
+        {
+            return BadRequest("Invalid building type");
+        }
+        
         // 만약 이미 건물이 있다면 오류
         if (account.BuildingInfos.Any(b => b.BuildingType == buildingType))
         {
@@ -32,7 +38,7 @@ public class BuildingInfoController(GameDbContext context, TimeService timeServi
         }
         
         // 행복도가 충분하지 확인
-        var hpi = _tableDataService.Building[buildingType].HPI;
+        var hpi = value.HPI;
         if (hpi < 0 && account.Currency.HPI + hpi < 0)
         {
             return BadRequest("Not enough HPI");
