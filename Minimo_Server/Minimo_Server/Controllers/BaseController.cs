@@ -18,11 +18,6 @@ public abstract class BaseController : ControllerBase
         _tableDataService = tableDataService;
     }
 
-    protected BaseController()
-    {
-        throw new NotImplementedException();
-    }
-
     /// <summary>
     /// 
     /// </summary>
