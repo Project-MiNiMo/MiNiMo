@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	2616887644	BGM_InGame_Day			\Default Work Unit\BGM_InGame_Day	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	532055058	InGame (Day) BGM-03	C:\Users\xcwhy\Documents\GitHub\MINIMO\Minimo\Minimo\Assets\WwiseProject\.cache\iOS\SFX\InGame (Day) BGM-03_FBC78EF0.wem		\Interactive Music Hierarchy\Default Work Unit\InGame\InGame_BGM\InGame (Day) BGM-03\InGame (Day) BGM-03		10014816
+
