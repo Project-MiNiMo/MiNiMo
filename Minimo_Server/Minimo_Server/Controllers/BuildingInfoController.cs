@@ -13,6 +13,22 @@ namespace MinimoServer.Controllers;
 public class BuildingInfoController(GameDbContext context, TimeService timeService, TableDataService tableDataService) : BaseController(context, timeService, tableDataService)
 {
     /// <summary>
+    /// 건물 정보를 반환합니다.
+    /// </summary>
+    /// <param name="buildingType"></param>
+    /// <returns></returns>
+    public async Task<ActionResult<BuildingInfoDTO>> GetBuildingInfo(string buildingType)
+    {
+        var account = await GetAuthorizedAccountAsync();
+        if (account == null) return Unauthorized("Account not found");
+
+        var buildingInfo = account.BuildingInfos.FirstOrDefault(b => b.BuildingType == buildingType);
+        return buildingInfo == null
+            ? NotFound(new { message = "Building not found" })
+            : Ok(BuildingMapper.ToBuildingInfoDTO(buildingInfo));
+    }
+    
+    /// <summary>
     /// 건물 해금(최초)을 진행합니다.
     /// 만약 이미 건물이 있거나 행복도가 충분하지 않으면 오류를 반환합니다.
     /// </summary>

@@ -64,11 +64,13 @@ public class BuildingManager : ManagerBase
     /// <returns>생성된 건물 DTO</returns>
     public async UniTask<BuildingDTO> CreateBuildingAsync(BuildingDTO buildingDto)
     {
-        var result = await _gameClient.PostAsync<BuildingDTO>(BuildingEndpoint, buildingDto);
-        if(result.IsSuccess && result.Data is {} createdBuildingDto)
+        var result = await _gameClient.PostAsync<BuildingCreateResultDTO>(BuildingEndpoint, buildingDto);
+        if(result.IsSuccess && result.Data is {} buildingCreateResult)
         {
-            Debug.Log($"Created building {createdBuildingDto.BuildingType} (ID: {createdBuildingDto.Position})");
-            return createdBuildingDto;
+            Debug.Log($"Created building {buildingCreateResult.CreatedBuilding.BuildingType} (ID: {buildingCreateResult.CreatedBuilding.Id})");
+            App.GetManager<AccountAssetManager>().UpdateBuildingInfo(buildingCreateResult.BuildingInfoDto);
+            App.GetManager<AccountAssetManager>().UpdateItems(buildingCreateResult.UpdatedItems);
+            return buildingCreateResult.CreatedBuilding;
         }
         else
         {

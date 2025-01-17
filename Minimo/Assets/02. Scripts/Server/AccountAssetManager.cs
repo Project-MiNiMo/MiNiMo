@@ -63,6 +63,14 @@ public class AccountAssetManager : ManagerBase
         }
     }
     
+    public void UpdateItems(List<ItemDTO> items)
+    {
+        foreach(var itemDto in items)
+        {
+            UpdateItem(itemDto);
+        }
+    }
+    
     public void UpdateAssetInfo(AssetUpdateDTO assetUpdate)
     {
         if(assetUpdate.CurrencyUpdate != null)
