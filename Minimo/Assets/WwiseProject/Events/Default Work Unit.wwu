@@ -25,6 +25,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="BGM_InGame_Day" ID="{CC5D875D-DE39-4AF3-81BE-F35F587D7CD9}">
+					<ChildrenList>
+						<Action Name="" ID="{C1E7C363-DB0A-41DD-B4F8-C0856F3A40CA}" ShortID="931237288">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="InGame_BGM" ID="{B62F3937-E3C8-42D2-A51E-F1FBD76E8813}" WorkUnitID="{8E5ACAB1-320B-4B71-87BF-D778CC643ED9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

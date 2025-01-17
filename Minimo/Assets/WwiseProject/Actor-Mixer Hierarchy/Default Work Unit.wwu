@@ -15,6 +15,7 @@
 					<ChildrenList>
 						<Sound Name="SFX_ReflectionKill_01" ID="{DB9120D3-8185-40E1-9225-CC1C27B0BEDE}" ShortID="537863721">
 							<PropertyList>
+								<Property Name="OverrideOutput" Type="bool" Value="True"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
 										<Value>-10</Value>
@@ -26,7 +27,7 @@
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AD282FF1-D8D7-4FC4-B3C8-7C40AEFE1B63}"/>
 								</Reference>
 								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{32CED0DE-D5C6-4CC2-855F-411DDFFC76A9}"/>
+									<ObjectRef Name="SFX Audio Bus" ID="{014F5C96-EA2F-47C5-BDA1-9FB5DDA430F0}" WorkUnitID="{32CED0DE-D5C6-4CC2-855F-411DDFFC76A9}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
