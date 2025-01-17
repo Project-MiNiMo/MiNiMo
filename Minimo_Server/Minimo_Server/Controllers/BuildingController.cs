@@ -10,7 +10,7 @@ namespace MinimoServer.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class BuildingController(GameDbContext context, TimeService timeService) : BaseController
+public class BuildingController(GameDbContext context, TimeService timeService, TableDataService tableDataService) : BaseController(context, timeService, tableDataService)
 {
     /// <summary>
     /// 건물 목록을 반환합니다.
