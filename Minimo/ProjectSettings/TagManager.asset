@@ -5,14 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - GridObject
+  - BuildingObjectParent
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - None
   - Water
   - UI
-  - 
+  - Building
   - 
   - 
   - 

@@ -1,6 +1,7 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
+using UniRx;
 using UnityEngine;
 
 
@@ -11,6 +12,7 @@ public class TimeManager : ManagerBase
     [SerializeField] private string targetTime = "";
     
     public DateTime Time => DateTime.UtcNow + _timeOffset + _timeZoneOffset;
+    public ReactiveProperty<DateTime> TimeReactiveProperty { get; } = new ReactiveProperty<DateTime>();
     public bool IsProcessing { get; private set; } = false;
     
     // 서버 시간
@@ -32,6 +34,7 @@ public class TimeManager : ManagerBase
         SyncTime(serverTime);
         InvokeRepeating(nameof(SyncTime), (float)_syncInterval.TotalSeconds, (float)_syncInterval.TotalSeconds);
         InvokeRepeating(nameof(ValidateTime), (float)_validateInterval.TotalSeconds, (float)_validateInterval.TotalSeconds);
+        InvokeRepeating(nameof(TimePulse), 0, 1f);
         IsProcessing = true;
     }
     
@@ -62,22 +65,18 @@ public class TimeManager : ManagerBase
         }
 
         _isSyncing = true;
-        try
+        var result = await _gameClient.GetAsync<DateTime> ("api/time");
+        if(result.IsSuccess && result.Data is {} serverTime)
         {
-            var serverTime = await _gameClient.GetAsync<DateTime> ("api/time");
-            Debug.Log($"Server time: {serverTime}");
             var localTime = DateTime.UtcNow;
             _timeOffset = serverTime - localTime;
             _lastTime = Time;
         }
-        catch (Exception ex)
+        else
         {
-            Debug.LogError($"Failed to sync time: {ex.Message}");
+            Debug.LogError($"Failed to sync time: {result.Message}");
         }
-        finally
-        {
-            _isSyncing = false;
-        }
+        _isSyncing = false;
     }
 
     private void ValidateTime()
@@ -91,27 +90,34 @@ public class TimeManager : ManagerBase
         
         var currentTime = Time;
         var timeDifference = currentTime - _lastTime;
-        try
-        {
-            if (timeDifference.Duration() > _maxTimeDifference || timeDifference < TimeSpan.Zero)
-            {
-                Debug.LogWarning($"Validation failed: current time: {currentTime}, last time: {_lastTime}");
-                SyncTime().GetAwaiter().OnCompleted(() =>
-                {
-                    _isValidating = false;
-                });
-                return;
-            }
-        }
-        catch (Exception ex)
-        {
-            Debug.LogError($"Failed to validate time: {ex.Message}");
-        }
-        finally
+        bool isTimeValid = timeDifference.Duration() <= _maxTimeDifference && timeDifference >= TimeSpan.Zero;
+
+        if (isTimeValid)
         {
             _lastTime = currentTime;
             _isValidating = false;
         }
+        else
+        {
+            try
+            {
+                Debug.LogWarning($"Validation failed: current time: {currentTime}, last time: {_lastTime}");
+                SyncTime().GetAwaiter().OnCompleted(() => { _isValidating = false; });
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Failed to validate time: {ex.Message}");
+            }           
+        }
+    }
+
+    private void TimePulse()
+    {
+        if (_isSyncing || _isValidating)
+        {
+            return;
+        }
+        TimeReactiveProperty.Value = Time;
     }
     
 #if UNITY_EDITOR
@@ -143,22 +149,22 @@ public class TimeManager : ManagerBase
             Debug.LogError("TimeManager is not processing");
             return;
         }
-        
-        try
+
+        if (DateTime.TryParse(targetTime, out var time))
         {
-            if (DateTime.TryParse(targetTime, out var time))
+            var result = await _gameClient.PutAsync<DateTime>("api/time", time);
+            if (result.IsSuccess && result.Data is { } newServerTime)
             {
-                await _gameClient.PutAsync("api/time", time);
-                await SyncTime();
+                SyncTime(newServerTime);
             }
             else
             {
-                Debug.LogError("Invalid time format");
+                Debug.LogError("Failed To Set Cheat Time: {result.Message}");
             }
         }
-        catch (Exception ex)
+        else
         {
-            Debug.LogError($"Failed to set cheat time: {ex.Message}");
+            Debug.LogError("Invalid time format");
         }
     }
 #endif

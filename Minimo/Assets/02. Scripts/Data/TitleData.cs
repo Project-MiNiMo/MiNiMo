@@ -29,97 +29,75 @@ public class ItemData
 {
     public string ID;
     public int Type;
-    public int Grade;
     public int MaxOverlap;
     public bool CanSell;
     public int BuyCost;
     public int SellCost;
     public int CashCost;
-    public string Icon;
     public string Name;
     public string Description;
 }
 
 [Serializable]
-public class ProduceSingleData
+public class StarTreeData
 {
-    public string ID;
-    public string Fst_MaterialCode;
-    public int Fst_MaterialAmount;
-    public string Fst_ResultCode;
-    public int Fst_ResultAmount;
-    public int Fst_Time;
-    public int Fst_EXP;
-    public string Snd_MaterialCode;
-    public int Snd_MaterialAmount;
-    public string Snd_ResultCode;
-    public int Snd_ResultAmount;
-    public int Snd_Time;
-    public int Snd_EXP;
-    public string Trd_MaterialCode;
-    public int Trd_MaterialAmount;
-    public string Trd_ResultCode;
-    public int Trd_ResultAmount;
-    public int Trd_Time;
-    public int Trd_EXP;
-    public string Fourth_MaterialCode;
-    public int Fourth_MaterialAmount;
-    public string Fourth_ResultCode;
-    public int Fourth_ResultAmount;
-    public int Fourth_Time;
-    public int Fourth_EXP;
-    public string Fifth_MaterialCode;
-    public int Fifth_MaterialAmount;
-    public string Fifth_ResultCode;
-    public int Fifth_ResultAmount;
-    public int Fifth_Time;
-    public int Fifth_EXP;
+    public int ID;
+    public int LimitTime;
+    public int StarCoin;
+    public int HPI;
+    public int EXP;
+    public int VisitMinimoLimit;
 }
 
 [Serializable]
-public class ProduceMultipleData
+public class FlatProduceData
 {
     public string ID;
-    public string Fst_MaterialCode1;
-    public int Fst_MaterialAmount1;
-    public string Fst_MaterialCode2;
-    public int Fst_MaterialAmount2;
-    public string Fst_ResultCode;
-    public int Fst_ResultAmount;
-    public int Fst_Time;
-    public int Fst_EXP;
-    public string Snd_MaterialCode1;
-    public int Snd_MaterialAmount1;
-    public string Snd_MaterialCode2;
-    public int Snd_MaterialAmount2;
-    public string Snd_ResultCode;
-    public int Snd_ResultAmount;
-    public int Snd_Time;
-    public int Snd_EXP;
-    public string Trd_MaterialCode1;
-    public int Trd_MaterialAmount1;
-    public string Trd_MaterialCode2;
-    public int Trd_MaterialAmount2;
-    public string Trd_ResultCode;
-    public int Trd_ResultAmount;
-    public int Trd_Time;
-    public int Trd_EXP;
-    public string Fourth_MaterialCode1;
-    public int Fourth_MaterialAmount1;
-    public string Fourth_MaterialCode2;
-    public int Fourth_MaterialAmount2;
-    public string Fourth_ResultCode;
-    public int Fourth_ResultAmount;
-    public int Fourth_Time;
-    public int Fourth_EXP;
-    public string Fifth_MaterialCode1;
-    public int Fifth_MaterialAmount1;
-    public string Fifth_MaterialCode2;
-    public int Fifth_MaterialAmount2;
-    public string Fifth_ResultCode;
-    public int Fifth_ResultAmount;
-    public int Fifth_Time;
-    public int Fifth_EXP;
+    public string Materials;
+    public string Results;
+    public int Time;
+    public int EXP;
+}
+
+[Serializable]
+public class ProduceData
+{
+    public string ID;
+    public ProduceOption[] ProduceOptions;
+}
+
+[Serializable]
+public class ProduceOption
+{
+    public ProduceMaterial[] Materials;
+    public ProduceResult[] Results;
+    public int Time;
+    public int EXP;
+}
+
+[Serializable]
+public class ProduceMaterial
+{
+    public string Code;
+    public int Amount;
+}
+
+[Serializable]
+public class ProduceResult
+{
+    public string Code;
+    public int Amount;
+}
+
+[Serializable]
+public class ConstructData
+{
+    public string ID;
+    public string MatCode1;
+    public int MatAmount1;
+    public string MatCode2;
+    public int MatAmount2;
+    public int Duration;
 }
 
 [Serializable]
@@ -134,11 +112,13 @@ public class StringData
 
 public class TitleData : DataBase
 {
+    public ItemSO ItemSO;
     public Dictionary<string, int> Common { get; private set; } = new();
     public Dictionary<string, BuildingData> Building { get; private set; } = new();
     public Dictionary<string, ItemData> Item { get; private set; } = new();
-    public Dictionary<string, ProduceSingleData> ProduceSingle { get; private set; } = new();
-    public Dictionary<string, ProduceMultipleData> ProduceMultiple { get; private set; } = new();
+    public Dictionary<int, StarTreeData> StarTree { get; private set; } = new();
+    public Dictionary<string, ConstructData> Construct { get; private set; } = new();
+    public Dictionary<string, ProduceData> Produce { get; private set; } = new();
 
     private Dictionary<string, StringData> _string = new();
 
@@ -149,8 +129,9 @@ public class TitleData : DataBase
     private const string COMMON_PATH = "Data/CommonData";
     private const string BUILDING_PATH = "Data/BuildingData";
     private const string ITEM_PATH = "Data/ItemData";
-    private const string PRODUCESINGLE_PATH = "Data/ProduceSingleData";
-    private const string PRODUCEMULTIPLE_PATH = "Data/ProduceMultipleData";
+    private const string STARTREE_PATH = "Data/StarTreeData";
+    private const string PRODUCE_PATH = "Data/ProduceData";
+    private const string CONSTRUCT_PATH = "Data/ConstructData";
     #endregion
 
     protected override void Awake()
@@ -171,15 +152,17 @@ public class TitleData : DataBase
         Common.Clear();
         Building.Clear();
         Item.Clear();
-        ProduceSingle.Clear();
-        ProduceMultiple.Clear();
+        StarTree.Clear();
+        Produce.Clear();
+        Construct.Clear();
 
         var stringDataRaw = DataLoader.LoadData<StringData>(STRING_PATH);
         var commonDataRaw = DataLoader.LoadData<CommonData>(COMMON_PATH);
         var buildingDataRaw = DataLoader.LoadData<BuildingData>(BUILDING_PATH);
         var itemDataRaw = DataLoader.LoadData<ItemData>(ITEM_PATH);
-        var produceSingleDataRaw = DataLoader.LoadData<ProduceSingleData>(PRODUCESINGLE_PATH);
-        var produceMultipleDataRaw = DataLoader.LoadData<ProduceMultipleData>(PRODUCEMULTIPLE_PATH);
+        var starTreeDataRaw = DataLoader.LoadData<StarTreeData>(STARTREE_PATH);
+        var produceDataRaw = DataGrouper.GroupData(PRODUCE_PATH);
+        var constructDataRaw = DataLoader.LoadData<ConstructData>(CONSTRUCT_PATH);
 
         foreach (var data in stringDataRaw)
         {
@@ -201,14 +184,24 @@ public class TitleData : DataBase
             Item.Add(data.ID, data);
         }
 
-        foreach (var data in produceSingleDataRaw)
+        foreach (var data in starTreeDataRaw)
         {
-            ProduceSingle.Add(data.ID, data);
+            StarTree.Add(data.ID, data);
         }
 
-        foreach (var data in produceMultipleDataRaw)
+        foreach (var data in produceDataRaw)
         {
-            ProduceMultiple.Add(data.ID, data);
+            Produce.Add(data.ID, data);       
+        }
+
+        foreach (var data in constructDataRaw)
+        {
+            Construct.Add(data.ID, data);
+        }
+
+        foreach (var item in ItemSO.items) //TEMP
+        {
+            item.SetData(Item[item.Code]);
         }
 
         _isGameDataLoaded = true;

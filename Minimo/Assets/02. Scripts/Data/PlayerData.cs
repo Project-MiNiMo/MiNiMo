@@ -7,5 +7,8 @@ using UnityEngine;
 /// </summary>
 public class PlayerData : DataBase
 {
-    public int PlayerLevel = 1;
+    public int PlayerLevel = 2;
+    public int BlueStar = 0;
+    public int DiamondStar = 0;
+    public int MaxStorageCapacity = 100;
 }

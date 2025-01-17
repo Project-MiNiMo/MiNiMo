@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using Newtonsoft.Json;
 
 using UnityEngine;
 
@@ -52,3 +55,62 @@ public class JsonUtilityHelper
         public T[] array;
     }
 }
+
+public class DataGrouper
+{
+    public static ProduceData[] GroupData(string path)
+    {
+        var json = Resources.Load<TextAsset>(path).text;
+        
+        // Deserialize JSON array into a flat list of FlatData
+        var rawData = JsonConvert.DeserializeObject<List<FlatProduceData>>(json);
+
+        // Group by ID and map to ProduceData structure
+        var groupedData = rawData
+            .GroupBy(entry => entry.ID) // Group by Building ID
+            .Select(group => new ProduceData
+            {
+                ID = group.Key,
+                ProduceOptions = group.Select(option => new ProduceOption
+                {
+                    Materials = ParseMaterials(option.Materials),
+                    Results = ParseResults(option.Results),
+                    Time = option.Time,
+                    EXP = option.EXP
+                }).ToArray()
+            }).ToArray();
+
+        return groupedData;
+    }
+    
+    private static ProduceMaterial[] ParseMaterials(string materialsRaw)
+    {
+        if (string.IsNullOrEmpty(materialsRaw)) return Array.Empty<ProduceMaterial>();
+
+        return materialsRaw.Split(',').Select(mat =>
+        {
+            var parts = mat.Split(':').Select(p => p.Trim()).ToArray();
+            return new ProduceMaterial
+            {
+                Code = parts[0],
+                Amount = int.Parse(parts[1])
+            };
+        }).ToArray();
+    }
+
+    private static ProduceResult[] ParseResults(string resultsRaw)
+    {
+        if (string.IsNullOrEmpty(resultsRaw)) return Array.Empty<ProduceResult>();
+
+        return resultsRaw.Split(',').Select(res =>
+        {
+            var parts = res.Split(':').Select(p => p.Trim()).ToArray();
+            return new ProduceResult
+            {
+                Code = parts[0],
+                Amount = int.Parse(parts[1])
+            };
+        }).ToArray();
+    }
+}
+

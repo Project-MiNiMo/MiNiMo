@@ -5,19 +5,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public enum UIState
-{
-    Normal,
-}
-
 public class UIManager : ManagerBase
 {
     [SerializeField] private Image _blackBlur;
 
     private Dictionary<Type, UIBase> _uiDictionary;
-    private Stack<UIState> _uiStack;
-
-    public UIState CurrentState => _uiStack.Count > 0 ? _uiStack.Peek() : UIState.Normal;
 
     protected override void Awake()
     {
@@ -26,7 +18,6 @@ public class UIManager : ManagerBase
         var uiPanels = GetComponentsInChildren<UIBase>(true);
 
         _uiDictionary = new(uiPanels.Length);
-        _uiStack = new();
 
         foreach (var panel in uiPanels)
         {
@@ -62,22 +53,7 @@ public class UIManager : ManagerBase
         return null;
     }
     #endregion
-
-    #region UI Stack Management
-    public void PushUIState(UIState state)
-    {
-        _uiStack.Push(state);
-    }
-
-    public void PopUIState(UIState state)
-    {
-        if (CurrentState == state)
-        {
-            _uiStack.Pop();
-        }
-    }
-    #endregion
-
+    
     #region Fade In / Out
     public void FadeIn(Action onComplete = null)
     {

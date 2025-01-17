@@ -36,6 +36,7 @@ public class App : Singleton<App>
         var services = new ServiceCollection();
         services.AddSingleton(new GameClient("http://localhost:5093"));
         Services = services.BuildServiceProvider();
+        Debug.LogWarning("Services configured.");
     }
 
     private static void Register(MonoBehaviour obj, Dictionary<Type, MonoBehaviour> dictionary)
@@ -50,6 +51,7 @@ public class App : Singleton<App>
         {
             dictionary[type] = obj;
         }
+        Debug.Log($"{type.Name} registered.");
     }
 
     public static void RegisterManager(MonoBehaviour manager)
