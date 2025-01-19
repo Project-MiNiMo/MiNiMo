@@ -276,7 +276,7 @@ public class BuildingController(GameDbContext context, TimeService timeService, 
         var resultDTO = new BuildingCompleteProduceResultDTO()
         {
             UpdatedBuilding = BuildingMapper.ToBuildingDTO(building),
-            ItemUpdateInfos = updatedItemDTOs,
+            ProducedItems = updatedItemDTOs,
             UpdatedCurrency = CurrencyMapper.ToCurrencyDTO(account.Currency),
         };
         return Ok(resultDTO);
