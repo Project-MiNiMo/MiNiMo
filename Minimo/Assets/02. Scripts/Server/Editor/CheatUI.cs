@@ -9,6 +9,7 @@ public class CheatUI : EditorWindow
     private CurrencyDTO currency = new CurrencyDTO();
     private ItemDTO item = new ItemDTO();
     private BuildingInfoDTO buildingInfo = new BuildingInfoDTO();
+    private string targetDateTime = "2021-09-01 00:00:00";
     
     [MenuItem("Tools/Cheat UI")]
     public static void ShowWindow()
@@ -63,6 +64,16 @@ public class CheatUI : EditorWindow
         if (GUILayout.Button("건물 정보 업데이트"))
         {
             App.GetManager<CheatManager>().UpdateBuildingInfo(buildingInfo).Forget();
+        }
+        
+        // 공백
+        EditorGUILayout.Space();
+        
+        // 시간 치트
+        targetDateTime = EditorGUILayout.TextField("TargetDateTime(\"yyyy-mm-dd hh:mm:ss\")", targetDateTime);
+        if (GUILayout.Button("서버 시간 변경"))
+        {
+            App.GetManager<CheatManager>().SetServerTime(targetDateTime);
         }
     }
 }

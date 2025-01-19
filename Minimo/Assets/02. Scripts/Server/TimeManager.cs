@@ -10,8 +10,10 @@ public class TimeManager : ManagerBase
     private GameClient _gameClient;
 
     [SerializeField] private string targetTime = "";
-    
-    public DateTime Time => DateTime.UtcNow + _timeOffset + _timeZoneOffset;
+
+    public DateTime Time => DateTime.UtcNow + _timeOffset;
+    public DateTime LocalTime => DateTime.UtcNow + _timeOffset + _timeZoneOffset;
+    public TimeSpan TimeZoneOffset => _timeZoneOffset;
     public ReactiveProperty<DateTime> TimeReactiveProperty { get; } = new ReactiveProperty<DateTime>();
     public bool IsProcessing { get; private set; } = false;
     
@@ -19,7 +21,6 @@ public class TimeManager : ManagerBase
     private TimeSpan _timeOffset;
     private TimeSpan _timeZoneOffset;
     private readonly TimeSpan _syncInterval = TimeSpan.FromSeconds(10);
-    private bool _isSyncing;
     
     // 클라이언트 시간 검증
     private DateTime _lastTime;
@@ -59,24 +60,20 @@ public class TimeManager : ManagerBase
     
     private async UniTask SyncTime()
     {
-        if (_isSyncing)
+        if (_isValidating)
         {
             return;
         }
 
-        _isSyncing = true;
         var result = await _gameClient.GetAsync<DateTime> ("api/time");
         if(result.IsSuccess && result.Data is {} serverTime)
         {
-            var localTime = DateTime.UtcNow;
-            _timeOffset = serverTime - localTime;
-            _lastTime = Time;
+            SyncTime(serverTime);
         }
         else
         {
             Debug.LogError($"Failed to sync time: {result.Message}");
         }
-        _isSyncing = false;
     }
 
     private void ValidateTime()
@@ -107,49 +104,28 @@ public class TimeManager : ManagerBase
             catch (Exception ex)
             {
                 Debug.LogError($"Failed to validate time: {ex.Message}");
-            }           
+                _isValidating = false;
+            }
         }
     }
 
     private void TimePulse()
     {
-        if (_isSyncing || _isValidating)
+        if (_isValidating)
         {
             return;
         }
         TimeReactiveProperty.Value = Time;
     }
-    
-#if UNITY_EDITOR
-    private void OnGUI()
-    {
-        // space for other UI elements
-        GUILayout.Space(500);
-        
-        // input field for target time
-        targetTime = GUI.TextField(new Rect(10, 70, 200, 20), targetTime);
-        
-        // send put request to server
-        if (GUI.Button(new Rect(10, 10, 100, 30), "Set Time"))
-        {
-            SetCheatTime(targetTime);
-        }
-        
-        // Init Button
-        if (GUI.Button(new Rect(10, 40, 100, 30), "Init"))
-        {
-            Init(DateTime.UtcNow);
-        }
-    }
 
-    private async void SetCheatTime(string targetTime)
+    public async void SetCheatTime(string targetTime)
     {
         if (IsProcessing == false)
         {
-            Debug.LogError("TimeManager is not processing");
+            Debug.LogWarning("TimeManager is not processing");
             return;
         }
-
+        
         if (DateTime.TryParse(targetTime, out var time))
         {
             var result = await _gameClient.PutAsync<DateTime>("api/time", time);
@@ -159,13 +135,12 @@ public class TimeManager : ManagerBase
             }
             else
             {
-                Debug.LogError("Failed To Set Cheat Time: {result.Message}");
+                Debug.LogWarning("Failed To Set Cheat Time: {result.Message}");
             }
         }
         else
         {
-            Debug.LogError("Invalid time format");
+            Debug.LogWarning("Invalid time format");
         }
     }
-#endif
 }

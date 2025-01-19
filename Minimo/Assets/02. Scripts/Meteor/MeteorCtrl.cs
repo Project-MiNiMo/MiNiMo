@@ -49,11 +49,18 @@ public class MeteorCtrl : MonoBehaviour
     {
         var timeDifference =  _timeManager.Time - _lastSpawnTime;
         
+        // TODO : 임시코드
+        var count = 0;
         while (timeDifference.TotalSeconds >= _spawnInterval)
         {
             SpawnShootingStar();
             timeDifference = timeDifference.Subtract(TimeSpan.FromSeconds(_spawnInterval));
             _lastSpawnTime = _lastSpawnTime.AddSeconds(_spawnInterval);
+            if (++count > 10)
+            {
+                Debug.LogWarning("Infinite Loop");
+                break;
+            }
         }
     }
     
