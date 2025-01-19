@@ -53,6 +53,7 @@ public class LoginManager : ManagerBase
             var accountDTO = response["account"].ToObject<AccountDTO>();
             
             App.GetManager<TimeManager>().Init(time);
+            _gameClient.AccountInfo = accountDTO;
             _nickname = accountDTO.Nickname;
             JwtToken = token;
             PlayerPrefs.SetString("JwtToken", JwtToken);
@@ -84,6 +85,7 @@ public class LoginManager : ManagerBase
             var accountDTO = response["account"].ToObject<AccountDTO>();
             
             App.GetManager<TimeManager>().Init(time);
+            _gameClient.AccountInfo = accountDTO;
             _nickname = accountDTO.Nickname;
             IsLoggedIn = true;
             
