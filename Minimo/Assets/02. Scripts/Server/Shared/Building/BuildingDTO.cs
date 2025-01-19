@@ -20,5 +20,17 @@ namespace MinimoShared
 
         public DateTime[]? ProduceStartAt { get; set; } // 생산 시작 시간
         public DateTime[]? ProduceEndAt { get; set; } // 생산 종료 시간
+        
+        public void CopyFrom(BuildingDTO building)
+        {
+            Id = building.Id;
+            BuildingType = building.BuildingType;
+            ActivatedAt = building.ActivatedAt;
+            Position = building.Position;
+            ProduceStatus = building.ProduceStatus;
+            Recipes = building.Recipes;
+            ProduceStartAt = building.ProduceStartAt;
+            ProduceEndAt = building.ProduceEndAt;
+        }
     }
 }

@@ -29,11 +29,20 @@ public class AccountAssetManager : ManagerBase
         var building = _gameClient.AccountInfo.Buildings.Find(b => b.Id == buildingDto.Id);
         if(building != null)
         {
-            building = buildingDto;
+            building.CopyFrom(buildingDto);
         }
         else
         {
             _gameClient.AccountInfo.Buildings.Add(buildingDto);
+        }
+    }
+    
+    public void DeleteBuilding(int buildingId)
+    {
+        var building = _gameClient.AccountInfo.Buildings.Find(b => b.Id == buildingId);
+        if(building != null)
+        {
+            _gameClient.AccountInfo.Buildings.Remove(building);
         }
     }
     

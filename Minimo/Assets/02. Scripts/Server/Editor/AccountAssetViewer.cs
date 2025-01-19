@@ -18,6 +18,11 @@ public class AccountAssetViewer : EditorWindow
     {
         GetWindow<AccountAssetViewer>("Account Asset Viewer");
     }
+
+    private void Update()
+    {
+        Repaint();
+    }
     
     private void OnGUI()
     {
