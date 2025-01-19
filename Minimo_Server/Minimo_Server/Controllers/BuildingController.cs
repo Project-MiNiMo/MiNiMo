@@ -186,14 +186,29 @@ public class BuildingController(GameDbContext context, TimeService timeService, 
         
         if (building.ProduceStatus[slotIndex]) return BadRequest("Already producing");
         
-        // TODO : 자원 충분한 지 확인
-        
-        // TODO : 자원 차감
+        // 아이템이 충분한지 확인 후 차감
+        bool isItemEnough = true;
+        var recipe = _tableDataService.Produce[building.Type]?.ProduceOptions[startProduceDto.RecipeId - 1]; // 우선 인덱스는 구글 드라이브 테이블을 따름
+        if (recipe == null) return BadRequest("Recipe not found");
+        if (recipe.Materials.Length > 0)
+        {
+            foreach (var material in recipe.Materials)
+            {
+                var accountItem = account.Items.FirstOrDefault(i => i.ItemType == material.Code);
+                if (accountItem == null || accountItem.Count < material.Amount)
+                {
+                    isItemEnough = false;
+                    break;
+                }
+                accountItem.Count -= material.Amount;
+            }
+        }
+        if (!isItemEnough) return BadRequest("Not enough items");
         
         // 레시피 building에 저장
         building.Recipes[slotIndex] = startProduceDto.RecipeId;
         building.ProduceStartAt[slotIndex] = _timeService.CurrentTime;
-        building.ProduceEndAt[slotIndex] = _timeService.CurrentTime.AddSeconds(10); // TODO : 제조 시간 설정
+        building.ProduceEndAt[slotIndex] = building.ProduceStartAt[slotIndex] + TimeSpan.FromSeconds(recipe.Time);
         building.ProduceStatus[slotIndex] = true;
         
         await _context.SaveChangesAsync();
@@ -226,22 +241,31 @@ public class BuildingController(GameDbContext context, TimeService timeService, 
         
         if (_timeService.CurrentTime < building.ProduceEndAt[slotIndex]) return BadRequest("Production not completed yet");
         
-        // TODO 자원 추가. 우선 더미로 Item_Timber 추가
-        var itemTimber = account.Items.FirstOrDefault(i => i.ItemType == "Item_Timber");
-        if (itemTimber == null)
+        // 생산된 자원 추가
+        var recipe = _tableDataService.GetProduceRecipe(building.Type, building.Recipes[slotIndex]);
+        var updatedItemDTOs = new List<ItemDTO>();
+        if (recipe == null) return BadRequest("Recipe not found");
+        foreach (var result in recipe.Results)
         {
-            itemTimber = new Item
+            var accountItem = account.Items.FirstOrDefault(i => i.ItemType == result.Code);
+            if (accountItem == null)
             {
-                ItemType = "Item_Timber",
-                Count = 1,
-            };
-            account.Items.Add(itemTimber);
+                accountItem = new Item
+                {
+                    ItemType = result.Code,
+                    Count = result.Amount,
+                };
+                account.Items.Add(accountItem);
+            }
+            else
+            {
+                accountItem.Count += result.Amount;
+            }
+            updatedItemDTOs.Add(ItemMapper.ToItemDTO(accountItem));
         }
-        else
-        {
-            itemTimber.Count++;
-        }
-        await _context.SaveChangesAsync();
+        
+        // 경험치 추가
+        account.Experience += recipe.EXP;
         
         // 레시피 building에 저장
         building.Recipes[slotIndex] = 0;
@@ -252,22 +276,9 @@ public class BuildingController(GameDbContext context, TimeService timeService, 
         var resultDTO = new BuildingCompleteProduceResultDTO()
         {
             UpdatedBuilding = BuildingMapper.ToBuildingDTO(building),
-            ItemUpdateInfos = new List<ItemUpdateDTO>()
-            {
-                new ItemUpdateDTO()
-                {
-                    ObtainedItem = ItemMapper.ToItemDTO(new Item
-                    {
-                        ItemType = "Item_Timber",
-                        Count = 1,
-                    }),
-                    CurrentItem = ItemMapper.ToItemDTO(itemTimber),
-                    UpdateReason = "Produce",
-                    UpdatedAt = _timeService.CurrentTime,
-                }
-            }
+            ItemUpdateInfos = updatedItemDTOs,
+            UpdatedCurrency = CurrencyMapper.ToCurrencyDTO(account.Currency),
         };
-
         return Ok(resultDTO);
     }
 }

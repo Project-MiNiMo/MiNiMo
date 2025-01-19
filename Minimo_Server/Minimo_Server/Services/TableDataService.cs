@@ -34,6 +34,17 @@ public class TableDataService
     {
         LoadData();
     }
+
+    /// <summary>
+    /// 주어진 buildingType과 recipeId에 해당하는 ProduceOption을 반환한다.
+    /// </summary>
+    /// <param name="buildingType"></param>
+    /// <param name="recipeId"></param>
+    /// <returns></returns>
+    public ProduceOption? GetProduceRecipe(string buildingType, int recipeId)
+    {
+        return Produce[buildingType]?.ProduceOptions[recipeId - 1];
+    }
     
     public void LoadData()
     {

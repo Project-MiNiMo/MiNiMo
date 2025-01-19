@@ -6,5 +6,6 @@ namespace MinimoShared
     {
         public BuildingDTO UpdatedBuilding { get; set; }
         public List<ItemDTO> ProducedItems { get; set; }
+        public CurrencyDTO UpdatedCurrency { get; set; }
     }
 }

@@ -201,7 +201,8 @@ public class BuildingManager : ManagerBase
         {
             Debug.Log($"Completed producing building {completeResult.UpdatedBuilding.BuildingType}");
             App.GetManager<AccountAssetManager>().UpdateBuilding(completeResult.UpdatedBuilding);
-            // TODO : 자원 업데이트
+            App.GetManager<AccountAssetManager>().UpdateItems(completeResult.ProducedItems);
+            App.GetManager<AccountAssetManager>().UpdateCurrency(completeResult.UpdatedCurrency);
             if (completeResult.ProducedItems != null)
             {
                 foreach (var itemDto in completeResult.ProducedItems)
