@@ -50,7 +50,6 @@ public class AccountAssetViewer : EditorWindow
         }
         else
         {
-            // Begin Area
             EditorGUILayout.LabelField("Account Info", EditorStyles.boldLabel);
             GUILayout.BeginVertical("window", new GUILayoutOption[] { GUILayout.Height(60) });
             
@@ -75,7 +74,6 @@ public class AccountAssetViewer : EditorWindow
             
             // 설치된 빌딩
             EditorGUILayout.LabelField("Buildings", EditorStyles.boldLabel);
-            // Fold out. 각 빌딩은 박스 처리
             foreach (var building in account.Buildings)
             {
                 DisplayBuilding(building);
@@ -83,7 +81,6 @@ public class AccountAssetViewer : EditorWindow
             
             // 빌딩 정보
             EditorGUILayout.LabelField("Building Info", EditorStyles.boldLabel);
-            // Fold out. 각 빌딩 정보는 박스 처리
             foreach (var buildingInfo in account.BuildingInfos)
             {
                 DisplayBuildingInfo(buildingInfo);
@@ -91,11 +88,24 @@ public class AccountAssetViewer : EditorWindow
             
             // 아이템
             EditorGUILayout.LabelField("Items", EditorStyles.boldLabel);
-            // Fold out. 각 아이템은 박스처리
             foreach (var item in account.Items)
             {
                 DisplayItem(item);
             }
+            
+            // 유성
+            EditorGUILayout.LabelField("Meteors", EditorStyles.boldLabel);
+            foreach (var meteor in account.Meteors)
+            {
+                DisplayMeteor(meteor);
+            }
+            
+            // 별나무
+            EditorGUILayout.LabelField("Star Tree", EditorStyles.boldLabel);
+            GUILayout.BeginVertical("window", new GUILayoutOption[] { GUILayout.Height(60) });
+            EditorGUILayout.LabelField($"Last Star Tree Created At: {account.LastStarTreeCreatedAt}");
+            EditorGUILayout.LabelField($"Last Wished At: {account.LastWishedAt}");
+            EditorGUILayout.LabelField($"Star Tree Level: {account.StarTreeLevel}");
         }
         
         // 스크롤뷰 끝
@@ -151,6 +161,18 @@ public class AccountAssetViewer : EditorWindow
         
         EditorGUILayout.LabelField($"ItemType: {item.ItemType}");
         EditorGUILayout.LabelField($"Count: {item.Count}");
+        
+        GUILayout.EndVertical();
+    }
+    
+    private void DisplayMeteor(MeteorDTO meteor)
+    {
+        GUILayout.BeginVertical("window", new GUILayoutOption[] { GUILayout.Height(60) });
+        
+        EditorGUILayout.LabelField($"ID: {meteor.Id}");
+        EditorGUILayout.LabelField($"Type: {meteor.MeteorType}");
+        EditorGUILayout.LabelField($"ValueIndex: {meteor.ValueIndex}");
+        EditorGUILayout.LabelField($"ValueCount: {meteor.ValueCount}");
         
         GUILayout.EndVertical();
     }

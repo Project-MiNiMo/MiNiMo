@@ -34,6 +34,32 @@ public class TableDataService
     {
         LoadData();
     }
+
+    /// <summary>
+    /// 주어진 buildingType과 recipeId에 해당하는 ProduceOption을 반환한다.
+    /// </summary>
+    /// <param name="buildingType"></param>
+    /// <param name="recipeId"></param>
+    /// <returns></returns>
+    public ProduceOption? GetProduceRecipe(string buildingType, int recipeId)
+    {
+        return Produce[buildingType]?.ProduceOptions[recipeId - 1];
+    }
+
+    public int GetRandomQuestIndex()
+    {
+        return 0; // TODO 퀘스트 테이블이 없음
+    }
+
+    public int GetRandomItemIndex()
+    {
+        return Item.Count > 0 ? new Random().Next(0, Item.Count + 1) : 0; // TODO
+    }
+
+    public int GetRandomItemCount()
+    {
+        return new Random().Next(1, 10); // TODO: 더미 값
+    }
     
     public void LoadData()
     {

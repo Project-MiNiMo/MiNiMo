@@ -163,6 +163,44 @@
             </summary>
             <returns>{Time: DateTime, Account: AccountDTO}</returns>
         </member>
+        <member name="M:MinimoServer.Controllers.MeteorController.GetMeteors">
+            <summary>
+            유성 정보를 반환합니다.
+            </summary>
+            <param name="meteorType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.MeteorController.CreateMeteors">
+            <summary>
+            시간이 충분히 지난 경우, 유성을 생성합니다.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.MeteorController.GetMeteorResult(System.Int32)">
+            <summary>
+            유성 결과를 반환합니다.
+            </summary>
+            <param name="level"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.StarTreeController.GetStarTreeResult">
+            <summary>
+            빛나는 별나무를 수확합니다.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.StarTreeController.GetWishResult">
+            <summary>
+            소원을 빌어 별나무의 최대 보상을 획득합니다.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.StarTreeController.LevelUp">
+            <summary>
+            별나무 레벨을 1 증가시킵니다.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:MinimoServer.Controllers.TimeController.GetTime">
             <summary>
             현재 시간을 반환합니다.
@@ -174,6 +212,14 @@
             주어진 시간으로 서버의 시간을 설정합니다.
             </summary>
             <param name="targetTime">DateTime</param>
+            <returns></returns>
+        </member>
+        <member name="M:MinimoServer.Services.TableDataService.GetProduceRecipe(System.String,System.Int32)">
+            <summary>
+            주어진 buildingType과 recipeId에 해당하는 ProduceOption을 반환한다.
+            </summary>
+            <param name="buildingType"></param>
+            <param name="recipeId"></param>
             <returns></returns>
         </member>
         <member name="T:MinimoShared.AccountDTO">

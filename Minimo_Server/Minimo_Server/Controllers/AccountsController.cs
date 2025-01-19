@@ -70,7 +70,11 @@ namespace MinimoServer.Controllers;
                 Nickname = createAccountDto.Nickname,
                 Level = 1,
                 Experience = 0,
-                CreatedAt = DateTime.UtcNow
+                CreatedAt = DateTime.UtcNow,
+                LastMeteorCreatedAt = DateTime.UtcNow,
+                LastStarTreeCreatedAt = DateTime.UtcNow,
+                LastWishedAt = DateTime.MinValue,
+                StarTreeLevel = 1,
             };
             _context.Accounts.Add(account);
             await _context.SaveChangesAsync();
