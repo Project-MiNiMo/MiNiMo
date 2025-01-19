@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -247,4 +248,47 @@ public class TitleData : DataBase
         str = _code;
         return false;
     }
+    
+    public void SetCommonData(Dictionary<string, int> Common)
+    {
+        this.Common = Common;
+    }
+    
+    public void SetBuildingData(List<BuildingData> Building)
+    {
+        foreach (var data in Building)
+        {
+            this.Building[data.ID] = data;
+        }
+    }
+    
+    public void SetItemData(List<ItemData> Item)
+    {
+        foreach (var data in Item)
+        {
+            this.Item[data.ID] = data;
+        }
+    }
+    
+    public void SetStarTreeData(List<StarTreeData> StarTree)
+    {
+        foreach (var data in StarTree)
+        {
+            this.StarTree[data.ID] = data;
+        }
+    }
+    
+    public void SetConstructData(List<ConstructData> Construct)
+    {
+        foreach (var data in Construct)
+        {
+            this.Construct[data.ID] = data;
+        }
+    }
+    
+    public void SetProduceData(Dictionary<string, ProduceData> Produce)
+    {
+        this.Produce = Produce;
+    }
+    
 }
