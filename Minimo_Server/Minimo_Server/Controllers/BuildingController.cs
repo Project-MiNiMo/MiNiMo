@@ -66,6 +66,7 @@ public class BuildingController(GameDbContext context, TimeService timeService, 
         else if (buildingInfo.InstallCount >= buildingInfo.MaxCount) return BadRequest("Max building count reached");
         
         // 만약 설치 개수가 소유 개수에 도달했을 경우 자원이 충분한지 확인 후 차감
+        var updatedItems = new List<Item>();
         if (buildingInfo.InstallCount >= buildingInfo.OwnCount)
         {
             var constructInfo = _tableDataService.Construct[buildingDto.BuildingType];
@@ -76,19 +77,21 @@ public class BuildingController(GameDbContext context, TimeService timeService, 
 
             if (item1Require > 0)
             {
-                if(account.Items.First(i => i.ItemType == item1Id) is not { } item1 || item1.Count < item1Require)
+                if(account.Items.FirstOrDefault(i => i.ItemType == item1Id) is not { } item1 || item1.Count < item1Require)
                 {
                     return BadRequest("Not enough item1");
                 }
                 item1.Count -= item1Require;
+                updatedItems.Add(item1);
             }
             if (item2Require > 0)
             {
-                if(account.Items.First(i => i.ItemType == item2Id) is not { } item2 || item2.Count < item2Require)
+                if(account.Items.FirstOrDefault(i => i.ItemType == item2Id) is not { } item2 || item2.Count < item2Require)
                 {
                     return BadRequest("Not enough item2");
                 }
                 item2.Count -= item2Require;
+                updatedItems.Add(item2);
             }
             buildingInfo.OwnCount++;
         }
@@ -108,6 +111,7 @@ public class BuildingController(GameDbContext context, TimeService timeService, 
         {
             CreatedBuilding = BuildingMapper.ToBuildingDTO(building),
             BuildingInfoDto = BuildingMapper.ToBuildingInfoDTO(buildingInfo),
+            UpdatedItems = updatedItems.Select(ItemMapper.ToItemDTO).ToList(),
         };
         return Ok(resultDto);
     }
@@ -183,11 +187,13 @@ public class BuildingController(GameDbContext context, TimeService timeService, 
         if (building.ProduceStatus[slotIndex]) return BadRequest("Already producing");
         
         // TODO : 자원 충분한 지 확인
+        
         // TODO : 자원 차감
         
         // 레시피 building에 저장
         building.Recipes[slotIndex] = startProduceDto.RecipeId;
         building.ProduceStartAt[slotIndex] = _timeService.CurrentTime;
+        building.ProduceEndAt[slotIndex] = _timeService.CurrentTime.AddSeconds(10); // TODO : 제조 시간 설정
         building.ProduceStatus[slotIndex] = true;
         
         await _context.SaveChangesAsync();
@@ -220,7 +226,22 @@ public class BuildingController(GameDbContext context, TimeService timeService, 
         
         if (_timeService.CurrentTime < building.ProduceEndAt[slotIndex]) return BadRequest("Production not completed yet");
         
-        // TODO 자원 추가
+        // TODO 자원 추가. 우선 더미로 Item_Timber 추가
+        var itemTimber = account.Items.FirstOrDefault(i => i.ItemType == "Item_Timber");
+        if (itemTimber == null)
+        {
+            itemTimber = new Item
+            {
+                ItemType = "Item_Timber",
+                Count = 1,
+            };
+            account.Items.Add(itemTimber);
+        }
+        else
+        {
+            itemTimber.Count++;
+        }
+        await _context.SaveChangesAsync();
         
         // 레시피 building에 저장
         building.Recipes[slotIndex] = 0;
@@ -231,6 +252,20 @@ public class BuildingController(GameDbContext context, TimeService timeService, 
         var resultDTO = new BuildingCompleteProduceResultDTO()
         {
             UpdatedBuilding = BuildingMapper.ToBuildingDTO(building),
+            ItemUpdateInfos = new List<ItemUpdateDTO>()
+            {
+                new ItemUpdateDTO()
+                {
+                    ObtainedItem = ItemMapper.ToItemDTO(new Item
+                    {
+                        ItemType = "Item_Timber",
+                        Count = 1,
+                    }),
+                    CurrentItem = ItemMapper.ToItemDTO(itemTimber),
+                    UpdateReason = "Produce",
+                    UpdatedAt = _timeService.CurrentTime,
+                }
+            }
         };
 
         return Ok(resultDTO);

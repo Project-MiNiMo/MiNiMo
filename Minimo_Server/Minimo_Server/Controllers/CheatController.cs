@@ -52,7 +52,8 @@ public class CheatController(GameDbContext context, TimeService timeService, Tab
         }
         else
         {
-            account.Items.Add(ItemMapper.ToItem(itemDto));
+            item = ItemMapper.ToItem(itemDto);
+            account.Items.Add(item);
         }
         await _context.SaveChangesAsync();
         
