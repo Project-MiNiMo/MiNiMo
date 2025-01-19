@@ -87,7 +87,7 @@ public class StarTreeController(GameDbContext context, TimeService timeService, 
     /// </summary>
     /// <returns></returns>
     [Authorize]
-    [HttpPut]
+    [HttpGet("levelup")]
     public async Task<ActionResult<int>> LevelUp()
     {
         var account = await GetAuthorizedAccountAsync();
