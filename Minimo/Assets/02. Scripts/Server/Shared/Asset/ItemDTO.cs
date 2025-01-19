@@ -7,5 +7,11 @@ namespace MinimoShared
     {
         public string ItemType { get; set; }
         public int Count { get; set; }
+        
+        public void CopyFrom(ItemDTO item)
+        {
+            ItemType = item.ItemType;
+            Count = item.Count;
+        }
     }
 }

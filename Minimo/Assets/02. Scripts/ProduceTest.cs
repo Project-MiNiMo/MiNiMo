@@ -17,7 +17,7 @@ public class ProduceTest : MonoBehaviour
     {
         if (Application.isPlaying)
         {
-            _titleData.SetProduceData(ProduceDatas);
+            //_titleData.SetProduceData(ProduceDatas);
         }
     }
 }

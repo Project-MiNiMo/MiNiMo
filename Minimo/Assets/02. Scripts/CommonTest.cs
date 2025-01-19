@@ -18,7 +18,7 @@ public class CommonTest : MonoBehaviour
     {
         if (Application.isPlaying)
         {
-            _titleData.SetCommonData(CommonDatas);
+            //_titleData.SetCommonData(CommonDatas);
         }
     }
 }

@@ -152,7 +152,6 @@ public class BuildingObject : MonoBehaviour
         if (newBuildingDto != null)
         {
             Debug.Log($"Building created: {newBuildingDto.BuildingType} (ID: {newBuildingDto.Id})");
-
             _id = newBuildingDto.Id;
             _isPlaced = true;
             PreviousArea = Area;

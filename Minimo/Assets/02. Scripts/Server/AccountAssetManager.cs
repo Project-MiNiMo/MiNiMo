@@ -9,7 +9,7 @@ public class AccountAssetManager : ManagerBase
 {
     private GameClient _gameClient;
     
-    public AccountAssetManager()
+    private void Start()
     {
         _gameClient = App.Services.GetRequiredService<GameClient>();
     }
@@ -42,7 +42,7 @@ public class AccountAssetManager : ManagerBase
         var buildingInfo = _gameClient.AccountInfo.BuildingInfos.Find(b => b.BuildingType == buildingInfoDto.BuildingType);
         if(buildingInfo != null)
         {
-            buildingInfo = buildingInfoDto;
+            buildingInfo.CopyFrom(buildingInfoDto);
         }
         else
         {
@@ -55,7 +55,7 @@ public class AccountAssetManager : ManagerBase
         var item = _gameClient.AccountInfo.Items.Find(i => i.ItemType == itemDto.ItemType);
         if(item != null)
         {
-            item = itemDto;
+            item.CopyFrom(itemDto);
         }
         else
         {
