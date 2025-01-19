@@ -19,5 +19,10 @@ namespace MinimoShared
         public List<BuildingInfoDTO> BuildingInfos { get; set; }
         
         public List<ItemDTO> Items { get; set; }
+
+        public override string ToString()
+        {
+            return $"AccountDTO: ID={ID}, Nickname={Nickname}, Level={Level}, Experience={Experience}, Currency={Currency}, Buildings={Buildings}, BuildingInfos={BuildingInfos}, Items={Items}";
+        }
     }
 }

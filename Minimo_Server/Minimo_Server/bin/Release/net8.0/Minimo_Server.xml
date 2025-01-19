@@ -1,0 +1,210 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Minimo_Server</name>
+    </assembly>
+    <members>
+        <member name="M:MinimoServer.Controllers.AccountsController.GetAccounts">
+            <summary>
+            모든 계정 목록을 반환합니다.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.AccountsController.GetAccount(System.Int32)">
+            <summary>
+            주어진 index에 해당하는 계정을 반환합니다.
+            </summary>
+            <param name="index">계정 index</param>
+            <returns></returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.AccountsController.CreateAccount(MinimoShared.CreateAccountDTO)">
+            <summary>
+            계정을 생성하고, 생성된 계정을 반환합니다.
+            TODO: 이미 존재하는 계정인지 확인
+            </summary>
+            <param name="createAccountDto">CreateAccountDTO</param>
+            <returns>AccountDTO</returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.AccountsController.UpdateNickname(System.String)">
+            <summary>
+            계정의 닉네임을 변경합니다.
+            </summary>
+            <param name="newNickname">변경할 닉네임</param>
+            <returns></returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.AccountsController.DeleteAccount">
+            <summary>
+            요청한 계정을 삭제합니다.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.BaseController.GetAccountIdFromClaims">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.BaseController.GetAccountAsync(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="accountId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.BaseController.GetAuthorizedAccountAsync">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.BuildingController.GetBuildings">
+            <summary>
+            건물 목록을 반환합니다.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.BuildingController.GetBuilding(System.Int32)">
+            <summary>
+            해당 id의 건물을 반환합니다.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.BuildingController.CreateBuilding(MinimoShared.BuildingDTO)">
+            <summary>
+            새 건물을 생성합니다.
+            설치 개수가 최대 개수에 도달했거나 자원이 부족할 경우 오류를 반환합니다.
+            </summary>
+            <param name="buildingDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.BuildingController.UpdateBuilding(MinimoShared.UpdateBuildingParameter)">
+            <summary>
+            빌딩의 위치를 업데이트합니다.
+            </summary>
+            <param name="updateParameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.BuildingController.DeleteBuilding(System.Int32)">
+            <summary>
+            빌딩을 제거합니다.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.BuildingController.StartProduce(MinimoShared.BuildingStartProduceDTO)">
+            <summary>
+            주어진 슬롯과 레시피로 제조를 시작합니다
+            </summary>
+            <param name="startProduceDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.BuildingController.CompleteProduce(MinimoShared.BuildingCompleteProduceDTO)">
+            <summary>
+            주어진 슬롯의 제조를 완료하고 자원을 획득합니다.
+            </summary>
+            <param name="completeProduceDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.BuildingInfoController.GetBuildingInfo(System.String)">
+            <summary>
+            건물 정보를 반환합니다.
+            </summary>
+            <param name="buildingType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.BuildingInfoController.CreateBuildingInfo(System.String)">
+            <summary>
+            건물 해금(최초)을 진행합니다.
+            만약 이미 건물이 있거나 행복도가 충분하지 않으면 오류를 반환합니다.
+            </summary>
+            <param name="buildingType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.BuildingInfoController.UpgradeBuildingInfoMaxCount(System.String)">
+            <summary>
+            건물 최대 보유 개수를 증가시킵니다.
+            만약 최대 개수에 도달했거나 행복도가 충분하지 않으면 오류를 반환합니다.
+            </summary>
+            <param name="buildingType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.CheatController.UpdateCurrency(MinimoShared.CurrencyDTO)">
+            <summary>
+            재화(Star, BlueStar, Heart, HPI)를 강제로 업데이트합니다.
+            </summary>
+            <param name="currencyDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.CheatController.UpdateItem(MinimoShared.ItemDTO)">
+            <summary>
+            아이템을 강제로 업데이트합니다.(없으면 추가합니다.)
+            </summary>
+            <param name="itemDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.CheatController.UpdateBuildingInfo(MinimoShared.BuildingInfoDTO)">
+            <summary>
+            건물 정보를 강제로 업데이트합니다.(없으면 추가합니다.)
+            </summary>
+            <param name="buildingInfoDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.LoginController.Login(MinimoShared.LoginDTO)">
+            <summary>
+            로그인을 시도하고, 성공 시 jwt 토큰과 현재시간, 계정정보를 반환합니다.
+            </summary>
+            <param name="loginDto">LoginDTO</param>
+            <returns>{Token: string, Time: DateTime, Account: AccountDTO}</returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.LoginController.LoginWithToken">
+            <summary>
+            토큰을 이용하여 로그인하고, 성공 시 현재시간과 계정정보를 반환합니다.
+            </summary>
+            <returns>{Time: DateTime, Account: AccountDTO}</returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.TimeController.GetTime">
+            <summary>
+            현재 시간을 반환합니다.
+            </summary>
+            <returns>DateTime</returns>
+        </member>
+        <member name="M:MinimoServer.Controllers.TimeController.SetTime(System.DateTime)">
+            <summary>
+            주어진 시간으로 서버의 시간을 설정합니다.
+            </summary>
+            <param name="targetTime">DateTime</param>
+            <returns></returns>
+        </member>
+        <member name="T:MinimoShared.AccountDTO">
+            <summary>
+            계정의 정보를 담는 DTO. ID, 닉네임, 레벨, 경험치, 보유한 건물, 아이템 정보를 담고 있다. 
+            </summary>
+        </member>
+        <member name="T:MinimoShared.CreateAccountDTO">
+            <summary>
+            계정 생성 DTO. 유저네임, 패스워드, 닉네임을 담고 있다.
+            </summary>
+        </member>
+        <member name="T:MinimoShared.LoginDTO">
+            <summary>
+            로그인 DTO. 유저네임, 패스워드를 담고 있다.
+            </summary>
+        </member>
+        <member name="T:MinimoShared.CurrencyDTO">
+            <summary>
+            화폐 정보를 담는 DTO. 별, 파란별, 하트를 담고 있다.
+            </summary>
+        </member>
+        <member name="T:MinimoShared.ItemDTO">
+            <summary>
+            자원 정보를 담는 DTO. 아이템 ID와 개수를 담고 있다.
+            </summary>
+        </member>
+        <member name="T:MinimoShared.BuildingDTO">
+            <summary>
+            건물 정보를 담는 DTO. ID, 이름, 설치 여부, 위치, 생산 여부, 레시피 인덱스, 생산 시작 시간을 담고 있다.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -76,7 +76,7 @@ namespace MinimoServer.Controllers;
             await _context.SaveChangesAsync();
 
             var accountDto = AccountMapper.ToAccountDTO(account);  // Use the accountMapper to convert
-            return CreatedAtAction(nameof(GetAccount), new { id = accountDto.ID }, accountDto);
+            return Ok(accountDto);
         }
 
         /// <summary>
