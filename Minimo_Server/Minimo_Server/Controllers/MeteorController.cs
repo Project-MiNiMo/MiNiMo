@@ -7,6 +7,8 @@ using MinimoServer.Utility;
 
 namespace MinimoServer.Controllers;
 
+[ApiController]
+[Route("api/[controller]")]
 public class MeteorController(GameDbContext context, TimeService timeService, TableDataService tableDataService)
     : BaseController(context, timeService, tableDataService)
 {
@@ -53,19 +55,19 @@ public class MeteorController(GameDbContext context, TimeService timeService, Ta
         }
         
         // 유성 생성
-        var createdMeteors = new List<MeteorDTO>();
+        var createdMeteors = new List<Meteor>();
         while (lastMeteorCreatedAt + spawnInterval <= currentTime && account.Meteors.Count < maxMeteorCount)
         {
             var meteor = CreateRandomMeteor(account.Level);
             account.Meteors.Add(meteor);
-            createdMeteors.Add(MeteorMapper.ToMeteorDTO(meteor));
+            createdMeteors.Add(meteor);
             lastMeteorCreatedAt += spawnInterval;
         }
         
         account.LastMeteorCreatedAt = lastMeteorCreatedAt;
         await _context.SaveChangesAsync();
         
-        return Ok(createdMeteors);
+        return Ok(createdMeteors.Select(MeteorMapper.ToMeteorDTO).ToList());
     }
 
     /// <summary>

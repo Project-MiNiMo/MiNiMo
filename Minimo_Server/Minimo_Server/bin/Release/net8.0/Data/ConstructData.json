@@ -64,7 +64,223 @@
     "Duration": 300
   },
   {
+    "ID": "Building_YardTile",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": -1
+  },
+  {
+    "ID": "Building_DirtPath",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": -1
+  },
+  {
+    "ID": "Building_WoodenFence",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": -1
+  },
+  {
+    "ID": "Building_WildFlowers",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": -1
+  },
+  {
+    "ID": "Building_WoodenBench",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": -1
+  },
+  {
+    "ID": "Building_WoodenHouse",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": -1
+  },
+  {
     "ID": "Building_Scarecrow",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": -1
+  },
+  {
+    "ID": "Building_Kite",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": -1
+  },
+  {
+    "ID": "Building_MarbleTile",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": -1
+  },
+  {
+    "ID": "Building_PavedRoad",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": -1
+  },
+  {
+    "ID": "Building_MarbleWall",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": -1
+  },
+  {
+    "ID": "Building_Fountain",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": -1
+  },
+  {
+    "ID": "Building_Mural",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": -1
+  },
+  {
+    "ID": "Building_Piano",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": -1
+  },
+  {
+    "ID": "Building_Museum",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": -1
+  },
+  {
+    "ID": "Building_SandTile",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": -1
+  },
+  {
+    "ID": "Building_SandPath",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": -1
+  },
+  {
+    "ID": "Building_SandWall",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": -1
+  },
+  {
+    "ID": "Building_SandCastle",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": -1
+  },
+  {
+    "ID": "Building_WaterSkiing",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": -1
+  },
+  {
+    "ID": "Building_Paragliding",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": -1
+  },
+  {
+    "ID": "Building_WaterPark",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": -1
+  },
+  {
+    "ID": "Building_LapisTile",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": -1
+  },
+  {
+    "ID": "Building_LapisRoad",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": -1
+  },
+  {
+    "ID": "Building_LapisWall",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": -1
+  },
+  {
+    "ID": "Building_WishLantern",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": -1
+  },
+  {
+    "ID": "Building_MagicBook",
+    "MatCode1": "Item_Timber",
+    "MatAmount1": 1,
+    "MatCode2": "",
+    "MatAmount2": -1,
+    "Duration": -1
+  },
+  {
+    "ID": "Building_FloatingIsland",
     "MatCode1": "Item_Timber",
     "MatAmount1": 1,
     "MatCode2": "",

@@ -1,18 +1,18 @@
 [
   {
-    "ID": "MaxStarLimit",
+    "ID": "MeteorLimit",
     "Value": 5
   },
   {
-    "ID": "ShootingStarSpawnTime",
+    "ID": "MeteorSpawnTime",
     "Value": 600
   },
   {
-    "ID": "ShootingStar_Reward_ItemLevel",
+    "ID": "Meteor_Reward_ItemLevel",
     "Value": 2
   },
   {
-    "ID": "ShootingStarTypeProb",
+    "ID": "MeteorTypeProb",
     "Value": 50
   },
   {

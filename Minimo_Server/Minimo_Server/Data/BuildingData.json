@@ -46,7 +46,7 @@
   {
     "ID": "Building_Bakery",
     "Type": 0,
-    "SizeX": 2,
+    "SizeX": 3,
     "SizeY": 2,
     "HPI": -1,
     "UnlockLevel": 1,
@@ -57,7 +57,7 @@
   {
     "ID": "Building_Stationery",
     "Type": 0,
-    "SizeX": 2,
+    "SizeX": 3,
     "SizeY": 2,
     "HPI": -1,
     "UnlockLevel": 1,
@@ -68,7 +68,7 @@
   {
     "ID": "Building_ToyShop",
     "Type": 0,
-    "SizeX": 2,
+    "SizeX": 3,
     "SizeY": 2,
     "HPI": -1,
     "UnlockLevel": 1,

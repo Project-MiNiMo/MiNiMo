@@ -5,6 +5,8 @@ using MinimoShared;
 
 namespace MinimoServer.Controllers;
 
+[ApiController]
+[Route("api/[controller]")]
 public class StarTreeController(GameDbContext context, TimeService timeService, TableDataService tableDataService)
     : BaseController(context, timeService, tableDataService)
 {
@@ -21,7 +23,7 @@ public class StarTreeController(GameDbContext context, TimeService timeService, 
 
         var currentTime = _timeService.CurrentTime;
         var lastStarTreeTime = account.LastStarTreeCreatedAt;
-        var hours = (currentTime - lastStarTreeTime).Hours;
+        var hours = (int)(currentTime - lastStarTreeTime).TotalHours;
         if (hours < 1)
         {
             return BadRequest("StarTree is not ready yet");
