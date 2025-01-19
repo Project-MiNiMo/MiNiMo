@@ -1,0 +1,1612 @@
+[
+  {
+    "ID": "STR_ITEM_WHEATSEED_NAME",
+    "Korean": "밀씨앗",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_CORNSEED_NAME",
+    "Korean": "옥수수씨앗",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PUMPKINSEED_NAME",
+    "Korean": "호박씨앗",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_SUGARCANESEED_NAME",
+    "Korean": "사탕수수씨앗",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PEPPERSEED_NAME",
+    "Korean": "피망씨앗",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_APPLESEED_NAME",
+    "Korean": "사과묘목",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_BLUEBERRYSEED_NAME",
+    "Korean": "블루베리묘목",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PINEAPPLESEED_NAME",
+    "Korean": "파인애플묘목",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_WHEAT_NAME",
+    "Korean": "밀",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_CORN_NAME",
+    "Korean": "옥수수",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PUMPKIN_NAME",
+    "Korean": "호박",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_SUGARCANE_NAME",
+    "Korean": "사탕수수",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PEPPER_NAME",
+    "Korean": "피망",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_ORCHARDWOOD_NAME",
+    "Korean": "나무",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_APPLE_NAME",
+    "Korean": "사과",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_BLUEBERRY_NAME",
+    "Korean": "블루베리",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PINEAPPLE_NAME",
+    "Korean": "파인애플",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_WHEATFLOUR_NAME",
+    "Korean": "밀가루",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_CORNKERNEL_NAME",
+    "Korean": "옥수수알",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PUMPKINSLICE_NAME",
+    "Korean": "호박조각",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_SUGAR_NAME",
+    "Korean": "설탕",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PEPPERSLICE_NAME",
+    "Korean": "피망조각",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_WOODPIECE_NAME",
+    "Korean": "나무토막",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_APPLESLICE_NAME",
+    "Korean": "사과조각",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_BLUEBERRYBITS_NAME",
+    "Korean": "블루베리알",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PINEAPPLESLICE_NAME",
+    "Korean": "파인애플조각",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_BAGUETTE_NAME",
+    "Korean": "바게트",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_CORNBREAD_NAME",
+    "Korean": "옥수수식빵",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PUMPKINTART_NAME",
+    "Korean": "호박타르트",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_APPLEPIE_NAME",
+    "Korean": "애플파이",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_BLUEBERRYCAKE_NAME",
+    "Korean": "블루베리케이크",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PINEAPPLEPIZZA_NAME",
+    "Korean": "파인애플피자",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_WOODNOTE_NAME",
+    "Korean": "노트",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_APPLEPENCIL_NAME",
+    "Korean": "사과연필",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_BLUEBERRYPEN_NAME",
+    "Korean": "블루베리펜",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PINEAPPLECASE_NAME",
+    "Korean": "파인애플필통",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_WOODDOLL_NAME",
+    "Korean": "나무인형",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_CORNBEAR_NAME",
+    "Korean": "옥수수곰",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PUMPKINDINO_NAME",
+    "Korean": "호박공룡",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_SUGARPRINCESS_NAME",
+    "Korean": "설탕공주",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PEPPERROBOT_NAME",
+    "Korean": "피망로봇",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_TIMBER_NAME",
+    "Korean": "목재",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_STONE_NAME",
+    "Korean": "돌",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_IRON_NAME",
+    "Korean": "쇠",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_GOLD_NAME",
+    "Korean": "금",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_DIAMOND_NAME",
+    "Korean": "다이아",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_WHEATSEED_DESC",
+    "Korean": "밀씨앗 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_CORNSEED_DESC",
+    "Korean": "옥수수씨앗 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PUMPKINSEED_DESC",
+    "Korean": "호박씨앗 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_SUGARCANESEED_DESC",
+    "Korean": "사탕수수씨앗 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PEPPERSEED_DESC",
+    "Korean": "피망씨앗 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_APPLESEED_DESC",
+    "Korean": "사과묘목 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_BLUEBERRYSEED_DESC",
+    "Korean": "블루베리묘목 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PINEAPPLESEED_DESC",
+    "Korean": "파인애플묘목 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_WHEAT_DESC",
+    "Korean": "밀 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_CORN_DESC",
+    "Korean": "옥수수 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PUMPKIN_DESC",
+    "Korean": "호박 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_SUGARCANE_DESC",
+    "Korean": "사탕수수 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PEPPER_DESC",
+    "Korean": "피망 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_ORCHARDWOOD_DESC",
+    "Korean": "나무 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_APPLE_DESC",
+    "Korean": "사과 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_BLUEBERRY_DESC",
+    "Korean": "블루베리 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PINEAPPLE_DESC",
+    "Korean": "파인애플 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_WHEATFLOUR_DESC",
+    "Korean": "밀가루 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_CORNKERNEL_DESC",
+    "Korean": "옥수수알 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PUMPKINSLICE_DESC",
+    "Korean": "호박조각 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_SUGAR_DESC",
+    "Korean": "설탕 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PEPPERSLICE_DESC",
+    "Korean": "피망조각 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_WOODPIECE_DESC",
+    "Korean": "나무토막 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_APPLESLICE_DESC",
+    "Korean": "사과조각 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_BLUEBERRYBITS_DESC",
+    "Korean": "블루베리알 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PINEAPPLESLICE_DESC",
+    "Korean": "파인애플조각 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_BAGUETTE_DESC",
+    "Korean": "바게트 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_CORNBREAD_DESC",
+    "Korean": "옥수수식빵 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PUMPKINTART_DESC",
+    "Korean": "호박타르트 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_APPLEPIE_DESC",
+    "Korean": "애플파이 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_BLUEBERRYCAKE_DESC",
+    "Korean": "블루베리케이크 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PINEAPPLEPIZZA_DESC",
+    "Korean": "파인애플피자 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_WOODNOTE_DESC",
+    "Korean": "노트 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_APPLEPENCIL_DESC",
+    "Korean": "사과연필 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_BLUEBERRYPEN_DESC",
+    "Korean": "블루베리펜 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PINEAPPLECASE_DESC",
+    "Korean": "파인애플필통 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_WOODDOLL_DESC",
+    "Korean": "나무인형 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_CORNBEAR_DESC",
+    "Korean": "옥수수곰 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PUMPKINDINO_DESC",
+    "Korean": "호박공룡 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_SUGARPRINCESS_DESC",
+    "Korean": "설탕공주 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_PEPPERROBOT_DESC",
+    "Korean": "피망로봇 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_TIMBER_DESC",
+    "Korean": "목재 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_STONE_DESC",
+    "Korean": "돌 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_IRON_DESC",
+    "Korean": "쇠 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_GOLD_DESC",
+    "Korean": "금 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_ITEM_DIAMOND_DESC",
+    "Korean": "다이아 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_FARM_NAME",
+    "Korean": "밭",
+    "English": "Farm",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_ORCHARD_NAME",
+    "Korean": "과수원",
+    "English": "Orchard",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_CROPFACILITY_NAME",
+    "Korean": "작물공방",
+    "English": "CropFacility",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_ORCHARDFACILITY_NAME",
+    "Korean": "과수공방",
+    "English": "OrchardFacility",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_BAKERY_NAME",
+    "Korean": "베이커리",
+    "English": "Bakery",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_STATIONERY_NAME",
+    "Korean": "문구점",
+    "English": "Stationery",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_TOYSHOP_NAME",
+    "Korean": "장난감가게",
+    "English": "ToyShop",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_LOGGINGCAMP_NAME",
+    "Korean": "벌목장",
+    "English": "LoggingCamp",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_YARDTILE_NAME",
+    "Korean": "들판타일",
+    "English": "YardTile",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_DIRTPATH_NAME",
+    "Korean": "흙길",
+    "English": "DirtPath",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_WOODENFENCE_NAME",
+    "Korean": "나무울타리",
+    "English": "WoodenFence",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_WILDFLOWERS_NAME",
+    "Korean": "들꽃",
+    "English": "WildFlowers",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_WOODENBENCH_NAME",
+    "Korean": "나무벤치",
+    "English": "WoodenBench",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_WOODENHOUSE_NAME",
+    "Korean": "나무집",
+    "English": "WoodenHouse",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_SCARECROW_NAME",
+    "Korean": "허수아비",
+    "English": "Scarecrow",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_KITE_NAME",
+    "Korean": "연",
+    "English": "Kite",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_MARBLETILE_NAME",
+    "Korean": "대리석타일",
+    "English": "MarbleTile",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_PAVEDROAD_NAME",
+    "Korean": "포장도로",
+    "English": "PavedRoad",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_MARBLEWALL_NAME",
+    "Korean": "대리석성벽",
+    "English": "MarbleWall",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_FOUNTAIN_NAME",
+    "Korean": "분수대",
+    "English": "Fountain",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_MURAL_NAME",
+    "Korean": "벽화",
+    "English": "Mural",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_PIANO_NAME",
+    "Korean": "피아노",
+    "English": "Piano",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_MUSEUM_NAME",
+    "Korean": "박물관",
+    "English": "Museum",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_SANDTILE_NAME",
+    "Korean": "모래타일",
+    "English": "SandTile",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_SANDPATH_NAME",
+    "Korean": "모래길",
+    "English": "SandPath",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_SANDWALL_NAME",
+    "Korean": "모래성벽",
+    "English": "SandWall",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_SANDCASTLE_NAME",
+    "Korean": "모래성",
+    "English": "SandCastle",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_WATERSKIING_NAME",
+    "Korean": "수상스키",
+    "English": "WaterSkiing",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_PARAGLIDING_NAME",
+    "Korean": "패러글라이딩",
+    "English": "Paragliding",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_WATERPARK_NAME",
+    "Korean": "워터파크",
+    "English": "WaterPark",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_LAPISTILE_NAME",
+    "Korean": "청금타일",
+    "English": "LapisTile",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_LAPISROAD_NAME",
+    "Korean": "청금도로",
+    "English": "LapisRoad",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_LAPISWALL_NAME",
+    "Korean": "청금성벽",
+    "English": "LapisWall",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_WISHLANTERN_NAME",
+    "Korean": "소원등불",
+    "English": "WishLantern",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_MAGICBOOK_NAME",
+    "Korean": "마법책",
+    "English": "MagicBook",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_FLOATINGISLAND_NAME",
+    "Korean": "부유섬",
+    "English": "FloatingIsland",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_WAREHOUSE_NAME",
+    "Korean": "창고",
+    "English": "Warehouse",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_CROPSHOP_NAME",
+    "Korean": "농작물상점",
+    "English": "CropShop",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_MINIMOOFFICE_NAME",
+    "Korean": "미니모관리소",
+    "English": "MinimoOffice",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_MINIMOSHELTER_NAME",
+    "Korean": "미니모쉼터",
+    "English": "MinimoShelter",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_FARM_DESC",
+    "Korean": "밭 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_ORCHARD_DESC",
+    "Korean": "과수원 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_CROPFACILITY_DESC",
+    "Korean": "작물공방 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_ORCHARDFACILITY_DESC",
+    "Korean": "과수공방 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_BAKERY_DESC",
+    "Korean": "베이커리 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_STATIONERY_DESC",
+    "Korean": "문구점 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_TOYSHOP_DESC",
+    "Korean": "장난감가게 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_LOGGINGCAMP_DESC",
+    "Korean": "벌목장 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_SCARECROW_DESC",
+    "Korean": "허수아비 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_WAREHOUSE_DESC",
+    "Korean": "창고 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_CROPSHOP_DESC",
+    "Korean": "농작물상점 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_MINIMOOFFICE_DESC",
+    "Korean": "미니모관리소 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_MINIMOSHELTER_DESC",
+    "Korean": "미니모쉼터 설명",
+    "English": -1,
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_STARTREE_TITLE",
+    "Korean": "빛나는 별나무",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_STARTREE_DESC",
+    "Korean": "파란 별을 이용하여 별나무를 꾸며줄 수 있습니다.\n별나무를 꾸미면 보상을 높여줄 수 있습니다.",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_STARTREE_UPGRADE_DESC",
+    "Korean": "파란 별 1개를 별나무에 장식하겠습니까?\n별나무를 꾸미면 수익이 증가합니다.",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_STARTREE_INFO_PERHOUR",
+    "Korean": "{0} / 시간",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_STARTREE_BOOST",
+    "Korean": "소원 빌기",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_STARTREE_REWARD",
+    "Korean": "보상 획득",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_MAIN_BOTTOM_FRIEND",
+    "Korean": "친구",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_MAIN_BOTTOM_MINIMO",
+    "Korean": "미니모",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_MAIN_BOTTOM_BUILDING",
+    "Korean": "건물",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_MAIN_BOTTOM_STORAGE",
+    "Korean": "창고",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_PROFILE_LEVEL",
+    "Korean": "Lv. {0}",
+    "English": "Lv. {0}",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_PROFILE_EXP",
+    "Korean": "EXP {0} / {1}",
+    "English": "EXP {0} / {1}",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_PROFILE_SELFINTRODUCTION_DEFAULT",
+    "Korean": "자신을 소개해보세요.",
+    "English": "Hello Nice to meet you!",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_PROFILE_FOLLOWER",
+    "Korean": "팔로워",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_PROFILE_VISITOR",
+    "Korean": "오늘 방문자",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_PROFILE_FRIEND",
+    "Korean": "친구",
+    "English": "Hello Nice to meet you!",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_BUILDING_UI_TITLE",
+    "Korean": "건물 관리",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_BUILDING_UI_PRODUCTION",
+    "Korean": "생산",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_BUILDING_UI_DECORATION",
+    "Korean": "꾸미기",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_BUILDING_UI_UTILITY",
+    "Korean": "기능성",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_BUILDING_UI_MINIMO",
+    "Korean": "미니모",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_BUILDING_UI_UNLOCKABLE",
+    "Korean": "해금 가능",
+    "English": "UnLockable",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUILDING_UI_LOCK",
+    "Korean": "Lv. {0} 해제",
+    "English": "UnLockable",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_POPUP_BUYPRODBUILDING_DESC",
+    "Korean": "생산건물 구매",
+    "English": "Buy Production Building",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUTTON_BUY_NAME",
+    "Korean": "구매",
+    "English": "BUY",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_EDITMODE_NAME",
+    "Korean": "편집모드",
+    "English": "Edit Mode",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUTTON_MANAGEBUILDING_NAME",
+    "Korean": "건물관리",
+    "English": "BuildingManagement",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUTTON_EXIT_NAME",
+    "Korean": "나가기",
+    "English": "Exit",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_POPUP_STOREPRODBUILDING_DESC1",
+    "Korean": "생산건물 넣기",
+    "English": "Store a production building",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_POPUP_STOREPRODBUILDING_DESC2",
+    "Korean": "생산물이 사라지고\n배치된 미니모가 해제됩니다.\n그래도 보관하시겠습니까?",
+    "English": "The product disappears \nand the deployed Minimo is released.\nDo you still want to keep it?",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_PRODUCE_STORAGE",
+    "Korean": "창고를 비워주세요",
+    "English": "Clear some storage space",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_PRODUCE_SLOTSTATE_EMPTY",
+    "Korean": "비어있음",
+    "English": "Empty",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_PRODUCE_SLOTSTATE_PENDING",
+    "Korean": "대기중",
+    "English": "Standby",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_PRODUCE_SLOTSTATE_COMPLETE",
+    "Korean": "생산완료",
+    "English": "Complete",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_CHARGECASH_TITLE",
+    "Korean": "유료재화 충전",
+    "English": "Recharge BlueStar",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_CHARGECASH_DESC",
+    "Korean": "보유 중인\n유료재화가 부족합니다.\n충전하시겠습니까?",
+    "English": "You don't have enough Blue Stars.\nWould you like to recharge them?",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_SPENDCASH_TITLE",
+    "Korean": "유료재화 사용",
+    "English": "Spend BlueStar",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_SPENDCASH_DESC_PRODUCE",
+    "Korean": "부족한 자원 확보를 위해\n유료재화를 사용하시겠습니까?",
+    "English": "Would you like to use BlueStar\nto secure the lacking materials?",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_SPENDCASH_BUTTON",
+    "Korean": "{0} 사용",
+    "English": "Spend",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_STORAGE_UI_TITLE",
+    "Korean": "창고",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_STORAGE_UI_ENTIRE",
+    "Korean": "전체",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_STORAGE_UI_RESOURCE",
+    "Korean": "자원",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_STORAGE_UI_PRODUCT",
+    "Korean": "상품",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_STORAGE_UI_CONSTRUCTION",
+    "Korean": "건설 자재",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_STORAGE_UI_EXPAND",
+    "Korean": "확장",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_STORAGE_UI_SELL",
+    "Korean": "{0} 판매",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_STORAGE_EXPAND_COST",
+    "Korean": "{0} 확장",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_STORAGE_EXPAND_TITLE",
+    "Korean": "창고 용량 확장",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_STORAGE_EXPAND_DESC",
+    "Korean": "레벨별 확장 한도 존재",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_BUTTON_NO",
+    "Korean": "아니오",
+    "English": "No",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_BUTTON_YES",
+    "Korean": "예",
+    "English": "Yes",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_GAMESETTING",
+    "Korean": "게임설정",
+    "English": "On",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_GAMESETTING_ON",
+    "Korean": "켜짐",
+    "English": "",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_GAMESETTING_OFF",
+    "Korean": "꺼짐",
+    "English": "Off",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_GAMESETTING_SOUND",
+    "Korean": "사운드",
+    "English": "Sound",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_GAMESETTING_SOUND_BGM",
+    "Korean": "배경음",
+    "English": "BGM",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_GAMESETTING_SOUND_SFX",
+    "Korean": "효과음",
+    "English": "SFX",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_GAMESETTING_SCREEN",
+    "Korean": "게임환경",
+    "English": "Environments",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_GAMESETTING_SCREEN_FRAME",
+    "Korean": "프레임 설정",
+    "English": "FPS Settings",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_GAMESETTING_SCREEN_FRAME_30",
+    "Korean": "30Fps",
+    "English": "30Fps",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_GAMESETTING_SCREEN_FRAME_60",
+    "Korean": "60Fps",
+    "English": "60Fps",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_GAMESETTING_SCREEN_GRAPHICS",
+    "Korean": "그래픽 설정",
+    "English": "Graphics",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_GAMESETTING_SCREEN_GRAPHICS_LOW",
+    "Korean": "낮음",
+    "English": "Low",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_GAMESETTING_SCREEN_GRAPHICS_DEFAULT",
+    "Korean": "일반",
+    "English": "Default",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_GAMESETTING_ALERT",
+    "Korean": "알림",
+    "English": "Notifications",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_GAMESETTING_ALERT_PUSH",
+    "Korean": "푸시 알림",
+    "English": "Push Notifications",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_GAMESETTING_LANGUAGE_KOREAN",
+    "Korean": "한국어",
+    "English": "KOR",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_GAMESETTING_LANGUAGE_ENGLISH",
+    "Korean": "ENG",
+    "English": "ENG",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_GAMESETTING_LANGUAGE_POPUP",
+    "Korean": "언어 변경",
+    "English": "Change Language",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_GAMESETTING_LANGUAGE_POPUP_CONTENT",
+    "Korean": "언어를 변경하기 위해\n게임을 재시작 할까요?",
+    "English": "Restart the game to \napply the language change?",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_GAMESETTING_LANGUAGE_POPUP_YES",
+    "Korean": "예",
+    "English": "Yes",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_GAMESETTING_LANGUAGE_POPUP_NO",
+    "Korean": "아니요",
+    "English": "No",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_GAMESETTING_PIN",
+    "Korean": "PIN ID : {0}",
+    "English": "PIN ID : {0}",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_ACCOUNTSETTING",
+    "Korean": "계정설정",
+    "English": "Account",
+    "Chinese": -1,
+    "Japanese": -1
+  },
+  {
+    "ID": "STR_OPTION_ACCOUNTSETTING_LINK",
+    "Korean": "계정연동",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_OPTION_ACCOUNTSETTING_LINK_DESC",
+    "Korean": "계정 연동하기",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_OPTION_ACCOUNTSETTING_LOGOUT",
+    "Korean": "로그아웃",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_OPTION_ACCOUNTSETTING_LOGOUT_DESC",
+    "Korean": "계정 로그아웃하기",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_OPTION_ACCOUNTSETTING_LOGOUT_POPUP",
+    "Korean": "로그아웃",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_OPTION_ACCOUNTSETTING_LOGOUT_POPUP_DESC",
+    "Korean": "로그아웃시 게임이 재시작됩니다.\n하시겠습니까?",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_OPTION_ACCOUNTSETTING_DELETE",
+    "Korean": "계정삭제",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_OPTION_ACCOUNTSETTING_DELETE_DESC",
+    "Korean": "계정 삭제하기",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_OPTION_ACCOUNTSETTING_DELETE_POPUP",
+    "Korean": "계정삭제",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_OPTION_ACCOUNTSETTING_DELETE_POPUP_DESC",
+    "Korean": "계정 삭제 시 복구할 수 없습니다.\n하시겠습니까?",
+    "English": "",
+    "Chinese": "",
+    "Japanese": ""
+  },
+  {
+    "ID": "STR_OPTION_SERVICECENTER",
+    "Korean": "고객센터",
+    "English": "Service Center",
+    "Chinese": -1,
+    "Japanese": -1
+  }
+]

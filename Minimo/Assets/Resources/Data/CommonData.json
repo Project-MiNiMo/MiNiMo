@@ -1,0 +1,50 @@
+[
+  {
+    "ID": "MeteorLimit",
+    "Value": 5
+  },
+  {
+    "ID": "MeteorSpawnTime",
+    "Value": 600
+  },
+  {
+    "ID": "Meteor_Reward_ItemLevel",
+    "Value": 2
+  },
+  {
+    "ID": "MeteorTypeProb",
+    "Value": 50
+  },
+  {
+    "ID": "Nomal_ItemTypeProb",
+    "Value": 70
+  },
+  {
+    "ID": "Epic_ItemTypeProb",
+    "Value": 30
+  },
+  {
+    "ID": "Nomal_QuestTypeProb",
+    "Value": 90
+  },
+  {
+    "ID": "Epic_QuestTypeProb",
+    "Value": 10
+  },
+  {
+    "ID": "StarTreeMaxTime",
+    "Value": 172800
+  },
+  {
+    "ID": "BlueStarValue",
+    "Value": 30
+  },
+  {
+    "ID": "SlotExpandCost",
+    "Value": 100
+  },
+  {
+    "ID": "WareHouseExpandCost",
+    "Value": 20
+  }
+]
