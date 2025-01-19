@@ -64,6 +64,7 @@ public class LoginPanel : MonoBehaviour
         // 회원가입 요청
         var result = await _loginManager.CreateAccountAsync(id, pw, randomNickname);
         _resultText.text = result.Message;
+        Debug.Log(result.Data);
     }
 }
 

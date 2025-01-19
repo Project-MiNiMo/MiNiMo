@@ -17,6 +17,8 @@ public class BuildingInfoController(GameDbContext context, TimeService timeServi
     /// </summary>
     /// <param name="buildingType"></param>
     /// <returns></returns>
+    [Authorize]
+    [HttpGet]
     public async Task<ActionResult<BuildingInfoDTO>> GetBuildingInfo(string buildingType)
     {
         var account = await GetAuthorizedAccountAsync();

@@ -94,7 +94,7 @@ public class LoginManager : ManagerBase
         }
         else
         {
-            Debug.LogError($"Login Failed: {result.Message}");
+            Debug.LogWarning($"Login Failed: {result.Message}");
             return result;
         }
     }
