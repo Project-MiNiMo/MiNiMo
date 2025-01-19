@@ -10,12 +10,13 @@ public class BuildingManager : ManagerBase
     private GameClient _gameClient;
 
     private const string BuildingEndpoint = "api/building";
+    private const string BuildingInfoEndpoint = "api/buildinginfo";
 
     private void Start()
     {
         _gameClient = App.Services.GetRequiredService<GameClient>();
     }
-
+    
     /// <summary>
     /// 서버에서 건물 목록을 가져옵니다.
     /// </summary>
@@ -63,11 +64,13 @@ public class BuildingManager : ManagerBase
     /// <returns>생성된 건물 DTO</returns>
     public async UniTask<BuildingDTO> CreateBuildingAsync(BuildingDTO buildingDto)
     {
-        var result = await _gameClient.PostAsync<BuildingDTO>(BuildingEndpoint, buildingDto);
-        if(result.IsSuccess && result.Data is {} createdBuildingDto)
+        var result = await _gameClient.PostAsync<BuildingCreateResultDTO>(BuildingEndpoint, buildingDto);
+        if(result.IsSuccess && result.Data is {} buildingCreateResult)
         {
-            Debug.Log($"Created building {createdBuildingDto.BuildingType} (ID: {createdBuildingDto.Position})");
-            return createdBuildingDto;
+            Debug.Log($"Created building {buildingCreateResult.CreatedBuilding.BuildingType} (ID: {buildingCreateResult.CreatedBuilding.Id})");
+            App.GetManager<AccountAssetManager>().UpdateBuildingInfo(buildingCreateResult.BuildingInfoDto);
+            App.GetManager<AccountAssetManager>().UpdateItems(buildingCreateResult.UpdatedItems);
+            return buildingCreateResult.CreatedBuilding;
         }
         else
         {
@@ -115,4 +118,97 @@ public class BuildingManager : ManagerBase
         }
         return result.IsSuccess;
     }
+
+#region 건물 해금/업그레이드
+    /// <summary>
+    /// 건물 최초 해금을 요청합니다.
+    /// </summary>
+    /// <param name="buildingType"></param>
+    /// <returns></returns>
+        public async UniTask<BuildingInfoDTO> CreateBuildingInfo(string buildingType)
+    {
+        var result = await _gameClient.PostAsync<BuildingInfoUpgradeResultDTO>(BuildingInfoEndpoint, buildingType);
+        if(result.IsSuccess && result.Data is {} createResult)
+        {
+            Debug.Log($"Created building info for {buildingType}");
+            App.GetManager<AccountAssetManager>().UpdateCurrency(createResult.UpdatedCurrency);
+            return createResult.BuildingInfo;
+        }
+        else
+        {
+            Debug.LogError($"Failed to create building info: {result.Message}");
+            return null;
+        }
+    }
+    
+    /// <summary>
+    /// 해금된 건물의 업그레이드(개수 증가)를 요청합니다.
+    /// </summary>
+    /// <param name="buildingType"></param>
+    /// <returns></returns>
+    public async UniTask<BuildingInfoDTO> UpgradeBuildingInfoMaxCount(string buildingType)
+    {
+        var endpoint = $"{BuildingInfoEndpoint}/upgrademax";
+        var result = await _gameClient.PostAsync<BuildingInfoUpgradeResultDTO>(endpoint, buildingType);
+        if(result.IsSuccess && result.Data is {} upgradeResult)
+        {
+            Debug.Log($"Upgraded max count for building {buildingType}");
+            // 자원 업데이트
+            App.GetManager<AccountAssetManager>().UpdateCurrency(upgradeResult.UpdatedCurrency);
+            return upgradeResult.BuildingInfo;
+        }
+        else
+        {
+            Debug.LogError($"Failed to upgrade max count: {result.Message}");
+            return null;
+        }
+    }
+#endregion
+
+#region 건물 제조 슬롯
+    /// <summary>
+    /// 자원 제조를 시작합니다
+    /// </summary>
+    /// <param name="startProduceDto"></param>
+    /// <returns></returns>
+    public async UniTask<BuildingDTO> StartProduce(BuildingStartProduceDTO startProduceDto)
+    {
+        var result = await _gameClient.PostAsync<BuildingDTO>($"{BuildingEndpoint}/recipe", startProduceDto);
+        if(result.IsSuccess && result.Data is {} producedBuilding)
+        {
+            Debug.Log($"Started producing building {producedBuilding.BuildingType}");
+            // TODO : 자원 업데이트
+            return producedBuilding;
+        }
+        else
+        {
+            Debug.LogError($"Failed to start producing building: {result.Message}");
+            return null;
+        }
+    }
+    
+    public async UniTask<BuildingCompleteProduceResultDTO> CompleteProduce(BuildingCompleteProduceDTO completeProduceDto)
+    {
+        var endpoint = $"{BuildingEndpoint}/recipe/complete";
+        var result = await _gameClient.PostAsync<BuildingCompleteProduceResultDTO>(endpoint, completeProduceDto);
+        if(result.IsSuccess && result.Data is {} completeResult)
+        {
+            Debug.Log($"Completed producing building {completeResult.UpdatedBuilding.BuildingType}");
+            // TODO : 자원 업데이트
+            if (completeResult.ProducedItems != null)
+            {
+                foreach (var itemDto in completeResult.ProducedItems)
+                {
+                    App.GetManager<AccountAssetManager>().UpdateItem(itemDto);
+                }
+            }
+            return completeResult;
+        }
+        else
+        {
+            Debug.LogError($"Failed to complete producing building: {result.Message}");
+            return null;
+        }
+    }
+#endregion
 }

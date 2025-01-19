@@ -13,6 +13,22 @@ namespace MinimoServer.Controllers;
 public class BuildingInfoController(GameDbContext context, TimeService timeService, TableDataService tableDataService) : BaseController(context, timeService, tableDataService)
 {
     /// <summary>
+    /// 건물 정보를 반환합니다.
+    /// </summary>
+    /// <param name="buildingType"></param>
+    /// <returns></returns>
+    public async Task<ActionResult<BuildingInfoDTO>> GetBuildingInfo(string buildingType)
+    {
+        var account = await GetAuthorizedAccountAsync();
+        if (account == null) return Unauthorized("Account not found");
+
+        var buildingInfo = account.BuildingInfos.FirstOrDefault(b => b.BuildingType == buildingType);
+        return buildingInfo == null
+            ? NotFound(new { message = "Building not found" })
+            : Ok(BuildingMapper.ToBuildingInfoDTO(buildingInfo));
+    }
+    
+    /// <summary>
     /// 건물 해금(최초)을 진행합니다.
     /// 만약 이미 건물이 있거나 행복도가 충분하지 않으면 오류를 반환합니다.
     /// </summary>
@@ -25,6 +41,12 @@ public class BuildingInfoController(GameDbContext context, TimeService timeServi
         var account = await GetAuthorizedAccountAsync();
         if (account == null) return Unauthorized("Account not found");
         
+        // 건물 타입이 유효하지 않으면 오류
+        if (!_tableDataService.Building.TryGetValue(buildingType, out Data.Class.BuildingData? value))
+        {
+            return BadRequest("Invalid building type");
+        }
+        
         // 만약 이미 건물이 있다면 오류
         if (account.BuildingInfos.Any(b => b.BuildingType == buildingType))
         {
@@ -32,7 +54,7 @@ public class BuildingInfoController(GameDbContext context, TimeService timeServi
         }
         
         // 행복도가 충분하지 확인
-        var hpi = _tableDataService.Building[buildingType].HPI;
+        var hpi = value.HPI;
         if (hpi < 0 && account.Currency.HPI + hpi < 0)
         {
             return BadRequest("Not enough HPI");
@@ -59,7 +81,7 @@ public class BuildingInfoController(GameDbContext context, TimeService timeServi
     /// <returns></returns>
     [Authorize]
     [HttpPost("upgrademax")]
-    public async Task<ActionResult<BuildingInfoUpgradResultDTO>> UpgradeBuildingInfoMaxCount(string buildingType)
+    public async Task<ActionResult<BuildingInfoUpgradeResultDTO>> UpgradeBuildingInfoMaxCount(string buildingType)
     {
         var account = await GetAuthorizedAccountAsync();
         if (account == null) return Unauthorized("Account not found");
@@ -88,7 +110,7 @@ public class BuildingInfoController(GameDbContext context, TimeService timeServi
         buildingInfo.MaxCount++;
         await _context.SaveChangesAsync();
 
-        var buildingInfoResultDto = new BuildingInfoUpgradResultDTO()
+        var buildingInfoResultDto = new BuildingInfoUpgradeResultDTO()
         {
             BuildingInfo = BuildingMapper.ToBuildingInfoDTO(buildingInfo),
             UpdatedCurrency = CurrencyMapper.ToCurrencyDTO(account.Currency),
