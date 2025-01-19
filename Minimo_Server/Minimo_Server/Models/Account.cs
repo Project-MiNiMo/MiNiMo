@@ -28,6 +28,12 @@ public class Account
     // 아이템
     public List<Item> Items { get; set; }
     
+    // 유성
+    public List<Meteor> Meteors { get; set; }
+    public DateTime LastMeteorCreatedAt { get; set; } = DateTime.MinValue;
+    // 퀘스트
+    public List<Quest> Quests { get; set; }
+    
     // 미니모
     // 친구
 }

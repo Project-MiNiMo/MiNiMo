@@ -19,5 +19,8 @@ namespace MinimoShared
         public List<BuildingInfoDTO> BuildingInfos { get; set; }
         
         public List<ItemDTO> Items { get; set; }
+        public List<MeteorDTO> Meteors { get; set; }
+        public DateTime LastMeteorCreatedAt { get; set; }
+        public List<QuestDTO> Quests { get; set; }
     }
 }
