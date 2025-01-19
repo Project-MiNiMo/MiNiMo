@@ -30,7 +30,7 @@ public class MeteorController(GameDbContext context, TimeService timeService, Ta
     /// </summary>
     /// <returns></returns>
     [Authorize]
-    [HttpPost]
+    [HttpGet("create")]
     public async Task<ActionResult<List<MeteorDTO>>> CreateMeteors()
     {
         var account = await GetAuthorizedAccountAsync();
@@ -73,6 +73,8 @@ public class MeteorController(GameDbContext context, TimeService timeService, Ta
     /// </summary>
     /// <param name="level"></param>
     /// <returns></returns>
+    [Authorize]
+    [HttpPut("Result")]
     public async Task<ActionResult<MeteorResultDTO>> GetMeteorResult(int meteorID)
     {
         var account = await GetAuthorizedAccountAsync();

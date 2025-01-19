@@ -30,9 +30,14 @@ public class Account
     
     // 유성
     public List<Meteor> Meteors { get; set; }
-    public DateTime LastMeteorCreatedAt { get; set; } = DateTime.MinValue;
+    public DateTime LastMeteorCreatedAt { get; set; }
     // 퀘스트
     public List<Quest> Quests { get; set; }
+    
+    // 별나무
+    public DateTime LastStarTreeCreatedAt { get; set; }
+    public DateTime LastWishedAt { get; set; }
+    public int StarTreeLevel { get; set; }
     
     // 미니모
     // 친구
