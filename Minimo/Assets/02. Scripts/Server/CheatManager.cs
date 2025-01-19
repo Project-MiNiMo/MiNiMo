@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
@@ -67,5 +68,10 @@ public class CheatManager : ManagerBase
             Debug.LogError($"Failed to update item: {result.Message}");
             return;
         }
+    }
+
+    public void SetServerTime(string targetTime)
+    {
+        App.GetManager<TimeManager>().SetCheatTime(targetTime);
     }
 }
