@@ -1,6 +1,6 @@
 [
   {
-    "ID": "Item_Apple",
+    "ID": "Item_WheatSeed",
     "Type": 1,
     "MaxOverlap": 99,
     "CanSell": "FALSE",
@@ -11,7 +11,7 @@
     "Description": "STR_ITEM_WHEATSEED_DESC"
   },
   {
-    "ID": "Item_ApplePencil",
+    "ID": "Item_CornSeed",
     "Type": 1,
     "MaxOverlap": 99,
     "CanSell": "FALSE",
@@ -22,7 +22,7 @@
     "Description": "STR_ITEM_CORNSEED_DESC"
   },
   {
-    "ID": "Item_ApplePie",
+    "ID": "Item_PumpkinSeed",
     "Type": 1,
     "MaxOverlap": 99,
     "CanSell": "FALSE",
@@ -33,7 +33,7 @@
     "Description": "STR_ITEM_PUMPKINSEED_DESC"
   },
   {
-    "ID": "Item_AppleSeed",
+    "ID": "Item_SugarcaneSeed",
     "Type": 1,
     "MaxOverlap": 99,
     "CanSell": "FALSE",
@@ -44,7 +44,7 @@
     "Description": "STR_ITEM_SUGARCANESEED_DESC"
   },
   {
-    "ID": "Item_AppleSlice",
+    "ID": "Item_PepperSeed",
     "Type": 1,
     "MaxOverlap": 99,
     "CanSell": "FALSE",
@@ -55,7 +55,7 @@
     "Description": "STR_ITEM_PEPPERSEED_DESC"
   },
   {
-    "ID": "Item_Baguette",
+    "ID": "Item_AppleSeed",
     "Type": 1,
     "MaxOverlap": 99,
     "CanSell": "FALSE",
@@ -66,7 +66,7 @@
     "Description": "STR_ITEM_APPLESEED_DESC"
   },
   {
-    "ID": "Item_Blueberry",
+    "ID": "Item_BlueberrySeed",
     "Type": 1,
     "MaxOverlap": 99,
     "CanSell": "FALSE",
@@ -77,7 +77,7 @@
     "Description": "STR_ITEM_BLUEBERRYSEED_DESC"
   },
   {
-    "ID": "Item_BlueberryBits",
+    "ID": "Item_PineappleSeed",
     "Type": 1,
     "MaxOverlap": 99,
     "CanSell": "FALSE",
@@ -88,7 +88,7 @@
     "Description": "STR_ITEM_PINEAPPLESEED_DESC"
   },
   {
-    "ID": "Item_BlueberryCake",
+    "ID": "Item_Wheat",
     "Type": 2,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -99,7 +99,7 @@
     "Description": "STR_ITEM_WHEAT_DESC"
   },
   {
-    "ID": "Item_BlueberryPen",
+    "ID": "Item_Corn",
     "Type": 2,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -110,7 +110,7 @@
     "Description": "STR_ITEM_CORN_DESC"
   },
   {
-    "ID": "Item_BlueberrySeed",
+    "ID": "Item_Pumpkin",
     "Type": 2,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -121,7 +121,7 @@
     "Description": "STR_ITEM_PUMPKIN_DESC"
   },
   {
-    "ID": "Item_Corn",
+    "ID": "Item_Sugarcane",
     "Type": 2,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -132,7 +132,7 @@
     "Description": "STR_ITEM_SUGARCANE_DESC"
   },
   {
-    "ID": "Item_CornBear",
+    "ID": "Item_Pepper",
     "Type": 2,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -143,7 +143,7 @@
     "Description": "STR_ITEM_PEPPER_DESC"
   },
   {
-    "ID": "Item_CornBread",
+    "ID": "Item_OrchardWood",
     "Type": 2,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -154,7 +154,7 @@
     "Description": "STR_ITEM_ORCHARDWOOD_DESC"
   },
   {
-    "ID": "Item_CornKernel",
+    "ID": "Item_Apple",
     "Type": 2,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -165,7 +165,7 @@
     "Description": "STR_ITEM_APPLE_DESC"
   },
   {
-    "ID": "Item_CornSeed",
+    "ID": "Item_Blueberry",
     "Type": 2,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -176,7 +176,7 @@
     "Description": "STR_ITEM_BLUEBERRY_DESC"
   },
   {
-    "ID": "Item_Diamond",
+    "ID": "Item_Pineapple",
     "Type": 2,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -187,7 +187,7 @@
     "Description": "STR_ITEM_PINEAPPLE_DESC"
   },
   {
-    "ID": "Item_Gold",
+    "ID": "Item_WheatFlour",
     "Type": 3,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -198,7 +198,7 @@
     "Description": "STR_ITEM_WHEATFLOUR_DESC"
   },
   {
-    "ID": "Item_Iron",
+    "ID": "Item_CornKernel",
     "Type": 3,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -209,7 +209,7 @@
     "Description": "STR_ITEM_CORNKERNEL_DESC"
   },
   {
-    "ID": "Item_OrchardWood",
+    "ID": "Item_PumpkinSlice",
     "Type": 3,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -220,7 +220,7 @@
     "Description": "STR_ITEM_PUMPKINSLICE_DESC"
   },
   {
-    "ID": "Item_Pepper",
+    "ID": "Item_Sugar",
     "Type": 3,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -231,7 +231,7 @@
     "Description": "STR_ITEM_SUGAR_DESC"
   },
   {
-    "ID": "Item_PepperRobot",
+    "ID": "Item_PepperSlice",
     "Type": 3,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -242,7 +242,7 @@
     "Description": "STR_ITEM_PEPPERSLICE_DESC"
   },
   {
-    "ID": "Item_PepperSeed",
+    "ID": "Item_WoodPiece",
     "Type": 3,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -253,7 +253,7 @@
     "Description": "STR_ITEM_WOODPIECE_DESC"
   },
   {
-    "ID": "Item_PepperSlice",
+    "ID": "Item_AppleSlice",
     "Type": 3,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -264,7 +264,7 @@
     "Description": "STR_ITEM_APPLESLICE_DESC"
   },
   {
-    "ID": "Item_Pineapple",
+    "ID": "Item_BlueberryBits",
     "Type": 3,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -275,7 +275,7 @@
     "Description": "STR_ITEM_BLUEBERRYBITS_DESC"
   },
   {
-    "ID": "Item_PineappleCase",
+    "ID": "Item_PineappleSlice",
     "Type": 3,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -286,7 +286,7 @@
     "Description": "STR_ITEM_PINEAPPLESLICE_DESC"
   },
   {
-    "ID": "Item_PineapplePizza",
+    "ID": "Item_Baguette",
     "Type": 4,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -297,7 +297,7 @@
     "Description": "STR_ITEM_BAGUETTE_DESC"
   },
   {
-    "ID": "Item_PineappleSeed",
+    "ID": "Item_CornBread",
     "Type": 4,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -308,7 +308,7 @@
     "Description": "STR_ITEM_CORNBREAD_DESC"
   },
   {
-    "ID": "Item_PineappleSlice",
+    "ID": "Item_PumpkinTart",
     "Type": 4,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -319,7 +319,7 @@
     "Description": "STR_ITEM_PUMPKINTART_DESC"
   },
   {
-    "ID": "Item_Pumpkin",
+    "ID": "Item_ApplePie",
     "Type": 4,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -330,7 +330,7 @@
     "Description": "STR_ITEM_APPLEPIE_DESC"
   },
   {
-    "ID": "Item_PumpkinDino",
+    "ID": "Item_BlueberryCake",
     "Type": 4,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -341,7 +341,7 @@
     "Description": "STR_ITEM_BLUEBERRYCAKE_DESC"
   },
   {
-    "ID": "Item_PumpkinSeed",
+    "ID": "Item_PineapplePizza",
     "Type": 4,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -352,7 +352,7 @@
     "Description": "STR_ITEM_PINEAPPLEPIZZA_DESC"
   },
   {
-    "ID": "Item_PumpkinSlice",
+    "ID": "Item_WoodNote",
     "Type": 4,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -363,7 +363,7 @@
     "Description": "STR_ITEM_WOODNOTE_DESC"
   },
   {
-    "ID": "Item_PumpkinTart",
+    "ID": "Item_ApplePencil",
     "Type": 4,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -374,7 +374,7 @@
     "Description": "STR_ITEM_APPLEPENCIL_DESC"
   },
   {
-    "ID": "Item_Stone",
+    "ID": "Item_BlueberryPen",
     "Type": 4,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -385,7 +385,7 @@
     "Description": "STR_ITEM_BLUEBERRYPEN_DESC"
   },
   {
-    "ID": "Item_Sugar",
+    "ID": "Item_PineappleCase",
     "Type": 4,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -396,7 +396,7 @@
     "Description": "STR_ITEM_PINEAPPLECASE_DESC"
   },
   {
-    "ID": "Item_Sugarcane",
+    "ID": "Item_WoodDoll",
     "Type": 4,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -407,7 +407,7 @@
     "Description": "STR_ITEM_WOODDOLL_DESC"
   },
   {
-    "ID": "Item_SugarcaneSeed",
+    "ID": "Item_CornBear",
     "Type": 4,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -418,7 +418,7 @@
     "Description": "STR_ITEM_CORNBEAR_DESC"
   },
   {
-    "ID": "Item_SugarPrincess",
+    "ID": "Item_PumpkinDino",
     "Type": 4,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -429,7 +429,7 @@
     "Description": "STR_ITEM_PUMPKINDINO_DESC"
   },
   {
-    "ID": "Item_Timber",
+    "ID": "Item_SugarPrincess",
     "Type": 4,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -440,7 +440,7 @@
     "Description": "STR_ITEM_SUGARPRINCESS_DESC"
   },
   {
-    "ID": "Item_Wheat",
+    "ID": "Item_PepperRobot",
     "Type": 4,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -451,7 +451,7 @@
     "Description": "STR_ITEM_PEPPERROBOT_DESC"
   },
   {
-    "ID": "Item_WheatFlour",
+    "ID": "Item_Timber",
     "Type": 5,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -462,7 +462,7 @@
     "Description": "STR_ITEM_TIMBER_DESC"
   },
   {
-    "ID": "Item_WheatSeed",
+    "ID": "Item_Stone",
     "Type": 5,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -473,7 +473,7 @@
     "Description": "STR_ITEM_STONE_DESC"
   },
   {
-    "ID": "Item_WoodDoll",
+    "ID": "Item_Iron",
     "Type": 5,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -484,7 +484,7 @@
     "Description": "STR_ITEM_IRON_DESC"
   },
   {
-    "ID": "Item_WoodNote",
+    "ID": "Item_Gold",
     "Type": 5,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
@@ -495,7 +495,7 @@
     "Description": "STR_ITEM_GOLD_DESC"
   },
   {
-    "ID": "Item_WoodPiece",
+    "ID": "Item_Diamond",
     "Type": 5,
     "MaxOverlap": 99,
     "CanSell": "TRUE",
