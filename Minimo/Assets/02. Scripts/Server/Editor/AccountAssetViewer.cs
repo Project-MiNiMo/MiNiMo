@@ -106,6 +106,7 @@ public class AccountAssetViewer : EditorWindow
             EditorGUILayout.LabelField($"Last Star Tree Created At: {account.LastStarTreeCreatedAt}");
             EditorGUILayout.LabelField($"Last Wished At: {account.LastWishedAt}");
             EditorGUILayout.LabelField($"Star Tree Level: {account.StarTreeLevel}");
+            GUILayout.EndVertical();
         }
         
         // 스크롤뷰 끝
