@@ -1,4 +1,5 @@
 using System;
+using MinimoShared;
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +13,7 @@ public class UseCashBack : MonoBehaviour
     [SerializeField] private Button _useBtn;
     [SerializeField] private Button _closeBtn;
     
-    private PlayerData _playerData;
+    private AccountInfoManager _accountInfo;
     private TitleData _titleData;
     
     private Action _closeAction;
@@ -22,9 +23,9 @@ public class UseCashBack : MonoBehaviour
     
     private string _priceString;
     
-    public void Initialize(PlayerData playerData, TitleData titleData, Action closeAction, Action lackAction)
+    public void Initialize(AccountInfoManager accountInfo, TitleData titleData, Action closeAction, Action lackAction)
     {
-        _playerData = playerData;
+        _accountInfo = accountInfo;
         _titleData = titleData;
         _closeAction = closeAction;
         _lackAction = lackAction;
@@ -55,13 +56,19 @@ public class UseCashBack : MonoBehaviour
 
     private void OnClickUse()
     {
-        if (_playerData.DiamondStar < _price)
+        if (_accountInfo.BlueStar < _price)
         {
             _lackAction?.Invoke();
         }
         else
         {
-            _playerData.DiamondStar -= _price;
+            var newCurrencyRequest = new CurrencyDTO
+            {
+                Star = _accountInfo.Star,
+                BlueStar = _accountInfo.BlueStar - _price
+            };
+            
+            _accountInfo.UpdateCurrency(newCurrencyRequest);
             _useAction?.Invoke();
             _useAction = null;
             _price = 0;

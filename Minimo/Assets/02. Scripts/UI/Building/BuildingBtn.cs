@@ -114,7 +114,7 @@ public class BuildingBtn : MonoBehaviour
 
     private void SetBuildingState()
     {
-        if (App.GetData<PlayerData>().PlayerLevel < _data.UnlockLevel)
+        if (App.GetManager<AccountInfoManager>().Level < _data.UnlockLevel)
         {
             _currentState = BuildingState.Lock;
         }
