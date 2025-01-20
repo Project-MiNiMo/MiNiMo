@@ -11,7 +11,7 @@ public class ItemInfoUpdater : MonoBehaviour
     
     private ProduceOption _currentOption;
     
-    private void Start()
+    private void Awake()
     {
         _titleData = App.GetData<TitleData>();
     }
