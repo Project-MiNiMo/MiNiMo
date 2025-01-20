@@ -27,7 +27,8 @@ public class StarTreeManager : ManagerBase
         var result = await _gameClient.GetAsync<StarTreeResultDTO>(StarTreeEndpoint);
         if (result.IsSuccess && result.Data is {} starTreeResultDto)
         {
-            App.GetManager<AccountAssetManager>().UpdateCurrency(starTreeResultDto.UpdatedCurrency);
+            App.GetManager<AccountInfoManager>().UpdateCurrency(starTreeResultDto.UpdatedCurrency);
+            App.GetManager<AccountInfoManager>().UpdateLastStarTreeCreatedAt(starTreeResultDto.LastDateTime);
             return result;
         }
         else
@@ -46,7 +47,8 @@ public class StarTreeManager : ManagerBase
         var result = await _gameClient.GetAsync<StarTreeResultDTO>(StarTreeWishEndpoint);
         if (result.IsSuccess && result.Data is {} starTreeResultDto)
         {
-            App.GetManager<AccountAssetManager>().UpdateCurrency(starTreeResultDto.UpdatedCurrency);
+            App.GetManager<AccountInfoManager>().UpdateCurrency(starTreeResultDto.UpdatedCurrency);
+            App.GetManager<AccountInfoManager>().UpdateLastWishedAt(starTreeResultDto.LastDateTime);
             return result;
         }
         else

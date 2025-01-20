@@ -1,5 +1,6 @@
 ﻿using MinimoServer;
 using MinimoServer.Models;
+using MinimoServer.Utility;
 using MinimoShared;
 
 public static class AccountMapper
@@ -16,7 +17,9 @@ public static class AccountMapper
             Currency = CurrencyMapper.ToCurrencyDTO(account.Currency),
             Buildings = account.Buildings?.Select(BuildingMapper.ToBuildingDTO).ToList() ?? new List<BuildingDTO>(),
             BuildingInfos = account.BuildingInfos?.Select(BuildingMapper.ToBuildingInfoDTO).ToList() ?? new List<BuildingInfoDTO>(),
-            Items = account.Items?.Select(ItemMapper.ToItemDTO).ToList() ?? new List<ItemDTO>()
+            Items = account.Items?.Select(ItemMapper.ToItemDTO).ToList() ?? new List<ItemDTO>(),
+            Meteors = account.Meteors?.Select(MeteorMapper.ToMeteorDTO).ToList() ?? new List<MeteorDTO>(),
+            Quests = account.Quests?.Select(QuestMapper.ToQuestDTO).ToList() ?? new List<QuestDTO>(),
         };
     }
 

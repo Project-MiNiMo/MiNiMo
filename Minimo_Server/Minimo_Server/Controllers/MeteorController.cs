@@ -33,7 +33,7 @@ public class MeteorController(GameDbContext context, TimeService timeService, Ta
     /// <returns></returns>
     [Authorize]
     [HttpGet("create")]
-    public async Task<ActionResult<List<MeteorDTO>>> CreateMeteors()
+    public async Task<ActionResult<MeteorCreateDTO>> CreateMeteors()
     {
         var account = await GetAuthorizedAccountAsync();
         if (account == null) return Unauthorized("Account not found");
@@ -67,7 +67,11 @@ public class MeteorController(GameDbContext context, TimeService timeService, Ta
         account.LastMeteorCreatedAt = lastMeteorCreatedAt;
         await _context.SaveChangesAsync();
         
-        return Ok(createdMeteors.Select(MeteorMapper.ToMeteorDTO).ToList());
+        return Ok(new MeteorCreateDTO
+        {
+            CreatedMeteors = createdMeteors.Select(MeteorMapper.ToMeteorDTO).ToList(),
+            LastMeteorCreatedAt = lastMeteorCreatedAt
+        });
     }
 
     /// <summary>
@@ -76,12 +80,13 @@ public class MeteorController(GameDbContext context, TimeService timeService, Ta
     /// <param name="level"></param>
     /// <returns></returns>
     [Authorize]
-    [HttpPut("result")]
-    public async Task<ActionResult<MeteorResultDTO>> GetMeteorResult(int meteorID)
+    [HttpPut("result/{meteorID}")]
+    public async Task<ActionResult<MeteorResultDTO>> GetMeteorResult()
     {
         var account = await GetAuthorizedAccountAsync();
         if (account == null) return Unauthorized("Account not found");
 
+        var meteorID = int.Parse(Request.RouteValues["meteorID"].ToString());
         var meteor = account.Meteors.FirstOrDefault(m => m.Id == meteorID);
         if (meteor == null) return BadRequest("Meteor not found");
         
@@ -132,7 +137,8 @@ public class MeteorController(GameDbContext context, TimeService timeService, Ta
             return Ok(new MeteorResultDTO
             {
                 RemovedMeteorId = meteorID,
-                ResultItem = ItemMapper.ToItemDTO(accountItem)
+                ResultItem = ItemMapper.ToItemDTO(accountItem),
+                LastMeteorCreatedAt = account.LastMeteorCreatedAt
             });
         }
     }

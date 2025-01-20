@@ -9,14 +9,14 @@ using UnityEngine;
 public class CheatManager : ManagerBase
 {
     private GameClient _gameClient;
-    private AccountAssetManager _accountAssetManager;
+    private AccountInfoManager _accountInfoManager;
 
     private const string CheatEndpoint = "api/cheat";
 
     private void Start()
     {
         _gameClient = App.Services.GetRequiredService<GameClient>();
-        _accountAssetManager = App.GetManager<AccountAssetManager>();
+        _accountInfoManager = App.GetManager<AccountInfoManager>();
     }
     
     public async UniTask UpdateCurrency(CurrencyDTO targetCurrency)
@@ -26,7 +26,7 @@ public class CheatManager : ManagerBase
         if(result.IsSuccess && result.Data is {} currency)
         {
             Debug.Log($"Currency updated: {currency}");
-            _accountAssetManager.UpdateCurrency(currency);
+            _accountInfoManager.UpdateCurrency(currency);
             return;
         }
         else
@@ -43,7 +43,7 @@ public class CheatManager : ManagerBase
         if(result.IsSuccess && result.Data is {} buildingInfo)
         {
             Debug.Log($"Building info updated: {buildingInfo}");
-            _accountAssetManager.UpdateBuildingInfo(buildingInfo);
+            _accountInfoManager.UpdateBuildingInfo(buildingInfo);
             return;
         }
         else
@@ -60,7 +60,7 @@ public class CheatManager : ManagerBase
         if(result.IsSuccess && result.Data is {} item)
         {
             Debug.Log($"Item updated: {item}");
-            _accountAssetManager.UpdateItem(item);
+            _accountInfoManager.UpdateItem(item);
             return;
         }
         else
@@ -69,9 +69,56 @@ public class CheatManager : ManagerBase
             return;
         }
     }
-
-    public void SetServerTime(string targetTime)
+    
+    public async void SetServerTimeForce(string targetTime)
     {
-        App.GetManager<TimeManager>().SetCheatTime(targetTime);
+        var timeManager = App.GetManager<TimeManager>();
+        if (timeManager.IsProcessing == false)
+        {
+            Debug.LogWarning("TimeManager is not processing");
+            return;
+        }
+        
+        if (DateTime.TryParse(targetTime, out var time))
+        {
+            var result = await _gameClient.PutAsync<DateTime>("api/time", time);
+            if (result.IsSuccess && result.Data is { } newServerTime)
+            {
+                timeManager.SyncTime(newServerTime);
+            }
+            else
+            {
+                Debug.LogWarning("Failed To Set Cheat Time: {result.Message}");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Invalid time format");
+        }
+    }
+
+    public async void TryCreateMeteor()
+    {
+        var result = await App.GetManager<MeteorManager>().CreateMeteor();
+    }
+    
+    public async void TryGetMeteorResult(int meteorId)
+    {
+        var result = await App.GetManager<MeteorManager>().GetMeteorResult(meteorId);
+    }
+
+    public async void TryGetStarTreeResult()
+    {
+        var result = await App.GetManager<StarTreeManager>().GetStarTreeResult();
+    }
+    
+    public async void TryGetWishResult()
+    {
+        var result = await App.GetManager<StarTreeManager>().GetWishResult();
+    }
+    
+    public async void TryLevelUpStarTree()
+    {
+        var result = await App.GetManager<StarTreeManager>().GetLevelUpResult();
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
@@ -5,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MinimoShared;
 using UnityEngine;
 
-public class AccountAssetManager : ManagerBase
+public class AccountInfoManager : ManagerBase
 {
     private GameClient _gameClient;
     
@@ -100,5 +101,41 @@ public class AccountAssetManager : ManagerBase
                 UpdateItem(itemUpdate.CurrentItem);
             }
         }
+    }
+    
+    public void UpdateLastMeteorCreatedAt(DateTime lastMeteorCreatedAt)
+    {
+        _gameClient.AccountInfo.LastMeteorCreatedAt = lastMeteorCreatedAt;
+    }
+    
+    public void AddMeteor(MeteorDTO meteorDto)
+    {
+        _gameClient.AccountInfo.Meteors.Add(meteorDto);
+    }
+    
+    public void AddMeteors(List<MeteorDTO> meteorDtos)
+    {
+        _gameClient.AccountInfo.Meteors.AddRange(meteorDtos);
+    }
+
+    public void RemoveMeteor(int meteorId)
+    {
+        var meteor = _gameClient.AccountInfo.Meteors.Find(m => m.Id == meteorId);
+        _gameClient.AccountInfo.Meteors.Remove(meteor);
+    }
+    
+    public void AddQuest(QuestDTO questDto)
+    {
+        _gameClient.AccountInfo.Quests.Add(questDto);
+    }
+    
+    public void UpdateLastStarTreeCreatedAt(DateTime lastStarTreeCreatedAt)
+    {
+        _gameClient.AccountInfo.LastStarTreeCreatedAt = lastStarTreeCreatedAt;
+    }
+    
+    public void UpdateLastWishedAt(DateTime lastWishedAt)
+    {
+        _gameClient.AccountInfo.LastWishedAt = lastWishedAt;
     }
 }
