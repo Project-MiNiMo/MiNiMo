@@ -17,7 +17,7 @@ public class UseCashPanel : UIBase
     
     [SerializeField] private ChargeCashBack _chargeBack;
     
-    private PlayerData _playerData;
+    private AccountInfoManager _accountInfo;
     private TitleData _titleData;
     private string _diamondCountString;
     
@@ -26,11 +26,11 @@ public class UseCashPanel : UIBase
     
     public override void Initialize()
     {
-        _playerData = App.GetData<PlayerData>();
+        _accountInfo = App.GetManager<AccountInfoManager>();
         _titleData = App.GetData<TitleData>();
 
-        _useBack.Initialize(_playerData, _titleData, ClosePanel, OpenCharge);
-        _useMaterialBack.Initialize(_playerData, _titleData, ClosePanel, OpenCharge);
+        _useBack.Initialize(_accountInfo, _titleData, ClosePanel, OpenCharge);
+        _useMaterialBack.Initialize(_accountInfo, _titleData, ClosePanel, OpenCharge);
         _chargeBack.Initialize(_titleData, ClosePanel);
         
         ClosePanel();

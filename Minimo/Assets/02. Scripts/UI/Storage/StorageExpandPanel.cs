@@ -1,3 +1,5 @@
+using MinimoShared;
+
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -18,7 +20,7 @@ public class StorageExpandPanel : UIBase
     [SerializeField] private Button _expandBtn;
     [SerializeField] private TextMeshProUGUI _priceTMP;
     
-    private PlayerData _playerData;
+    private AccountInfoManager _accountInfo;
     private int _currentCount;
     private int _expandCost;
     
@@ -28,7 +30,7 @@ public class StorageExpandPanel : UIBase
     {
         var titleData = App.GetData<TitleData>();
         
-        _playerData = App.GetData<PlayerData>();
+        _accountInfo = App.GetManager<AccountInfoManager>();
         
         _expandCost = titleData.Common["WareHouseExpandCost"];
         _expandString = titleData.GetString("STR_STORAGE_EXPAND_COST");
@@ -51,17 +53,22 @@ public class StorageExpandPanel : UIBase
         base.OpenPanel();
         
         _currentCount = 10;
-        _capacityTMP.text = $"{_storageCapacityCtrl.Capacity} / {_playerData.MaxStorageCapacity}";
+        _capacityTMP.text = $"{_storageCapacityCtrl.Capacity} / {100}"; //TODO : 최대 창고 용량
 
         UpdateCurrentCount();
     }
 
     private void OnClickExpand()
     {
-        if (_playerData.BlueStar < _expandCost * _currentCount) return;
+        if (_accountInfo.BlueStar < _expandCost * _currentCount) return;
         
-        _playerData.BlueStar -= _expandCost * _currentCount;
-        _playerData.MaxStorageCapacity += _currentCount;
+        var newCurrencyRequest = new CurrencyDTO
+        {
+            Star = _accountInfo.Star,
+            BlueStar = _accountInfo.BlueStar - _expandCost * _currentCount
+        };
+        _accountInfo.UpdateCurrency(newCurrencyRequest);
+        //_accountInfo.MaxStorageCapacity += _currentCount;
         
         _storageCapacityCtrl.UpdateMaxCapacity();
         
@@ -77,7 +84,7 @@ public class StorageExpandPanel : UIBase
     
     private void UpdateCurrentCount()
     {
-        _countTMP.text = (_currentCount + _playerData.MaxStorageCapacity).ToString();
+        _countTMP.text = (_currentCount + 100).ToString(); //TODO : 최대 창고 용량
         _priceTMP.text = string.Format(_expandString, Mathf.Max(_expandCost * _currentCount, 0));
         
         UpdateButtonActive();

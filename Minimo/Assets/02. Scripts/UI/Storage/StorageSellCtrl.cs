@@ -1,3 +1,5 @@
+using MinimoShared;
+
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -10,7 +12,7 @@ public class StorageSellCtrl : MonoBehaviour
     [SerializeField] private Button _sellBtn;
     [SerializeField] private TextMeshProUGUI _priceText;
 
-    private PlayerData _playerData;
+    private AccountInfoManager _accountInfo;
     private StoragePanel _storagePanel;
     private StorageInfoPanel _infoPanel;
     
@@ -21,7 +23,7 @@ public class StorageSellCtrl : MonoBehaviour
 
     public void Setup()
     {
-        _playerData = App.GetData<PlayerData>();
+        _accountInfo = App.GetManager<AccountInfoManager>();
         _storagePanel = App.GetManager<UIManager>().GetPanel<StoragePanel>();
         _infoPanel = App.GetManager<UIManager>().GetPanel<StorageInfoPanel>();
         
@@ -79,7 +81,14 @@ public class StorageSellCtrl : MonoBehaviour
     private void OnClickSell()
     {
         _item.Count -= _currentCount;
-        _playerData.BlueStar += _currentCount * _item.Data.SellCost;
+        
+        var newCurrencyRequest = new CurrencyDTO
+        {
+            Star = _accountInfo.Star,
+            BlueStar = _accountInfo.BlueStar + _currentCount * _item.Data.SellCost
+        };
+        
+        _accountInfo.UpdateCurrency(newCurrencyRequest);
         
         _storagePanel.OnStorageChanged();
         _infoPanel.ClosePanel();

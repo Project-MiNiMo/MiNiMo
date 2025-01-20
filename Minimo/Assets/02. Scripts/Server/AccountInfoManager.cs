@@ -8,6 +8,11 @@ using UnityEngine;
 
 public class AccountInfoManager : ManagerBase
 {
+    public string NickName => _gameClient.AccountInfo.Nickname;
+    public int Level => _gameClient.AccountInfo.Level;
+    public int Star => _gameClient.AccountInfo.Currency.Star;
+    public int BlueStar => _gameClient.AccountInfo.Currency.BlueStar;
+    
     private GameClient _gameClient;
     
     private void Start()

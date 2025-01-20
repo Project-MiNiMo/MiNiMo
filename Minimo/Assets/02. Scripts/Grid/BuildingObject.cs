@@ -6,7 +6,7 @@ using MinimoShared;
 
 public class BuildingObject : MonoBehaviour
 {
-    [HideInInspector] public BoundsInt Area;
+    public BoundsInt Area;
     public BoundsInt PreviousArea { get; private set; }
     public BuildingData Data { get; private set; }
 
@@ -26,23 +26,17 @@ public class BuildingObject : MonoBehaviour
     private void Awake()
     {
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-    }
-
-    private void Start()
-    {
+        
         _editManager = App.GetManager<EditManager>();
         _buildingManager = App.GetManager<BuildingManager>();
     }
-
+    
     public virtual void Initialize(BuildingData data)
     {
         Data = data;
-
+        
         var size = new Vector3Int(data.SizeX, data.SizeY, 1);
-        Area = new BoundsInt(Vector3Int.zero, size);
-
-        var yPosition = (float)((data.SizeX - 1) * 0.5);
-        _spriteRenderer.transform.localPosition = new Vector3(0, yPosition, 0);
+        Area = new BoundsInt(_editManager.GetCellPosition(transform.position), size);
     }
     
     public void Initialize(BuildingDTO buildingDto)
@@ -171,7 +165,7 @@ public class BuildingObject : MonoBehaviour
         var updateBuildingParameter = new UpdateBuildingParameter
         {
             Id = _id,
-            Position = new int[] {Area.position.x, Area.position.y, Area.position.x},
+            Position = new int[] {Area.position.x, Area.position.y, Area.position.z},
         };
 
         var updatedBuilding = await _buildingManager.UpdateBuildingAsync(updateBuildingParameter);

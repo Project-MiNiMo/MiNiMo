@@ -150,7 +150,6 @@ GameObject:
   - component: {fileID: 7360035128466793250}
   - component: {fileID: 7831037898466961710}
   - component: {fileID: 2746068176942643303}
-  - component: {fileID: 2340417529049579439}
   m_Layer: 0
   m_Name: Data
   m_TagString: Untagged
@@ -211,22 +210,6 @@ MonoBehaviour:
       Graphics: 0
     Alert:
       Push: 0
---- !u!114 &2340417529049579439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2231141257080437781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44090bfca748ca047b009b225efae0e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerLevel: 1
-  BlueStar: 0
-  DiamondStar: 0
-  MaxStorageCapacity: 100
 --- !u!1 &6961438075923870451
 GameObject:
   m_ObjectHideFlags: 0
