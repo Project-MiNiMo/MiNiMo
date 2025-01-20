@@ -51,18 +51,20 @@ public class EditManager : ManagerBase
             CancelEdit();
         }
         
+        _tileStateModifier.ModifyTileState(gridObject.Area, TileState.Empty);
+        
         CurrentEditObject = gridObject;
         IsEditing.Value = true;
         
         CurrentEditObject.StartEdit();
         CurrentCellPosition.Value = CurrentEditObject.transform.position;
-        
-        _tileStateModifier.ModifyTileState(CurrentEditObject.Area, TileState.Empty);
     }
 
     public void CancelEdit()
     {
         CurrentEditObject.Cancel();
+        
+        _tileStateModifier.ModifyTileState(CurrentEditObject.Area, TileState.Installed);
         
         CurrentEditObject = null;
         IsEditing.Value = false;
