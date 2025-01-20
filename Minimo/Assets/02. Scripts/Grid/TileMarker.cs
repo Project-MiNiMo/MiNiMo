@@ -19,13 +19,19 @@ public class TileMarker : MonoBehaviour
         _editManager.IsEditing
             .Subscribe((isEditing) =>
             {
-                if (!isEditing)
+                if (isEditing)
+                {
+                    if (!_editManager.CurrentEditObject) return;
+                    SetMarkTiles(_editManager.CurrentEditObject);
+                }
+                else
                 {
                     ClearMarkTiles();
                 }
             }).AddTo((gameObject));
 
         _editManager.CurrentCellPosition
+            .DistinctUntilChanged()
             .Subscribe((position) =>
             {
                 if(!_editManager.CurrentEditObject)

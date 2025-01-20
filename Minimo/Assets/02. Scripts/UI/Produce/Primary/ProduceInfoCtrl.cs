@@ -12,7 +12,7 @@ public class ProduceInfoCtrl : MonoBehaviour
     private TitleData _titleData;
     private ProduceOption _currentOption;
     
-    private void Start()
+    private void Awake()
     {
         _produceManager = App.GetManager<ProduceManager>();
         _titleData = App.GetData<TitleData>();

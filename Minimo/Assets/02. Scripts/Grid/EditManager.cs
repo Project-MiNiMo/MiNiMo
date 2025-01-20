@@ -33,12 +33,12 @@ public class EditManager : ManagerBase
                 continue;
             }
             var prefabPath = $"Building/{building.BuildingType}";
-            Debug.Log(building.BuildingType);
             var objectPrefab = Resources.Load<GameObject>(prefabPath);
             var position = building.Position != null
-                ? new Vector3(building.Position[0], building.Position[1], building.Position[2])
-                : Vector3.zero;
-            var buildingObject = Instantiate(objectPrefab, position, Quaternion.identity).GetComponent<BuildingObject>();
+                ? new Vector3Int(building.Position[0], building.Position[1], building.Position[2])
+                : Vector3Int.zero;
+            var cellPosition = _gridLayout.CellToWorld(position);
+            var buildingObject = Instantiate(objectPrefab, cellPosition, Quaternion.identity).GetComponent<BuildingObject>();
             buildingObject.Initialize(building);
             _tileStateModifier.ModifyTileState(buildingObject.Area, TileState.Installed);
         }
@@ -97,8 +97,13 @@ public class EditManager : ManagerBase
     
     private void SetCurrentPosition(Vector3Int position)
     {
-        CurrentEditObject.transform.position = _gridLayout.CellToWorld(position) + _gridLayout.cellSize * 0.5f;
-        CurrentEditObject.Area.position = _gridLayout.WorldToCell(CurrentEditObject.transform.position);
+        CurrentEditObject.transform.position = _gridLayout.CellToWorld(position);
+        CurrentEditObject.Area.position =  position;
         CurrentCellPosition.Value = CurrentEditObject.transform.position;
+    }
+    
+    public Vector3Int GetCellPosition(Vector3 position)
+    {
+        return _gridLayout.WorldToCell(position);
     }
 }
