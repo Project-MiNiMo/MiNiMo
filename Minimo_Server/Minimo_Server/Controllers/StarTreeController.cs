@@ -46,6 +46,7 @@ public class StarTreeController(GameDbContext context, TimeService timeService, 
         return Ok(new StarTreeResultDTO
         {
             UpdatedCurrency = CurrencyMapper.ToCurrencyDTO(account.Currency),
+            LastDateTime = currentTime,
         });
     }
 
@@ -79,6 +80,7 @@ public class StarTreeController(GameDbContext context, TimeService timeService, 
         return Ok(new StarTreeResultDTO
         {
             UpdatedCurrency = CurrencyMapper.ToCurrencyDTO(account.Currency),
+            LastDateTime = _timeService.CurrentTime,
         });
     }
 

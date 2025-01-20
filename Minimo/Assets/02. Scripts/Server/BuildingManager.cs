@@ -68,9 +68,9 @@ public class BuildingManager : ManagerBase
         if(result.IsSuccess && result.Data is {} buildingCreateResult)
         {
             Debug.Log($"Created building {buildingCreateResult.CreatedBuilding.BuildingType} (ID: {buildingCreateResult.CreatedBuilding.Id})");
-            App.GetManager<AccountAssetManager>().UpdateBuilding(buildingCreateResult.CreatedBuilding);
-            App.GetManager<AccountAssetManager>().UpdateBuildingInfo(buildingCreateResult.BuildingInfoDto);
-            App.GetManager<AccountAssetManager>().UpdateItems(buildingCreateResult.UpdatedItems);
+            App.GetManager<AccountInfoManager>().UpdateBuilding(buildingCreateResult.CreatedBuilding);
+            App.GetManager<AccountInfoManager>().UpdateBuildingInfo(buildingCreateResult.BuildingInfoDto);
+            App.GetManager<AccountInfoManager>().UpdateItems(buildingCreateResult.UpdatedItems);
             return buildingCreateResult.CreatedBuilding;
         }
         else
@@ -91,7 +91,7 @@ public class BuildingManager : ManagerBase
         if(result.IsSuccess && result.Data is {} updatedBuildingDto)
         {
             Debug.Log($"Updated building with ID {updateParameter.Id}");
-            App.GetManager<AccountAssetManager>().UpdateBuilding(updatedBuildingDto);
+            App.GetManager<AccountInfoManager>().UpdateBuilding(updatedBuildingDto);
             return updatedBuildingDto;
         }
         else
@@ -112,7 +112,7 @@ public class BuildingManager : ManagerBase
         var result = await _gameClient.DeleteAsync(endpoint);
         if(result.IsSuccess)
         {
-            App.GetManager<AccountAssetManager>().DeleteBuilding(buildingId);
+            App.GetManager<AccountInfoManager>().DeleteBuilding(buildingId);
             Debug.Log($"Deleted building with ID {buildingId}");
         }
         else
@@ -134,8 +134,8 @@ public class BuildingManager : ManagerBase
         if(result.IsSuccess && result.Data is {} createResult)
         {
             Debug.Log($"Created building info for {buildingType}");
-            App.GetManager<AccountAssetManager>().UpdateBuildingInfo(createResult.BuildingInfo);
-            App.GetManager<AccountAssetManager>().UpdateCurrency(createResult.UpdatedCurrency);
+            App.GetManager<AccountInfoManager>().UpdateBuildingInfo(createResult.BuildingInfo);
+            App.GetManager<AccountInfoManager>().UpdateCurrency(createResult.UpdatedCurrency);
             return createResult.BuildingInfo;
         }
         else
@@ -158,8 +158,8 @@ public class BuildingManager : ManagerBase
         {
             Debug.Log($"Upgraded max count for building {buildingType}");
             // 자원 업데이트
-            App.GetManager<AccountAssetManager>().UpdateBuildingInfo(upgradeResult.BuildingInfo);
-            App.GetManager<AccountAssetManager>().UpdateCurrency(upgradeResult.UpdatedCurrency);
+            App.GetManager<AccountInfoManager>().UpdateBuildingInfo(upgradeResult.BuildingInfo);
+            App.GetManager<AccountInfoManager>().UpdateCurrency(upgradeResult.UpdatedCurrency);
             return upgradeResult.BuildingInfo;
         }
         else
@@ -182,7 +182,7 @@ public class BuildingManager : ManagerBase
         if(result.IsSuccess && result.Data is {} producedBuilding)
         {
             Debug.Log($"Started producing building {producedBuilding.BuildingType}");
-            App.GetManager<AccountAssetManager>().UpdateBuilding(producedBuilding);
+            App.GetManager<AccountInfoManager>().UpdateBuilding(producedBuilding);
             // TODO : 자원 업데이트
             return producedBuilding;
         }
@@ -200,14 +200,14 @@ public class BuildingManager : ManagerBase
         if(result.IsSuccess && result.Data is {} completeResult)
         {
             Debug.Log($"Completed producing building {completeResult.UpdatedBuilding.BuildingType}");
-            App.GetManager<AccountAssetManager>().UpdateBuilding(completeResult.UpdatedBuilding);
-            App.GetManager<AccountAssetManager>().UpdateItems(completeResult.ProducedItems);
-            App.GetManager<AccountAssetManager>().UpdateCurrency(completeResult.UpdatedCurrency);
+            App.GetManager<AccountInfoManager>().UpdateBuilding(completeResult.UpdatedBuilding);
+            App.GetManager<AccountInfoManager>().UpdateItems(completeResult.ProducedItems);
+            App.GetManager<AccountInfoManager>().UpdateCurrency(completeResult.UpdatedCurrency);
             if (completeResult.ProducedItems != null)
             {
                 foreach (var itemDto in completeResult.ProducedItems)
                 {
-                    App.GetManager<AccountAssetManager>().UpdateItem(itemDto);
+                    App.GetManager<AccountInfoManager>().UpdateItem(itemDto);
                 }
             }
             return completeResult;

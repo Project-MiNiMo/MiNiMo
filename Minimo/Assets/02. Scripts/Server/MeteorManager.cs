@@ -22,12 +22,13 @@ public class MeteorManager : ManagerBase
     /// 유성을 생성합니다(시간이 충분히 지난 경우).
     /// </summary>
     /// <returns></returns>
-    public async UniTask<ApiResult<List<MeteorDTO>>> CreateMeteor()
+    public async UniTask<ApiResult<MeteorCreateDTO>> CreateMeteor()
     {
-        var result = await _gameClient.GetAsync<List<MeteorDTO>>(MeteorCreateEndpoint);
-        if (result.IsSuccess && result.Data is {} createdMeteors)
+        var result = await _gameClient.GetAsync<MeteorCreateDTO>(MeteorCreateEndpoint);
+        if (result.IsSuccess && result.Data is {} meteorCreateDto)
         {
-            AddMeteors(createdMeteors);
+            App.GetManager<AccountInfoManager>().AddMeteors(meteorCreateDto.CreatedMeteors);
+            App.GetManager<AccountInfoManager>().UpdateLastMeteorCreatedAt(meteorCreateDto.LastMeteorCreatedAt);
             return result;
         }
         else
@@ -47,7 +48,19 @@ public class MeteorManager : ManagerBase
         var result = await _gameClient.GetAsync<MeteorResultDTO>($"{MeteorResultEndpoint}/{meteorId}");
         if (result.IsSuccess && result.Data is {} meteorResult)
         {
-            RemoveMeteor(meteorId);
+            // TODO : 유성 결과 처리 
+            if (meteorResult.ResultItem != null)
+            {
+                Debug.Log($"Meteor result: {meteorResult.ResultItem}");
+                App.GetManager<AccountInfoManager>().UpdateItem(meteorResult.ResultItem);
+            }
+            if (meteorResult.ResultQuest != null)
+            {
+                Debug.Log($"Meteor result: {meteorResult.ResultQuest}");
+                App.GetManager<AccountInfoManager>().AddQuest(meteorResult.ResultQuest);   
+            }
+            App.GetManager<AccountInfoManager>().RemoveMeteor(meteorId);
+            App.GetManager<AccountInfoManager>().UpdateLastMeteorCreatedAt(meteorResult.LastMeteorCreatedAt);
             return result;
         }
         else
@@ -55,21 +68,5 @@ public class MeteorManager : ManagerBase
             Debug.LogWarning($"Failed to get meteor result: {result.Message}");
             return result;
         }
-    }
-
-    private void AddMeteor(MeteorDTO meteorDto)
-    {
-        _gameClient.AccountInfo.Meteors.Add(meteorDto);
-    }
-    
-    private void AddMeteors(List<MeteorDTO> meteorDtos)
-    {
-        _gameClient.AccountInfo.Meteors.AddRange(meteorDtos);
-    }
-
-    private void RemoveMeteor(int meteorId)
-    {
-        var meteor = _gameClient.AccountInfo.Meteors.Find(m => m.Id == meteorId);
-        _gameClient.AccountInfo.Meteors.Remove(meteor);
     }
 }

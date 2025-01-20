@@ -51,7 +51,7 @@ public class TimeManager : ManagerBase
     }
     
     // 첫 로그인시 서버 시간을 받아옴
-    private void SyncTime(DateTime serverTime)
+    public void SyncTime(DateTime serverTime)
     {
         var localTime = DateTime.UtcNow;
         _timeOffset = serverTime - localTime;
@@ -116,31 +116,5 @@ public class TimeManager : ManagerBase
             return;
         }
         TimeReactiveProperty.Value = Time;
-    }
-
-    public async void SetCheatTime(string targetTime)
-    {
-        if (IsProcessing == false)
-        {
-            Debug.LogWarning("TimeManager is not processing");
-            return;
-        }
-        
-        if (DateTime.TryParse(targetTime, out var time))
-        {
-            var result = await _gameClient.PutAsync<DateTime>("api/time", time);
-            if (result.IsSuccess && result.Data is { } newServerTime)
-            {
-                SyncTime(newServerTime);
-            }
-            else
-            {
-                Debug.LogWarning("Failed To Set Cheat Time: {result.Message}");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("Invalid time format");
-        }
     }
 }

@@ -176,7 +176,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:MinimoServer.Controllers.MeteorController.GetMeteorResult(System.Int32)">
+        <member name="M:MinimoServer.Controllers.MeteorController.GetMeteorResult">
             <summary>
             유성 결과를 반환합니다.
             </summary>
