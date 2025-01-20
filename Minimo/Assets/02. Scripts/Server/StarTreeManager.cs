@@ -11,7 +11,7 @@ public class StarTreeManager : ManagerBase
 
     private const string StarTreeEndpoint = "api/startree";
     private const string StarTreeWishEndpoint = "api/startree/wish";
-    private const string StarTreeLevelUpEndpoint = "api/satrtree/levelup";
+    private const string StarTreeLevelUpEndpoint = "api/startree/levelup";
 
     private void Start()
     {
