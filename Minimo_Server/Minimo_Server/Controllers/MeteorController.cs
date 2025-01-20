@@ -80,7 +80,7 @@ public class MeteorController(GameDbContext context, TimeService timeService, Ta
     /// <param name="level"></param>
     /// <returns></returns>
     [Authorize]
-    [HttpPut("result/{meteorID}")]
+    [HttpGet("result/{meteorID}")]
     public async Task<ActionResult<MeteorResultDTO>> GetMeteorResult()
     {
         var account = await GetAuthorizedAccountAsync();
