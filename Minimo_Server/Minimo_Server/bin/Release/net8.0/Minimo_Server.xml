@@ -106,6 +106,13 @@
             <param name="completeProduceDto"></param>
             <returns></returns>
         </member>
+        <member name="M:MinimoServer.Controllers.BuildingController.InstantProduce(MinimoShared.BuildingInstantProduceDTO)">
+            <summary>
+            현금을 지불하여 즉시 생산을 완료합니다.
+            </summary>
+            <param name="instantProduceDto"></param>
+            <returns></returns>
+        </member>
         <member name="M:MinimoServer.Controllers.BuildingInfoController.GetBuildingInfo(System.String)">
             <summary>
             건물 정보를 반환합니다.
