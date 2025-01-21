@@ -1,7 +1,9 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+using MinimoShared;
+using Cysharp.Threading.Tasks;
+
 using UnityEngine;
 
 public abstract class ProduceObject : BuildingObject
@@ -87,14 +89,26 @@ public abstract class ProduceObject : BuildingObject
             return;
         }
         
+        var optionIndex = Array.IndexOf(ProduceData.ProduceOptions, option);
+        
         _plantHelper.TryPlant(
             option,
+            optionIndex,
             OnPlant
         );
     }
 
-    protected virtual void OnPlant(ProduceTask task)
+    protected virtual async UniTask OnPlant(ProduceTask task, int optionIndex)
     {
+        var newStartProduce = new BuildingStartProduceDTO
+        {
+            BuildingId = _id,
+            SlotIndex = 0,
+            RecipeId = ++optionIndex
+        };
+        
+        await _buildingManager.StartProduce(newStartProduce);
+        
         AllTasks.Add(task);
         Debug.Log($"ProduceTask Added : {task.Data.Results[0].Code}");
         SetNextActiveTask();

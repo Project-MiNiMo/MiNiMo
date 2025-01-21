@@ -1,6 +1,6 @@
-using System.Linq;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using Cysharp.Threading.Tasks;
+
 using UnityEngine;
 
 public class Produce_Orchard :ProducePrimary
@@ -32,14 +32,14 @@ public class Produce_Orchard :ProducePrimary
         _ => (int)FruitType.Apple
     };
     
-    protected override void OnPlant(ProduceTask task)
+    protected override async UniTask OnPlant(ProduceTask task, int optionIndex)
     {
         if (AllTasks.Count > 0)
         {
             return;
         }
         
-        base.OnPlant(task);
+        await base.OnPlant(task, optionIndex);
         
         for (var i = 0; i < 4; i++)
         {

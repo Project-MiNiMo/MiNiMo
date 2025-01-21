@@ -10,7 +10,7 @@ public class BuildingObject : MonoBehaviour
     public BoundsInt PreviousArea { get; private set; }
     public BuildingData Data { get; private set; }
 
-    private int _id;
+    protected int _id;
     
     private bool _isPlaced = false;
     private bool _isFlipped = false;
@@ -19,8 +19,8 @@ public class BuildingObject : MonoBehaviour
     private float _pressTime = 0f;
     private const float LONG_PRESS_THRESHOLD = 3f;
     
+    protected BuildingManager _buildingManager;
     private EditManager _editManager;
-    private BuildingManager _buildingManager;
     private SpriteRenderer _spriteRenderer;
 
     private void Awake()

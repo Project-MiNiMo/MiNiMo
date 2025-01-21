@@ -1,4 +1,6 @@
-using System;
+using MinimoShared;
+using Cysharp.Threading.Tasks;
+
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -23,8 +25,24 @@ public class TitlePanel : MonoBehaviour
         AkSoundEngine.PostEvent("BGM_Title", gameObject);
     }
 
-    public void ShowTitle()
+    public async void ShowTitle()
     {
+        App.GetManager<CheatManager>().UpdateItem(new ItemDTO {ItemType = "Item_Timber", Count = 10}).Forget();
+        App.GetManager<CheatManager>().UpdateCurrency(new CurrencyDTO {HPI = 100, BlueStar = 100}).Forget();
+        
+        foreach (var building in App.GetData<TitleData>().Building.Values)
+        {
+            if (App.GetManager<AccountInfoManager>().Level >= building.UnlockLevel)
+            {
+                await App.GetManager<CheatManager>().UpdateBuildingInfo(new BuildingInfoDTO()
+                {
+                    BuildingType = building.ID,
+                    MaxCount = 5,
+                    ProduceSlotCount = 3,
+                });
+            }
+        }
+        
         _startBtn.gameObject.SetActive(true);
         
         _startTextRect.DOJumpAnchorPos(Vector2.one, 10, 1, 1)

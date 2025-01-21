@@ -1,4 +1,6 @@
 using System;
+using MinimoShared;
+using Cysharp.Threading.Tasks;
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -34,16 +36,19 @@ public class BuildingBtn : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI _lockNoticeTMP;
     [SerializeField] private TextMeshProUGUI _unlockNoticeTMP;
-
+    
     private BuildingData _data;
     private GameObject _objectPrefab;
     private Transform _buildingGroup;
 
+    private BuildingPanel _buildingPanel;
+    
     private BuildingState _currentState;
 
-    private void Start()
+    private void Awake()
     {
         _editBtn.onClick.AddListener(CreateObject);
+        _buildingPanel = App.GetManager<UIManager>().GetPanel<BuildingPanel>();
     }
 
     public void Initialize(BuildingData data, Transform gridObjectGroup)
@@ -52,11 +57,11 @@ public class BuildingBtn : MonoBehaviour
 
         _buildingGroup = gridObjectGroup;
 
-        string spritePath = $"Building/Icon/{data.Icon}";
+        var spritePath = $"Building/Icon/{data.Icon}";
         _iconImg.sprite = Resources.Load<Sprite>(spritePath);
         _iconImg.SetNativeSize();
         
-        string prefabPath = $"Building/{data.ID}";
+        var prefabPath = $"Building/{data.ID}";
         _objectPrefab = Resources.Load<GameObject>(prefabPath);
 
         SetString();
@@ -138,7 +143,7 @@ public class BuildingBtn : MonoBehaviour
 
     private void CreateObject()
     {
-        App.GetManager<UIManager>().GetPanel<BuildingPanel>().ClosePanel();
+        _buildingPanel.ClosePanel();
 
         var gridObject = Instantiate(_objectPrefab, _buildingGroup).GetComponentInChildren<BuildingObject>();
 

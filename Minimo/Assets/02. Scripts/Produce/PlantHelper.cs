@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
-
-using UnityEngine;
+using Cysharp.Threading.Tasks;
 
 public class PlantHelper 
 {
@@ -10,21 +9,22 @@ public class PlantHelper
 
     public void TryPlant(
         ProduceOption option,
-        Action<ProduceTask> onTaskCreated)
+        int optionIndex,
+        Func<ProduceTask, int, UniTask> onTaskCreated)
     {
         var lackItems = GetLackItems(option.Materials);
 
         if (lackItems.Count > 0)
         {
-            _useCashPanel.OpenPanel(lackItems, () =>
+            _useCashPanel.OpenPanel(lackItems, async () =>
             {
-                CreateTask(option, onTaskCreated);
+                await CreateTaskAsync(option, optionIndex, onTaskCreated);
             });
 
             return;
         }
 
-        CreateTask(option, onTaskCreated);
+        CreateTaskAsync(option, optionIndex, onTaskCreated).Forget();
     }
     
     private List<(Item, int)> GetLackItems(ProduceMaterial[] materials)
@@ -43,12 +43,15 @@ public class PlantHelper
         return lackItems;
     }
     
-    private void CreateTask(ProduceOption option, Action<ProduceTask> onTaskCreated)
+    private async UniTask CreateTaskAsync(
+        ProduceOption option, 
+        int optionIndex, 
+        Func<ProduceTask, int, UniTask> onTaskCreated)
     {
         ConsumeMaterials(option.Materials);
 
         var newTask = new ProduceTask(option);
-        onTaskCreated?.Invoke(newTask);
+        await onTaskCreated(newTask, optionIndex);
     }
 
     private void ConsumeMaterials(ProduceMaterial[] materials)
