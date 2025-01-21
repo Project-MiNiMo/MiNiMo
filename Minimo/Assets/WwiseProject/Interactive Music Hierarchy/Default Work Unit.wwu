@@ -53,6 +53,7 @@
 						<MusicSegment Name="Main Theme-07" ID="{F5962B59-ED76-4892-A9BD-912E11E09F0C}" ShortID="209309902">
 							<PropertyList>
 								<Property Name="EndPosition" Type="Real64" Value="114000"/>
+								<Property Name="OverrideOutput" Type="bool" Value="True"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
 										<Value>-8</Value>
@@ -64,14 +65,17 @@
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AD282FF1-D8D7-4FC4-B3C8-7C40AEFE1B63}"/>
 								</Reference>
 								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{32CED0DE-D5C6-4CC2-855F-411DDFFC76A9}"/>
+									<ObjectRef Name="BGM Audio Bus" ID="{B026D23B-0690-4AE4-88C9-6B5DE1313313}" WorkUnitID="{32CED0DE-D5C6-4CC2-855F-411DDFFC76A9}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
 								<MusicTrack Name="Main Theme-07" ID="{82132CE3-3ADF-40D4-976C-DDDB98C68173}" ShortID="142672952">
+									<PropertyList>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{32CED0DE-D5C6-4CC2-855F-411DDFFC76A9}"/>
+											<ObjectRef Name="BGM Audio Bus" ID="{B026D23B-0690-4AE4-88C9-6B5DE1313313}" WorkUnitID="{32CED0DE-D5C6-4CC2-855F-411DDFFC76A9}"/>
 										</Reference>
 										<Reference Name="TransitionRoot">
 											<Custom>

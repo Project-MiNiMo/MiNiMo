@@ -18,6 +18,12 @@ namespace AK
         static const AkUniqueID SFX_PROLOGUE = 3406591726U;
     } // namespace EVENTS
 
+    namespace GAME_PARAMETERS
+    {
+        static const AkUniqueID BGMVOLUME = 3043206523U;
+        static const AkUniqueID SFXVOLUME = 988953028U;
+    } // namespace GAME_PARAMETERS
+
     namespace BANKS
     {
         static const AkUniqueID INIT = 1355168291U;
