@@ -25,6 +25,11 @@ public class AccountInfoManager : ManagerBase
         _gameClient.AccountInfo = account;
     }
     
+    public void UpdateNickname(string nickname)
+    {
+        _gameClient.AccountInfo.Nickname = nickname;
+    }
+    
     public void UpdateCurrency(CurrencyDTO currency)
     {
         _gameClient.AccountInfo.Currency = currency;
