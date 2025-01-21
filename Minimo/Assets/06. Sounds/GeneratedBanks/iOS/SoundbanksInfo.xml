@@ -25,7 +25,7 @@
 				<Bus Id="4084199202" Name="SFX Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="1675065207" Type="User" Language="SFX" Hash="{CBD11ABD-AFC5-7502-1586-8C1DDA220F71}">
+		<SoundBank Id="1675065207" Type="User" Language="SFX" Hash="{B075A1D4-0646-359B-EB21-BEE061FE9BAB}">
 			<ShortName>DefaultSoundBank</ShortName>
 			<Path>DefaultSoundBank.bnk</Path>
 			<Media>
@@ -33,11 +33,20 @@
 					<ShortName>InGame (Day) BGM-03.wav</ShortName>
 					<CachePath>SFX/InGame (Day) BGM-03_FBC78EF0.wem</CachePath>
 				</File>
+				<File Id="802980875" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>프롤로그툰03.wav</ShortName>
+					<CachePath>SFX/프롤로그툰03_818F3B66.wem</CachePath>
+				</File>
 			</Media>
 			<Events>
 				<Event Id="2616887644" Name="BGM_InGame_Day" DurationType="OneShot" DurationMin="52.16" DurationMax="52.16">
 					<MediaRefs>
 						<MediaRef Id="532055058"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3406591726" Name="SFX_Prologue" DurationType="OneShot" DurationMin="39.125" DurationMax="39.125">
+					<MediaRefs>
+						<MediaRef Id="802980875"/>
 					</MediaRefs>
 				</Event>
 			</Events>
@@ -59,23 +68,10 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="4072029455" Type="User" Language="SFX" Hash="{64BF1AB7-25A5-D01D-F24D-B3ECDFFEBC44}">
+		<SoundBank Id="4072029455" Type="User" Language="SFX" Hash="{69F36C3D-97DC-4F03-9563-942449F7B9AB}">
 			<ShortName>New_SoundBank</ShortName>
 			<Path>New_SoundBank.bnk</Path>
-			<Media>
-				<File Id="162712758" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_ReflectionKill_01.wav</ShortName>
-					<CachePath>SFX/SFX_ReflectionKill_01_818F3B66.wem</CachePath>
-				</File>
-			</Media>
-			<Events>
-				<Event Id="1097980931" Name="TestEvent" DurationType="OneShot" DurationMin="2.3362083" DurationMax="2.3362083">
-					<MediaRefs>
-						<MediaRef Id="162712758"/>
-					</MediaRefs>
-				</Event>
-			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{B9A5525D-0438-CE5F-7CB1-D433868F4B10}</FileHash>
+	<FileHash>{29DBB897-42FA-99C7-9CF4-80F3AC62520E}</FileHash>
 </SoundBanksInfo>

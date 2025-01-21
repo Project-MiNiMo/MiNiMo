@@ -4,9 +4,7 @@
 		<WorkUnit Name="Default Work Unit" ID="{39AA389E-64BC-4A3D-A288-F512AF078CEB}" PersistMode="Standalone">
 			<ChildrenList>
 				<SoundBank Name="New_SoundBank" ID="{9A2FB49C-C386-425F-962B-5DBB12D75D1A}">
-					<ObjectInclusionList>
-						<ObjectRef Name="TestEvent" ID="{FF0158C5-F273-42BD-BC52-F04125FB3201}" WorkUnitID="{68C05815-A317-45FD-9C92-0EB94C1D3489}" Origin="Manual" Filter="7"/>
-					</ObjectInclusionList>
+					<ObjectInclusionList/>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>
@@ -20,6 +18,7 @@
 				<SoundBank Name="DefaultSoundBank" ID="{8BF179CF-5BBA-4495-BE84-F4947F3D0236}">
 					<ObjectInclusionList>
 						<ObjectRef Name="BGM_InGame_Day" ID="{CC5D875D-DE39-4AF3-81BE-F35F587D7CD9}" WorkUnitID="{68C05815-A317-45FD-9C92-0EB94C1D3489}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SFX_Prologue" ID="{DE2E65D9-01AB-4CEF-88BA-99836E00AFDD}" WorkUnitID="{68C05815-A317-45FD-9C92-0EB94C1D3489}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

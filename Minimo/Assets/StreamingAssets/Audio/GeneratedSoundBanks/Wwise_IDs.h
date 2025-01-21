@@ -15,7 +15,7 @@ namespace AK
     {
         static const AkUniqueID BGM_INGAME_DAY = 2616887644U;
         static const AkUniqueID BGM_TITLE = 737535402U;
-        static const AkUniqueID TESTEVENT = 1097980931U;
+        static const AkUniqueID SFX_PROLOGUE = 3406591726U;
     } // namespace EVENTS
 
     namespace BANKS
