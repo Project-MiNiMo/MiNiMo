@@ -10691,6 +10691,7 @@ MonoBehaviour:
   _openBtn: {fileID: 2098598961598274514}
   _closeBtn: {fileID: 2306484183767998448}
   _profileBack: {fileID: 2839305877477507425}
+  _nickNameInput: {fileID: 3077051196376193631}
   _playerImg: {fileID: 7494783407611109609}
   _levelTMP: {fileID: 3467190317501190421}
   _expTMP: {fileID: 4329664457850094690}
@@ -42157,7 +42158,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8381646418524810306}
-  - {fileID: 4712731043467518114}
   - {fileID: 808467069418828121}
   - {fileID: 5350691720473877007}
   - {fileID: 742096100235377261}
@@ -42171,6 +42171,7 @@ RectTransform:
   - {fileID: 6044111954838304090}
   - {fileID: 7674123425390474790}
   - {fileID: 5278666639536896347}
+  - {fileID: 4712731043467518114}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -42253,7 +42254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606a6d4a49688da42b79158543950bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _blackBlur: {fileID: 0}
+  _blackBlur: {fileID: 369958533610207269}
 --- !u!1 &8740258345332679260
 GameObject:
   m_ObjectHideFlags: 0

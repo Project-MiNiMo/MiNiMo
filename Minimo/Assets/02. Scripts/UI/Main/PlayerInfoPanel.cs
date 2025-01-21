@@ -6,14 +6,22 @@ public class PlayerInfoPanel : UIBase
     [SerializeField] private TextMeshProUGUI _nicknameTMP;
     [SerializeField] private TextMeshProUGUI _levelTMP;
 
-    private const string PLAYER_NAME = "¥Ÿ¿∫";
-    private const int PLAYER_LEVEL = 5;
-
+    private AccountInfoManager _accountInfo;
+    private string _levelString;
+    
     public override void Initialize()
     {
         var titleData = App.GetData<TitleData>();
-
-        _nicknameTMP.text = PLAYER_NAME;
-        _levelTMP.text = titleData.GetFormatString("STR_PROFILE_LEVEL", PLAYER_LEVEL.ToString());
+        _accountInfo = App.GetManager<AccountInfoManager>();
+        
+        _levelString = titleData.GetString("STR_PROFILE_LEVEL");
+        
+        _nicknameTMP.text = _accountInfo.NickName;
+        _levelTMP.text = string.Format(_levelString, _accountInfo.Level);
+    }
+    
+    public void SetNickName()
+    {
+        _nicknameTMP.text = _accountInfo.NickName;
     }
 }

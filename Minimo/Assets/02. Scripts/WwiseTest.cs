@@ -17,7 +17,8 @@ public class WwiseTest : MonoBehaviour
         _testBtn.interactable = false;
         _playImg.SetActive(true);
         _notPlayImg.SetActive(false);
-        AkSoundEngine.PostEvent(_soundCode, gameObject, (uint)AkCallbackType.AK_EndOfEvent, PlaySoundCallback, null);
+        AkSoundEngine.PostEvent(_soundCode, gameObject);
+        //AkSoundEngine.PostEvent(_soundCode, gameObject, (uint)AkCallbackType.AK_EndOfEvent, PlaySoundCallback, null);
     }
     private void PlaySoundCallback(object in_cookie, AkCallbackType in_type, AkCallbackInfo in_info)
     {

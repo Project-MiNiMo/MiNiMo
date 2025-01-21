@@ -39,6 +39,9 @@ public class UIManager : ManagerBase
             catch (Exception error)
             { Debug.LogError($"ERROR: {error.Message}\n{error.StackTrace}"); }
         }
+        
+        _blackBlur.gameObject.SetActive(true);
+        FadeOut();
     }
 
     #region Get Panel

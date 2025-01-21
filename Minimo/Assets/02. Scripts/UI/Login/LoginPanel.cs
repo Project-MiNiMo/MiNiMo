@@ -32,7 +32,6 @@ public class LoginPanel : MonoBehaviour
             }
             else
             {
-                _resultText.text = result.Message;
                 _loginPanel.SetActive(true);
             }
         }
@@ -45,9 +44,10 @@ public class LoginPanel : MonoBehaviour
 
         // 로그인 요청
         var result = await _loginManager.LoginAsync(id, pw);
-        if(result.IsSuccess)
+        if (result.IsSuccess)
         {
             _titlePanel.ShowTitle();
+            _loginPanel.SetActive(false);
         }
         else
         {
@@ -63,7 +63,15 @@ public class LoginPanel : MonoBehaviour
         
         // 회원가입 요청
         var result = await _loginManager.CreateAccountAsync(id, pw, randomNickname);
-        _resultText.text = result.Message;
+        if (result.IsSuccess) 
+        {
+            OnLogin();
+        }
+        else
+        {
+            _resultText.text = result.Message;
+        }
+        
         Debug.Log(result.Data);
     }
 }

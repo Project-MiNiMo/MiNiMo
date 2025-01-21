@@ -10,6 +10,7 @@ public class ProfilePanel : UIBase
     [SerializeField] private Button _closeBtn;
     [SerializeField] private GameObject _profileBack;
 
+    [SerializeField] private TMP_InputField _nickNameInput;
     [SerializeField] private Image _playerImg;
     [SerializeField] private TextMeshProUGUI _levelTMP;
 
@@ -25,6 +26,12 @@ public class ProfilePanel : UIBase
     [SerializeField] private TextMeshProUGUI _friendTMP;
     [SerializeField] private TextMeshProUGUI _friendDescTMP;
 
+    private AccountInfoManager _accountInfo;
+    private PlayerInfoPanel _playerInfoPanel;
+    
+    private string _levelString;
+    private string _expString;
+    
     #region Temp - PlayerInfo
     private const int PLAYER_LEVEL = 5;
     private const int PLAYER_EXP = 33;
@@ -36,10 +43,16 @@ public class ProfilePanel : UIBase
     
     public override void Initialize()
     {
-        var titleData = App.GetData<TitleData>();
-
+        _accountInfo = App.GetManager<AccountInfoManager>();
+        _playerInfoPanel = App.GetManager<UIManager>().GetPanel<PlayerInfoPanel>();
+        
         _openBtn.onClick.AddListener(OpenPanel);
         _closeBtn.onClick.AddListener(ClosePanel);
+        _nickNameInput.onValueChanged.AddListener((text)=>
+        {
+            _accountInfo.UpdateNickname(text);
+            _playerInfoPanel.SetNickName();
+        });
 
         SetString();
         SetButtonEvent();
@@ -52,7 +65,12 @@ public class ProfilePanel : UIBase
     {
         var titleData = App.GetData<TitleData>();
 
-        _levelTMP.text = titleData.GetFormatString("STR_PROFILE_LEVEL", PLAYER_LEVEL.ToString());
+        SetNickName();
+            
+        _levelString = titleData.GetString("STR_PROFILE_LEVEL");
+        _expString = titleData.GetString("STR_PROFILE_EXP");
+
+        _levelTMP.text = string.Format(_levelString, _accountInfo.Level);
         _expTMP.text = titleData.GetFormatString("STR_PROFILE_EXP", PLAYER_EXP.ToString(), PLAYER_EXP_MAX.ToString());
 
         _followerDescTMP.text = titleData.GetString("STR_PROFILE_FOLLOWER");
@@ -74,5 +92,10 @@ public class ProfilePanel : UIBase
     private void UpdateExpProgressBar()
     {
         _expProgressBarImg.fillAmount = (float)PLAYER_EXP / PLAYER_EXP_MAX;
+    }
+
+    public void SetNickName()
+    {
+        _nickNameInput.SetTextWithoutNotify(_accountInfo.NickName);
     }
 }
