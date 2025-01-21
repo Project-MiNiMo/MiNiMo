@@ -105,7 +105,7 @@ public abstract class ProduceObject : BuildingObject
         }
     }
 
-    public void StartProduce(ProduceOption option)
+    public void StartPlant(ProduceOption option)
     {
         if (!ProduceData.ProduceOptions.Contains(option)) return;
         if (_isPlanting) return;
