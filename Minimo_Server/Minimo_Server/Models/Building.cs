@@ -4,6 +4,13 @@ using System.Numerics;
 
 namespace MinimoServer.Models;
 
+public enum ProduceSlotStatus
+{
+    Idle,       // 생산되지 않은 상태
+    Producing,  // 생산 중
+    Completed   // 생산 완료 (수확 대기)
+}
+
 public class Building
 {
     public int Id { get; set; }
@@ -18,8 +25,8 @@ public class Building
     
     public int[] Position { get; set; } = new int[3];
 
-    // TODO 아.. 이건 리팩토링..해야해....
-    public bool[] ProduceStatus { get; set; } = new bool[5];// 생산 상태
+    // TODO 아.. 이건 리팩토링..해야해.... //화이팅!! - 다은
+    public ProduceSlotStatus[] ProduceStatus { get; set; } = new ProduceSlotStatus[5];// 생산 상태
 
     public int[] Recipes { get; set; } = new int[5];
     public DateTime[] ProduceStartAt { get; set; } = new DateTime[5]; // 생산 시작 시간
