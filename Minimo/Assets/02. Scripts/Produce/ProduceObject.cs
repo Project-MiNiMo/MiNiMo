@@ -13,7 +13,7 @@ public abstract class ProduceObject : BuildingObject
     public ProduceTask ActiveTask { get; private set; }
     public virtual bool IsPrimary => false;
 
-    private bool[] _produceSlots = new bool[5];
+    private readonly bool[] _produceSlots = new bool[5];
     private bool _isPlanting = false;
     private bool _isHarvesting = false;
 
@@ -34,6 +34,25 @@ public abstract class ProduceObject : BuildingObject
         _produceManager = App.GetManager<ProduceManager>();
         _timeManager = App.GetManager<TimeManager>();
         _lastUpdateTime = _timeManager.Time;
+    }
+    
+    public override void Initialize(BuildingDTO buildingDto)
+    {
+        base.Initialize(buildingDto);
+
+        for (var i = 0; i < buildingDto.ProduceStatus.Length; i++)
+        {
+            if (buildingDto.ProduceStatus[i])
+            {
+                _produceSlots[i] = true;
+                
+                var produceOption = ProduceData.ProduceOptions[buildingDto.Recipes[i]];
+                var newTask = new ProduceTask(produceOption, i);
+                AllTasks.Add(newTask);
+            }
+        }
+
+        SetNextActiveTask();
     }
 
     protected override void Update()
@@ -144,6 +163,7 @@ public abstract class ProduceObject : BuildingObject
                 
                 task.Harvest();
                 AllTasks.RemoveAt(i);
+                _produceSlots[task.SlotIndex] = false;
             }
         }
 

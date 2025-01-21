@@ -40,7 +40,7 @@ public class BuildingObject : MonoBehaviour
         PreviousArea = Area;
     }
     
-    public void Initialize(BuildingDTO buildingDto)
+    public virtual void Initialize(BuildingDTO buildingDto)
     {
         _id = buildingDto.Id;
         _isPlaced = true;
