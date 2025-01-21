@@ -33,12 +33,13 @@ public class TitlePanel : MonoBehaviour
         foreach (var building in App.GetData<TitleData>().Building.Values)
         {
             if (App.GetManager<AccountInfoManager>().Level >= building.UnlockLevel)
-            {
+            { 
+                var produceSlotCount = building.ID == "Building_Building_Orchard" ? 5 : 3;
                 await App.GetManager<CheatManager>().UpdateBuildingInfo(new BuildingInfoDTO()
                 {
                     BuildingType = building.ID,
                     MaxCount = 5,
-                    ProduceSlotCount = 3,
+                    ProduceSlotCount = produceSlotCount,
                 });
             }
         }

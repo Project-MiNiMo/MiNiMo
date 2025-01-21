@@ -13,6 +13,8 @@ public abstract class ProduceObject : BuildingObject
     public ProduceTask ActiveTask { get; private set; }
     public virtual bool IsPrimary => false;
 
+    private bool[] _produceSlots = new bool[5];
+
     private PlantHelper _plantHelper;
     
     private ProduceManager _produceManager;
@@ -84,16 +86,18 @@ public abstract class ProduceObject : BuildingObject
 
     public void StartProduce(ProduceOption option)
     {
-        if (!ProduceData.ProduceOptions.Contains(option))
-        {
-            return;
-        }
+        if (!ProduceData.ProduceOptions.Contains(option)) return;
+        
+        var slotIndex = Array.FindIndex(_produceSlots, slot => !slot);
+        
+        if (slotIndex == -1) return;
         
         var optionIndex = Array.IndexOf(ProduceData.ProduceOptions, option);
         
         _plantHelper.TryPlant(
             option,
             optionIndex,
+            slotIndex,
             OnPlant
         );
     }
@@ -103,7 +107,7 @@ public abstract class ProduceObject : BuildingObject
         var newStartProduce = new BuildingStartProduceDTO
         {
             BuildingId = _id,
-            SlotIndex = 0,
+            SlotIndex = task.SlotIndex,
             RecipeId = ++optionIndex
         };
         

@@ -43,8 +43,7 @@ public class Produce_Orchard :ProducePrimary
         
         for (var i = 0; i < 4; i++)
         {
-            var newTask = new ProduceTask(task.Data);
-            AllTasks.Add(newTask);
+            await OnPlant(task, optionIndex);
         }
     }
 }

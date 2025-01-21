@@ -12,6 +12,7 @@ public class PlantHelper
     public void TryPlant(
         ProduceOption option,
         int optionIndex,
+        int slotIndex,
         Func<ProduceTask, int, UniTask> onTaskCreated)
     {
         var lackItems = GetLackItems(option.Materials);
@@ -20,13 +21,13 @@ public class PlantHelper
         {
             _useCashPanel.OpenPanel(lackItems, async () =>
             {
-                await CreateTaskAsync(option, optionIndex, onTaskCreated);
+                await CreateTaskAsync(option, optionIndex, slotIndex, onTaskCreated);
             });
 
             return;
         }
 
-        CreateTaskAsync(option, optionIndex, onTaskCreated).Forget();
+        CreateTaskAsync(option, optionIndex, slotIndex, onTaskCreated).Forget();
     }
     
     private List<(Item, int)> GetLackItems(ProduceMaterial[] materials)
@@ -49,11 +50,12 @@ public class PlantHelper
     private async UniTask CreateTaskAsync(
         ProduceOption option, 
         int optionIndex, 
+        int slotIndex,
         Func<ProduceTask, int, UniTask> onTaskCreated)
     {
         ConsumeMaterials(option.Materials);
 
-        var newTask = new ProduceTask(option);
+        var newTask = new ProduceTask(option, slotIndex);
         await onTaskCreated(newTask, optionIndex);
     }
 
