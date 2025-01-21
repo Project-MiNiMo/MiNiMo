@@ -44,6 +44,7 @@ public class ProfilePanel : UIBase
     public override void Initialize()
     {
         _accountInfo = App.GetManager<AccountInfoManager>();
+        _playerInfoPanel = App.GetManager<UIManager>().GetPanel<PlayerInfoPanel>();
         
         _openBtn.onClick.AddListener(OpenPanel);
         _closeBtn.onClick.AddListener(ClosePanel);
@@ -95,6 +96,6 @@ public class ProfilePanel : UIBase
 
     public void SetNickName()
     {
-        _nickNameInput.text = _accountInfo.NickName;
+        _nickNameInput.SetTextWithoutNotify(_accountInfo.NickName);
     }
 }

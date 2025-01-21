@@ -10691,6 +10691,7 @@ MonoBehaviour:
   _openBtn: {fileID: 2098598961598274514}
   _closeBtn: {fileID: 2306484183767998448}
   _profileBack: {fileID: 2839305877477507425}
+  _nickNameInput: {fileID: 3077051196376193631}
   _playerImg: {fileID: 7494783407611109609}
   _levelTMP: {fileID: 3467190317501190421}
   _expTMP: {fileID: 4329664457850094690}
