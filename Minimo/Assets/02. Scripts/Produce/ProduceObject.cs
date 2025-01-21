@@ -14,6 +14,8 @@ public abstract class ProduceObject : BuildingObject
     public virtual bool IsPrimary => false;
 
     private bool[] _produceSlots = new bool[5];
+    private bool _isPlanting = false;
+    private bool _isHarvesting = false;
 
     private PlantHelper _plantHelper;
     
@@ -87,6 +89,7 @@ public abstract class ProduceObject : BuildingObject
     public void StartProduce(ProduceOption option)
     {
         if (!ProduceData.ProduceOptions.Contains(option)) return;
+        if (_isPlanting) return;
         
         var slotIndex = Array.FindIndex(_produceSlots, slot => !slot);
         
@@ -104,6 +107,8 @@ public abstract class ProduceObject : BuildingObject
 
     protected virtual async UniTask OnPlant(ProduceTask task, int optionIndex)
     {
+        _isPlanting = true;
+        
         var newStartProduce = new BuildingStartProduceDTO
         {
             BuildingId = _id,
@@ -116,10 +121,15 @@ public abstract class ProduceObject : BuildingObject
         AllTasks.Add(task);
         Debug.Log($"ProduceTask Added : {task.Data.Results[0].Code}");
         SetNextActiveTask();
+
+        _isPlanting = false;
     }
 
     public virtual async UniTask StartHarvest()
     {
+        if (_isHarvesting) return;
+        _isHarvesting = true;
+        
         for (var i = AllTasks.Count - 1; i >= 0; i--)
         {
             var task = AllTasks[i];
@@ -138,12 +148,20 @@ public abstract class ProduceObject : BuildingObject
         }
 
         SetNextActiveTask();
+        
+        _isHarvesting = false;
     }
 
-    public void HarvestEarly()
+    public async UniTask HarvestEarly()
     {
         if (ActiveTask == null) return;
         
+        var newInstantProduce = new BuildingInstantProduceDTO
+        {
+            BuildingId = _id,
+            SlotIndex = ActiveTask.SlotIndex
+        };
+        var result = await _buildingManager.InstantProduceAsync(newInstantProduce);
         ActiveTask.Harvest();
         CompleteActiveTask();
     }

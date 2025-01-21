@@ -11,7 +11,7 @@ public class BuildingManager : ManagerBase
 
     private const string BuildingEndpoint = "api/building";
     private const string BuildingInfoEndpoint = "api/buildinginfo";
-
+    
     private void Start()
     {
         _gameClient = App.Services.GetRequiredService<GameClient>();
@@ -215,6 +215,29 @@ public class BuildingManager : ManagerBase
         else
         {
             Debug.LogError($"Failed to complete producing building: {result.Message}");
+            return null;
+        }
+    }
+    
+    /// <summary>
+    /// 현금을 지불하여 즉시 생산을 완료합니다.
+    /// </summary>
+    /// <param name="instantProduceDto">즉시 생산 요청 정보</param>
+    /// <returns>업데이트된 건물 DTO</returns>
+    public async UniTask<BuildingInstantProduceResultDTO> InstantProduceAsync(BuildingInstantProduceDTO instantProduceDto)
+    {
+        var endpoint = $"{BuildingEndpoint}/recipe/instant";
+        var result = await _gameClient.PostAsync<BuildingInstantProduceResultDTO>(endpoint, instantProduceDto);
+        if (result.IsSuccess && result.Data is {} instantProduceResult)
+        {
+            Debug.Log($"Instantly completed production for building {instantProduceResult.UpdatedBuilding.BuildingType}");
+            App.GetManager<AccountInfoManager>().UpdateBuilding(instantProduceResult.UpdatedBuilding);
+            App.GetManager<AccountInfoManager>().UpdateCurrency(instantProduceResult.UpdatedCurrency);
+            return instantProduceResult;
+        }
+        else
+        {
+            Debug.LogError($"Failed to instantly complete production: {result.Message}");
             return null;
         }
     }

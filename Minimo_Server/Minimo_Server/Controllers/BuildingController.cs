@@ -281,4 +281,52 @@ public class BuildingController(GameDbContext context, TimeService timeService, 
         };
         return Ok(resultDTO);
     }
+
+    /// <summary>
+    /// 현금을 지불하여 즉시 생산을 완료합니다.
+    /// </summary>
+    /// <param name="instantProduceDto"></param>
+    /// <returns></returns>
+    [Authorize]
+    [HttpPost("recipe/instant")]
+    public async Task<ActionResult<BuildingInstantProduceResultDTO>> InstantProduce(BuildingInstantProduceDTO instantProduceDto)
+    {
+        var account = await GetAuthorizedAccountAsync();
+        if (account == null) return Unauthorized("Account not found");
+
+        var building = account.Buildings.FirstOrDefault(b => b.Id == instantProduceDto.BuildingId);
+        if (building == null) return NotFound(new { message = "Building not found" });
+
+        var buildingInfo = account.BuildingInfos.FirstOrDefault(b => b.BuildingType == building.Type);
+        if (buildingInfo == null) return BadRequest("BuildingInfo not found");
+
+        var slotIndex = instantProduceDto.SlotIndex;
+        if (slotIndex < 0 || slotIndex >= buildingInfo.ProduceSlotCount) return BadRequest("Invalid slot index");
+
+        if (!building.ProduceStatus[slotIndex]) return BadRequest("Not producing");
+
+        var remainingTime = building.ProduceEndAt[slotIndex] - _timeService.CurrentTime;
+        if (remainingTime <= TimeSpan.Zero) return BadRequest("Production already completed");
+
+        // 계산된 현금 소모량 확인 및 차감
+        var cashCost = CalculateInstantProduceCost(remainingTime);
+        if (account.Currency.BlueStar < cashCost) return BadRequest("Not enough blue star");
+        account.Currency.BlueStar -= cashCost;
+
+        // 생산 종료 시간 갱신
+        building.ProduceEndAt[slotIndex] = _timeService.CurrentTime;
+
+        await _context.SaveChangesAsync();
+
+        return Ok(new BuildingInstantProduceResultDTO
+        {
+            UpdatedBuilding = BuildingMapper.ToBuildingDTO(building),
+            UpdatedCurrency = CurrencyMapper.ToCurrencyDTO(account.Currency),
+        });
+    }
+
+    private int CalculateInstantProduceCost(TimeSpan remainingTime)
+    {
+        return (int)Math.Ceiling(remainingTime.TotalSeconds / 30);
+    }
 }
