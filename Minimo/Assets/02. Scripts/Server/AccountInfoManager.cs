@@ -91,6 +91,44 @@ public class AccountInfoManager : ManagerBase
         }
     }
     
+    public void AddItemCount(string itemType, int count)
+    {
+        var item = _gameClient.AccountInfo.Items.Find(i => i.ItemType == itemType);
+        if(item != null)
+        {
+            item.Count += count;
+        }
+        else
+        {
+            var newItem = new ItemDTO
+            {
+                ItemType = itemType,
+                Count = count
+            };
+            _gameClient.AccountInfo.Items.Add(newItem);
+        }
+    }
+    
+    public ItemDTO GetItem(string itemType)
+    {
+        var item = _gameClient.AccountInfo.Items.Find(i => i.ItemType == itemType);
+        if (item != null) 
+        {
+            return item;
+        }
+        else
+        {
+            var newItem = new ItemDTO
+            {
+                ItemType = itemType,
+                Count = 0
+            };
+            _gameClient.AccountInfo.Items.Add(newItem);
+
+            return newItem;
+        }
+    }
+    
     public void UpdateAssetInfo(AssetUpdateDTO assetUpdate)
     {
         if(assetUpdate.CurrencyUpdate != null)

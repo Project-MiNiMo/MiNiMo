@@ -87,8 +87,7 @@ public class CompletedState : ITaskState
         
         foreach (var result in task.Data.Results)
         {
-            var item = titleData.ItemSO.GetItem(result.Code);
-            item.Count += result.Amount;
+            App.GetManager<AccountInfoManager>().AddItemCount(result.Code, result.Amount);
         }
         
         task.ChangeState(EndState.Instance);

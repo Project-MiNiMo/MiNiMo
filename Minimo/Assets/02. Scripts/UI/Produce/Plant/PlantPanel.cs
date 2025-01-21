@@ -14,11 +14,6 @@ public class PlantPanel : UIBase
     {
         _plantOptionSlots = GetComponentsInChildren<PlantOptionSlot>(true);
         _produceManager = App.GetManager<ProduceManager>();
-
-        foreach (var slot in _plantOptionSlots)
-        {
-            slot.Initialize();
-        }
         
         _closeBtn.onClick.AddListener(ClosePanel);
     }

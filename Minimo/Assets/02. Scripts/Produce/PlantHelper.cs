@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using MinimoShared;
 
 public class PlantHelper 
 {
     private readonly ItemSO _itemSO = App.GetData<TitleData>().ItemSO;
     private readonly UseCashPanel _useCashPanel = App.GetManager<UIManager>().GetPanel<UseCashPanel>();
+    private readonly AccountInfoManager _accountInfo = App.GetManager<AccountInfoManager>();
 
     public void TryPlant(
         ProduceOption option,
@@ -34,9 +36,10 @@ public class PlantHelper
         foreach (var material in materials)
         {
             var item = _itemSO.GetItem(material.Code);
-            if (item.Count < material.Amount)
+            var itemDTO = _accountInfo.GetItem(item.Code);
+            if (itemDTO.Count < material.Amount)
             {
-                lackItems.Add((item, material.Amount - item.Count));
+                lackItems.Add((item, material.Amount - itemDTO.Count));
             }
         }
 
@@ -58,8 +61,7 @@ public class PlantHelper
     {
         foreach (var material in materials)
         {
-            var item = _itemSO.GetItem(material.Code);
-            item.Count -= material.Amount;
+            _accountInfo.AddItemCount(material.Code, -material.Amount);
         }
     }
 }
