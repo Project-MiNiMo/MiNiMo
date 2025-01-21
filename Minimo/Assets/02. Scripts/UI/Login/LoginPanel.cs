@@ -32,7 +32,6 @@ public class LoginPanel : MonoBehaviour
             }
             else
             {
-                _resultText.text = result.Message;
                 _loginPanel.SetActive(true);
             }
         }
@@ -48,6 +47,7 @@ public class LoginPanel : MonoBehaviour
         if(result.IsSuccess)
         {
             _titlePanel.ShowTitle();
+            _loginPanel.SetActive(false);
         }
         else
         {
@@ -62,9 +62,18 @@ public class LoginPanel : MonoBehaviour
         var randomNickname = "User" + UnityEngine.Random.Range(0, 1000);
         
         // 회원가입 요청
-        var result = await _loginManager.CreateAccountAsync(id, pw, randomNickname);
-        _resultText.text = result.Message;
-        Debug.Log(result.Data);
+        await _loginManager.CreateAccountAsync(id, pw, randomNickname);
+        var loginResult = await _loginManager.LoginAsync(id, pw);
+        if (loginResult.IsSuccess) 
+        {
+            _titlePanel.ShowTitle();
+            _loginPanel.SetActive(false);
+        }
+        else
+        {
+            _resultText.text = loginResult.Message;
+        }
+        Debug.Log(loginResult.Data);
     }
 }
 
