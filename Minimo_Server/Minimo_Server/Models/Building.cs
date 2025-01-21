@@ -1,15 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Numerics;
+using MinimoShared;
 
 namespace MinimoServer.Models;
-
-public enum ProduceSlotStatus
-{
-    Idle,       // 생산되지 않은 상태
-    Producing,  // 생산 중
-    Completed   // 생산 완료 (수확 대기)
-}
 
 public class Building
 {
