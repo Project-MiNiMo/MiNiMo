@@ -55,9 +55,9 @@ public abstract class ProducePrimary : ProduceObject
         }
     }
     
-    protected override void CompleteActiveTask()
+    protected override async UniTask CompleteActiveTask()
     {
-        base.CompleteActiveTask();
+        await base.CompleteActiveTask();
         
         _currentSpriteIndex = 2;
         _cropSpriteRenderer.sprite = _currentCropSprites[_currentSpriteIndex];
