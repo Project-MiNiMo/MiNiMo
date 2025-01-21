@@ -37,6 +37,7 @@ public class BuildingObject : MonoBehaviour
         
         var size = new Vector3Int(data.SizeX, data.SizeY, 1);
         Area = new BoundsInt(_editManager.GetCellPosition(transform.position), size);
+        PreviousArea = Area;
     }
     
     public void Initialize(BuildingDTO buildingDto)
@@ -139,7 +140,7 @@ public class BuildingObject : MonoBehaviour
         var newBuildingRequest = new BuildingDTO
         {
             BuildingType = Data.ID,
-            Position = new int[] {Area.position.x, Area.position.y, Area.position.x},
+            Position = new int[] {Area.position.x, Area.position.y, Area.position.z},
         };
         
         var newBuildingDto = await _buildingManager.CreateBuildingAsync(newBuildingRequest);

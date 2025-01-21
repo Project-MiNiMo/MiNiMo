@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using MinimoShared;
 
 using UnityEngine;
 
@@ -44,7 +45,15 @@ public class Produce_Orchard :ProducePrimary
         for (var i = 0; i < 4; i++)
         {
             var produceTask = new ProduceTask(task.Data, i + 1);
-            await OnPlant(produceTask, optionIndex);
+            var newStartProduce = new BuildingStartProduceDTO
+            {
+                BuildingId = _id,
+                SlotIndex = produceTask.SlotIndex,
+                RecipeId = ++optionIndex
+            };
+        
+            await _buildingManager.StartProduce(newStartProduce);
+            AllTasks.Add(produceTask);
         }
     }
 }
