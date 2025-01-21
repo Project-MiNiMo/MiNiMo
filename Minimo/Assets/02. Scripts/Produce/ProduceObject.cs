@@ -132,7 +132,7 @@ public abstract class ProduceObject : BuildingObject
         {
             BuildingId = _id,
             SlotIndex = task.SlotIndex,
-            RecipeId = ++optionIndex
+            RecipeId = optionIndex + 1
         };
         
         await _buildingManager.StartProduce(newStartProduce);

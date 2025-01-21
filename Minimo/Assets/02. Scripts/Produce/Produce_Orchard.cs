@@ -50,7 +50,7 @@ public class Produce_Orchard :ProducePrimary
             {
                 BuildingId = _id,
                 SlotIndex = produceTask.SlotIndex,
-                RecipeId = ++optionIndex
+                RecipeId = optionIndex + 1
             };
         
             await _buildingManager.StartProduce(newStartProduce);

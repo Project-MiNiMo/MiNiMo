@@ -207,13 +207,54 @@ public class BuildingController(GameDbContext context, TimeService timeService, 
         
         // 레시피 building에 저장
         building.Recipes[slotIndex] = startProduceDto.RecipeId;
-        building.ProduceStartAt[slotIndex] = _timeService.CurrentTime;
-        building.ProduceEndAt[slotIndex] = building.ProduceStartAt[slotIndex] + TimeSpan.FromSeconds(recipe.Time);
-        building.ProduceStatus[slotIndex] = true;
-        
+        building.ProduceStatus[slotIndex] = false;
+
+        // 생산 가능 여부 확인 후 첫 번째 슬롯 시작
+        await TryStartNextProduction(building);
+
         await _context.SaveChangesAsync();
 
         return Ok(BuildingMapper.ToBuildingDTO(building));
+    }
+    
+    private async Task TryStartNextProduction(Building building, int currentSlotIndex = -1)
+    {
+        // 이미 생산 중인 슬롯이 있는지 확인
+        if (building.ProduceStatus.Any(status => status))
+        {
+            // 생산 중인 슬롯이 있으므로 새로운 생산을 시작하지 않음
+            return;
+        }
+        
+        var startIndex = (currentSlotIndex + 1) % building.ProduceStatus.Length;
+        
+        // 시작 인덱스부터 false 상태인 슬롯 찾기
+        var nextSlotIndex = -1;
+        for (var i = 0; i < building.ProduceStatus.Length; i++)
+        {
+            var index = (startIndex + i) % building.ProduceStatus.Length; // 순환 처리
+            if (!building.ProduceStatus[index])
+            {
+                nextSlotIndex = index;
+                break;
+            }
+        }
+
+        // 생산할 슬롯이 없으면 종료
+        if (nextSlotIndex == -1) return;
+
+        // 슬롯의 레시피를 확인하고 생산 시작
+        var recipeId = building.Recipes[nextSlotIndex];
+        if (recipeId <= 0) return;
+
+        var recipe = _tableDataService.GetProduceRecipe(building.Type, recipeId);
+        if (recipe == null) return;
+
+        building.ProduceStartAt[nextSlotIndex] = _timeService.CurrentTime;
+        building.ProduceEndAt[nextSlotIndex] = building.ProduceStartAt[nextSlotIndex] + TimeSpan.FromSeconds(recipe.Time);
+        building.ProduceStatus[nextSlotIndex] = true;
+
+        await _context.SaveChangesAsync();
     }
     
     /// <summary>
@@ -273,6 +314,8 @@ public class BuildingController(GameDbContext context, TimeService timeService, 
         
         await _context.SaveChangesAsync();
         
+        await TryStartNextProduction(building, slotIndex);
+        
         var resultDTO = new BuildingCompleteProduceResultDTO()
         {
             UpdatedBuilding = BuildingMapper.ToBuildingDTO(building),
@@ -315,9 +358,11 @@ public class BuildingController(GameDbContext context, TimeService timeService, 
 
         // 생산 종료 시간 갱신
         building.ProduceEndAt[slotIndex] = _timeService.CurrentTime;
-
+          
         await _context.SaveChangesAsync();
-
+        
+        //await TryStartNextProduction(building, slotIndex);
+        
         return Ok(new BuildingInstantProduceResultDTO
         {
             UpdatedBuilding = BuildingMapper.ToBuildingDTO(building),
