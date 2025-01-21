@@ -83,15 +83,8 @@ public class CompletedState : ITaskState
 
     public void OnHarvest(ProduceTask task)
     {
-        Debug.Log($"Harvested: {task.Data.Results}");
+        Debug.Log($"Harvested: {task.Data.Results[0].Code}");
 
-        var titleData = App.GetData<TitleData>();
-        
-        foreach (var result in task.Data.Results)
-        {
-            App.GetManager<AccountInfoManager>().AddItemCount(result.Code, result.Amount);
-        }
-        
         task.ChangeState(EndState.Instance);
     }
 }

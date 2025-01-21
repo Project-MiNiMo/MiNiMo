@@ -118,13 +118,20 @@ public abstract class ProduceObject : BuildingObject
         SetNextActiveTask();
     }
 
-    public virtual void StartHarvest()
+    public virtual async UniTask StartHarvest()
     {
         for (var i = AllTasks.Count - 1; i >= 0; i--)
         {
             var task = AllTasks[i];
             if (task.CurrentState is CompletedState)
             {
+                var newCompleteProduce = new BuildingCompleteProduceDTO
+                {
+                    BuildingId = _id,
+                    SlotIndex = task.SlotIndex
+                };
+                await _buildingManager.CompleteProduce(newCompleteProduce);
+                
                 task.Harvest();
                 AllTasks.RemoveAt(i);
             }
