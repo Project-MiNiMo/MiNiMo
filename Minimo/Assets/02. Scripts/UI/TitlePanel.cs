@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -15,6 +16,11 @@ public class TitlePanel : MonoBehaviour
     {
         _startBtn.onClick.AddListener(OnClickStart);
         _startBtn.gameObject.SetActive(false);
+    }
+
+    private void Start()
+    {
+        AkSoundEngine.PostEvent("BGM_Title", gameObject);
     }
 
     public void ShowTitle()
