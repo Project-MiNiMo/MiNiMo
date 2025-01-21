@@ -161,7 +161,7 @@ public abstract class ProduceObject : BuildingObject
             BuildingId = _id,
             SlotIndex = ActiveTask.SlotIndex
         };
-        var result = await _buildingManager.InstantProduceAsync(newInstantProduce);
+        await _buildingManager.InstantProduceAsync(newInstantProduce);
         ActiveTask.Harvest();
         CompleteActiveTask();
     }

@@ -34,7 +34,7 @@ public class TitlePanel : MonoBehaviour
         {
             if (App.GetManager<AccountInfoManager>().Level >= building.UnlockLevel)
             { 
-                var produceSlotCount = building.ID == "Building_Building_Orchard" ? 5 : 3;
+                var produceSlotCount = building.ID == "Building_Orchard" ? 5 : 3;
                 await App.GetManager<CheatManager>().UpdateBuildingInfo(new BuildingInfoDTO()
                 {
                     BuildingType = building.ID,
