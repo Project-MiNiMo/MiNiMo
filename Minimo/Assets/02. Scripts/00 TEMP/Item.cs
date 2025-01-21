@@ -14,7 +14,6 @@ public enum ItemType
 public class Item : ScriptableObject
 {
     public string Code;
-    public int Count;
 
     public ItemData Data { get; private set; }
     public Sprite Icon { get; private set; }
@@ -22,7 +21,6 @@ public class Item : ScriptableObject
     public void SetData(ItemData _data)
     {
         Data = _data;
-        Count = 0;
 
         Icon = Resources.Load<Sprite>($"Item/{_data.ID}");
     }

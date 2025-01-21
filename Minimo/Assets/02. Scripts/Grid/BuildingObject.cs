@@ -10,7 +10,7 @@ public class BuildingObject : MonoBehaviour
     public BoundsInt PreviousArea { get; private set; }
     public BuildingData Data { get; private set; }
 
-    private int _id;
+    protected int _id;
     
     private bool _isPlaced = false;
     private bool _isFlipped = false;
@@ -19,8 +19,8 @@ public class BuildingObject : MonoBehaviour
     private float _pressTime = 0f;
     private const float LONG_PRESS_THRESHOLD = 3f;
     
+    protected BuildingManager _buildingManager;
     private EditManager _editManager;
-    private BuildingManager _buildingManager;
     private SpriteRenderer _spriteRenderer;
 
     private void Awake()
@@ -37,6 +37,7 @@ public class BuildingObject : MonoBehaviour
         
         var size = new Vector3Int(data.SizeX, data.SizeY, 1);
         Area = new BoundsInt(_editManager.GetCellPosition(transform.position), size);
+        PreviousArea = Area;
     }
     
     public void Initialize(BuildingDTO buildingDto)
@@ -139,7 +140,7 @@ public class BuildingObject : MonoBehaviour
         var newBuildingRequest = new BuildingDTO
         {
             BuildingType = Data.ID,
-            Position = new int[] {Area.position.x, Area.position.y, Area.position.x},
+            Position = new int[] {Area.position.x, Area.position.y, Area.position.z},
         };
         
         var newBuildingDto = await _buildingManager.CreateBuildingAsync(newBuildingRequest);

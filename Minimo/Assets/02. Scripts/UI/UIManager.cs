@@ -23,6 +23,8 @@ public class UIManager : ManagerBase
         {
             _uiDictionary.Add(panel.GetType(), panel);
         }
+        
+        _blackBlur.gameObject.SetActive(true);
     }
 
     private void Start()
@@ -40,7 +42,6 @@ public class UIManager : ManagerBase
             { Debug.LogError($"ERROR: {error.Message}\n{error.StackTrace}"); }
         }
         
-        _blackBlur.gameObject.SetActive(true);
         FadeOut();
     }
 
@@ -72,7 +73,7 @@ public class UIManager : ManagerBase
     public void FadeOut(Action onComplete = null)
     {
         _blackBlur.DOKill();
-        _blackBlur.DOFade(0f, 1f).SetEase(Ease.Linear).OnComplete(() =>
+        _blackBlur.DOFade(0f, 0.5f).SetEase(Ease.Linear).OnComplete(() =>
         {
             _blackBlur.gameObject.SetActive(false);
             onComplete?.Invoke();

@@ -17,6 +17,7 @@ public class StorageSellCtrl : MonoBehaviour
     private StorageInfoPanel _infoPanel;
     
     private Item _item;
+    private ItemDTO _itemDTO;
     
     private int _currentCount;
     private string _sellText;
@@ -37,8 +38,9 @@ public class StorageSellCtrl : MonoBehaviour
     public void Initialize(Item item)
     {
         _item = item;
-        
-        _currentCount = (item.Count / 2) + 1;
+
+        _itemDTO = _accountInfo.GetItem(item.Code);
+        _currentCount = (_itemDTO.Count / 2) + 1;
         UpdateCurrentCount();
     }
     
@@ -68,7 +70,7 @@ public class StorageSellCtrl : MonoBehaviour
             _decreaseBtn.gameObject.SetActive(true);
         }
 
-        if (_currentCount >= _item.Count) 
+        if (_currentCount >= _itemDTO.Count) 
         {
             _increaseBtn.gameObject.SetActive(false);
         }
@@ -80,7 +82,7 @@ public class StorageSellCtrl : MonoBehaviour
 
     private void OnClickSell()
     {
-        _item.Count -= _currentCount;
+        _accountInfo.AddItemCount(_item.Code, -_currentCount);
         
         var newCurrencyRequest = new CurrencyDTO
         {

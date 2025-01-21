@@ -1,7 +1,9 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+using MinimoShared;
+using Cysharp.Threading.Tasks;
+
 using UnityEngine;
 
 public abstract class ProduceObject : BuildingObject
@@ -10,6 +12,8 @@ public abstract class ProduceObject : BuildingObject
     public List<ProduceTask> AllTasks { get; } = new(); 
     public ProduceTask ActiveTask { get; private set; }
     public virtual bool IsPrimary => false;
+
+    private bool[] _produceSlots = new bool[5];
 
     private PlantHelper _plantHelper;
     
@@ -82,31 +86,52 @@ public abstract class ProduceObject : BuildingObject
 
     public void StartProduce(ProduceOption option)
     {
-        if (!ProduceData.ProduceOptions.Contains(option))
-        {
-            return;
-        }
+        if (!ProduceData.ProduceOptions.Contains(option)) return;
+        
+        var slotIndex = Array.FindIndex(_produceSlots, slot => !slot);
+        
+        if (slotIndex == -1) return;
+        
+        var optionIndex = Array.IndexOf(ProduceData.ProduceOptions, option);
         
         _plantHelper.TryPlant(
             option,
+            optionIndex,
+            slotIndex,
             OnPlant
         );
     }
 
-    protected virtual void OnPlant(ProduceTask task)
+    protected virtual async UniTask OnPlant(ProduceTask task, int optionIndex)
     {
+        var newStartProduce = new BuildingStartProduceDTO
+        {
+            BuildingId = _id,
+            SlotIndex = task.SlotIndex,
+            RecipeId = ++optionIndex
+        };
+        
+        await _buildingManager.StartProduce(newStartProduce);
+        
         AllTasks.Add(task);
         Debug.Log($"ProduceTask Added : {task.Data.Results[0].Code}");
         SetNextActiveTask();
     }
 
-    public virtual void StartHarvest()
+    public virtual async UniTask StartHarvest()
     {
         for (var i = AllTasks.Count - 1; i >= 0; i--)
         {
             var task = AllTasks[i];
             if (task.CurrentState is CompletedState)
             {
+                var newCompleteProduce = new BuildingCompleteProduceDTO
+                {
+                    BuildingId = _id,
+                    SlotIndex = task.SlotIndex
+                };
+                await _buildingManager.CompleteProduce(newCompleteProduce);
+                
                 task.Harvest();
                 AllTasks.RemoveAt(i);
             }

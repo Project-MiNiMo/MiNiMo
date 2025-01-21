@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using Cysharp.Threading.Tasks;
+
 using UnityEngine;
 
 public abstract class ProducePrimary : ProduceObject
@@ -61,14 +63,14 @@ public abstract class ProducePrimary : ProduceObject
         _cropSpriteRenderer.sprite = _currentCropSprites[_currentSpriteIndex];
     }
     
-    protected override void OnPlant(ProduceTask task)
+    protected override async UniTask OnPlant(ProduceTask task, int optionIndex)
     {
         if (AllTasks.Count > 0)
         {
             return;
         }
         
-        base.OnPlant(task);
+        await base.OnPlant(task, optionIndex);
         
         _currentSpriteIndex = 0;
 
@@ -77,9 +79,9 @@ public abstract class ProducePrimary : ProduceObject
         _cropSpriteRenderer.sprite = _currentCropSprites[_currentSpriteIndex];
     }
     
-    public override void StartHarvest()
+    public override async UniTask StartHarvest()
     {
-        base.StartHarvest();
+        await base.StartHarvest();
 
         if (ActiveTask == null)
         {

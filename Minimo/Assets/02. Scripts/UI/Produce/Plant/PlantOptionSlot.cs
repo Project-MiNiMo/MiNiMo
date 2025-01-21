@@ -21,12 +21,14 @@ public class PlantOptionSlot : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _storageTMP;
     
     private TitleData _titleData;
+    private AccountInfoManager _accountInfo;
     [SerializeField] private PlantHandler _plantHandler;
 
-    public void Initialize()
+    private void Awake()
     {
         _titleData = App.GetData<TitleData>();
         _plantHandler = GetComponentInChildren<PlantHandler>(true);
+        _accountInfo = App.GetManager<AccountInfoManager>();
     }
 
     public void SetOption(ProduceOption optionData)
@@ -37,7 +39,7 @@ public class PlantOptionSlot : MonoBehaviour
         SetMaterialInfo(optionData.Materials);
         
         _timeTMP.text = optionData.Time.ToString();
-        _storageTMP.text = _titleData.ItemSO.GetItem(optionData.Results[0].Code).Count.ToString();
+        _storageTMP.text = _accountInfo.GetItem(optionData.Results[0].Code).Count.ToString();
     }
 
     private void SetMaterialInfo(ProduceMaterial[] materials)

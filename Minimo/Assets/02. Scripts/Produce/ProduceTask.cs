@@ -4,12 +4,14 @@ public class ProduceTask
 {
     public ProduceOption Data { get; }
     public int RemainTime { get; private set; }
+    public int SlotIndex { get; private set; }
     public ITaskState CurrentState { get; private set; }
     
-    public ProduceTask(ProduceOption produceOption)
+    public ProduceTask(ProduceOption produceOption, int slotIndex)
     {
         Data = produceOption;
         RemainTime = produceOption.Time;
+        SlotIndex = slotIndex;
         
         CurrentState = PendingState.Instance;
     }
@@ -81,16 +83,8 @@ public class CompletedState : ITaskState
 
     public void OnHarvest(ProduceTask task)
     {
-        Debug.Log($"Harvested: {task.Data.Results}");
+        Debug.Log($"Harvested: {task.Data.Results[0].Code}");
 
-        var titleData = App.GetData<TitleData>();
-        
-        foreach (var result in task.Data.Results)
-        {
-            var item = titleData.ItemSO.GetItem(result.Code);
-            item.Count += result.Amount;
-        }
-        
         task.ChangeState(EndState.Instance);
     }
 }
