@@ -22,7 +22,7 @@ public class TitlePanel : MonoBehaviour
 
     private void Start()
     {
-        AkSoundEngine.PostEvent("BGM_Title", gameObject);
+        //AkSoundEngine.PostEvent("BGM_Title", gameObject);
     }
 
     public async void ShowTitle()
