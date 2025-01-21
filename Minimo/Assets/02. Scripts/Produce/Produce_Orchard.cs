@@ -44,7 +44,8 @@ public class Produce_Orchard :ProducePrimary
         
         for (var i = 0; i < 4; i++)
         {
-            var produceTask = new ProduceTask(task.Data, i + 1);
+            var slotIndex = i + 1;
+            var produceTask = new ProduceTask(task.Data, slotIndex);
             var newStartProduce = new BuildingStartProduceDTO
             {
                 BuildingId = _id,
