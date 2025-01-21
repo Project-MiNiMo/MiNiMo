@@ -94,7 +94,7 @@ public class AccountInfoManager : ManagerBase
     public void AddItemCount(string itemType, int count)
     {
         var item = _gameClient.AccountInfo.Items.Find(i => i.ItemType == itemType);
-        if(item != null)
+        if (item != null) 
         {
             item.Count += count;
         }
@@ -107,6 +107,8 @@ public class AccountInfoManager : ManagerBase
             };
             _gameClient.AccountInfo.Items.Add(newItem);
         }
+
+        App.GetManager<CheatManager>().UpdateItem(item);
     }
     
     public ItemDTO GetItem(string itemType)
