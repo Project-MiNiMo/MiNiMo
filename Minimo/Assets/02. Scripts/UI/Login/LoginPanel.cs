@@ -44,7 +44,7 @@ public class LoginPanel : MonoBehaviour
 
         // 로그인 요청
         var result = await _loginManager.LoginAsync(id, pw);
-        if(result.IsSuccess)
+        if (result.IsSuccess)
         {
             _titlePanel.ShowTitle();
             _loginPanel.SetActive(false);
@@ -62,18 +62,17 @@ public class LoginPanel : MonoBehaviour
         var randomNickname = "User" + UnityEngine.Random.Range(0, 1000);
         
         // 회원가입 요청
-        await _loginManager.CreateAccountAsync(id, pw, randomNickname);
-        var loginResult = await _loginManager.LoginAsync(id, pw);
-        if (loginResult.IsSuccess) 
+        var result = await _loginManager.CreateAccountAsync(id, pw, randomNickname);
+        if (result.IsSuccess) 
         {
-            _titlePanel.ShowTitle();
-            _loginPanel.SetActive(false);
+            OnLogin();
         }
         else
         {
-            _resultText.text = loginResult.Message;
+            _resultText.text = result.Message;
         }
-        Debug.Log(loginResult.Data);
+        
+        Debug.Log(result.Data);
     }
 }
 
