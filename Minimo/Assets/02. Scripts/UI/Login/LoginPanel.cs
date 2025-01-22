@@ -19,7 +19,7 @@ public class LoginPanel : MonoBehaviour
     
     private async void Start()
     {
-        _loginBtn.onClick.AddListener(OnLogin);
+        _loginBtn.onClick.AddListener(() => OnLogin());
         _registerBtn.onClick.AddListener(OnRegister);
         
         _loginManager = App.GetManager<LoginManager>();
@@ -37,7 +37,7 @@ public class LoginPanel : MonoBehaviour
         }
     }
     
-    private async void OnLogin()
+    private async void OnLogin(bool isNew = false)
     {
         var id = ThrowHelper.IfNullOrWhitespace(_idInputField.text);
         var pw = ThrowHelper.IfNullOrWhitespace(_pwInputField.text);
@@ -46,7 +46,7 @@ public class LoginPanel : MonoBehaviour
         var result = await _loginManager.LoginAsync(id, pw);
         if (result.IsSuccess)
         {
-            _titlePanel.ShowTitle();
+            _titlePanel.ShowTitle(isNew);
             _loginPanel.SetActive(false);
         }
         else
@@ -65,7 +65,7 @@ public class LoginPanel : MonoBehaviour
         var result = await _loginManager.CreateAccountAsync(id, pw, randomNickname);
         if (result.IsSuccess) 
         {
-            OnLogin();
+            OnLogin(true);
         }
         else
         {
