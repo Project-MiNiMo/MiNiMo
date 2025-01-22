@@ -19,6 +19,26 @@ public class MeteorManager : ManagerBase
     }
     
     /// <summary>
+    /// 유성 정보를 가져옵니다.
+    /// </summary>
+    /// <returns></returns>
+    public async UniTask<ApiResult<List<MeteorDTO>>> GetMeteors()
+    {
+        var result = await _gameClient.GetAsync<List<MeteorDTO>>(MeteorEndpoint);
+        if (result.IsSuccess && result.Data is {} meteorList)
+        {
+            // 유성 정보를 AccountInfoManager에 업데이트
+            Debug.Log($"Retrieved {meteorList.Count} meteors from server.");
+            return result;
+        }
+        else
+        {
+            Debug.LogWarning($"Failed to retrieve meteors: {result.Message}");
+            return result;
+        }
+    }
+    
+    /// <summary>
     /// 유성을 생성합니다(시간이 충분히 지난 경우).
     /// </summary>
     /// <returns></returns>

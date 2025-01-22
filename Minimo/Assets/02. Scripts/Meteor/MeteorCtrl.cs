@@ -37,8 +37,8 @@ public class MeteorCtrl : MonoBehaviour
         _meteorManager = App.GetManager<MeteorManager>();
         _lastSpawnTime = _timeManager.Time; //TODO: Save and retrieve the initialization time for each star on the server
         _lastUpdateTime = _timeManager.Time;
-        
-        CheckShootingStars();
+
+        SetExistingMeteors().Forget();
     }
 
     private void Update()
@@ -47,7 +47,7 @@ public class MeteorCtrl : MonoBehaviour
         
         _lastUpdateTime = _timeManager.Time;
 
-        if (!CheckRemainingShootingStars())
+        if (!CheckRemainingMeteor())
         {
             _lastSpawnTime = _timeManager.Time;
             return;
@@ -55,10 +55,32 @@ public class MeteorCtrl : MonoBehaviour
 
         if (_isSpawning) return;
         
-        CheckShootingStars();
+        CheckSpawnInterval().Forget();
+    }
+    
+    private async UniTask SetExistingMeteors()
+    {
+        var result = await _meteorManager.GetMeteors();
+        if (!result.IsSuccess) return;
+
+        var spawnPositions = _installChecker.GetInstallablePositions();
+        if (spawnPositions.Count == 0) return;
+        
+        foreach (var existMeteor in result.Data)
+        {
+            var meteor = _meteors.FirstOrDefault(star => !star.IsLanded);
+            if (meteor == null) break;
+            
+            var meteorId = existMeteor.Id;
+            var spawnPosition = spawnPositions[UnityEngine.Random.Range(0, spawnPositions.Count)];
+            _tileStateModifier.ModifyTileState(spawnPosition, TileState.Installed);
+            spawnPositions.Remove(spawnPosition);
+            
+            meteor.Land(meteorId, spawnPosition);
+        }
     }
 
-    private async UniTask CheckShootingStars()
+    private async UniTask CheckSpawnInterval()
     {
         _isSpawning = true;
         
@@ -66,21 +88,21 @@ public class MeteorCtrl : MonoBehaviour
         
         if (timeDifference.TotalSeconds >= _spawnInterval)
         {
-            await SpawnShootingStar();
+            await SpawnMeteor();
             _lastSpawnTime = _lastSpawnTime.AddSeconds(_spawnInterval);
         }
         
         _isSpawning = false;
     }
     
-    private bool CheckRemainingShootingStars()
+    private bool CheckRemainingMeteor()
     {
         return _meteors.Any(star => !star.IsLanded);
     }
 
-    private async UniTask SpawnShootingStar()
+    private async UniTask SpawnMeteor()
     {
-        if (!CheckRemainingShootingStars()) return;
+        if (!CheckRemainingMeteor()) return;
         
         var spawnPositions = _installChecker.GetInstallablePositions();
         if (spawnPositions.Count == 0) return;
