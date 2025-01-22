@@ -21,6 +21,10 @@ public class PlantHelper
         {
             _useCashPanel.OpenPanel(lackItems, async () =>
             {
+                foreach (var item in lackItems)
+                {
+                    _accountInfo.AddItemCount(item.Item1.Code, item.Item2);
+                }
                 await CreateTaskAsync(option, optionIndex, slotIndex, onTaskCreated);
             });
 

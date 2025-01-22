@@ -42,7 +42,7 @@ public abstract class ProduceObject : BuildingObject
 
         for (var i = 0; i < buildingDto.ProduceStatus.Length; i++)
         {
-            if (buildingDto.ProduceStatus[i])
+            if (buildingDto.ProduceStatus[i] == ProduceSlotStatus.Producing)
             {
                 _produceSlots[i] = true;
                 
@@ -74,8 +74,15 @@ public abstract class ProduceObject : BuildingObject
         }
     }
     
-    protected virtual void CompleteActiveTask()
+    protected virtual async UniTask CompleteActiveTask()
     {
+        var newCompleteProduce = new BuildingCompleteProduceDTO
+        {
+            BuildingId = _id,
+            SlotIndex = ActiveTask.SlotIndex
+        };
+        await _buildingManager.CompleteProduce(newCompleteProduce);
+        
         ActiveTask = null;
 
         SetNextActiveTask();
@@ -105,7 +112,7 @@ public abstract class ProduceObject : BuildingObject
         }
     }
 
-    public void StartProduce(ProduceOption option)
+    public void StartPlant(ProduceOption option)
     {
         if (!ProduceData.ProduceOptions.Contains(option)) return;
         if (_isPlanting) return;
@@ -132,7 +139,7 @@ public abstract class ProduceObject : BuildingObject
         {
             BuildingId = _id,
             SlotIndex = task.SlotIndex,
-            RecipeId = ++optionIndex
+            RecipeId = optionIndex + 1
         };
         
         await _buildingManager.StartProduce(newStartProduce);
@@ -154,12 +161,12 @@ public abstract class ProduceObject : BuildingObject
             var task = AllTasks[i];
             if (task.CurrentState is CompletedState)
             {
-                var newCompleteProduce = new BuildingCompleteProduceDTO
+                var newHarvestProduce = new BuildingHarvestProduceDTO()
                 {
                     BuildingId = _id,
                     SlotIndex = task.SlotIndex
                 };
-                await _buildingManager.CompleteProduce(newCompleteProduce);
+                await _buildingManager.HarvestProduce(newHarvestProduce);
                 
                 task.Harvest();
                 AllTasks.RemoveAt(i);
@@ -183,7 +190,9 @@ public abstract class ProduceObject : BuildingObject
         };
         await _buildingManager.InstantProduceAsync(newInstantProduce);
         ActiveTask.Harvest();
-        CompleteActiveTask();
+        ActiveTask = null;
+
+        SetNextActiveTask();
     }
     
     public void OrganizeTasks()

@@ -48,7 +48,7 @@ public class PlantHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         Collider2D hit = Physics2D.OverlapPoint(worldPosition, _targetLayerMask);
         if (hit != null && hit.TryGetComponent<ProduceObject>(out var component))
         {
-            component.StartProduce(_currentOption);
+            component.StartPlant(_currentOption);
         }
     }
 
@@ -62,7 +62,7 @@ public class PlantHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             if (result.gameObject.CompareTag("ProduceTaskBtn"))
             {
                 var currentObject = _produceManager.CurrentProduceObject;
-                currentObject.StartProduce(_currentOption);
+                currentObject.StartPlant(_currentOption);
                 break; 
             }
         }

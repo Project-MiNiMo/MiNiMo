@@ -193,28 +193,44 @@ public class BuildingManager : ManagerBase
         }
     }
     
-    public async UniTask<BuildingCompleteProduceResultDTO> CompleteProduce(BuildingCompleteProduceDTO completeProduceDto)
+    public async UniTask<bool> CompleteProduce(BuildingCompleteProduceDTO completeProduceDto)
     {
         var endpoint = $"{BuildingEndpoint}/recipe/complete";
-        var result = await _gameClient.PostAsync<BuildingCompleteProduceResultDTO>(endpoint, completeProduceDto);
-        if(result.IsSuccess && result.Data is {} completeResult)
+        var result = await _gameClient.PostAsync<object>(endpoint, completeProduceDto); // 서버는 성공 메시지만 반환
+        if (result.IsSuccess)
         {
-            Debug.Log($"Completed producing building {completeResult.UpdatedBuilding.BuildingType}");
-            App.GetManager<AccountInfoManager>().UpdateBuilding(completeResult.UpdatedBuilding);
-            App.GetManager<AccountInfoManager>().UpdateItems(completeResult.ProducedItems);
-            App.GetManager<AccountInfoManager>().UpdateCurrency(completeResult.UpdatedCurrency);
-            if (completeResult.ProducedItems != null)
-            {
-                foreach (var itemDto in completeResult.ProducedItems)
-                {
-                    App.GetManager<AccountInfoManager>().UpdateItem(itemDto);
-                }
-            }
-            return completeResult;
+            Debug.Log($"Successfully completed production for building ID {completeProduceDto.BuildingId}, Slot {completeProduceDto.SlotIndex}");
+            return true;
         }
         else
         {
             Debug.LogError($"Failed to complete producing building: {result.Message}");
+            return false;
+        }
+    }
+    
+    public async UniTask<BuildingHarvestProduceResultDTO> HarvestProduce(BuildingHarvestProduceDTO harvestProduceDto)
+    {
+        var endpoint = $"{BuildingEndpoint}/recipe/harvest";
+        var result = await _gameClient.PostAsync<BuildingHarvestProduceResultDTO>(endpoint, harvestProduceDto);
+        if (result.IsSuccess && result.Data is {} harvestResult)
+        {
+            Debug.Log($"Successfully harvested resources from building ID {harvestProduceDto.BuildingId}, Slot {harvestProduceDto.SlotIndex}");
+            App.GetManager<AccountInfoManager>().UpdateBuilding(harvestResult.UpdatedBuilding);
+            App.GetManager<AccountInfoManager>().UpdateItems(harvestResult.ProducedItems);
+            App.GetManager<AccountInfoManager>().UpdateCurrency(harvestResult.UpdatedCurrency);
+            if (harvestResult.ProducedItems != null)
+            {
+                foreach (var itemDto in harvestResult.ProducedItems)
+                {
+                    App.GetManager<AccountInfoManager>().UpdateItem(itemDto);
+                }
+            }
+            return harvestResult;
+        }
+        else
+        {
+            Debug.LogError($"Failed to harvest resources: {result.Message}");
             return null;
         }
     }

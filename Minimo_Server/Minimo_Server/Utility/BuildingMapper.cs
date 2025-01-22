@@ -27,7 +27,7 @@ public class BuildingMapper
             Type = buildingDTO.BuildingType,
             ActivatedAt = buildingDTO.ActivatedAt ?? DateTime.MinValue, // 기본값으로 최소값 사용
             Position = buildingDTO.Position ?? new int[3],
-            ProduceStatus = buildingDTO.ProduceStatus ?? new bool[5],
+            ProduceStatus = buildingDTO.ProduceStatus ?? new ProduceSlotStatus[5],
             Recipes = buildingDTO.Recipes ?? new int[5],
             ProduceStartAt = buildingDTO.ProduceStartAt ?? new DateTime[5],
             ProduceEndAt = buildingDTO.ProduceEndAt ?? new DateTime[5]

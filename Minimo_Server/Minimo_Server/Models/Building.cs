@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Numerics;
+using MinimoShared;
 
 namespace MinimoServer.Models;
 
@@ -18,8 +19,8 @@ public class Building
     
     public int[] Position { get; set; } = new int[3];
 
-    // TODO 아.. 이건 리팩토링..해야해....
-    public bool[] ProduceStatus { get; set; } = new bool[5];// 생산 상태
+    // TODO 아.. 이건 리팩토링..해야해.... //화이팅!! - 다은
+    public ProduceSlotStatus[] ProduceStatus { get; set; } = new ProduceSlotStatus[5];// 생산 상태
 
     public int[] Recipes { get; set; } = new int[5];
     public DateTime[] ProduceStartAt { get; set; } = new DateTime[5]; // 생산 시작 시간

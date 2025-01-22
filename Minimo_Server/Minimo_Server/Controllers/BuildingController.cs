@@ -184,7 +184,7 @@ public class BuildingController(GameDbContext context, TimeService timeService, 
         var slotIndex = startProduceDto.SlotIndex;
         if (slotIndex < 0 || slotIndex >= buildingInfo.ProduceSlotCount) return BadRequest("Invalid slot index");
         
-        if (building.ProduceStatus[slotIndex]) return BadRequest("Already producing");
+        if (building.ProduceStatus[slotIndex] == ProduceSlotStatus.Producing) return BadRequest("Already producing");
         
         // 아이템이 충분한지 확인 후 차감
         bool isItemEnough = true;
@@ -207,13 +207,54 @@ public class BuildingController(GameDbContext context, TimeService timeService, 
         
         // 레시피 building에 저장
         building.Recipes[slotIndex] = startProduceDto.RecipeId;
-        building.ProduceStartAt[slotIndex] = _timeService.CurrentTime;
-        building.ProduceEndAt[slotIndex] = building.ProduceStartAt[slotIndex] + TimeSpan.FromSeconds(recipe.Time);
-        building.ProduceStatus[slotIndex] = true;
-        
+        building.ProduceStatus[slotIndex] = ProduceSlotStatus.Idle;
+
+        // 생산 가능 여부 확인 후 첫 번째 슬롯 시작
+        await TryStartNextProduction(building);
+
         await _context.SaveChangesAsync();
 
         return Ok(BuildingMapper.ToBuildingDTO(building));
+    }
+    
+    private async Task TryStartNextProduction(Building building, int currentSlotIndex = -1)
+    {
+        // 이미 생산 중인 슬롯이 있는지 확인
+        if (building.ProduceStatus.Any(status => status == ProduceSlotStatus.Producing))
+        {
+            // 생산 중인 슬롯이 있으므로 새로운 생산을 시작하지 않음
+            return;
+        }
+        
+        var startIndex = (currentSlotIndex + 1) % building.ProduceStatus.Length;
+        
+        // 시작 인덱스부터 false 상태인 슬롯 찾기
+        var nextSlotIndex = -1;
+        for (var i = 0; i < building.ProduceStatus.Length; i++)
+        {
+            var index = (startIndex + i) % building.ProduceStatus.Length; // 순환 처리
+            if (building.ProduceStatus[index] == ProduceSlotStatus.Idle)
+            {
+                nextSlotIndex = index;
+                break;
+            }
+        }
+
+        // 생산할 슬롯이 없으면 종료
+        if (nextSlotIndex == -1) return;
+
+        // 슬롯의 레시피를 확인하고 생산 시작
+        var recipeId = building.Recipes[nextSlotIndex];
+        if (recipeId <= 0) return;
+
+        var recipe = _tableDataService.GetProduceRecipe(building.Type, recipeId);
+        if (recipe == null) return;
+
+        building.ProduceStartAt[nextSlotIndex] = _timeService.CurrentTime;
+        building.ProduceEndAt[nextSlotIndex] = building.ProduceStartAt[nextSlotIndex] + TimeSpan.FromSeconds(recipe.Time);
+        building.ProduceStatus[nextSlotIndex] = ProduceSlotStatus.Producing;
+
+        await _context.SaveChangesAsync();
     }
     
     /// <summary>
@@ -237,47 +278,19 @@ public class BuildingController(GameDbContext context, TimeService timeService, 
         var slotIndex = completeProduceDto.SlotIndex;
         if (slotIndex < 0 || slotIndex >= buildingInfo.ProduceSlotCount) return BadRequest("Invalid slot index");
         
-        if (!building.ProduceStatus[slotIndex]) return BadRequest("Not producing");
+        if (building.ProduceStatus[slotIndex] != ProduceSlotStatus.Producing) return BadRequest("Not producing");
         
         if (_timeService.CurrentTime < building.ProduceEndAt[slotIndex]) return BadRequest("Production not completed yet");
         
-        // 생산된 자원 추가
-        var recipe = _tableDataService.GetProduceRecipe(building.Type, building.Recipes[slotIndex]);
-        var updatedItemDTOs = new List<ItemDTO>();
-        if (recipe == null) return BadRequest("Recipe not found");
-        foreach (var result in recipe.Results)
-        {
-            var accountItem = account.Items.FirstOrDefault(i => i.ItemType == result.Code);
-            if (accountItem == null)
-            {
-                accountItem = new Item
-                {
-                    ItemType = result.Code,
-                    Count = result.Amount,
-                };
-                account.Items.Add(accountItem);
-            }
-            else
-            {
-                accountItem.Count += result.Amount;
-            }
-            updatedItemDTOs.Add(ItemMapper.ToItemDTO(accountItem));
-        }
-        
-        // 경험치 추가
-        account.Experience += recipe.EXP;
-        
-        // 레시피 building에 저장
-        building.Recipes[slotIndex] = 0;
-        building.ProduceStatus[slotIndex] = false;
+        building.ProduceStatus[slotIndex] = ProduceSlotStatus.Completed;
         
         await _context.SaveChangesAsync();
+        
+        await TryStartNextProduction(building, slotIndex);
         
         var resultDTO = new BuildingCompleteProduceResultDTO()
         {
             UpdatedBuilding = BuildingMapper.ToBuildingDTO(building),
-            ProducedItems = updatedItemDTOs,
-            UpdatedCurrency = CurrencyMapper.ToCurrencyDTO(account.Currency),
         };
         return Ok(resultDTO);
     }
@@ -303,7 +316,7 @@ public class BuildingController(GameDbContext context, TimeService timeService, 
         var slotIndex = instantProduceDto.SlotIndex;
         if (slotIndex < 0 || slotIndex >= buildingInfo.ProduceSlotCount) return BadRequest("Invalid slot index");
 
-        if (!building.ProduceStatus[slotIndex]) return BadRequest("Not producing");
+        if (building.ProduceStatus[slotIndex] != ProduceSlotStatus.Producing) return BadRequest("Not producing");
 
         var remainingTime = building.ProduceEndAt[slotIndex] - _timeService.CurrentTime;
         if (remainingTime <= TimeSpan.Zero) return BadRequest("Production already completed");
@@ -315,9 +328,12 @@ public class BuildingController(GameDbContext context, TimeService timeService, 
 
         // 생산 종료 시간 갱신
         building.ProduceEndAt[slotIndex] = _timeService.CurrentTime;
-
+        building.ProduceStatus[slotIndex] = ProduceSlotStatus.Completed;
+          
         await _context.SaveChangesAsync();
-
+        
+        await TryStartNextProduction(building, slotIndex);
+        
         return Ok(new BuildingInstantProduceResultDTO
         {
             UpdatedBuilding = BuildingMapper.ToBuildingDTO(building),
@@ -328,5 +344,61 @@ public class BuildingController(GameDbContext context, TimeService timeService, 
     private int CalculateInstantProduceCost(TimeSpan remainingTime)
     {
         return (int)Math.Ceiling(remainingTime.TotalSeconds / 30);
+    }
+    
+    [Authorize]
+    [HttpPost("recipe/harvest")]
+    public async Task<ActionResult<BuildingHarvestProduceResultDTO>> HarvestProduce(BuildingHarvestProduceDTO harvestProduceDto)
+    {
+        var account = await GetAuthorizedAccountAsync();
+        if (account == null) return Unauthorized("Account not found");
+
+        var building = account.Buildings.FirstOrDefault(b => b.Id == harvestProduceDto.BuildingId);
+        if (building == null) return NotFound(new { message = "Building not found" });
+
+        var slotIndex = harvestProduceDto.SlotIndex;
+        if (slotIndex < 0 || slotIndex >= building.ProduceStatus.Length) return BadRequest("Invalid slot index");
+
+        if (building.ProduceStatus[slotIndex] != ProduceSlotStatus.Completed) return BadRequest("Not ready to harvest");
+
+        // 생산된 자원 수확
+        var recipe = _tableDataService.GetProduceRecipe(building.Type, building.Recipes[slotIndex]);
+        if (recipe == null) return BadRequest("Recipe not found");
+
+        var updatedItemDTOs = new List<ItemDTO>();
+        foreach (var result in recipe.Results)
+        {
+            var accountItem = account.Items.FirstOrDefault(i => i.ItemType == result.Code);
+            if (accountItem == null)
+            {
+                accountItem = new Item
+                {
+                    ItemType = result.Code,
+                    Count = result.Amount,
+                };
+                account.Items.Add(accountItem);
+            }
+            else
+            {
+                accountItem.Count += result.Amount;
+            }
+            updatedItemDTOs.Add(ItemMapper.ToItemDTO(accountItem));
+        }
+
+        // 경험치 추가
+        account.Experience += recipe.EXP;
+
+        // 슬롯 상태 초기화
+        building.Recipes[slotIndex] = 0;
+        building.ProduceStatus[slotIndex] = ProduceSlotStatus.Idle;
+
+        await _context.SaveChangesAsync();
+
+        return Ok(new BuildingHarvestProduceResultDTO
+        {
+            UpdatedBuilding = BuildingMapper.ToBuildingDTO(building),
+            ProducedItems = updatedItemDTOs,
+            UpdatedCurrency = CurrencyMapper.ToCurrencyDTO(account.Currency),
+        });
     }
 }
