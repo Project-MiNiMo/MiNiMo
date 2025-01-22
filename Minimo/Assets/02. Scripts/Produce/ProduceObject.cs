@@ -46,13 +46,41 @@ public abstract class ProduceObject : BuildingObject
             {
                 _produceSlots[i] = true;
                 
-                var produceOption = ProduceData.ProduceOptions[buildingDto.Recipes[i]];
+                var produceOption = ProduceData.ProduceOptions[--buildingDto.Recipes[i]];
                 var newTask = new ProduceTask(produceOption, i);
+                newTask.ReduceRemainTime((int)(_timeManager.Time - buildingDto.ProduceStartAt[i]).TotalSeconds);
+                newTask.ChangeState(ActiveState.Instance);
+                AllTasks.Add(newTask);
+
+                ActiveTask = newTask;
+            }
+            else if (buildingDto.ProduceStatus[i] == ProduceSlotStatus.Completed) 
+            {
+                _produceSlots[i] = true;
+                
+                var produceOption = ProduceData.ProduceOptions[--buildingDto.Recipes[i]];
+                var newTask = new ProduceTask(produceOption, i);
+                newTask.ChangeState(CompletedState.Instance);
+                newTask.ReduceRemainTime(produceOption.Time);
                 AllTasks.Add(newTask);
             }
+            else
+            {
+                if (buildingDto.Recipes[i] == 0)
+                {
+                    _produceSlots[i] = false;
+                }
+                else
+                {
+                    _produceSlots[i] = true;
+                
+                    var produceOption = ProduceData.ProduceOptions[--buildingDto.Recipes[i]];
+                    var newTask = new ProduceTask(produceOption, i);
+                    newTask.ChangeState(PendingState.Instance);
+                    AllTasks.Add(newTask);
+                }
+            }
         }
-
-        SetNextActiveTask();
     }
 
     protected override void Update()
@@ -179,7 +207,7 @@ public abstract class ProduceObject : BuildingObject
         _isHarvesting = false;
     }
 
-    public async UniTask HarvestEarly()
+    public virtual async UniTask HarvestEarly()
     {
         if (ActiveTask == null) return;
         
