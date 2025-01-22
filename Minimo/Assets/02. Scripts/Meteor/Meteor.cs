@@ -23,6 +23,7 @@ public class Meteor : MonoBehaviour
 
     public void Land(Vector3 position)
     {
+        position += new Vector3(0, 0.25f, 0);
         transform.position = position;
         gameObject.SetActive(true);
     }

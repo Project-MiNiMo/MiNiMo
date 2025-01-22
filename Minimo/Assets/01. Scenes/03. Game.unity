@@ -386,6 +386,7 @@ MonoBehaviour:
   _meteorPrefab: {fileID: 3721485543838847492, guid: 56465b84b74b9dc4d9b1f7a9bd614c5d, type: 3}
   _spawnInterval: 10
   _installChecker: {fileID: 538196022}
+  _tileStateModifier: {fileID: 538196026}
 --- !u!114 &216209808
 MonoBehaviour:
   m_ObjectHideFlags: 0
