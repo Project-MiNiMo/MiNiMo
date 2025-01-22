@@ -20,6 +20,7 @@ namespace AK
 
     namespace GAME_PARAMETERS
     {
+        static const AkUniqueID BGMFADE = 2443870627U;
         static const AkUniqueID BGMVOLUME = 3043206523U;
         static const AkUniqueID SFXVOLUME = 988953028U;
     } // namespace GAME_PARAMETERS
