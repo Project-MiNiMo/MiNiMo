@@ -12,6 +12,8 @@ public class TitlePanel : MonoBehaviour
     [SerializeField] private Image _titleFstImg;
     [SerializeField] private Image _titleSndImg;
     
+    [SerializeField] private TitleLoadHandler _loadHandler;
+    
     [SerializeField] private Image _blackBlur;
      
     private void Awake()
@@ -20,15 +22,14 @@ public class TitlePanel : MonoBehaviour
         _startBtn.gameObject.SetActive(false);
     }
 
-    private void Start()
-    {
-        //AkSoundEngine.PostEvent("BGM_Title", gameObject);
-    }
-
     public async void ShowTitle()
     {
+        _loadHandler.Setup(3 + App.GetData<TitleData>().Building.Values.Count);
+        
         App.GetManager<CheatManager>().UpdateItem(new ItemDTO {ItemType = "Item_Timber", Count = 10}).Forget();
+        _loadHandler.UpdateLoad();
         App.GetManager<CheatManager>().UpdateCurrency(new CurrencyDTO {HPI = 100, BlueStar = 100}).Forget();
+        _loadHandler.UpdateLoad();
         
         foreach (var building in App.GetData<TitleData>().Building.Values)
         {
@@ -41,9 +42,12 @@ public class TitlePanel : MonoBehaviour
                     MaxCount = 5,
                     ProduceSlotCount = produceSlotCount,
                 });
+                
+                _loadHandler.UpdateLoad();
             }
         }
         
+        _loadHandler.FinishLoad();
         _startBtn.gameObject.SetActive(true);
         
         _startTextRect.DOJumpAnchorPos(Vector2.one, 10, 1, 1)
