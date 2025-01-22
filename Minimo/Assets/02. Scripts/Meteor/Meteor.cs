@@ -44,8 +44,8 @@ public class Meteor : MonoBehaviour
 
         if (result.IsSuccess) 
         {
-            gameObject.SetActive(false);
             _pickMeteorPanel.OpenPanel(result.Data);
+            gameObject.SetActive(false);
         }
         else
         {

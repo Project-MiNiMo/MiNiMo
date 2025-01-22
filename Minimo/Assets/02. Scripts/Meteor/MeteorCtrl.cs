@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-
+using MinimoShared;
 using UnityEngine;
 
 public class MeteorCtrl : MonoBehaviour
@@ -52,24 +52,25 @@ public class MeteorCtrl : MonoBehaviour
             _lastSpawnTime = _timeManager.Time;
             return;
         }
+
+        if (_isSpawning) return;
         
         CheckShootingStars();
     }
 
-    private async void CheckShootingStars()
+    private async UniTask CheckShootingStars()
     {
-        if (_isSpawning) return;
+        _isSpawning = true;
         
         var timeDifference =  _timeManager.Time - _lastSpawnTime;
         
-        while (timeDifference.TotalSeconds >= _spawnInterval)
+        if (timeDifference.TotalSeconds >= _spawnInterval)
         {
-            if (!CheckRemainingShootingStars()) return;
-            
             await SpawnShootingStar();
-            timeDifference = timeDifference.Subtract(TimeSpan.FromSeconds(_spawnInterval));
             _lastSpawnTime = _lastSpawnTime.AddSeconds(_spawnInterval);
         }
+        
+        _isSpawning = false;
     }
     
     private bool CheckRemainingShootingStars()
@@ -79,18 +80,25 @@ public class MeteorCtrl : MonoBehaviour
 
     private async UniTask SpawnShootingStar()
     {
-        _isSpawning = true;
+        if (!CheckRemainingShootingStars()) return;
         
-        var result = await _meteorManager.CreateMeteor();
         var spawnPositions = _installChecker.GetInstallablePositions();
         if (spawnPositions.Count == 0) return;
-        var spawnPosition = spawnPositions[UnityEngine.Random.Range(0, spawnPositions.Count)];
-        _tileStateModifier.ModifyTileState(spawnPosition, TileState.Installed);
         
-        var shootingStar = _meteors.FirstOrDefault(star => !star.IsLanded);
-        var meteorId = result.Data.CreatedMeteors.Last().Id;
-        shootingStar?.Land(meteorId, spawnPosition);
+        var result = await _meteorManager.CreateMeteor();
+        if (!result.IsSuccess) return;
 
-        _isSpawning = false;
+        foreach (var createMeteor in result.Data.CreatedMeteors)
+        {
+            var meteor = _meteors.FirstOrDefault(star => !star.IsLanded);
+            if (meteor == null) break;
+            
+            var meteorId = createMeteor.Id;
+            var spawnPosition = spawnPositions[UnityEngine.Random.Range(0, spawnPositions.Count)];
+            _tileStateModifier.ModifyTileState(spawnPosition, TileState.Installed);
+            spawnPositions.Remove(spawnPosition);
+            
+            meteor.Land(meteorId, spawnPosition);
+        } 
     }
 }
