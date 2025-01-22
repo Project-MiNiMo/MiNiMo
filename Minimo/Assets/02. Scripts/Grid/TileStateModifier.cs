@@ -27,4 +27,11 @@ public class TileStateModifier : MonoBehaviour
         
         _installTilemap.SetTilesBlock(area, tiles);
     }
+
+    public void ModifyTileState(Vector3 position, TileState tileState)
+    {
+        var area = _installTilemap.WorldToCell(position);
+        var bounds = new BoundsInt(area.x, area.y, 0, 1, 1, 1);
+        ModifyTileState(bounds, tileState);
+    }
 }

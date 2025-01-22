@@ -15,15 +15,18 @@ public class TitlePanel : MonoBehaviour
     [SerializeField] private TitleLoadHandler _loadHandler;
     
     [SerializeField] private Image _blackBlur;
-     
+
+    private bool _isNew;
+    
     private void Awake()
     {
         _startBtn.onClick.AddListener(OnClickStart);
         _startBtn.gameObject.SetActive(false);
     }
 
-    public async void ShowTitle()
+    public async void ShowTitle(bool isNew = false)
     {
+        _isNew = isNew;
         _loadHandler.Setup(3 + App.GetData<TitleData>().Building.Values.Count);
         
         App.GetManager<CheatManager>().UpdateItem(new ItemDTO {ItemType = "Item_Timber", Count = 10}).Forget();
@@ -67,7 +70,7 @@ public class TitlePanel : MonoBehaviour
             .Append(_blackBlur.DOFade(1, 0.5f))
             .OnComplete(() =>
             {
-                App.LoadScene(SceneName.Game);
+                App.LoadScene(_isNew? SceneName.Prolog : SceneName.Game);
             });
     }
 }

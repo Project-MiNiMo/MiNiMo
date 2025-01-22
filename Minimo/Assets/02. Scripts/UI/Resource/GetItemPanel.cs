@@ -18,9 +18,12 @@ public class GetItemPanel : UIBase
     [SerializeField] private Image[] _itemImgs;
     [SerializeField] private Image[] _iconImgs;
     [SerializeField] private Button _closeBtn;
+    
+    private ItemSO _itemSO;
 
-    public override void Initialize() 
+    public override void Initialize()
     {
+        _itemSO = App.GetData<TitleData>().ItemSO;
         _closeBtn.onClick.AddListener(ClosePanel);
     }
     
@@ -42,6 +45,12 @@ public class GetItemPanel : UIBase
     {
         OpenPanel();
         SetItem(item);
+    }
+
+    public void OpenPanel(string code, int count)
+    {
+        var item = _itemSO.GetItem(code);
+        OpenPanel(item);
     }
     
     private void SetItems(List<Item> items)

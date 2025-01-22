@@ -38,7 +38,6 @@ public class InstallChecker : MonoBehaviour
             if (CheckCanInstall(position))
             {
                 var worldPosition = _installTilemap.CellToWorld(position);
-                worldPosition += _installTilemap.cellSize / 2;
                 positions.Add(worldPosition);
             }
         }

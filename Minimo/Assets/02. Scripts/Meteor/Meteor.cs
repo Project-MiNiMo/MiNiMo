@@ -1,28 +1,29 @@
+using Cysharp.Threading.Tasks;
+
 using UnityEngine;
 using UnityEngine.EventSystems;
-
-public enum MeteorType
-{
-    Quest,
-    SpecialQuest,
-    Resource,
-    SpecialResource
-}
 
 public class Meteor : MonoBehaviour
 {
     public bool IsLanded => gameObject.activeSelf;
 
+    private MeteorManager _meteorManager;
     private PickMeteorPanel _pickMeteorPanel;
+
+    private int _id;
  
     private void Start()
     {
+        _meteorManager = App.GetManager<MeteorManager>();
         _pickMeteorPanel = App.GetManager<UIManager>().GetPanel<PickMeteorPanel>();
         gameObject.SetActive(false);
     }
 
-    public void Land(Vector3 position)
+    public void Land(int id, Vector3 position)
     {
+        _id = id;
+        
+        position += new Vector3(0, 0.25f, 0);
         transform.position = position;
         gameObject.SetActive(true);
     }
@@ -33,13 +34,22 @@ public class Meteor : MonoBehaviour
         {
             return;
         }
-
-        var type = GetRandomType();
-        _pickMeteorPanel.OpenPanel(type);
+        
+        PickMeteor();
     }
 
-    private MeteorType GetRandomType()
+    private async void PickMeteor()
     {
-         return (MeteorType)Random.Range(0, 4);
+        var result = await _meteorManager.GetMeteorResult(_id);
+
+        if (result.IsSuccess) 
+        {
+            _pickMeteorPanel.OpenPanel(result.Data);
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            Debug.LogWarning("Failed to pick meteor");
+        }
     }
 }

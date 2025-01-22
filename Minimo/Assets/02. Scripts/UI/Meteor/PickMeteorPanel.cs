@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
+using MinimoShared;
 
 using UnityEngine;
 
@@ -9,50 +9,46 @@ public class PickMeteorPanel : UIBase
     protected override GameObject Panel => _pickBack;
     
     [SerializeField] private GameObject _pickBack;
-    
-    private readonly Dictionary<MeteorType, Action> _shootingStarActions = new(4);
-    private RandomItemSelector _randomItemSelector;
 
     private QuestPanel _questPanel;
     private GetItemPanel _getItemPanel;
     
     public override void Initialize()
     {
-        _randomItemSelector = new RandomItemSelector();
-        
         var uiManager = App.GetManager<UIManager>();
         _questPanel = uiManager.GetPanel<QuestPanel>();
         _getItemPanel = uiManager.GetPanel<GetItemPanel>();
-
-        _shootingStarActions[MeteorType.Quest] = 
-            () => _questPanel.OpenPanel(QuestType.Quest);
-        _shootingStarActions[MeteorType.SpecialQuest] = 
-            () => _questPanel.OpenPanel(QuestType.SpecialQuest);
-        
-        _shootingStarActions[MeteorType.Resource] = 
-            () => _getItemPanel.OpenPanel(_randomItemSelector.GetRandomItems(ResourceType.Resource));
-        _shootingStarActions[MeteorType.SpecialResource] = 
-            () => _getItemPanel.OpenPanel(_randomItemSelector.GetRandomItems(ResourceType.SpecialResource));
     }
 
-    public void OpenPanel(MeteorType type)
+    public void OpenPanel(MeteorResultDTO result)
     {
         OpenPanel();
         
-        StartCoroutine(Harvest(type));
+        StartCoroutine(Harvest(result));
     }
 
-    private IEnumerator Harvest(MeteorType type)
+    private IEnumerator Harvest(MeteorResultDTO result)
     {
         yield return new WaitForSeconds(1);
 
         ClosePanel();
         
-        GetPickAction(type).Invoke();
+        GetPickAction(result).Invoke();
     }
     
-    private Action GetPickAction(MeteorType type)
+    private Action GetPickAction(MeteorResultDTO result)
     {
-        return _shootingStarActions[type];
+        if (result.ResultItem != null)
+        {
+            return () => _getItemPanel.OpenPanel(result.ResultItem.ItemType, result.ResultItem.Count);
+        }
+        else if (result.ResultQuest != null) 
+        {
+            return () => { };//_questPanel.OpenPanel(result.ResultQuest.Id);
+        }
+        else
+        {
+            return () => { };
+        }
     }
 }

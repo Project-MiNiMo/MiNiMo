@@ -9,6 +9,7 @@ public enum SceneName
 {
     Developer,
     Title,
+    Prolog,
     Game
 }
 

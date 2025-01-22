@@ -15,7 +15,7 @@ public class Prolog_1 : PrologBase
     
     protected override IEnumerator ShowProlog()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(3.5f);
         
         FadeIn(_image1, 0.5f);
         yield return new WaitForSeconds(0.5f);
