@@ -1,25 +1,31 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 
 using UnityEngine;
 
 public class MeteorCtrl : MonoBehaviour
 {
     [SerializeField] private GameObject _meteorPrefab;
-    [SerializeField] private float _spawnInterval = 10f;
     [SerializeField] private InstallChecker _installChecker;
     [SerializeField] private TileStateModifier _tileStateModifier;
  
     private List<Meteor> _meteors;
     
     private TimeManager _timeManager;
+    private MeteorManager _meteorManager;
     private DateTime _lastSpawnTime;
     private DateTime _lastUpdateTime;
+    
+    private bool _isSpawning = false;
+    private float _spawnInterval;
 
     private void Start()
     {
-        var maxStarLimit = App.GetData<TitleData>().Common["MeteorLimit"];
+        var commonData = App.GetData<TitleData>().Common;
+        var maxStarLimit = commonData["MeteorLimit"];
+        _spawnInterval = commonData["MeteorSpawnTime"];
         
         _meteors = new List<Meteor>(maxStarLimit);
         for (var i = 0; i < maxStarLimit; i++)
@@ -28,8 +34,10 @@ public class MeteorCtrl : MonoBehaviour
         }
         
         _timeManager = App.GetManager<TimeManager>();
-        _lastUpdateTime = _timeManager.Time;
+        _meteorManager = App.GetManager<MeteorManager>();
         _lastSpawnTime = _timeManager.Time; //TODO: Save and retrieve the initialization time for each star on the server
+        _lastUpdateTime = _timeManager.Time;
+        
         CheckShootingStars();
     }
 
@@ -48,15 +56,17 @@ public class MeteorCtrl : MonoBehaviour
         CheckShootingStars();
     }
 
-    private void CheckShootingStars()
+    private async void CheckShootingStars()
     {
+        if (_isSpawning) return;
+        
         var timeDifference =  _timeManager.Time - _lastSpawnTime;
         
         while (timeDifference.TotalSeconds >= _spawnInterval)
         {
             if (!CheckRemainingShootingStars()) return;
             
-            SpawnShootingStar();
+            await SpawnShootingStar();
             timeDifference = timeDifference.Subtract(TimeSpan.FromSeconds(_spawnInterval));
             _lastSpawnTime = _lastSpawnTime.AddSeconds(_spawnInterval);
         }
@@ -67,14 +77,20 @@ public class MeteorCtrl : MonoBehaviour
         return _meteors.Any(star => !star.IsLanded);
     }
 
-    private void SpawnShootingStar()
+    private async UniTask SpawnShootingStar()
     {
+        _isSpawning = true;
+        
+        var result = await _meteorManager.CreateMeteor();
         var spawnPositions = _installChecker.GetInstallablePositions();
         if (spawnPositions.Count == 0) return;
         var spawnPosition = spawnPositions[UnityEngine.Random.Range(0, spawnPositions.Count)];
         _tileStateModifier.ModifyTileState(spawnPosition, TileState.Installed);
         
         var shootingStar = _meteors.FirstOrDefault(star => !star.IsLanded);
-        shootingStar?.Land(spawnPosition);
+        var meteorId = result.Data.CreatedMeteors.Last().Id;
+        shootingStar?.Land(meteorId, spawnPosition);
+
+        _isSpawning = false;
     }
 }
