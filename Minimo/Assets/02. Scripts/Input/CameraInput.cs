@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraMove : MonoBehaviour
+public class CameraInput : MonoBehaviour
 {
     [Header("Drag")]
     [SerializeField] private float _dragSpeed = 10f;
@@ -13,10 +11,12 @@ public class CameraMove : MonoBehaviour
     [SerializeField] private float _maxZoom = 10f; 
 
     private InputManager _input;
+    private Camera _mainCamera;
     
     private void Start()
     {
         _input = App.GetManager<InputManager>();
+        _mainCamera = Camera.main;
     }
     
     private void Update()
@@ -28,7 +28,10 @@ public class CameraMove : MonoBehaviour
             Move();
         }
         
-        Zoom();
+        else if (_input.CurrentState == InputState.Zoom)
+        {
+            Zoom();
+        }
     }
 
     private void Move()
@@ -41,13 +44,13 @@ public class CameraMove : MonoBehaviour
             {
                 var delta = touch.deltaPosition;
                 var move = new Vector3(-delta.x * _dragSpeed, -delta.y * _dragSpeed, 0);
-                Camera.main.transform.Translate(move * Time.deltaTime, Space.World);
+                _mainCamera.transform.Translate(move * Time.deltaTime, Space.World);
             }
         }
         else if (Input.GetMouseButton(0)) // Mouse
         {
             var delta = new Vector3(-Input.GetAxis("Mouse X") * _dragSpeed, -Input.GetAxis("Mouse Y") * _dragSpeed, 0);
-            Camera.main.transform.Translate(delta * Time.deltaTime, Space.World);
+            _mainCamera.transform.Translate(delta * Time.deltaTime, Space.World);
         }
     }
 
@@ -63,13 +66,13 @@ public class CameraMove : MonoBehaviour
 
             var deltaDistance = currentDistance - prevDistance;
 
-            Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - deltaDistance * _zoomSpeed * Time.deltaTime, _minZoom, _maxZoom);
+            _mainCamera.orthographicSize = Mathf.Clamp(_mainCamera.orthographicSize - deltaDistance * _zoomSpeed * Time.deltaTime, _minZoom, _maxZoom);
         }
         
         var scroll = Input.GetAxis("Mouse ScrollWheel"); // Mouse
         if (scroll != 0.0f)
         {
-            Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - scroll * _zoomSpeed, _minZoom, _maxZoom);
+            _mainCamera.orthographicSize = Mathf.Clamp(_mainCamera.orthographicSize - scroll * _zoomSpeed, _minZoom, _maxZoom);
         }
     }
 }

@@ -1,11 +1,14 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public enum InputState
 {
     None,      
-    Drag,   
-    Click,   
-    LongPress   
+    Drag,  
+    ClickDown,
+    ClickUp,   
+    LongPress,
+    Zoom
 }
 
 public class InputManager : ManagerBase
@@ -16,8 +19,18 @@ public class InputManager : ManagerBase
     private float _startTime;
     private bool _isDragging;
 
+    private const float DragThreshold = 10f; 
+    private const float LongPressThreshold = 1f; 
+    
     private void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            CurrentState = InputState.None;
+            _isDragging = false;
+            return;
+        }
+        
         HandleTouchInput(); // Touch
         
         HandleMouseInput(); // Mouse
@@ -30,17 +43,17 @@ public class InputManager : ManagerBase
             _startPos = Input.mousePosition;
             _startTime = Time.time;
             _isDragging = false;
-            CurrentState = InputState.Click; 
+            CurrentState = InputState.ClickDown; 
         }
 
-        if (Input.GetMouseButton(0)) // Drag
+        if (Input.GetMouseButton(0)) 
         {
-            if (Vector2.Distance(Input.mousePosition, _startPos) > 10f) 
+            if (!_isDragging && Vector2.Distance(Input.mousePosition, _startPos) > DragThreshold) // Drag
             {
                 CurrentState = InputState.Drag;
                 _isDragging = true;
             }
-            else if (!_isDragging && Time.time - _startTime > 0.5f) // LongPress
+            else if (!_isDragging && Time.time - _startTime > LongPressThreshold) // LongPress
             {
                 CurrentState = InputState.LongPress;
             }
@@ -48,22 +61,28 @@ public class InputManager : ManagerBase
 
         if (Input.GetMouseButtonUp(0))
         {
-            if (!_isDragging)
+            if (CurrentState == InputState.ClickDown)
             {
-                CurrentState = InputState.Click;
+                CurrentState = InputState.ClickUp;
             }
-            else
+            else if (_isDragging) 
             {
                 CurrentState = InputState.None;
             }
 
             _isDragging = false;
         }
+
+        if (Input.GetAxis("Mouse ScrollWheel") != 0)
+        {
+            CurrentState = InputState.Zoom;
+            _isDragging = false;
+        }
     }
 
     private void HandleTouchInput()
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount == 1)
         {
             var touch = Input.GetTouch(0);
 
@@ -73,11 +92,11 @@ public class InputManager : ManagerBase
                     _startPos = touch.position;
                     _startTime = Time.time;
                     _isDragging = false;
-                    CurrentState = InputState.Click; 
+                    CurrentState = InputState.ClickDown; 
                     break;
 
                 case TouchPhase.Moved: // Drag
-                    if (Vector2.Distance(touch.position, _startPos) > 10f)
+                    if (Vector2.Distance(touch.position, _startPos) > DragThreshold)
                     {
                         CurrentState = InputState.Drag;
                         _isDragging = true;
@@ -85,24 +104,30 @@ public class InputManager : ManagerBase
                     break;
 
                 case TouchPhase.Stationary: // LongPress
-                    if (!_isDragging && Time.time - _startTime > 0.5f) 
+                    if (!_isDragging && Time.time - _startTime > LongPressThreshold) 
                     {
                         CurrentState = InputState.LongPress;
                     }
                     break;
 
                 case TouchPhase.Ended:
-                    if (!_isDragging)
+                    if (CurrentState == InputState.ClickDown)
                     {
-                        CurrentState = InputState.Click;
+                        CurrentState = InputState.ClickUp;
                     }
-                    else
+                    else if (_isDragging) 
                     {
                         CurrentState = InputState.None;
                     }
+                    
                     _isDragging = false;
                     break;
             }
+        }
+        else if (Input.touchCount > 1)
+        {
+            CurrentState = InputState.Zoom;
+            _isDragging = false;
         }
         else
         {
