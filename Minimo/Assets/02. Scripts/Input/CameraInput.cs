@@ -21,8 +21,6 @@ public class CameraInput : MonoBehaviour
     
     private void Update()
     {
-        Debug.Log($"Current State: {_input.CurrentState}");
-        
         if (_input.CurrentState == InputState.Drag)
         {
             Move();
@@ -36,22 +34,8 @@ public class CameraInput : MonoBehaviour
 
     private void Move()
     {
-        if (Input.touchCount == 1) // Touch
-        {
-            var touch = Input.GetTouch(0);
-
-            if (touch.phase == TouchPhase.Moved)
-            {
-                var delta = touch.deltaPosition;
-                var move = new Vector3(-delta.x * _dragSpeed, -delta.y * _dragSpeed, 0);
-                _mainCamera.transform.Translate(move * Time.deltaTime, Space.World);
-            }
-        }
-        else if (Input.GetMouseButton(0)) // Mouse
-        {
-            var delta = new Vector3(-Input.GetAxis("Mouse X") * _dragSpeed, -Input.GetAxis("Mouse Y") * _dragSpeed, 0);
-            _mainCamera.transform.Translate(delta * Time.deltaTime, Space.World);
-        }
+        var delta = new Vector3(-Input.GetAxis("Mouse X") * _dragSpeed, -Input.GetAxis("Mouse Y") * _dragSpeed, 0);
+        _mainCamera.transform.Translate(delta * Time.deltaTime, Space.World);
     }
 
     private void Zoom()

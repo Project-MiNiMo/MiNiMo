@@ -14,11 +14,7 @@ public class BuildingObject : MonoBehaviour
     
     private bool _isPlaced = false;
     private bool _isFlipped = false;
-    private bool _isPressed = false;
-    
-    private float _pressTime = 0f;
-    private const float LONG_PRESS_THRESHOLD = 1f;
-    
+   
     protected BuildingManager _buildingManager;
     protected EditManager _editManager;
     private SpriteRenderer _spriteRenderer;
@@ -49,32 +45,11 @@ public class BuildingObject : MonoBehaviour
         Initialize(buildingData);
     }
 
-    protected virtual void Update()
-    {
-        if (_isPressed && !_editManager.IsEditing.Value) 
-        {
-            _pressTime += Time.deltaTime;
-            if (_pressTime >= LONG_PRESS_THRESHOLD)
-            {
-                _editManager.StartEdit(this);
-                _isPressed = false;
-            }
-        }
-    }
-
     public void OnLongPress()
     {
         if (_editManager.IsEditing.Value) return;
         
         _editManager.StartEdit(this);
-    }
-
-    private void OnMouseUp()
-    {
-        if (EventSystem.current.IsPointerOverGameObject()) return;
-        
-        _isPressed = false;
-        _pressTime = 0f;
     }
 
     public virtual void OnClickUp()
@@ -84,37 +59,7 @@ public class BuildingObject : MonoBehaviour
             _editManager.StartEdit(this);
         }
     }
-
-    private void OnMouseDown()
-    {
-        
-        
-        if (!_editManager.IsEditing.Value)
-        {
-            Debug.Log("OnMouseDown");
-            _isPressed = true;
-            _pressTime = 0f;
-        }
-        else if(_editManager.IsEditing.Value && _editManager.CurrentEditObject == this)
-        {
-            var touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            touchPosition.z = 0;
-            _editManager.MoveObject(touchPosition);
-        }
-    }
-
-    private void OnMouseDrag()
-    {
-        if (EventSystem.current.IsPointerOverGameObject()) return;
-        
-        if (_editManager.IsEditing.Value)
-        {
-            var touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            touchPosition.z = 0;
-            _editManager.MoveObject(touchPosition);
-        }
-    }
-
+    
     #region Edit Functions
     public void StartEdit()
     {

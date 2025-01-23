@@ -8,10 +8,15 @@ public class BuildingInput : MonoBehaviour
     private BuildingObject _currentBuilding;
     private EditManager _editManager;
 
+    private int _layerMask;
+
     private void Start()
     {
         _input = App.GetManager<InputManager>();
         _mainCamera = Camera.main;
+        _editManager = App.GetManager<EditManager>();
+        
+        _layerMask = LayerMask.GetMask("Building");
     }
 
     private void Update()
@@ -29,49 +34,35 @@ public class BuildingInput : MonoBehaviour
             case InputState.LongPress:
                 HandleLongPress();
                 break;
+            
+            case InputState.Drag:
+                HandleDrag();
+                break;
         }
     }
 
     private void HandleClickDown()
     {
         var hit = RaycastBuilding();
-        if (hit != null)
-        {
-            _currentBuilding = hit;
-        }
+        _currentBuilding = hit;
     }
 
     private void HandleClickUp()
     {
         if (_currentBuilding == null)
         {
-            if (Input.touchCount == 1) 
-            {
-                var touch = Input.GetTouch(0);
-
-                if (touch.phase == TouchPhase.Moved)
-                {
-                    var touchPosition = _mainCamera.ScreenToWorldPoint(
-                        new Vector3(touch.position.x, touch.position.y, _mainCamera.nearClipPlane));
-                    _editManager.MoveObject(touchPosition);
-                }
-            }
-            else if (Input.GetMouseButton(0)) 
-            {
-                var screenPosition = Input.mousePosition;
-                var worldPosition = _mainCamera.ScreenToWorldPoint(
-                    new Vector3(screenPosition.x, screenPosition.y, _mainCamera.nearClipPlane));
-                _editManager.MoveObject(worldPosition);
-            }
+            if (!_editManager.IsEditing.Value) return;
+            
+            var screenPosition = Input.mousePosition;
+            var worldPosition = _mainCamera.ScreenToWorldPoint(
+                new Vector3(screenPosition.x, screenPosition.y, _mainCamera.nearClipPlane));
+            worldPosition.z = 0;
+            _editManager.MoveObject(worldPosition);
         }
         else
         {
-            var hit = RaycastBuilding();
-            if (_currentBuilding == hit)
-            {
-                _currentBuilding.OnClickUp();
-                _currentBuilding = null;
-            }
+            _currentBuilding.OnClickUp();
+            _currentBuilding = null;
         }
     }
 
@@ -79,21 +70,26 @@ public class BuildingInput : MonoBehaviour
     {
         if (_currentBuilding == null) return;
         
-        var hit = RaycastBuilding();
-        if (_currentBuilding == hit)
-        {
-            _currentBuilding.OnLongPress();
-            _currentBuilding = null;
-        }
+        _currentBuilding.OnLongPress();
+        _currentBuilding = null;
+    }
+    
+    private void HandleDrag()
+    {
+        if (_currentBuilding == null) return;
+        
+        _currentBuilding = null;
     }
 
     private BuildingObject RaycastBuilding()
     {
-        var ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out var hit))
+        var worldPosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        var hit = Physics2D.OverlapPoint(worldPosition, _layerMask);
+        if (hit != null && hit.TryGetComponent<BuildingObject>(out var component))
         {
-            return hit.collider.GetComponent<BuildingObject>();
+            return component;
         }
+        
         return null;
     }
 }

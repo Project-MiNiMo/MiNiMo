@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6314677405763876296}
   - component: {fileID: 300050482602119651}
   - component: {fileID: 5187844719989918184}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building_CropFacility
   m_TagString: GridObject
   m_Icon: {fileID: 0}

@@ -83,10 +83,8 @@ public abstract class ProduceObject : BuildingObject
         }
     }
 
-    protected override void Update()
+    protected virtual void Update()
     {
-        base.Update();
-        
         if ((_timeManager.Time - _lastUpdateTime).TotalSeconds < 1f) return;
 
         _lastUpdateTime = _timeManager.Time;
