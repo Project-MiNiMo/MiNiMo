@@ -112,4 +112,9 @@ public class EditManager : ManagerBase
     {
         return _gridLayout.WorldToCell(position);
     }
+    
+    public Vector3 GetWorldPosition(Vector3Int position)
+    {
+        return _gridLayout.CellToWorld(position);
+    }
 }

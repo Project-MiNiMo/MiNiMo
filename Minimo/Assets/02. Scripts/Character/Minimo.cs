@@ -5,12 +5,14 @@ public class Minimo : MonoBehaviour
     public MinimoFSM FSM { get; private set; }
 
     private Animator _animator;
+    private SpriteRenderer _spriteRenderer;
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
 
-        FSM = new(this);
+        FSM = new MinimoFSM(this);
         SetChillState();
     }
 
@@ -18,25 +20,21 @@ public class Minimo : MonoBehaviour
     {
         FSM.Update();
     }
-
-    public void SetAnimation(string _trigger)
+    
+    public void SetSpriteFilp(bool isFlip)
     {
-        Debug.Log($"Minimo State Change {_trigger}");
+        _spriteRenderer.flipX = isFlip;
+    }
 
-        _animator.SetTrigger(_trigger);
+    public void SetAnimation(string trigger, bool isActive)
+    {
+        _animator.SetBool(trigger, isActive);
     }
 
     public void SetChillState()
     {
-        int randomIndex = Random.Range(0, 2);
-
-        if (randomIndex == 0)
-        {
-            FSM.ChangeState(MinimoState.Idle);
-        }
-        else
-        {
-            FSM.ChangeState(MinimoState.Walk);
-        }
+        var randomIndex = Random.Range(0, 2);
+        
+        FSM.ChangeState(randomIndex == 0 ? MinimoState.Idle : MinimoState.Walk);
     }
 }

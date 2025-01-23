@@ -24,8 +24,8 @@ public class MinimoWalkState : StateBase<Minimo>
 
         if (_path != null && _path.Count > 0)
         {
-            _owner.SetAnimation("Walk");
-
+            _owner.SetAnimation("IsWalk", true);
+            
             _currIndex = 0;
             _targetPosition = _pathManager.GetTileWorldPosition(_path[_currIndex]);
 
@@ -33,7 +33,7 @@ public class MinimoWalkState : StateBase<Minimo>
         }
         else
         {
-            _owner.SetChillState();
+            _owner.FSM.ChangeState(MinimoState.Idle);
         }
     }
 
@@ -46,8 +46,14 @@ public class MinimoWalkState : StateBase<Minimo>
 
         if (_currIndex < _path.Count)
         {
-            if ((_targetPosition - _owner.transform.position).sqrMagnitude > 0.01f)
+            if ((_targetPosition - _owner.transform.position).sqrMagnitude > 0.05f)
             {
+                var deltaX = _targetPosition.x - _owner.transform.position.x;
+                if (deltaX != 0)
+                {
+                    _owner.SetSpriteFilp(deltaX >= 0);
+                }
+                
                 _owner.transform.position = Vector3.MoveTowards(_owner.transform.position, _targetPosition, SPEED * Time.deltaTime);
             }
             else
@@ -67,6 +73,7 @@ public class MinimoWalkState : StateBase<Minimo>
 
     public override void Exit()
     {
+        _owner.SetAnimation("IsWalk", false);
         _isUpdating = false;
         _path = null;
 

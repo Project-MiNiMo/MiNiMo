@@ -5,20 +5,20 @@ public class MinimoIdleState : StateBase<Minimo>
     private float _stateTimer;
     private bool _isUpdating;
 
-    private readonly string[] _idleAnimations = { "Sit", "Stand", "Dance" };
+    private readonly string[] _idleAnimations = { "IsSit", "IsStand" };
     private string _currentAnimation;
 
     public MinimoIdleState(Minimo owner) : base(owner) { }
 
     public override void Enter()
     {
-        _stateTimer = Random.Range(2f, 5f);
+        _stateTimer = Random.Range(15f, 20f);
         _isUpdating = true;
 
-        int randomIndex = Random.Range(0, _idleAnimations.Length);
+        var randomIndex = Random.Range(0, _idleAnimations.Length);
         _currentAnimation = _idleAnimations[randomIndex];
 
-        _owner.SetAnimation(_currentAnimation);
+        _owner.SetAnimation(_currentAnimation, true);
     }
 
     public override void Execute()
@@ -39,5 +39,6 @@ public class MinimoIdleState : StateBase<Minimo>
     public override void Exit()
     {
         _isUpdating = false;
+        _owner.SetAnimation(_currentAnimation, false);
     }
 }

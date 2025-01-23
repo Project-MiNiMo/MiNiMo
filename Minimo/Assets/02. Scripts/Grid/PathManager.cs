@@ -113,7 +113,7 @@ public class PathManager : ManagerBase
 
     private bool IsWalkable(Vector3Int position)
     {
-        if (_walkableCache.TryGetValue(position, out bool isWalkable))
+        if (_walkableCache.TryGetValue(position, out var isWalkable))
         {
             return isWalkable;
         }

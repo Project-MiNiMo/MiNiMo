@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class FSM<T, TStateType> where T : MonoBehaviour where TStateType : Enum
 {
-    protected Dictionary<TStateType, StateBase<T>> _stateDictionary = new();
-    protected StateBase<T> _currentState;
+    public StateBase<T> CurrentState { get; private set; }
+    private Dictionary<TStateType, StateBase<T>> _stateDictionary = new();
 
-    public void AddState(TStateType stateType, StateBase<T> state)
+    protected void AddState(TStateType stateType, StateBase<T> state)
     {
         _stateDictionary[stateType] = state;
     }
 
     public void ChangeState(TStateType newStateType)
     {
-        _currentState?.Exit();
+        CurrentState?.Exit();
 
         if (_stateDictionary.TryGetValue(newStateType, out var newState))
         {
-            _currentState = newState;
-            _currentState.Enter();
+            CurrentState = newState;
+            CurrentState.Enter();
         }
         else
         {
@@ -29,6 +29,6 @@ public class FSM<T, TStateType> where T : MonoBehaviour where TStateType : Enum
 
     public void Update()
     {
-        _currentState?.Execute();
+        CurrentState?.Execute();
     }
 }

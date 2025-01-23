@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class StarTree : MonoBehaviour
+public class StarTree : InteractObject
 {
     private StarTreePanel _starTreePanel;
 
@@ -10,13 +10,10 @@ public class StarTree : MonoBehaviour
         _starTreePanel = App.GetManager<UIManager>().GetPanel<StarTreePanel>();
     }
 
-    private void OnMouseUp()
-    {
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            return;
-        }
+    public override void OnLongPress() { }
 
+    public override void OnClickUp()
+    {
         _starTreePanel.OpenPanel();
     }
 }

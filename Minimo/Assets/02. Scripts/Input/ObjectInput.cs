@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class BuildingInput : MonoBehaviour
+public class ObjectInput : MonoBehaviour
 {
     private Camera _mainCamera;
     
     private InputManager _input;
     private EditManager _editManager;
 
-    private BuildingObject _currentBuilding;
+    private InteractObject _currentObject;
     
     private int _layerMask;
 
@@ -18,7 +18,7 @@ public class BuildingInput : MonoBehaviour
         _input = App.GetManager<InputManager>();
         _editManager = App.GetManager<EditManager>();
         
-        _layerMask = LayerMask.GetMask("Building");
+        _layerMask = LayerMask.GetMask("InteractObject");
     }
 
     private void Update()
@@ -45,13 +45,13 @@ public class BuildingInput : MonoBehaviour
 
     private void HandleClickDown()
     {
-        var hit = RaycastBuilding();
-        _currentBuilding = hit;
+        var hit = GetRaycastObject();
+        _currentObject = hit;
     }
 
     private void HandleClickUp()
     {
-        if (_currentBuilding == null)
+        if (_currentObject == null || _currentObject is not BuildingObject)
         {
             if (!_editManager.IsEditing.Value) return;
             
@@ -63,31 +63,29 @@ public class BuildingInput : MonoBehaviour
         }
         else
         {
-            _currentBuilding.OnClickUp();
-            _currentBuilding = null;
+            _currentObject.OnClickUp();
+            _currentObject = null;
         }
     }
 
     private void HandleLongPress()
     {
-        if (_currentBuilding == null) return;
+        if (_currentObject == null) return;
         
-        _currentBuilding.OnLongPress();
-        _currentBuilding = null;
+        _currentObject.OnLongPress();
+        _currentObject = null;
     }
     
     private void HandleDrag()
     {
-        if (_currentBuilding == null) return;
-        
-        _currentBuilding = null;
+        _currentObject = null;
     }
 
-    private BuildingObject RaycastBuilding()
+    private InteractObject GetRaycastObject()
     {
         var worldPosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
         var hit = Physics2D.OverlapPoint(worldPosition, _layerMask);
-        if (hit != null && hit.TryGetComponent<BuildingObject>(out var component))
+        if (hit != null && hit.TryGetComponent<InteractObject>(out var component))
         {
             return component;
         }

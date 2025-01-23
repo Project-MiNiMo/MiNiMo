@@ -4,7 +4,7 @@ public class MinimoWorkState : StateBase<Minimo>
 
     public override void Enter()
     {
-        _owner.SetAnimation("Work");
+        _owner.SetAnimation("IsWork", true);
     }
 
     public override void Execute()

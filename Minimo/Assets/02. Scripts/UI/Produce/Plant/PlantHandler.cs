@@ -19,7 +19,7 @@ public class PlantHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     
     private void Start()
     {
-        _targetLayerMask = LayerMask.GetMask("Building");
+        _targetLayerMask = LayerMask.GetMask("InteractObject");
         _produceManager = App.GetManager<ProduceManager>();
         
         _rect = GetComponent<RectTransform>();

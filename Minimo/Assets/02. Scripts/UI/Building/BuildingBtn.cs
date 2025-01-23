@@ -145,7 +145,11 @@ public class BuildingBtn : MonoBehaviour
     {
         _buildingPanel.ClosePanel();
 
-        var gridObject = Instantiate(_objectPrefab, _buildingGroup).GetComponentInChildren<BuildingObject>();
+        var cameraCenterPosition = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, Camera.main.nearClipPlane));
+        cameraCenterPosition.z = 0;
+        
+        var gridObject = Instantiate(_objectPrefab, cameraCenterPosition, Quaternion.identity, _buildingGroup)
+            .GetComponent<BuildingObject>();
 
         if (gridObject != null)
         {

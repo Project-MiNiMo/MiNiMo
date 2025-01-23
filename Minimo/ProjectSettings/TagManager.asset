@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GridObject
   - BuildingObjectParent
+  - ProduceTaskBtn
   layers:
   - Default
   - TransparentFX
@@ -13,8 +14,8 @@ TagManager:
   - None
   - Water
   - UI
-  - Building
-  - 
+  - InteractObject
+  - Minimo
   - 
   - 
   - 

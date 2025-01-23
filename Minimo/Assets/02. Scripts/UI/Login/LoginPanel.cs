@@ -23,7 +23,7 @@ public class LoginPanel : MonoBehaviour
         _registerBtn.onClick.AddListener(OnRegister);
         
         _loginManager = App.GetManager<LoginManager>();
-        if (!String.IsNullOrEmpty(_loginManager.JwtToken))
+        if (!string.IsNullOrEmpty(_loginManager.JwtToken))
         {
             var result = await _loginManager.LoginWithTokenAsync();
             if (result.IsSuccess)
@@ -34,6 +34,10 @@ public class LoginPanel : MonoBehaviour
             {
                 _loginPanel.SetActive(true);
             }
+        }
+        else
+        {
+            _loginPanel.SetActive(true);
         }
     }
     
