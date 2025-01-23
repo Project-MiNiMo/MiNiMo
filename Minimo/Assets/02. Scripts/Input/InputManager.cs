@@ -14,6 +14,7 @@ public enum InputState
 public class InputManager : ManagerBase
 {
     public InputState CurrentState { get; private set; } = InputState.None;
+    private InputState _previousState = InputState.None;
 
     private Vector2 _startPos;
     private float _startTime;
@@ -26,20 +27,33 @@ public class InputManager : ManagerBase
     {
         if (EventSystem.current.IsPointerOverGameObject())
         {
-            CurrentState = InputState.None;
-            _isDragging = false;
+            ResetState();
             return;
         }
+
+        HandleInput();
         
-        HandleTouchInput(); // Touch
+        if (_previousState == InputState.ClickUp)
+        {
+            CurrentState = InputState.None;
+        }
+
+        _previousState = CurrentState;
         
-        HandleMouseInput(); // Mouse
+        Debug.Log($"Current State: {CurrentState}");
     }
     
-    private void HandleMouseInput()
+    private void HandleInput()
     {
         if (Input.GetMouseButtonDown(0)) // Click
         {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                CurrentState = InputState.None;
+                _isDragging = false;
+                return;
+            }
+            
             _startPos = Input.mousePosition;
             _startTime = Time.time;
             _isDragging = false;
@@ -65,7 +79,7 @@ public class InputManager : ManagerBase
             {
                 CurrentState = InputState.ClickUp;
             }
-            else if (_isDragging) 
+            else 
             {
                 CurrentState = InputState.None;
             }
@@ -78,63 +92,17 @@ public class InputManager : ManagerBase
             CurrentState = InputState.Zoom;
             _isDragging = false;
         }
-    }
 
-    private void HandleTouchInput()
-    {
-        if (Input.touchCount == 1)
-        {
-            var touch = Input.GetTouch(0);
-
-            switch (touch.phase)
-            {
-                case TouchPhase.Began: // Click
-                    _startPos = touch.position;
-                    _startTime = Time.time;
-                    _isDragging = false;
-                    CurrentState = InputState.ClickDown; 
-                    break;
-
-                case TouchPhase.Moved: // Drag
-                    if (Vector2.Distance(touch.position, _startPos) > DragThreshold)
-                    {
-                        CurrentState = InputState.Drag;
-                        _isDragging = true;
-                    }
-                    break;
-
-                case TouchPhase.Stationary: // LongPress
-                    if (!_isDragging && Time.time - _startTime > LongPressThreshold) 
-                    {
-                        CurrentState = InputState.LongPress;
-                    }
-                    break;
-
-                case TouchPhase.Ended:
-                    if (CurrentState == InputState.ClickDown)
-                    {
-                        CurrentState = InputState.ClickUp;
-                    }
-                    else if (_isDragging) 
-                    {
-                        CurrentState = InputState.None;
-                    }
-                    
-                    _isDragging = false;
-                    break;
-            }
-        }
-        else if (Input.touchCount > 1)
+        if (Input.touchCount == 2) 
         {
             CurrentState = InputState.Zoom;
             _isDragging = false;
         }
-        else
-        {
-            if (CurrentState != InputState.Drag && CurrentState != InputState.LongPress)
-            {
-                CurrentState = InputState.None;
-            }
-        }
+    }
+    
+    private void ResetState()
+    {
+        CurrentState = InputState.None;
+        _isDragging = false;
     }
 }
