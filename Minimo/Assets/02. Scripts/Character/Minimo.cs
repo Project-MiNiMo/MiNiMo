@@ -10,7 +10,7 @@ public class Minimo : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
 
-        FSM = new(this);
+        FSM = new MinimoFSM(this);
         SetChillState();
     }
 
@@ -28,15 +28,8 @@ public class Minimo : MonoBehaviour
 
     public void SetChillState()
     {
-        int randomIndex = Random.Range(0, 2);
-
-        if (randomIndex == 0)
-        {
-            FSM.ChangeState(MinimoState.Idle);
-        }
-        else
-        {
-            FSM.ChangeState(MinimoState.Walk);
-        }
+        var randomIndex = Random.Range(0, 2);
+        
+        FSM.ChangeState(randomIndex == 0 ? MinimoState.Idle : MinimoState.Walk);
     }
 }

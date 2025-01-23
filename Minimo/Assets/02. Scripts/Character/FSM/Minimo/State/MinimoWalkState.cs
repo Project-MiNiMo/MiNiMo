@@ -20,7 +20,7 @@ public class MinimoWalkState : StateBase<Minimo>
 
     public override void Enter()
     {
-        _path = _pathManager.GetRandomPath(_owner.transform.position);
+        _path = _pathManager.GetRandomPath(_owner.transform.position, 20);
 
         if (_path != null && _path.Count > 0)
         {
