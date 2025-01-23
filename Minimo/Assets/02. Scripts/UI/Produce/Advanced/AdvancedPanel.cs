@@ -50,6 +50,7 @@ public class AdvancedPanel : UIBase
         base.OpenPanel();
         
         InitTaskBtns();
+        _titleTMP.text = App.GetData<TitleData>().GetString(_produceManager.CurrentProduceObject.Data.Name);
     }
 
     private void InitTaskBtns()

@@ -1,9 +1,10 @@
 using UniRx;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PrimaryPanel : UIBase
 {
+    [SerializeField] private Button _closeBtn;
     [SerializeField] private HarvestHandler _harvestCtrl;
     [SerializeField] private ProduceInfoCtrl _infoCtrl;
     [SerializeField] private RectTransform _rect;
@@ -35,21 +36,12 @@ public class PrimaryPanel : UIBase
             }).AddTo(gameObject);
 
         _plantPanel = App.GetManager<UIManager>().GetPanel<PlantPanel>();
-    }
-    
-    private void Update()
-    {
-        if (!gameObject.activeSelf)
-        {
-            return;
-        }
-
-        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+        _closeBtn.onClick.AddListener(() =>
         {
             _produceManager.DeactiveProduce();
-        }
+        });
     }
-
+ 
     public override void OpenPanel()
     {
         base.OpenPanel();

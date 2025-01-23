@@ -20,7 +20,7 @@ public class BuildingObject : MonoBehaviour
     private const float LONG_PRESS_THRESHOLD = 1f;
     
     protected BuildingManager _buildingManager;
-    private EditManager _editManager;
+    protected EditManager _editManager;
     private SpriteRenderer _spriteRenderer;
 
     private void Awake()
@@ -62,22 +62,32 @@ public class BuildingObject : MonoBehaviour
         }
     }
 
+    public void OnLongPress()
+    {
+        if (_editManager.IsEditing.Value) return;
+        
+        _editManager.StartEdit(this);
+    }
+
     private void OnMouseUp()
     {
         if (EventSystem.current.IsPointerOverGameObject()) return;
         
         _isPressed = false;
         _pressTime = 0f;
+    }
 
-        if (!_editManager.IsEditing.Value)
+    public virtual void OnClickUp()
+    {
+        if (_editManager.IsEditing.Value)
         {
-            OnClickWhenNotEditing();
+            _editManager.StartEdit(this);
         }
     }
 
     private void OnMouseDown()
     {
-        if (EventSystem.current.IsPointerOverGameObject()) return;
+        
         
         if (!_editManager.IsEditing.Value)
         {
@@ -204,6 +214,4 @@ public class BuildingObject : MonoBehaviour
         _isFlipped = !_isFlipped;
     }
     #endregion
-
-    protected virtual void OnClickWhenNotEditing() { }
 }

@@ -172,6 +172,8 @@ public abstract class ProduceObject : BuildingObject
         
         await _buildingManager.StartProduce(newStartProduce);
         
+        _produceSlots[task.SlotIndex] = true;
+        
         AllTasks.Add(task);
         Debug.Log($"ProduceTask Added : {task.Data.Results[0].Code}");
         SetNextActiveTask();
@@ -228,13 +230,18 @@ public abstract class ProduceObject : BuildingObject
         AllTasks.RemoveAll(task => task.CurrentState is EndState);
     }
 
-    protected override void OnClickWhenNotEditing()
+    public override void OnClickUp()
     {
-        _produceManager.ActiveProduce(this);
+        base.OnClickUp();
 
-        if (ActiveTask != null) 
+        if (!_editManager.IsEditing.Value)
         {
-            _produceManager.SetRemainTime(ActiveTask.RemainTime);
+            _produceManager.ActiveProduce(this);
+
+            if (ActiveTask != null)
+            {
+                _produceManager.SetRemainTime(ActiveTask.RemainTime);
+            }
         }
     }
 }

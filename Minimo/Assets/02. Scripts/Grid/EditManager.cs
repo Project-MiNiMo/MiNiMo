@@ -9,6 +9,7 @@ public class EditManager : ManagerBase
     public BuildingObject CurrentEditObject { get; private set; }
     
     [SerializeField] private GridLayout _gridLayout;
+    [SerializeField] private Transform _buildingParent;
     
     private InstallChecker _installChecker;
     private TileStateModifier _tileStateModifier;
@@ -39,6 +40,7 @@ public class EditManager : ManagerBase
                 : Vector3Int.zero;
             var cellPosition = _gridLayout.CellToWorld(position);
             var buildingObject = Instantiate(objectPrefab, cellPosition, Quaternion.identity).GetComponent<BuildingObject>();
+            buildingObject.transform.SetParent(_buildingParent);
             buildingObject.Initialize(building);
             _tileStateModifier.ModifyTileState(buildingObject.Area, TileState.Installed);
         }
@@ -88,6 +90,8 @@ public class EditManager : ManagerBase
 
     public void MoveObject(Vector3 touchPosition)
     {
+        if (!IsEditing.Value) return;
+        
         var cellPosition = _gridLayout.WorldToCell(touchPosition);
         SetCurrentPosition(cellPosition);
     }

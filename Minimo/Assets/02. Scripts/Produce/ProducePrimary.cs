@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using MinimoShared;
 using Cysharp.Threading.Tasks;
 
 using UnityEngine;
@@ -8,13 +9,24 @@ public abstract class ProducePrimary : ProduceObject
 {
     public override bool IsPrimary => true;
     
-    [SerializeField] private SpriteRenderer _cropSpriteRenderer;
+    [SerializeField] protected SpriteRenderer _cropSpriteRenderer;
     
     protected List<Sprite[]> _cropSprites;
    
-    private Sprite[] _currentCropSprites;
-    private int _currentSpriteIndex;
+    protected Sprite[] _currentCropSprites;
+    protected int _currentSpriteIndex;
   
+    public override void Initialize(BuildingDTO buildingDto)
+    {
+        base.Initialize(buildingDto);
+
+        if (AllTasks.Count > 0)
+        {
+            SetSpriteResources();
+            SetCropSprite();
+        }
+    }
+    
     protected override void Update()
     {
         base.Update();
@@ -37,9 +49,18 @@ public abstract class ProducePrimary : ProduceObject
         SetCropSprite();
     }
 
-    private void SetCropSprite()
+    protected virtual void SetCropSprite()
     {
-        var remainPercent = (float)ActiveTask.RemainTime / ActiveTask.Data.Time;
+        float remainPercent;
+
+        if (ActiveTask == null)
+        {
+            remainPercent = 0;
+        }
+        else
+        {
+            remainPercent = (float)ActiveTask.RemainTime / ActiveTask.Data.Time;
+        }
 
         var newSpriteIndex = remainPercent switch
         {
@@ -71,10 +92,15 @@ public abstract class ProducePrimary : ProduceObject
         }
         
         await base.OnPlant(task, optionIndex);
-        
+
+        SetSpriteResources();
+    }
+
+    private void SetSpriteResources()
+    {
         _currentSpriteIndex = 0;
 
-        var cropCode = ActiveTask.Data.Results[0].Code;
+        var cropCode = AllTasks[0].Data.Results[0].Code;
         _currentCropSprites = _cropSprites[GetCropType(cropCode)];
         _cropSpriteRenderer.sprite = _currentCropSprites[_currentSpriteIndex];
     }
