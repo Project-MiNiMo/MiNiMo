@@ -5,10 +5,12 @@ public class Minimo : MonoBehaviour
     public MinimoFSM FSM { get; private set; }
 
     private Animator _animator;
+    private SpriteRenderer _spriteRenderer;
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
 
         FSM = new MinimoFSM(this);
         SetChillState();
@@ -17,6 +19,11 @@ public class Minimo : MonoBehaviour
     private void Update()
     {
         FSM.Update();
+    }
+    
+    public void SetSpriteFilp(bool isFlip)
+    {
+        _spriteRenderer.flipX = isFlip;
     }
 
     public void SetAnimation(string _trigger)

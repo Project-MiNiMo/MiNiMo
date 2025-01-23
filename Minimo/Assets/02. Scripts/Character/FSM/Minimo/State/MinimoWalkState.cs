@@ -48,6 +48,12 @@ public class MinimoWalkState : StateBase<Minimo>
         {
             if ((_targetPosition - _owner.transform.position).sqrMagnitude > 0.01f)
             {
+                var deltaX = _targetPosition.x - _owner.transform.position.x;
+                if (deltaX != 0)
+                {
+                    _owner.SetSpriteFilp(deltaX >= 0);
+                }
+                
                 _owner.transform.position = Vector3.MoveTowards(_owner.transform.position, _targetPosition, SPEED * Time.deltaTime);
             }
             else
