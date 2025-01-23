@@ -465,7 +465,7 @@ MonoBehaviour:
   _dragSpeed: 10
   _zoomSpeed: 10
   _minZoom: 5
-  _maxZoom: 10
+  _maxZoom: 20
 --- !u!114 &408177628
 MonoBehaviour:
   m_ObjectHideFlags: 0
