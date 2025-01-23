@@ -172,6 +172,8 @@ public abstract class ProduceObject : BuildingObject
         
         await _buildingManager.StartProduce(newStartProduce);
         
+        _produceSlots[task.SlotIndex] = true;
+        
         AllTasks.Add(task);
         Debug.Log($"ProduceTask Added : {task.Data.Results[0].Code}");
         SetNextActiveTask();
