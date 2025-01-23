@@ -2,18 +2,20 @@ using UnityEngine;
 
 public class BuildingInput : MonoBehaviour
 {
-    private InputManager _input;
     private Camera _mainCamera;
     
-    private BuildingObject _currentBuilding;
+    private InputManager _input;
     private EditManager _editManager;
 
+    private BuildingObject _currentBuilding;
+    
     private int _layerMask;
 
     private void Start()
     {
-        _input = App.GetManager<InputManager>();
         _mainCamera = Camera.main;
+        
+        _input = App.GetManager<InputManager>();
         _editManager = App.GetManager<EditManager>();
         
         _layerMask = LayerMask.GetMask("Building");

@@ -23,14 +23,27 @@ public class EditCirclePanel : UIBase
             }).AddTo(gameObject);
         
         _editManager.CurrentCellPosition
-            .Subscribe((position) =>
-            {
-                position.y += 0.5f;
-                var screenPos = Camera.main.WorldToScreenPoint(position);
-                _rect.position = screenPos;
-            }).AddTo(gameObject);
+            .Subscribe(SetPosition).AddTo(gameObject);
         
         _confirmBtn.onClick.AddListener(() => _editManager.ConfirmEdit());
         _cancelBtn.onClick.AddListener(() => _editManager.CancelEdit());
+    }
+    
+    private void SetPosition(Vector3 position)
+    {
+        position.y += 0.5f;
+        var screenPos = Camera.main.WorldToScreenPoint(position);
+        _rect.position = screenPos;
+    }
+
+    public void SetPosition()
+    {
+        if (!gameObject.activeSelf) return;
+        
+        var target = _editManager.CurrentEditObject;
+        var position = target.transform.position;
+        position.y += 0.5f;
+        var screenPos = Camera.main.WorldToScreenPoint(position);
+        _rect.position = screenPos;
     }
 }

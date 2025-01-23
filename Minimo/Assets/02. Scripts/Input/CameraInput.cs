@@ -13,10 +13,14 @@ public class CameraInput : MonoBehaviour
     private InputManager _input;
     private Camera _mainCamera;
     
+    private EditCirclePanel _editCirclePanel;
+    
     private void Start()
     {
         _input = App.GetManager<InputManager>();
         _mainCamera = Camera.main;
+        
+        _editCirclePanel = App.GetManager<UIManager>().GetPanel<EditCirclePanel>();
     }
     
     private void Update()
@@ -36,6 +40,8 @@ public class CameraInput : MonoBehaviour
     {
         var delta = new Vector3(-Input.GetAxis("Mouse X") * _dragSpeed, -Input.GetAxis("Mouse Y") * _dragSpeed, 0);
         _mainCamera.transform.Translate(delta * Time.deltaTime, Space.World);
+        
+        _editCirclePanel.SetPosition();
     }
 
     private void Zoom()
