@@ -8,7 +8,7 @@ public class CameraInput : MonoBehaviour
     [Header("Zoom")]
     [SerializeField] private float _zoomSpeed = 10f; 
     [SerializeField] private float _minZoom = 5f;  
-    [SerializeField] private float _maxZoom = 10f; 
+    [SerializeField] private float _maxZoom = 20f; 
 
     private InputManager _input;
     private Camera _mainCamera;
@@ -57,12 +57,16 @@ public class CameraInput : MonoBehaviour
             var deltaDistance = currentDistance - prevDistance;
 
             _mainCamera.orthographicSize = Mathf.Clamp(_mainCamera.orthographicSize - deltaDistance * _zoomSpeed * Time.deltaTime, _minZoom, _maxZoom);
+            
+            _editCirclePanel.SetPosition();
         }
         
         var scroll = Input.GetAxis("Mouse ScrollWheel"); // Mouse
         if (scroll != 0.0f)
         {
             _mainCamera.orthographicSize = Mathf.Clamp(_mainCamera.orthographicSize - scroll * _zoomSpeed, _minZoom, _maxZoom);
+            
+            _editCirclePanel.SetPosition();
         }
     }
 }
