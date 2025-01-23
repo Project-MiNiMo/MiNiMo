@@ -33,7 +33,7 @@ public class MinimoWalkState : StateBase<Minimo>
         }
         else
         {
-            _owner.SetChillState();
+            _owner.FSM.ChangeState(MinimoState.Idle);
         }
     }
 
@@ -46,7 +46,7 @@ public class MinimoWalkState : StateBase<Minimo>
 
         if (_currIndex < _path.Count)
         {
-            if ((_targetPosition - _owner.transform.position).sqrMagnitude > 0.01f)
+            if ((_targetPosition - _owner.transform.position).sqrMagnitude > 0.05f)
             {
                 var deltaX = _targetPosition.x - _owner.transform.position.x;
                 if (deltaX != 0)
