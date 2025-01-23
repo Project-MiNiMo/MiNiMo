@@ -92,6 +92,14 @@ public abstract class ProducePrimary : ProduceObject
             SetCropSprite();
         }
     }
+    
+    public override async UniTask HarvestEarly()
+    {
+        await base.HarvestEarly();
+        
+        _currentSpriteIndex = 2;
+        _cropSpriteRenderer.sprite = _currentCropSprites[_currentSpriteIndex];
+    }
 
     protected abstract int GetCropType(string cropCode);
 }

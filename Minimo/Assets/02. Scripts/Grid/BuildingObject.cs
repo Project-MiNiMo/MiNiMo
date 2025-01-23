@@ -17,7 +17,7 @@ public class BuildingObject : MonoBehaviour
     private bool _isPressed = false;
     
     private float _pressTime = 0f;
-    private const float LONG_PRESS_THRESHOLD = 3f;
+    private const float LONG_PRESS_THRESHOLD = 1f;
     
     protected BuildingManager _buildingManager;
     private EditManager _editManager;
