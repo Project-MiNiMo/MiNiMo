@@ -5,6 +5,7 @@ public enum InputState
 {
     None,      
     Drag,  
+    DragEnd,
     ClickDown,
     ClickUp,   
     LongPress,
@@ -19,6 +20,7 @@ public class InputManager : ManagerBase
     private Vector2 _startPos;
     private float _startTime;
     private bool _isDragging;
+    private bool _isClicked;
 
     private const float DragThreshold = 10f; 
     private const float LongPressThreshold = 1f; 
@@ -33,28 +35,24 @@ public class InputManager : ManagerBase
 
         HandleInput();
         
-        if (_previousState == InputState.ClickUp)
+        if (_previousState == InputState.ClickUp || _previousState == InputState.DragEnd)
         {
             CurrentState = InputState.None;
         }
 
         _previousState = CurrentState;
+        
+        Debug.Log(CurrentState);
     }
     
     private void HandleInput()
     {
         if (Input.GetMouseButtonDown(0)) // Click
         {
-            if (EventSystem.current.IsPointerOverGameObject())
-            {
-                CurrentState = InputState.None;
-                _isDragging = false;
-                return;
-            }
-            
             _startPos = Input.mousePosition;
             _startTime = Time.time;
             _isDragging = false;
+            _isClicked = true;
             CurrentState = InputState.ClickDown; 
         }
 
@@ -69,11 +67,24 @@ public class InputManager : ManagerBase
             {
                 CurrentState = InputState.LongPress;
             }
+            
+            if (CurrentState == InputState.ClickDown && _isClicked)
+            {
+                _isClicked = false;
+            }
+            else if (CurrentState == InputState.ClickDown && !_isClicked)
+            {
+                CurrentState = InputState.None;
+            }
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            if (CurrentState == InputState.ClickDown)
+            if (_isDragging) 
+            {
+                CurrentState = InputState.DragEnd;
+            }
+            else if (CurrentState == InputState.ClickDown)
             {
                 CurrentState = InputState.ClickUp;
             }
@@ -102,5 +113,6 @@ public class InputManager : ManagerBase
     {
         CurrentState = InputState.None;
         _isDragging = false;
+        _isClicked = false;
     }
 }

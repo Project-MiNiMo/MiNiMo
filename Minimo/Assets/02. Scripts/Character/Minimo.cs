@@ -28,8 +28,6 @@ public class Minimo : MonoBehaviour
 
     public void SetAnimation(string trigger, bool isActive)
     {
-        Debug.Log($"Minimo State Change {trigger}");
-
         _animator.SetBool(trigger, isActive);
     }
 

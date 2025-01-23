@@ -27,7 +27,7 @@ public class TitlePanel : MonoBehaviour
     public async void ShowTitle(bool isNew = false)
     {
         _isNew = isNew;
-        _loadHandler.Setup(3 + App.GetData<TitleData>().Building.Values.Count);
+        _loadHandler.Setup(11);
         
         App.GetManager<CheatManager>().UpdateItem(new ItemDTO {ItemType = "Item_Timber", Count = 10}).Forget();
         _loadHandler.UpdateLoad();
@@ -36,6 +36,8 @@ public class TitlePanel : MonoBehaviour
         
         foreach (var building in App.GetData<TitleData>().Building.Values)
         {
+            if (building.Type >= 1) continue;
+            
             if (App.GetManager<AccountInfoManager>().Level >= building.UnlockLevel)
             { 
                 var produceSlotCount = building.ID == "Building_Orchard" ? 5 : 3;
