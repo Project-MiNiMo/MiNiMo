@@ -57,4 +57,35 @@ public class Produce_Orchard :ProducePrimary
             AllTasks.Add(produceTask);
         }
     }
+    
+    protected override void SetCropSprite()
+    {
+        float remainPercent;
+
+        if (ActiveTask == null)
+        {
+            remainPercent = 0;
+        }
+        else if (AllTasks[0]?.RemainTime <= 0) 
+        {
+            remainPercent = 0;
+        }
+        else
+        {
+            remainPercent = (float)ActiveTask.RemainTime / ActiveTask.Data.Time;
+        }
+
+        var newSpriteIndex = remainPercent switch
+        {
+            >= 0.5f => 0,
+            >= 0.01f => 1,
+            _ => 2
+        };
+
+        if (newSpriteIndex != _currentSpriteIndex)
+        {
+            _currentSpriteIndex = newSpriteIndex;
+            _cropSpriteRenderer.sprite = _currentCropSprites[_currentSpriteIndex];
+        }
+    }
 }

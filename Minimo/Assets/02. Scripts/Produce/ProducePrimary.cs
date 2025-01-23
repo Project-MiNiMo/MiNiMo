@@ -9,12 +9,12 @@ public abstract class ProducePrimary : ProduceObject
 {
     public override bool IsPrimary => true;
     
-    [SerializeField] private SpriteRenderer _cropSpriteRenderer;
+    [SerializeField] protected SpriteRenderer _cropSpriteRenderer;
     
     protected List<Sprite[]> _cropSprites;
    
-    private Sprite[] _currentCropSprites;
-    private int _currentSpriteIndex;
+    protected Sprite[] _currentCropSprites;
+    protected int _currentSpriteIndex;
   
     public override void Initialize(BuildingDTO buildingDto)
     {
@@ -49,7 +49,7 @@ public abstract class ProducePrimary : ProduceObject
         SetCropSprite();
     }
 
-    private void SetCropSprite()
+    protected virtual void SetCropSprite()
     {
         float remainPercent;
 
