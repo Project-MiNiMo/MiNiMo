@@ -21,7 +21,7 @@ public class RemainTimeUpdater : MonoBehaviour
     private string _pendingString;
     private string _completeString;
     
-    private void Start()
+    private void Awake()
     {
         _remainTimeTMP.text = string.Empty;
         
