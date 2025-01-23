@@ -33,6 +33,8 @@ public class BuildingObject : InteractObject
         var size = new Vector3Int(data.SizeX, data.SizeY, 1);
         Area = new BoundsInt(_editManager.GetCellPosition(transform.position), size);
         PreviousArea = Area;
+        
+        transform.position = _editManager.GetWorldPosition(Area.position);
     }
     
     public virtual void Initialize(BuildingDTO buildingDto)
