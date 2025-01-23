@@ -26,11 +26,11 @@ public class Minimo : MonoBehaviour
         _spriteRenderer.flipX = isFlip;
     }
 
-    public void SetAnimation(string _trigger)
+    public void SetAnimation(string trigger, bool isActive)
     {
-        Debug.Log($"Minimo State Change {_trigger}");
+        Debug.Log($"Minimo State Change {trigger}");
 
-        _animator.SetTrigger(_trigger);
+        _animator.SetBool(trigger, isActive);
     }
 
     public void SetChillState()

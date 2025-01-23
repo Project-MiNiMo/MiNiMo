@@ -2,7 +2,8 @@ public enum MinimoState
 {
     Idle,
     Walk,
-    Work
+    Work,
+    Drag
 }
 
 public class MinimoFSM : FSM<Minimo, MinimoState>
@@ -12,5 +13,6 @@ public class MinimoFSM : FSM<Minimo, MinimoState>
         AddState(MinimoState.Idle, new MinimoIdleState(owner));
         AddState(MinimoState.Walk, new MinimoWalkState(owner));
         AddState(MinimoState.Work, new MinimoWorkState(owner));
+        AddState(MinimoState.Drag, new MinimoDragState(owner));
     }
 }

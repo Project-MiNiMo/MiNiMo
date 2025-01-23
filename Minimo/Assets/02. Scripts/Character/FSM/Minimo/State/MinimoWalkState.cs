@@ -24,8 +24,8 @@ public class MinimoWalkState : StateBase<Minimo>
 
         if (_path != null && _path.Count > 0)
         {
-            _owner.SetAnimation("Walk");
-
+            _owner.SetAnimation("IsWalk", true);
+            
             _currIndex = 0;
             _targetPosition = _pathManager.GetTileWorldPosition(_path[_currIndex]);
 
@@ -73,6 +73,7 @@ public class MinimoWalkState : StateBase<Minimo>
 
     public override void Exit()
     {
+        _owner.SetAnimation("IsWalk", false);
         _isUpdating = false;
         _path = null;
 
