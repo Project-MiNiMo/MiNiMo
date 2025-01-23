@@ -43,6 +43,8 @@ public class AdvancedPanel : UIBase
         {
             _produceManager.DeactiveProduce();
         });
+
+        _titleTMP.text = App.GetData<TitleData>().GetString(_produceManager.CurrentProduceObject.Data.Name);
     }
 
     public override void OpenPanel()
