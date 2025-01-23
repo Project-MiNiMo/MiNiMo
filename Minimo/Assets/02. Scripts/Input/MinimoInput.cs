@@ -1,13 +1,15 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildingInput : MonoBehaviour
+public class MinimoInput : MonoBehaviour
 {
     private Camera _mainCamera;
     
     private InputManager _input;
     private EditManager _editManager;
 
-    private BuildingObject _currentBuilding;
+    private Minimo _currentObject;
     
     private int _layerMask;
 
@@ -16,9 +18,8 @@ public class BuildingInput : MonoBehaviour
         _mainCamera = Camera.main;
         
         _input = App.GetManager<InputManager>();
-        _editManager = App.GetManager<EditManager>();
         
-        _layerMask = LayerMask.GetMask("Building");
+        _layerMask = LayerMask.GetMask("Minimo");
     }
 
     private void Update()
@@ -45,49 +46,31 @@ public class BuildingInput : MonoBehaviour
 
     private void HandleClickDown()
     {
-        var hit = RaycastBuilding();
-        _currentBuilding = hit;
+        var hit = GetRaycastObject();
+        _currentObject = hit;
     }
 
     private void HandleClickUp()
     {
-        if (_currentBuilding == null)
-        {
-            if (!_editManager.IsEditing.Value) return;
-            
-            var screenPosition = Input.mousePosition;
-            var worldPosition = _mainCamera.ScreenToWorldPoint(
-                new Vector3(screenPosition.x, screenPosition.y, _mainCamera.nearClipPlane));
-            worldPosition.z = 0;
-            _editManager.MoveObject(worldPosition);
-        }
-        else
-        {
-            _currentBuilding.OnClickUp();
-            _currentBuilding = null;
-        }
+        _currentObject = null;
     }
 
     private void HandleLongPress()
     {
-        if (_currentBuilding == null) return;
-        
-        _currentBuilding.OnLongPress();
-        _currentBuilding = null;
+        //if(_currentObject.FSM.CurrentState is )
+        _currentObject = null;
     }
     
     private void HandleDrag()
     {
-        if (_currentBuilding == null) return;
-        
-        _currentBuilding = null;
+        _currentObject = null;
     }
 
-    private BuildingObject RaycastBuilding()
+    private Minimo GetRaycastObject()
     {
         var worldPosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
         var hit = Physics2D.OverlapPoint(worldPosition, _layerMask);
-        if (hit != null && hit.TryGetComponent<BuildingObject>(out var component))
+        if (hit != null && hit.TryGetComponent<Minimo>(out var component))
         {
             return component;
         }

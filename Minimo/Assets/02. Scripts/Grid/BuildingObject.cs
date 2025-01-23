@@ -1,10 +1,9 @@
 using Cysharp.Threading.Tasks;
-using UnityEngine;
-using UnityEngine.EventSystems;
-
 using MinimoShared;
 
-public class BuildingObject : MonoBehaviour
+using UnityEngine;
+
+public class BuildingObject : InteractObject
 {
     public BoundsInt Area;
     public BoundsInt PreviousArea { get; private set; }
@@ -45,14 +44,14 @@ public class BuildingObject : MonoBehaviour
         Initialize(buildingData);
     }
 
-    public void OnLongPress()
+    public override void OnLongPress()
     {
         if (_editManager.IsEditing.Value) return;
         
         _editManager.StartEdit(this);
     }
 
-    public virtual void OnClickUp()
+    public override void OnClickUp()
     {
         if (_editManager.IsEditing.Value)
         {

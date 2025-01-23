@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Meteor : MonoBehaviour
+public class Meteor : InteractObject
 {
     public bool IsLanded => gameObject.activeSelf;
 
@@ -27,14 +27,11 @@ public class Meteor : MonoBehaviour
         transform.position = position;
         gameObject.SetActive(true);
     }
+    
+    public override void OnLongPress() { }
 
-    private void OnMouseUp()
+    public override void OnClickUp()
     {
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            return;
-        }
-        
         PickMeteor();
     }
 
