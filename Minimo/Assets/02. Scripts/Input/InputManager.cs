@@ -39,8 +39,6 @@ public class InputManager : ManagerBase
         }
 
         _previousState = CurrentState;
-        
-        Debug.Log($"Current State: {CurrentState}");
     }
     
     private void HandleInput()
