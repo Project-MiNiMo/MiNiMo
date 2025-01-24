@@ -46,6 +46,12 @@ public class AccountInfoManager : ManagerBase
         BlueStar.Value = currency.BlueStar;
         Star.Value = currency.Star;
     }
+    
+    public void UpdateLevel(int level)
+    {
+        _gameClient.AccountInfo.Level = level;
+        Level.Value = level;
+    }
 
     public void UpdateBuilding(BuildingDTO buildingDto)
     {

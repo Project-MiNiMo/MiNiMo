@@ -30,7 +30,10 @@ public class MeteorCtrl : MonoBehaviour
         _meteors = new List<Meteor>(maxStarLimit);
         for (var i = 0; i < maxStarLimit; i++)
         {
-            _meteors.Add(Instantiate(_meteorPrefab, Vector3.zero, Quaternion.identity).GetComponent<Meteor>());
+            var meteor = Instantiate(_meteorPrefab, Vector3.zero, Quaternion.identity).GetComponent<Meteor>();
+            meteor.gameObject.SetActive(false);
+            _meteors.Add(meteor);
+            
         }
         
         _timeManager = App.GetManager<TimeManager>();
@@ -102,6 +105,8 @@ public class MeteorCtrl : MonoBehaviour
 
     private async UniTask SpawnMeteor()
     {
+        return;
+        
         if (!CheckRemainingMeteor()) return;
         
         var spawnPositions = _installChecker.GetInstallablePositions();

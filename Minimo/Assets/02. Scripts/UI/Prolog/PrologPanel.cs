@@ -33,7 +33,7 @@ public class PrologPanel : MonoBehaviour
 
     private IEnumerator ShowProlog()
     {
-        _blackblurImg.DOFade(0, 0.5f);
+        _blackblurImg.DOFade(0, 1f);
         
         foreach (var prolog in _prologBases)
         {

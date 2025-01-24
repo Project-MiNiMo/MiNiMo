@@ -28,7 +28,7 @@ public class LoginPanel : MonoBehaviour
             var result = await _loginManager.LoginWithTokenAsync();
             if (result.IsSuccess)
             {
-                _titlePanel.ShowTitle();
+                await _titlePanel.ShowTitle();
             }
             else
             {
@@ -50,7 +50,7 @@ public class LoginPanel : MonoBehaviour
         var result = await _loginManager.LoginAsync(id, pw);
         if (result.IsSuccess)
         {
-            _titlePanel.ShowTitle(isNew);
+            await _titlePanel.ShowTitle(isNew);
             _loginPanel.SetActive(false);
         }
         else

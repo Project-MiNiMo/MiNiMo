@@ -24,20 +24,21 @@ public class TitlePanel : MonoBehaviour
         _startBtn.gameObject.SetActive(false);
     }
 
-    public async void ShowTitle(bool isNew = false)
+    public async UniTask ShowTitle(bool isNew = false)
     {
+        Debug.Log(" ShowTitle");
         _isNew = isNew;
-        _loadHandler.Setup(11);
+        _loadHandler.Setup(10);
+        
+        App.GetManager<AccountInfoManager>().Setup();
         
         App.GetManager<CheatManager>().UpdateItem(new ItemDTO {ItemType = "Item_Timber", Count = 10}).Forget();
         _loadHandler.UpdateLoad();
-        App.GetManager<CheatManager>().UpdateCurrency(new CurrencyDTO {HPI = 100, BlueStar = 100}).Forget();
-        _loadHandler.UpdateLoad();
-        
+       
         foreach (var building in App.GetData<TitleData>().Building.Values)
         {
             if (building.Type >= 1) continue;
-            
+          
             if (App.GetManager<AccountInfoManager>().Level.Value >= building.UnlockLevel)
             { 
                 var produceSlotCount = building.ID == "Building_Orchard" ? 5 : 3;
@@ -51,8 +52,6 @@ public class TitlePanel : MonoBehaviour
                 _loadHandler.UpdateLoad();
             }
         }
-
-        App.GetManager<AccountInfoManager>().Setup();
         
         _loadHandler.FinishLoad();
         _startBtn.gameObject.SetActive(true);
