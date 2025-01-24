@@ -10,6 +10,7 @@ public class BuildingPanel : UIBase
     [SerializeField] private Sprite[] _btnSprites;
 
     [Header("Buttons")]
+    [SerializeField] private BottomBtn _openBtn;
     [SerializeField] private Button _closeBtn;
 
     public override void Initialize()
@@ -23,6 +24,14 @@ public class BuildingPanel : UIBase
         base.OpenPanel();
 
         OnClickBuildingBtn(0);
+        _openBtn.MoveBtn(true);
+    }
+    
+    public override void ClosePanel()
+    {
+        base.ClosePanel();
+        
+        _openBtn.MoveBtn(false);
     }
 
     private void SetString()

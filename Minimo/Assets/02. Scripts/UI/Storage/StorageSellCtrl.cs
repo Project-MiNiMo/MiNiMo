@@ -86,8 +86,8 @@ public class StorageSellCtrl : MonoBehaviour
         
         var newCurrencyRequest = new CurrencyDTO
         {
-            Star = _accountInfo.Star,
-            BlueStar = _accountInfo.BlueStar + _currentCount * _item.Data.SellCost
+            Star = _accountInfo.Star.Value,
+            BlueStar = _accountInfo.BlueStar.Value + _currentCount * _item.Data.SellCost
         };
         
         _accountInfo.UpdateCurrency(newCurrencyRequest);

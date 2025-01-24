@@ -38,7 +38,7 @@ public class TitlePanel : MonoBehaviour
         {
             if (building.Type >= 1) continue;
             
-            if (App.GetManager<AccountInfoManager>().Level >= building.UnlockLevel)
+            if (App.GetManager<AccountInfoManager>().Level.Value >= building.UnlockLevel)
             { 
                 var produceSlotCount = building.ID == "Building_Orchard" ? 5 : 3;
                 await App.GetManager<CheatManager>().UpdateBuildingInfo(new BuildingInfoDTO()
@@ -51,6 +51,8 @@ public class TitlePanel : MonoBehaviour
                 _loadHandler.UpdateLoad();
             }
         }
+
+        App.GetManager<AccountInfoManager>().Setup();
         
         _loadHandler.FinishLoad();
         _startBtn.gameObject.SetActive(true);

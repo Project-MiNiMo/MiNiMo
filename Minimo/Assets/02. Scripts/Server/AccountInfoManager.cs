@@ -1,23 +1,32 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using Cysharp.Threading.Tasks;
+
 using Microsoft.Extensions.DependencyInjection;
 using MinimoShared;
+using UniRx;
 using UnityEngine;
 
 public class AccountInfoManager : ManagerBase
 {
-    public string NickName => _gameClient.AccountInfo.Nickname;
-    public int Level => _gameClient.AccountInfo.Level;
-    public int Star => _gameClient.AccountInfo.Currency.Star;
-    public int BlueStar => _gameClient.AccountInfo.Currency.BlueStar;
+    public ReactiveProperty<string> NickName { get; } = new ReactiveProperty<string>();
+    public ReactiveProperty<int> Level { get; } = new ReactiveProperty<int>();
+    public ReactiveProperty<int> Star { get; } = new ReactiveProperty<int>();
+    public ReactiveProperty<int> BlueStar { get; } = new ReactiveProperty<int>();
     
     private GameClient _gameClient;
     
     private void Start()
     {
         _gameClient = App.Services.GetRequiredService<GameClient>();
+    }
+
+    public void Setup()
+    {
+        NickName.Value = _gameClient.AccountInfo.Nickname;
+        Level.Value = _gameClient.AccountInfo.Level;
+        Star.Value = _gameClient.AccountInfo.Currency.Star;
+        BlueStar.Value = _gameClient.AccountInfo.Currency.BlueStar;
     }
     
     public void UpdateAccountInfo(AccountDTO account)
@@ -28,11 +37,14 @@ public class AccountInfoManager : ManagerBase
     public void UpdateNickname(string nickname)
     {
         _gameClient.AccountInfo.Nickname = nickname;
+        NickName.Value = nickname;
     }
     
     public void UpdateCurrency(CurrencyDTO currency)
     {
         _gameClient.AccountInfo.Currency = currency;
+        BlueStar.Value = currency.BlueStar;
+        Star.Value = currency.Star;
     }
 
     public void UpdateBuilding(BuildingDTO buildingDto)

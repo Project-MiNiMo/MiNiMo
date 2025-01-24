@@ -56,7 +56,7 @@ public class UseCashBack : MonoBehaviour
 
     private void OnClickUse()
     {
-        if (_accountInfo.BlueStar < _price)
+        if (_accountInfo.BlueStar.Value < _price)
         {
             _lackAction?.Invoke();
         }
@@ -64,8 +64,8 @@ public class UseCashBack : MonoBehaviour
         {
             var newCurrencyRequest = new CurrencyDTO
             {
-                Star = _accountInfo.Star,
-                BlueStar = _accountInfo.BlueStar - _price
+                Star = _accountInfo.Star.Value,
+                BlueStar = _accountInfo.BlueStar.Value - _price
             };
             
             _accountInfo.UpdateCurrency(newCurrencyRequest);
