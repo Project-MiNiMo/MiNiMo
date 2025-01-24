@@ -15,8 +15,6 @@ public class TutorialManager : ManagerBase
     
     public void NextTutorial()
     {
-        Debug.Log(_tutorials[0].gameObject.name);
-        
         _tutorials[0].EndTutorial();
         _tutorials.RemoveAt(0);
 
@@ -26,8 +24,6 @@ public class TutorialManager : ManagerBase
     private IEnumerator NextTutorialCoroutine()
     {
         yield return new WaitForSeconds(0.5f);
-        
-        Debug.Log(_tutorials[0].gameObject.name);
         
         if (_tutorials.Count > 0)
         {

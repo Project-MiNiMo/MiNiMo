@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 
-public class Tutorial5_FirstMeteor : TutorialBase
+public class Tutorial6_InstallAdvanced : TutorialBase
 {
     [SerializeField] private CanvasGroup _questCanvasGroup;
     
@@ -18,7 +18,8 @@ public class Tutorial5_FirstMeteor : TutorialBase
         gameObject.SetActive(true);
         _questCanvasGroup.DOFade(1, 0.5f);
 
-        App.GetManager<QuestManager>().StartQuest("FirstMeteor");
+        App.GetManager<QuestManager>().StartQuest("InstallAdvanced_Crop");
+        App.GetManager<QuestManager>().StartQuest("InstallAdvanced_Fruit");
         
         StartCoroutine(WaitUntilSideOpen());
     }
@@ -33,7 +34,6 @@ public class Tutorial5_FirstMeteor : TutorialBase
     
     public override void EndTutorial()
     {
-        App.GetManager<AccountInfoManager>().UpdateLevel(2);
         _sidePanel.Close(); 
         gameObject.SetActive(false);
     }
