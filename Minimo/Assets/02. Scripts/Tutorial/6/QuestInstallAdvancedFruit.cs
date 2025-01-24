@@ -3,7 +3,7 @@ using TMPro;
 
 public class QuestInstallAdvancedFruit : QuestBase
 {
-    public override string ID => "InstallAdvanced_Crop";
+    public override string ID => "InstallAdvanced_Fruit";
     protected override bool IsClear => CheckClear();
 
     [SerializeField] private Transform _builidngParent;
@@ -18,7 +18,7 @@ public class QuestInstallAdvancedFruit : QuestBase
     {
         base.ClearQuest();
         
-        _detailText.text = "작물 공방을 설치하세요. (1/1)";
+        _detailText.text = "과수 공방을 설치하세요. (1/1)";
     }
     
     private bool CheckClear()
@@ -27,7 +27,7 @@ public class QuestInstallAdvancedFruit : QuestBase
         {
             for (var i = 0; i < _builidngParent.childCount; i++)
             {
-                if (string.Equals(_builidngParent.GetChild(i).gameObject.name, "Building_CropFacility(Clone)"))
+                if (string.Equals(_builidngParent.GetChild(i).gameObject.name, "Building_OrchardFacility(Clone)"))
                 {
                     return true;
                 }
