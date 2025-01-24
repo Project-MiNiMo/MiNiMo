@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class Meteor : InteractObject
 {
     public bool IsLanded => gameObject.activeSelf;
+    [SerializeField] private int _index;
 
     private MeteorManager _meteorManager;
     private PickMeteorPanel _pickMeteorPanel;
@@ -37,16 +38,25 @@ public class Meteor : InteractObject
 
     private async void PickMeteor()
     {
-        var result = await _meteorManager.GetMeteorResult(_id);
+        //var result = await _meteorManager.GetMeteorResult(_id);
 
-        if (result.IsSuccess) 
+        //if (result.IsSuccess) 
+        //{
+        //    _pickMeteorPanel.OpenPanel(result.Data);
+        //    gameObject.SetActive(false);
+        //}
+        //else
+        //{
+        //    Debug.LogWarning("Failed to pick meteor");
+        //}
+
+        if (_index == 0)
         {
-            _pickMeteorPanel.OpenPanel(result.Data);
-            gameObject.SetActive(false);
+            
         }
         else
         {
-            Debug.LogWarning("Failed to pick meteor");
+            
         }
     }
 }

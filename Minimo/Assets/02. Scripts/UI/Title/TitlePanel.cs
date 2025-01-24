@@ -28,15 +28,13 @@ public class TitlePanel : MonoBehaviour
     {
         Debug.Log(" ShowTitle");
         _isNew = isNew;
-        _loadHandler.Setup(11);
+        _loadHandler.Setup(10);
         
         App.GetManager<AccountInfoManager>().Setup();
         
         App.GetManager<CheatManager>().UpdateItem(new ItemDTO {ItemType = "Item_Timber", Count = 10}).Forget();
         _loadHandler.UpdateLoad();
-        App.GetManager<CheatManager>().UpdateCurrency(new CurrencyDTO {HPI = 100, BlueStar = 100}).Forget();
-        _loadHandler.UpdateLoad();
-        
+       
         foreach (var building in App.GetData<TitleData>().Building.Values)
         {
             if (building.Type >= 1) continue;

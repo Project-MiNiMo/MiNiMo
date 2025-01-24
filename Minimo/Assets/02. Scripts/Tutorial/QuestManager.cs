@@ -6,6 +6,7 @@ using UnityEngine;
 public class QuestManager : ManagerBase
 {
     [SerializeField] private List<QuestBase> _quests;
+    [SerializeField] private Meteor _firstMeteor;
 
     private int _installPrimaryCount = 0;
     private int _plantPrimaryCount = 0;
@@ -14,6 +15,7 @@ public class QuestManager : ManagerBase
     private void Start()
     {
         _sidePanel = App.GetManager<UIManager>().GetPanel<SidePanel>();
+        _firstMeteor.enabled = false;
     }
 
     public void StartQuest(string id)
