@@ -26,6 +26,13 @@ public class PickMeteorPanel : UIBase
         
         StartCoroutine(Harvest(result));
     }
+    
+    public void OpenPanel(int index)
+    {
+        OpenPanel();
+        
+        StartCoroutine(Harvest(index));
+    }
 
     private IEnumerator Harvest(MeteorResultDTO result)
     {
@@ -34,6 +41,22 @@ public class PickMeteorPanel : UIBase
         ClosePanel();
         
         GetPickAction(result).Invoke();
+    }
+    
+    private IEnumerator Harvest(int index)
+    {
+        yield return new WaitForSeconds(2);
+
+        ClosePanel();
+
+        if (index == 0) 
+        {
+            _getItemPanel.OpenPanel(1);
+        }
+        else
+        {
+            App.GetManager<QuestManager>().StartQuest("MeteorQuest");
+        }
     }
     
     private Action GetPickAction(MeteorResultDTO result)

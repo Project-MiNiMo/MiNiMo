@@ -52,7 +52,7 @@ public class Meteor : InteractObject
 
         if (_index == 0)
         {
-            
+            _pickMeteorPanel.OpenPanel();
         }
         else
         {
