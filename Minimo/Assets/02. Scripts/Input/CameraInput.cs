@@ -45,7 +45,7 @@ public class CameraInput : MonoBehaviour
         var delta = new Vector3(-Input.GetAxis("Mouse X") * _dragSpeed, -Input.GetAxis("Mouse Y") * _dragSpeed, 0);
         _mainCamera.transform.Translate(delta * Time.deltaTime, Space.World);
         
-        //ClampCameraPosition();
+        ClampCameraPosition();
         _editCirclePanel.SetPosition();
     }
 
@@ -63,7 +63,7 @@ public class CameraInput : MonoBehaviour
 
             _mainCamera.orthographicSize = Mathf.Clamp(_mainCamera.orthographicSize - deltaDistance * _zoomSpeed * Time.deltaTime, _minZoom, _maxZoom);
             
-            //ClampCameraPosition();
+            ClampCameraPosition();
             _editCirclePanel.SetPosition();
         }
         
@@ -72,7 +72,7 @@ public class CameraInput : MonoBehaviour
         {
             _mainCamera.orthographicSize = Mathf.Clamp(_mainCamera.orthographicSize - scroll * _zoomSpeed, _minZoom, _maxZoom);
             
-            //ClampCameraPosition();
+            ClampCameraPosition();
             _editCirclePanel.SetPosition();
         }
     }
@@ -81,6 +81,12 @@ public class CameraInput : MonoBehaviour
     {
         var cameraHeight = _mainCamera.orthographicSize;
         var cameraWidth = _mainCamera.orthographicSize * _mainCamera.aspect;
+        
+        if (_maxBounds.x - _minBounds.x < cameraWidth * 2 || _maxBounds.y - _minBounds.y < cameraHeight * 2)
+        {
+            Debug.LogWarning("Bounds 크기가 카메라 크기보다 작습니다. ClampCameraPosition을 건너뜁니다.");
+            return;
+        }
         
         var clampedX = Mathf.Clamp(_mainCamera.transform.position.x, _minBounds.x + cameraWidth, _maxBounds.x - cameraWidth);
         var clampedY = Mathf.Clamp(_mainCamera.transform.position.y, _minBounds.y + cameraHeight, _maxBounds.y - cameraHeight);

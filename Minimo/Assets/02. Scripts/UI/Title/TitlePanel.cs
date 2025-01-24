@@ -57,13 +57,21 @@ public class TitlePanel : MonoBehaviour
         _loadHandler.FinishLoad();
         _startBtn.gameObject.SetActive(true);
         
-        _startTextRect.DOJumpAnchorPos(Vector2.one, 10, 1, 1)
+        var startPositionY = _startTextRect.anchoredPosition.y;
+        _startTextRect.DOAnchorPosY(startPositionY + 10f, 0.5f)
             .SetLoops(-1, LoopType.Yoyo)
             .SetEase(Ease.Linear);
     }
 
     private void OnClickStart()
     {
+        var currentValue = 100;
+        DOTween.To(() => currentValue, x =>
+        {
+            currentValue = x;
+            AkSoundEngine.SetRTPCValue("BGMFade", currentValue);
+        }, 0, 1.5f);
+        
         _startTextRect.DOKill();
         _startBtn.gameObject.SetActive(false);
         
