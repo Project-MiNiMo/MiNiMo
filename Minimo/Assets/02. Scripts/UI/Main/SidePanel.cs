@@ -7,6 +7,7 @@ public class SidePanel : UIBase
     [Header("Buttons")]
     [SerializeField] private Button _openBtn;
     [SerializeField] private Button _closeBtn;
+    [SerializeField] private GameObject _alertIcon;
 
     private RectTransform _rect;
 
@@ -54,5 +55,10 @@ public class SidePanel : UIBase
             _isOpen = false;
             UpdateOpenCloseButtons();
         });
+    }
+
+    public void SetAlert(bool isActive)
+    {
+        _alertIcon.SetActive(isActive);
     }
 }
