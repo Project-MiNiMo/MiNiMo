@@ -45,7 +45,6 @@ public class CameraInput : MonoBehaviour
         var delta = new Vector3(-Input.GetAxis("Mouse X") * _dragSpeed, -Input.GetAxis("Mouse Y") * _dragSpeed, 0);
         _mainCamera.transform.Translate(delta * Time.deltaTime, Space.World);
         
-        //ClampCameraPosition();
         _editCirclePanel.SetPosition();
     }
 
@@ -62,8 +61,7 @@ public class CameraInput : MonoBehaviour
             var deltaDistance = currentDistance - prevDistance;
 
             _mainCamera.orthographicSize = Mathf.Clamp(_mainCamera.orthographicSize - deltaDistance * _zoomSpeed * Time.deltaTime, _minZoom, _maxZoom);
-            
-            //ClampCameraPosition();
+
             _editCirclePanel.SetPosition();
         }
         
@@ -71,20 +69,8 @@ public class CameraInput : MonoBehaviour
         if (scroll != 0.0f)
         {
             _mainCamera.orthographicSize = Mathf.Clamp(_mainCamera.orthographicSize - scroll * _zoomSpeed, _minZoom, _maxZoom);
-            
-            //ClampCameraPosition();
+
             _editCirclePanel.SetPosition();
         }
-    }
-    
-    private void ClampCameraPosition()
-    {
-        var cameraHeight = _mainCamera.orthographicSize;
-        var cameraWidth = _mainCamera.orthographicSize * _mainCamera.aspect;
-        
-        var clampedX = Mathf.Clamp(_mainCamera.transform.position.x, _minBounds.x + cameraWidth, _maxBounds.x - cameraWidth);
-        var clampedY = Mathf.Clamp(_mainCamera.transform.position.y, _minBounds.y + cameraHeight, _maxBounds.y - cameraHeight);
-
-        _mainCamera.transform.position = new Vector3(clampedX, clampedY, _mainCamera.transform.position.z);
     }
 }
