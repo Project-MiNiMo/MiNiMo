@@ -113,11 +113,11 @@ public class GetItemPanel : UIBase
     {
         foreach (var icon in _iconImgs)
         {
-            icon.rectTransform.DOScale(1, 1).SetEase(Ease.OutElastic);
-            yield return new WaitForSeconds(0.3f);
+            icon.rectTransform.DOScale(1, 0.5f).SetEase(Ease.OutElastic);
+            yield return new WaitForSeconds(0.2f);
         }
         
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         for (var i = _iconImgs.Length - 1; i >= 0; i--) 
         {

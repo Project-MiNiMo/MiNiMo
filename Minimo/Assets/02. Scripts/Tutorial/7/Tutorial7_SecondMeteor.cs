@@ -24,7 +24,8 @@ public class Tutorial7_SecondMeteor : TutorialBase
             .OnComplete(() =>
             {
                 _questCanvasGroup1.DOFade(1, 0.5f)
-                    .OnComplete(() => _questCanvasGroup1.DOFade(0, 0.5f));
+                    .OnComplete(() => _questCanvasGroup1.DOFade(1, 2f)
+                        .OnComplete(()=>_questCanvasGroup1.DOFade(0, 0.5f)));
             });
         
         StartCoroutine(WaitForMeteor());
