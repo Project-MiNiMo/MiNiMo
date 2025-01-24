@@ -29,5 +29,14 @@ public class TutorialManager : ManagerBase
         {
             _tutorials[0].StartTutorial();
         }
+        else
+        {
+            EndTutorial();
+        }
+    }
+
+    private void EndTutorial()
+    {
+        
     }
 }

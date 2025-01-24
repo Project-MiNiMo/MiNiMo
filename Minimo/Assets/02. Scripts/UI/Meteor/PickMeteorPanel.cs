@@ -55,7 +55,7 @@ public class PickMeteorPanel : UIBase
         }
         else
         {
-            App.GetManager<QuestManager>().StartQuest("MeteorQuest");
+            App.GetManager<QuestManager>().StartQuest("SecondMeteor");
         }
     }
     
