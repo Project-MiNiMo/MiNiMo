@@ -19,7 +19,7 @@ public class StorageBack : MonoBehaviour
     [Header("Scroll")]
     [SerializeField] private ScrollRect _scrollRect;
     
-    private List<StorageBtn> _storageBtns;
+    public List<StorageBtn> _storageBtns;
 
     public void InitStorageBtns()
     {
