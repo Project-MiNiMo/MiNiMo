@@ -7,7 +7,8 @@ public class QuestManager : ManagerBase
 {
     [SerializeField] private List<QuestBase> _quests;
 
-    private int _primaryQuestCount = 0;
+    private int _installPrimaryCount = 0;
+    private int _plantPrimaryCount = 0;
     private SidePanel _sidePanel;
 
     private void Start()
@@ -30,16 +31,30 @@ public class QuestManager : ManagerBase
         switch (id)
         {
             case "InstallPrimary_Crop":
-                _primaryQuestCount++;
-                if (_primaryQuestCount == 2)
+                _installPrimaryCount++;
+                if (_installPrimaryCount == 2)
+                {
+                    App.GetManager<TutorialManager>().NextTutorial();
+                }
+                break;
+            case "InstallPrimary_Fruit":
+                _installPrimaryCount++;
+                if (_installPrimaryCount == 2)
                 {
                     App.GetManager<TutorialManager>().NextTutorial();
                 }
                 break;
             
-            case "InstallPrimary_Farm":
-                _primaryQuestCount++;
-                if (_primaryQuestCount == 2)
+            case "PlantPrimary_Crop":
+                _plantPrimaryCount++;
+                if (_plantPrimaryCount == 2)
+                {
+                    App.GetManager<TutorialManager>().NextTutorial();
+                }
+                break;
+            case "PlantPrimary_Fruit":
+                _plantPrimaryCount++;
+                if (_plantPrimaryCount == 2)
                 {
                     App.GetManager<TutorialManager>().NextTutorial();
                 }
