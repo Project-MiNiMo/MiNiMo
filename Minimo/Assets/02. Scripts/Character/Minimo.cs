@@ -25,6 +25,11 @@ public class Minimo : MonoBehaviour
     {
         _spriteRenderer.flipX = isFlip;
     }
+    
+    public void SetSpriteOrder(int order)
+    {
+        _spriteRenderer.sortingOrder = order;
+    }
 
     public void SetAnimation(string trigger, bool isActive)
     {
@@ -36,5 +41,14 @@ public class Minimo : MonoBehaviour
         var randomIndex = Random.Range(0, 2);
         
         FSM.ChangeState(randomIndex == 0 ? MinimoState.Idle : MinimoState.Walk);
+    }
+
+    public void SetWorkState(ProduceObject produceObject)
+    {
+        FSM.ChangeState(MinimoState.Work);
+        _animator.SetTrigger(produceObject.AnimTrigger);
+        transform.SetParent(produceObject.MinimoWorkingPosition);
+        transform.localPosition = Vector3.zero;
+        SetSpriteFilp(false);
     }
 }
