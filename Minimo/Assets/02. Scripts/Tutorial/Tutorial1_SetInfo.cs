@@ -80,7 +80,7 @@ public class Tutorial1_SetInfo : TutorialBase
             })
             .AppendInterval(0.5f)
             .Append(_canvasGroup.DOFade(0, 1))
-            .OnComplete(EndTutorial);
+            .OnComplete(() => App.GetManager<TutorialManager>().NextTutorial());
     }
     
     public override void EndTutorial()

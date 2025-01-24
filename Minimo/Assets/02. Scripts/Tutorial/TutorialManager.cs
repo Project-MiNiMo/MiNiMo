@@ -11,4 +11,15 @@ public class TutorialManager : ManagerBase
     {
         _tutorials[0].StartTutorial();
     }
+    
+    public void NextTutorial()
+    {
+        _tutorials[0].EndTutorial();
+        _tutorials.RemoveAt(0);
+
+        if (_tutorials.Count > 0)
+        {
+            _tutorials[0].StartTutorial();
+        }
+    }
 }

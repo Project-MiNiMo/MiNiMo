@@ -1,0 +1,38 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class QuestManager : ManagerBase
+{
+    [SerializeField] private List<QuestBase> _quests;
+
+    private int _primaryQuestCount = 0;
+    
+    public void StartQuest(string id)
+    {
+        var quest = _quests.Find(q => q.ID == id);
+        quest.StartQuest();
+    }
+    
+    public void EndQuest(string id)
+    {
+        switch (id)
+        {
+            case "InstallPrimary_Crop":
+                _primaryQuestCount++;
+                if (_primaryQuestCount == 2)
+                {
+                    App.GetManager<TutorialManager>().NextTutorial();
+                }
+                break;
+            
+            case "InstallPrimary_Farm":
+                _primaryQuestCount++;
+                if (_primaryQuestCount == 2)
+                {
+                    App.GetManager<TutorialManager>().NextTutorial();
+                }
+                break;
+        }
+    }
+}

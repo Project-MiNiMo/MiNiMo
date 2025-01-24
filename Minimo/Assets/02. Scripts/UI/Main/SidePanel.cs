@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -11,7 +12,7 @@ public class SidePanel : UIBase
 
     private RectTransform _rect;
 
-    private bool _isOpen = false;
+    public bool IsOpen { get; private set; }
 
     public override void Initialize()
     {
@@ -25,34 +26,38 @@ public class SidePanel : UIBase
 
     private void UpdateOpenCloseButtons()
     {
-        _openBtn.gameObject.SetActive(!_isOpen);
-        _closeBtn.gameObject.SetActive(_isOpen);
+        _openBtn.gameObject.SetActive(!IsOpen);
+        _closeBtn.gameObject.SetActive(IsOpen);
     }
 
     private void Open()
     {
-        if (_isOpen)
+        if (IsOpen)
         {
             return;
         }
 
+        SetAlert(false);
+        
         _rect.DOAnchorPosX(_rect.sizeDelta.x, 0.2f).OnComplete(() =>
         {
-            _isOpen = true;
+            IsOpen = true;
             UpdateOpenCloseButtons();
         });
     }
 
     private void Close()
     {
-        if (!_isOpen)
+        if (!IsOpen)
         {
             return;
         }
 
+        SetAlert(false);
+        
         _rect.DOAnchorPosX(0f, 0.2f).OnComplete(() =>
         {
-            _isOpen = false;
+            IsOpen = false;
             UpdateOpenCloseButtons();
         });
     }
