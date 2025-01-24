@@ -14,7 +14,7 @@ public class HarvestHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     private void Start()
     {
-        _targetLayerMask = LayerMask.GetMask("Building");
+        _targetLayerMask = LayerMask.GetMask("InteractObject");
   
         _canvas = GetComponentInParent<Canvas>();
         
