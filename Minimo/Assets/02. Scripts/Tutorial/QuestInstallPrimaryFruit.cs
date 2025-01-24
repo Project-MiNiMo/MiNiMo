@@ -1,21 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class QuestInstallPrimaryFruit : QuestBase
 {
     public override string ID => "InstallPrimary_Fruit";
-    protected override bool IsClear => _isClear;
+    protected override bool IsClear => CheckClear();
 
-    private bool _isClear = false;
+    [SerializeField] private Transform _builidngParent;
+    [SerializeField] private TextMeshProUGUI _detailText;
     
     protected override void ShowDetail()
     {
         //App.GetManager<UIManager>().OpenPanel<UIQuestDetail>(this);
     }
     
-    public void Clear()
+    protected override void ClearQuest()
     {
-        _isClear = true;
+        base.ClearQuest();
+        
+        _detailText.text = "과수원을 설치하세요. (1/1)";
+    }
+    
+    private bool CheckClear()
+    {
+        if (_builidngParent.childCount > 0)
+        {
+            for (var i = 0; i < _builidngParent.childCount; i++)
+            {
+                if (string.Equals(_builidngParent.GetChild(i).gameObject.name, "Building_Orchard(Clone)"))
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }

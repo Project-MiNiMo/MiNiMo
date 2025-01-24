@@ -64,6 +64,8 @@ public class SidePanel : UIBase
 
     public void SetAlert(bool isActive)
     {
+        if (IsOpen) return;
+        
         _alertIcon.SetActive(isActive);
     }
 }

@@ -17,7 +17,6 @@ public class Tutorial2_InstallPrimary : TutorialBase
     {
         gameObject.SetActive(true);
         _questCanvasGroup.DOFade(1, 0.5f);
-        _sidePanel.SetAlert(true);
 
         App.GetManager<QuestManager>().StartQuest("InstallPrimary_Crop");
         App.GetManager<QuestManager>().StartQuest("InstallPrimary_Fruit");

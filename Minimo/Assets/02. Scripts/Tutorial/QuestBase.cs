@@ -22,6 +22,12 @@ public abstract class QuestBase : MonoBehaviour
         StartCoroutine(WaitForClear());
     }
     
+    protected virtual void ClearQuest()
+    {
+        _clearBtn.gameObject.SetActive(true);
+        _detailBtn.gameObject.SetActive(false);
+    }
+    
     private void EndQuest()
     {
         gameObject.SetActive(false);
@@ -32,9 +38,10 @@ public abstract class QuestBase : MonoBehaviour
     {
         yield return new WaitUntil(() => IsClear);
         
-        _clearBtn.gameObject.SetActive(true);
-        _detailBtn.gameObject.SetActive(false);
+        ClearQuest();
     }
+
+
     
     protected abstract void ShowDetail();
 }
