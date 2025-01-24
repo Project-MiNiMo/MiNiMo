@@ -20,7 +20,7 @@ public class Tutorial7_SecondMeteor : TutorialBase
         gameObject.SetActive(true);
         _meteor.SetActive(true);
         
-        Camera.main.DOShakePosition(1, 10)
+        Camera.main.DOShakePosition(1)
             .OnComplete(() =>
             {
                 _questCanvasGroup1.DOFade(1, 0.5f)

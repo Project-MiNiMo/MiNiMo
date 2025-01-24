@@ -128,7 +128,7 @@ public class GetItemPanel : UIBase
         
         yield return new WaitForSeconds(0.3f);
         
-        ClosePanel();   
         IsComplete = true;
+        ClosePanel();   
     }
 }
