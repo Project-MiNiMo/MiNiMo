@@ -8,12 +8,7 @@ public class QuestInstallPrimaryFruit : QuestBase
 
     [SerializeField] private Transform _builidngParent;
     [SerializeField] private TextMeshProUGUI _detailText;
-    
-    protected override void ShowDetail()
-    {
-        //App.GetManager<UIManager>().OpenPanel<UIQuestDetail>(this);
-    }
-    
+ 
     protected override void ClearQuest()
     {
         base.ClearQuest();

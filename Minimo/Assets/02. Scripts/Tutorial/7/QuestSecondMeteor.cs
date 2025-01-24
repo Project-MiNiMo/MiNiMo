@@ -16,11 +16,6 @@ public class QuestSecondMeteor : QuestBase
         var storagePanel = App.GetManager<UIManager>().GetPanel<StoragePanel>();
         _storageBtn = storagePanel.GetStorageBtn("Item_WheatFlour");
     }
-    
-    protected override void ShowDetail()
-    {
-        //App.GetManager<UIManager>().OpenPanel<UIQuestDetail>(this);
-    }
 
     private bool CheckClear()
     {
