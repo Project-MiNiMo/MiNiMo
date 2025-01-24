@@ -10,6 +10,7 @@ public class QuestManager : ManagerBase
 
     private int _installPrimaryCount = 0;
     private int _plantPrimaryCount = 0;
+    private int _harvestPrimaryCount = 0;
     private SidePanel _sidePanel;
 
     private void Start()
@@ -57,6 +58,21 @@ public class QuestManager : ManagerBase
             case "PlantPrimary_Fruit":
                 _plantPrimaryCount++;
                 if (_plantPrimaryCount == 2)
+                {
+                    App.GetManager<TutorialManager>().NextTutorial();
+                }
+                break;
+            
+            case "HarvestPrimary_Crop":
+                _harvestPrimaryCount++;
+                if (_harvestPrimaryCount == 2)
+                {
+                    App.GetManager<TutorialManager>().NextTutorial();
+                }
+                break;
+            case "HarvestPrimary_Fruit":
+                _harvestPrimaryCount++;
+                if (_harvestPrimaryCount == 2)
                 {
                     App.GetManager<TutorialManager>().NextTutorial();
                 }

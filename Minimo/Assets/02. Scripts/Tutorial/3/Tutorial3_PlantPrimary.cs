@@ -34,6 +34,7 @@ public class Tutorial3_PlantPrimary : TutorialBase
     
     public override void EndTutorial()
     {
+        _sidePanel.Close(); 
         gameObject.SetActive(false);
     }
 }

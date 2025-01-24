@@ -33,7 +33,7 @@ public class Tutorial5_FirstMeteor : TutorialBase
     
     public override void EndTutorial()
     {
+        _sidePanel.Close(); 
         gameObject.SetActive(false);
     }
-    
 }

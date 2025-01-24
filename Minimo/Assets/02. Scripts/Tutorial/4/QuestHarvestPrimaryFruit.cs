@@ -20,6 +20,11 @@ public class QuestHarvestPrimaryFruit : QuestBase
 
     private bool CheckClear()
     {
+        if (_storageBtn == null) 
+        {
+            return false;
+        }
+        
         return _storageBtn.CanShow;
     }
 }

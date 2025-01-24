@@ -8,11 +8,14 @@ public class QuestFirstMeteor : QuestBase
     protected override bool IsClear => CheckClear();
     [SerializeField] private Meteor _meteor;
     
+    private GetItemPanel _getItemPanel;
+    
     public override void StartQuest()
     {
         base.StartQuest();
 
         _meteor.enabled = true;
+        _getItemPanel = App.GetManager<UIManager>().GetPanel<GetItemPanel>();
     }
     
     protected override void ShowDetail()
@@ -22,6 +25,11 @@ public class QuestFirstMeteor : QuestBase
 
     private bool CheckClear()
     {
-        return true;
+        if (_getItemPanel == null) 
+        {
+            return false;
+        }
+        
+        return _getItemPanel.IsComplete;
     }
 }

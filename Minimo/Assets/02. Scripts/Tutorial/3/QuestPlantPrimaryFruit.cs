@@ -28,6 +28,11 @@ public class QuestPlantPrimaryFruit : QuestBase
 
     private bool CheckClear()
     {
+        if (_produceObject == null) 
+        {
+            return false;
+        }
+        
         return _produceObject.AllTasks.Count > 0;
     }
 }

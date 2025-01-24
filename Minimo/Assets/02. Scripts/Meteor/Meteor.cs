@@ -17,7 +17,7 @@ public class Meteor : InteractObject
     {
         _meteorManager = App.GetManager<MeteorManager>();
         _pickMeteorPanel = App.GetManager<UIManager>().GetPanel<PickMeteorPanel>();
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
     public void Land(int id, Vector3 position)
@@ -50,13 +50,6 @@ public class Meteor : InteractObject
         //    Debug.LogWarning("Failed to pick meteor");
         //}
 
-        if (_index == 0)
-        {
-            _pickMeteorPanel.OpenPanel();
-        }
-        else
-        {
-            
-        }
+        _pickMeteorPanel.OpenPanel(_index);
     }
 }

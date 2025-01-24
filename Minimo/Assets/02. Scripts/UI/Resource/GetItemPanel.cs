@@ -12,8 +12,6 @@ public enum ResourceType
 
 public class GetItemPanel : UIBase
 {
-    protected override GameObject Panel => _itemBack;
-    
     [SerializeField] private GameObject _itemBack;
     [SerializeField] private Image[] _iconImgs;
     [SerializeField] private Button _closeBtn;
@@ -22,6 +20,8 @@ public class GetItemPanel : UIBase
     private Vector2[] _startPosition = new Vector2[8];
     
     private ItemSO _itemSO;
+
+    public bool IsComplete = false;
 
     public override void Initialize()
     {
@@ -113,19 +113,22 @@ public class GetItemPanel : UIBase
     {
         foreach (var icon in _iconImgs)
         {
-            icon.rectTransform.DOScale(1, 2).SetEase(Ease.OutElastic);
-            yield return new WaitForSeconds(0.5f);
+            icon.rectTransform.DOScale(1, 1).SetEase(Ease.OutElastic);
+            yield return new WaitForSeconds(0.3f);
         }
         
         yield return new WaitForSeconds(1f);
 
         for (var i = _iconImgs.Length - 1; i >= 0; i--) 
         {
-            _iconImgs[i].rectTransform.DOAnchorPos(_endPosition, 1).SetEase(Ease.InElastic);
-            _iconImgs[i].rectTransform.DOScale(0, 1).SetEase(Ease.InCubic);
-            yield return new WaitForSeconds(0.5f);
+            _iconImgs[i].rectTransform.DOAnchorPos(_endPosition, 0.5f).SetEase(Ease.InBack);
+            yield return new WaitForSeconds(0.2f);
+            _iconImgs[i].rectTransform.DOScale(0, 0.3f).SetEase(Ease.InCubic);
         }
         
+        yield return new WaitForSeconds(0.3f);
+        
         ClosePanel();   
+        IsComplete = true;
     }
 }

@@ -35,6 +35,7 @@ public class Tutorial2_InstallPrimary : TutorialBase
     public override void EndTutorial()
     {
         App.GetManager<AccountInfoManager>().UpdateLevel(2);
+        _sidePanel.Close();
         gameObject.SetActive(false);
     }
 }

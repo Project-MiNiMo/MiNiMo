@@ -15,6 +15,7 @@ public class QuestPlantPrimaryCrop : QuestBase
 
         for (var i = 0; i < _builidngParent.childCount; i++) 
         {
+            Debug.Log(_builidngParent.GetChild(i).gameObject.name);
             if (string.Equals(_builidngParent.GetChild(i).gameObject.name, "Building_Farm(Clone)"))
             {
                 _produceObject = _builidngParent.GetChild(i).GetComponent<ProduceObject>();
@@ -30,6 +31,10 @@ public class QuestPlantPrimaryCrop : QuestBase
 
     private bool CheckClear()
     {
+        if (_produceObject == null) 
+        {
+            return false;
+        }
         return _produceObject.AllTasks.Count > 0;
     }
 }

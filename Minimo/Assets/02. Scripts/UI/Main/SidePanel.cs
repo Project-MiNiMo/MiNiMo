@@ -46,7 +46,7 @@ public class SidePanel : UIBase
         });
     }
 
-    private void Close()
+    public void Close()
     {
         if (!IsOpen)
         {

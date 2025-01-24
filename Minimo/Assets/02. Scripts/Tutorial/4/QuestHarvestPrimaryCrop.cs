@@ -33,6 +33,11 @@ public class QuestHarvestPrimaryCrop : QuestBase
 
     private bool CheckClear()
     {
+        if (_storageBtns == null || _storageBtns.Count == 0) 
+        {
+            return false;
+        }
+        
         return _storageBtns.Any(x => x.CanShow);
     }
 }
