@@ -51,21 +51,25 @@ public class ObjectInput : MonoBehaviour
 
     private void HandleClickUp()
     {
-        if (_currentObject == null || _currentObject is not BuildingObject)
+        if (_editManager.IsEditing.Value)
         {
-            if (!_editManager.IsEditing.Value) return;
-            
-            var screenPosition = Input.mousePosition;
-            var worldPosition = _mainCamera.ScreenToWorldPoint(
-                new Vector3(screenPosition.x, screenPosition.y, _mainCamera.nearClipPlane));
-            worldPosition.z = 0;
-            _editManager.MoveObject(worldPosition);
+            if (_currentObject is not BuildingObject)
+            {
+                var screenPosition = Input.mousePosition;
+                var worldPosition = _mainCamera.ScreenToWorldPoint(
+                    new Vector3(screenPosition.x, screenPosition.y, _mainCamera.nearClipPlane));
+                worldPosition.z = 0;
+                _editManager.MoveObject(worldPosition);
+                
+                _currentObject = null;
+                return;
+            }
         }
-        else
-        {
-            _currentObject.OnClickUp();
-            _currentObject = null;
-        }
+
+        if (_currentObject == null) return;
+        
+        _currentObject.OnClickUp();
+        _currentObject = null;
     }
 
     private void HandleLongPress()

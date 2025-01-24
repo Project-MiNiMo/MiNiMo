@@ -14,6 +14,8 @@ public class MinimoInput : MonoBehaviour
     private int _layerMask;
     private int _layerMask2;
 
+    private bool _isClicked = false;
+
     private void Start()
     {
         _mainCamera = Camera.main;
@@ -49,12 +51,16 @@ public class MinimoInput : MonoBehaviour
 
     private void HandleClickDown()
     {
+        if (_isClicked) return;
+        
         var hit = GetRaycastMinimo();
         _currentObject = hit;
         if (_currentObject != null) 
         {
             _currentObject.FSM.ChangeState(MinimoState.Drag);
             _cameraInput.enabled = false;
+            
+            _isClicked = true;
         }
     }
 
@@ -86,6 +92,7 @@ public class MinimoInput : MonoBehaviour
         
         _cameraInput.enabled = true;
         _currentObject = null;
+        _isClicked = false;
     }
 
     private void HandleDrag()
