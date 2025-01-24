@@ -79,15 +79,13 @@ public class MinimoInput : MonoBehaviour
         if (_currentObject == null) return;
         
         var hit = GetRaycastProduce();
-        if (hit == null)
+        if (hit && !hit.IsMinimoWorking && hit.AnimTrigger != null) 
+        {
+            _currentObject.SetWorkState(hit);
+        }
+        else 
         {
             _currentObject.SetChillState();
-            Debug.LogWarning("Chill");
-        }
-        else
-        {
-            _currentObject.FSM.ChangeState(MinimoState.Idle);
-            Debug.LogWarning("Work");
         }
         
         _cameraInput.enabled = true;

@@ -12,7 +12,11 @@ public abstract class ProduceObject : BuildingObject
     public List<ProduceTask> AllTasks { get; } = new(); 
     public ProduceTask ActiveTask { get; private set; }
     public virtual bool IsPrimary => false;
-
+    
+    public Transform MinimoWorkingPosition;
+    public bool IsMinimoWorking => MinimoWorkingPosition != null && MinimoWorkingPosition.childCount > 0;
+    public string AnimTrigger;
+    
     private readonly bool[] _produceSlots = new bool[5];
     private bool _isPlanting = false;
     private bool _isHarvesting = false;
