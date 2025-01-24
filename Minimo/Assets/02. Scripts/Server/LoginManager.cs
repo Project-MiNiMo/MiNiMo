@@ -3,7 +3,6 @@ using Cysharp.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using MinimoShared;
 using Newtonsoft.Json.Linq;
-using Unity.PlasticSCM.Editor.WebApi;
 
 using UnityEngine;
 
