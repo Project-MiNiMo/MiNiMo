@@ -60,12 +60,12 @@ public class StorageExpandPanel : UIBase
 
     private void OnClickExpand()
     {
-        if (_accountInfo.BlueStar < _expandCost * _currentCount) return;
+        if (_accountInfo.BlueStar.Value < _expandCost * _currentCount) return;
         
         var newCurrencyRequest = new CurrencyDTO
         {
-            Star = _accountInfo.Star,
-            BlueStar = _accountInfo.BlueStar - _expandCost * _currentCount
+            Star = _accountInfo.Star.Value,
+            BlueStar = _accountInfo.BlueStar.Value - _expandCost * _currentCount
         };
         _accountInfo.UpdateCurrency(newCurrencyRequest);
         //_accountInfo.MaxStorageCapacity += _currentCount;

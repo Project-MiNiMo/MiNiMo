@@ -1558,7 +1558,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297564905195463346}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -10468,6 +10468,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nicknameTMP: {fileID: 3843969400955693871}
   _levelTMP: {fileID: 7372171226365176356}
+  _blueStarTMP: {fileID: 3748833031290625920}
+  _rainbowStarTMP: {fileID: 8855777106814319328}
 --- !u!1 &2105357058037536758
 GameObject:
   m_ObjectHideFlags: 0
@@ -36132,7 +36134,7 @@ GameObject:
   - component: {fileID: 4131826700561306146}
   - component: {fileID: 4398297275608034570}
   m_Layer: 5
-  m_Name: Img_DiaStar
+  m_Name: Img_RainbowStar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

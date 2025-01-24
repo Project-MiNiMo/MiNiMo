@@ -27,28 +27,7 @@ public class ProduceTaskBtn : MonoBehaviour
         _taskIndex = transform.GetSiblingIndex();
         _plantPanel = App.GetManager<UIManager>().GetPanel<PlantPanel>();
         
-        _taskBtn.onClick.AddListener(() =>
-        {
-            if (_produceTask == null) 
-            {
-                _plantPanel.OpenPanel();
-                return;
-            }
-            
-            if (_produceTask?.CurrentState is PendingState)
-            {
-                //취소?
-            }
-            else if (_produceTask?.CurrentState is ActiveState)
-            {
-                //중간 수확 기능 구현
-            }
-            else if (_produceTask?.CurrentState is CompletedState)
-            {
-                _produceManager.CurrentProduceObject.StartHarvest();
-                _produceObject.OrganizeTasks();
-            }
-        });
+        _taskBtn.onClick.AddListener(OnClickTask);
         
         _produceManager = App.GetManager<ProduceManager>();
   
@@ -95,6 +74,29 @@ public class ProduceTaskBtn : MonoBehaviour
             _produceTask = tempTask;
             _itemInfoUpdater.SetTaskItem(_produceTask);
             SetRemainTime(_produceTask.RemainTime);
+        }
+    }
+    
+    private async void OnClickTask()
+    {
+        if (_produceTask == null) 
+        {
+            _plantPanel.OpenPanel();
+            return;
+        }
+            
+        if (_produceTask?.CurrentState is PendingState)
+        {
+            //취소?
+        }
+        else if (_produceTask?.CurrentState is ActiveState)
+        {
+            //중간 수확 기능 구현
+        }
+        else if (_produceTask?.CurrentState is CompletedState)
+        {
+            await _produceManager.CurrentProduceObject.StartHarvest();
+            _produceObject.OrganizeTasks();
         }
     }
     

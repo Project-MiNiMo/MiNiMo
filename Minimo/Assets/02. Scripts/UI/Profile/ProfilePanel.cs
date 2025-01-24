@@ -1,3 +1,4 @@
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -51,8 +52,12 @@ public class ProfilePanel : UIBase
         _nickNameInput.onValueChanged.AddListener((text)=>
         {
             _accountInfo.UpdateNickname(text);
-            _playerInfoPanel.SetNickName();
         });
+        
+        _accountInfo.NickName.Subscribe((nickName) =>
+        {
+            _nickNameInput.SetTextWithoutNotify(nickName);
+        }).AddTo(gameObject);
 
         SetString();
         SetButtonEvent();
@@ -65,7 +70,7 @@ public class ProfilePanel : UIBase
     {
         var titleData = App.GetData<TitleData>();
 
-        SetNickName();
+        _nickNameInput.SetTextWithoutNotify(_accountInfo.NickName.Value);
             
         _levelString = titleData.GetString("STR_PROFILE_LEVEL");
         _expString = titleData.GetString("STR_PROFILE_EXP");
@@ -92,10 +97,5 @@ public class ProfilePanel : UIBase
     private void UpdateExpProgressBar()
     {
         _expProgressBarImg.fillAmount = (float)PLAYER_EXP / PLAYER_EXP_MAX;
-    }
-
-    public void SetNickName()
-    {
-        _nickNameInput.SetTextWithoutNotify(_accountInfo.NickName);
     }
 }
