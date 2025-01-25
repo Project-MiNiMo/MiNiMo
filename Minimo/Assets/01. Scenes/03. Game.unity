@@ -2954,6 +2954,62 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2150058139426954162, guid: 7c57d1f99e85aa743b27c1b1a5b6d762, type: 3}
+      propertyPath: _circleTransforms.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150058139426954162, guid: 7c57d1f99e85aa743b27c1b1a5b6d762, type: 3}
+      propertyPath: _circleTransforms.Array.data[0]
+      value: 
+      objectReference: {fileID: 1051469470}
+    - target: {fileID: 2150058139426954162, guid: 7c57d1f99e85aa743b27c1b1a5b6d762, type: 3}
+      propertyPath: _circleTransforms.Array.data[1]
+      value: 
+      objectReference: {fileID: 2103575507}
+    - target: {fileID: 2150058139426954162, guid: 7c57d1f99e85aa743b27c1b1a5b6d762, type: 3}
+      propertyPath: _circleTransforms.Array.data[2]
+      value: 
+      objectReference: {fileID: 939568078}
+    - target: {fileID: 2150058139426954162, guid: 7c57d1f99e85aa743b27c1b1a5b6d762, type: 3}
+      propertyPath: _circleTransforms.Array.data[3]
+      value: 
+      objectReference: {fileID: 752773451}
+    - target: {fileID: 2150058139426954162, guid: 7c57d1f99e85aa743b27c1b1a5b6d762, type: 3}
+      propertyPath: _circleTransforms.Array.data[4]
+      value: 
+      objectReference: {fileID: 1597212632}
+    - target: {fileID: 2150058139426954162, guid: 7c57d1f99e85aa743b27c1b1a5b6d762, type: 3}
+      propertyPath: _circleTransforms.Array.data[5]
+      value: 
+      objectReference: {fileID: 1487122567}
+    - target: {fileID: 2150058139426954162, guid: 7c57d1f99e85aa743b27c1b1a5b6d762, type: 3}
+      propertyPath: _circleTransforms.Array.data[6]
+      value: 
+      objectReference: {fileID: 619058581}
+    - target: {fileID: 2150058139426954162, guid: 7c57d1f99e85aa743b27c1b1a5b6d762, type: 3}
+      propertyPath: _circleTransforms.Array.data[7]
+      value: 
+      objectReference: {fileID: 1086745348}
+    - target: {fileID: 2150058139426954162, guid: 7c57d1f99e85aa743b27c1b1a5b6d762, type: 3}
+      propertyPath: _circleTransforms.Array.data[8]
+      value: 
+      objectReference: {fileID: 1103678446}
+    - target: {fileID: 2150058139426954162, guid: 7c57d1f99e85aa743b27c1b1a5b6d762, type: 3}
+      propertyPath: _circleTransforms.Array.data[9]
+      value: 
+      objectReference: {fileID: 343742596}
+    - target: {fileID: 2150058139426954162, guid: 7c57d1f99e85aa743b27c1b1a5b6d762, type: 3}
+      propertyPath: _circleTransforms.Array.data[10]
+      value: 
+      objectReference: {fileID: 1335192125}
+    - target: {fileID: 2150058139426954162, guid: 7c57d1f99e85aa743b27c1b1a5b6d762, type: 3}
+      propertyPath: _circleTransforms.Array.data[11]
+      value: 
+      objectReference: {fileID: 540288882}
+    - target: {fileID: 2150058139426954162, guid: 7c57d1f99e85aa743b27c1b1a5b6d762, type: 3}
+      propertyPath: _circleTransforms.Array.data[12]
+      value: 
+      objectReference: {fileID: 544125394}
     - target: {fileID: 2169267377309390789, guid: 7c57d1f99e85aa743b27c1b1a5b6d762, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
