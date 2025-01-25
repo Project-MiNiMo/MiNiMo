@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -75,6 +76,19 @@ public class BuildingPanel : UIBase
                 _buildingBtns[i].image.sprite = _btnSprites[1];
                 _buildingBacks[i].SetActive(false);
             }
+        }
+    }
+    
+    public void SetBuildingBtnForTutorial(string[] buildingNames)
+    {
+        var buildingBtns = GetComponentsInChildren<BuildingBtn>(true);
+        foreach (var btn in buildingBtns)
+        {
+            btn.gameObject.SetActive(false);
+        }
+        for (var i = 0; i < buildingNames.Length; i++)
+        {
+            buildingBtns.FirstOrDefault(x=>x.Data.ID == buildingNames[i])?.gameObject.SetActive(true);
         }
     }
 }

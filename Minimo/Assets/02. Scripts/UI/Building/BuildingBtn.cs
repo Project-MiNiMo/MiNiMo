@@ -37,7 +37,7 @@ public class BuildingBtn : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _lockNoticeTMP;
     [SerializeField] private TextMeshProUGUI _unlockNoticeTMP;
     
-    private BuildingData _data;
+    public BuildingData Data { get; private set; }
     private GameObject _objectPrefab;
     private Transform _buildingGroup;
 
@@ -53,7 +53,7 @@ public class BuildingBtn : MonoBehaviour
 
     public void Initialize(BuildingData data, Transform gridObjectGroup)
     {
-        _data = data;
+        Data = data;
 
         _buildingGroup = gridObjectGroup;
 
@@ -67,24 +67,33 @@ public class BuildingBtn : MonoBehaviour
         SetString();
         SetRequireItem();
         SetBuildingState();
+        
+        if (data.ID is "Building_Farm" or "Building_Orchard")
+        {
+            gameObject.SetActive(true);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void SetString()
     {
         var titleData = App.GetData<TitleData>();
 
-        _nameTMP.text = titleData.GetString(_data.Name);
-        _lockNoticeTMP.text = titleData.GetFormatString("STR_BUILDING_UI_LOCK", _data.UnlockLevel.ToString());
+        _nameTMP.text = titleData.GetString(Data.Name);
+        _lockNoticeTMP.text = titleData.GetFormatString("STR_BUILDING_UI_LOCK", Data.UnlockLevel.ToString());
         _unlockNoticeTMP.text = titleData.GetString("STR_BUILDING_UI_UNLOCKABLE");
 
-        _hpiTMP.text = _data.HPI.ToString();
+        _hpiTMP.text = Data.HPI.ToString();
     }
 
     private void SetRequireItem()
     {
-        if (!App.GetData<TitleData>().Construct.TryGetValue(_data.ID, out var constructData))
+        if (!App.GetData<TitleData>().Construct.TryGetValue(Data.ID, out var constructData))
         {
-            Debug.LogError($"Can't Find ConstructData with ID : {_data.ID}");
+            Debug.LogError($"Can't Find ConstructData with ID : {Data.ID}");
             return;
         }
 
@@ -119,7 +128,7 @@ public class BuildingBtn : MonoBehaviour
 
     private void SetBuildingState()
     {
-        if (App.GetManager<AccountInfoManager>().Level.Value < _data.UnlockLevel)
+        if (App.GetManager<AccountInfoManager>().Level.Value < Data.UnlockLevel)
         {
             _currentState = BuildingState.Lock;
         }
@@ -153,7 +162,7 @@ public class BuildingBtn : MonoBehaviour
 
         if (gridObject != null)
         {
-            gridObject.Initialize(_data);
+            gridObject.Initialize(Data);
             App.GetManager<EditManager>().StartEdit(gridObject);
         }
         else
