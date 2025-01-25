@@ -20,7 +20,7 @@ public class BuildingBack : MonoBehaviour
     private Dictionary<string, BuildingBtn> _btnDictionary = new();
     private Transform _buildingObjectParent;
 
-    private void Start()
+    private void Awake()
     {
         _buildingObjectParent = GameObject.FindWithTag("BuildingObjectParent").transform;
 
