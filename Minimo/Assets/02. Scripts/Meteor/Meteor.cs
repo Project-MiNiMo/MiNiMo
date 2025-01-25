@@ -51,5 +51,6 @@ public class Meteor : InteractObject
         //}
 
         _pickMeteorPanel.OpenPanel(_index);
+        gameObject.SetActive(false);
     }
 }

@@ -6,6 +6,7 @@ public class Tutorial7_SecondMeteor : TutorialBase
 {
     [SerializeField] private CanvasGroup _questCanvasGroup1;
     [SerializeField] private CanvasGroup _questCanvasGroup2;
+    [SerializeField] private CanvasGroup _questCanvasGroup3;
     [SerializeField] private GameObject _meteor;
     
     private SidePanel _sidePanel;
@@ -47,6 +48,17 @@ public class Tutorial7_SecondMeteor : TutorialBase
         
         _questCanvasGroup2.DOFade(0, 0.5f)
             .OnComplete(() => _questCanvasGroup2.gameObject.SetActive(false));
+        
+        StartCoroutine(WaitUntilSideClose());
+    }
+    
+    private IEnumerator WaitUntilSideClose()
+    {
+        yield return new WaitUntil(() => !_sidePanel.IsOpen);
+        
+        _questCanvasGroup3.DOFade(1, 0.5f)
+            .OnComplete(() => _questCanvasGroup3.DOFade(1, 2f)
+                .OnComplete(()=>_questCanvasGroup3.DOFade(0, 0.5f)));
     }
     
     public override void EndTutorial()

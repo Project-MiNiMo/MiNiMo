@@ -25,11 +25,6 @@ public class QuestHarvestPrimaryCrop : QuestBase
             storagePanel.GetStorageBtn("Item_Pepper")
         };
     }
-    
-    protected override void ShowDetail()
-    {
-        //App.GetManager<UIManager>().OpenPanel<UIQuestDetail>(this);
-    }
 
     private bool CheckClear()
     {

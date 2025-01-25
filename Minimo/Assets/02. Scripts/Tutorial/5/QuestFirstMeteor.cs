@@ -17,11 +17,6 @@ public class QuestFirstMeteor : QuestBase
         _meteor.enabled = true;
         _getItemPanel = App.GetManager<UIManager>().GetPanel<GetItemPanel>();
     }
-    
-    protected override void ShowDetail()
-    {
-        //App.GetManager<UIManager>().OpenPanel<UIQuestDetail>(this);
-    }
 
     private bool CheckClear()
     {

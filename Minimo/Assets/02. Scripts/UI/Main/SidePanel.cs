@@ -8,6 +8,7 @@ public class SidePanel : UIBase
     [Header("Buttons")]
     [SerializeField] private Button _openBtn;
     [SerializeField] private Button _closeBtn;
+    [SerializeField] private Button _closeBtn2;
     [SerializeField] private GameObject _alertIcon;
 
     private RectTransform _rect;
@@ -20,6 +21,7 @@ public class SidePanel : UIBase
 
         _openBtn.onClick.AddListener(Open);
         _closeBtn.onClick.AddListener(Close);
+        _closeBtn2.onClick.AddListener(Close);
 
         UpdateOpenCloseButtons();
     }
@@ -28,6 +30,7 @@ public class SidePanel : UIBase
     {
         _openBtn.gameObject.SetActive(!IsOpen);
         _closeBtn.gameObject.SetActive(IsOpen);
+        _closeBtn2.gameObject.SetActive(IsOpen);
     }
 
     private void Open()
@@ -55,7 +58,7 @@ public class SidePanel : UIBase
 
         SetAlert(false);
         
-        _rect.DOAnchorPosX(0f, 0.2f).OnComplete(() =>
+        _rect.DOAnchorPosX(90f, 0.2f).OnComplete(() =>
         {
             IsOpen = false;
             UpdateOpenCloseButtons();

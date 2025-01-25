@@ -20,11 +20,6 @@ public class QuestPlantPrimaryFruit : QuestBase
             }
         }
     }
-    
-    protected override void ShowDetail()
-    {
-        //App.GetManager<UIManager>().OpenPanel<UIQuestDetail>(this);
-    }
 
     private bool CheckClear()
     {

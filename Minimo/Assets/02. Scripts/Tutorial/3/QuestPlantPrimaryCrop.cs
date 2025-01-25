@@ -24,11 +24,6 @@ public class QuestPlantPrimaryCrop : QuestBase
         }
     }
     
-    protected override void ShowDetail()
-    {
-        //App.GetManager<UIManager>().OpenPanel<UIQuestDetail>(this);
-    }
-
     private bool CheckClear()
     {
         if (_produceObject == null) 

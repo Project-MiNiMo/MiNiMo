@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class QuestSecondMeteor : QuestBase
 {
@@ -8,6 +7,7 @@ public class QuestSecondMeteor : QuestBase
     protected override bool IsClear => CheckClear();
     
     private StorageBtn _storageBtn;
+    [SerializeField] private TextMeshProUGUI _detailText;
     
     public override void StartQuest()
     {
@@ -17,9 +17,11 @@ public class QuestSecondMeteor : QuestBase
         _storageBtn = storagePanel.GetStorageBtn("Item_WheatFlour");
     }
     
-    protected override void ShowDetail()
+    protected override void ClearQuest()
     {
-        //App.GetManager<UIManager>().OpenPanel<UIQuestDetail>(this);
+        base.ClearQuest();
+        
+        _detailText.text = "<color=red>유성 속에 담긴 소원을 들어주세요.</color>\n밀가루를 생산하세요. (1/1)";
     }
 
     private bool CheckClear()
