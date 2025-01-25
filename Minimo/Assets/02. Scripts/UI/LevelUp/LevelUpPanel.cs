@@ -51,7 +51,10 @@ public class LevelUpPanel : UIBase
             .Join(_arrowImg2.DOFade(1, 1))
             .Insert(1.5f,_levelUpText.DOFade(1, 1))
             .Join(_levelText.DOFade(1, 1))
-            .Append(_rewardCanvasGroup.DOFade(1, 0.5f));
+            .Append(_rewardCanvasGroup.DOFade(1, 0.5f))
+            .AppendInterval(2)
+            .Append(_canvasGroup.DOFade(0, 0.5f))
+            .OnComplete(ClosePanel);
     }
 
     private void Setup()
@@ -68,13 +71,13 @@ public class LevelUpPanel : UIBase
     {
         if (level == 2)
         {
-            var accountInfo = App.GetManager<AccountInfoManager>();
+            var accountInfo = App.GetManager<CheatManager>();
             _level2Reward.SetActive(true);
             _level3Reward.SetActive(false);
 
             var newCurrency = new CurrencyDTO()
             {
-                Star = accountInfo.Star.Value,
+                Star = 0,
                 BlueStar = 20,
             };
             accountInfo.UpdateCurrency(newCurrency);

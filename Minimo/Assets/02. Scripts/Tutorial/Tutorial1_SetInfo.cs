@@ -31,7 +31,7 @@ public class Tutorial1_SetInfo : TutorialBase
         gameObject.SetActive(true);
 
         var sequence = DOTween.Sequence();
-        sequence.Append(_canvasGroup.DOFade(1, 1f))
+        sequence.Append(_canvasGroup.DOFade(1, 0))
             .AppendInterval(1)
             .Append(_minimoImgRect.DOScale(Vector2.one, 0.5f).SetEase(Ease.OutBack))
             .Join(_backRect.DOAnchorPosY(_backRectYPos[_currentStep++], 0.5f).SetEase(Ease.OutBack))
