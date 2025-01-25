@@ -30,6 +30,7 @@ public class SidePanel : UIBase
     {
         _openBtn.gameObject.SetActive(!IsOpen);
         _closeBtn.gameObject.SetActive(IsOpen);
+        _closeBtn2.gameObject.SetActive(IsOpen);
     }
 
     private void Open()
@@ -57,7 +58,7 @@ public class SidePanel : UIBase
 
         SetAlert(false);
         
-        _rect.DOAnchorPosX(0f, 0.2f).OnComplete(() =>
+        _rect.DOAnchorPosX(90f, 0.2f).OnComplete(() =>
         {
             IsOpen = false;
             UpdateOpenCloseButtons();

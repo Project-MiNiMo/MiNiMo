@@ -12421,7 +12421,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 350, y: 600}
+  m_CellSize: {x: 344, y: 460}
   m_Spacing: {x: 18, y: 18}
   m_Constraint: 1
   m_ConstraintCount: 3
@@ -14883,7 +14883,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 50, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -16990,7 +16990,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 350, y: 600}
+  m_CellSize: {x: 344, y: 460}
   m_Spacing: {x: 18, y: 18}
   m_Constraint: 1
   m_ConstraintCount: 3
@@ -19730,7 +19730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalFit: 0
+  m_HorizontalFit: 2
   m_VerticalFit: 0
 --- !u!1 &3367177886817212295
 GameObject:
@@ -27649,8 +27649,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 4217a7690f6b9574295eb42dfb762c04, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -31526,7 +31526,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD5C9 \uC5EC\uAE30 \uC720\uC131\uC774 \uC788\uC5B4!"
+  m_text: "\uD5C9 \uC800\uAE30 \uC720\uC131\uC774 \uC788\uC5B4!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b21059f8f6397534ba71646cd8076e9e, type: 2}
   m_sharedMaterial: {fileID: 482842340951358624, guid: b21059f8f6397534ba71646cd8076e9e, type: 2}
@@ -35056,7 +35056,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 350, y: 600}
+  m_CellSize: {x: 344, y: 460}
   m_Spacing: {x: 18, y: 18}
   m_Constraint: 1
   m_ConstraintCount: 3
@@ -36440,7 +36440,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8062079341446137409
 RectTransform:
   m_ObjectHideFlags: 0
@@ -45985,8 +45985,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 4217a7690f6b9574295eb42dfb762c04, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -51328,7 +51328,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 350, y: 600}
+  m_CellSize: {x: 344, y: 460}
   m_Spacing: {x: 18, y: 18}
   m_Constraint: 1
   m_ConstraintCount: 3
@@ -51882,7 +51882,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clearBtn: {fileID: 9120990562206083860}
-  _detailBtn: {fileID: 0}
   _builidngParent: {fileID: 0}
 --- !u!114 &9120990562206083860 stripped
 MonoBehaviour:
@@ -52671,7 +52670,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clearBtn: {fileID: 8593083806724222416}
-  _detailBtn: {fileID: 0}
 --- !u!114 &8593083806724222416 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8806652928379917554, guid: a423df13967101740a1681fe4c63096e, type: 3}
@@ -55351,7 +55349,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clearBtn: {fileID: 5316031257519929035}
-  _detailBtn: {fileID: 0}
 --- !u!224 &8762505275651835699 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5362518808446821642, guid: a423df13967101740a1681fe4c63096e, type: 3}
@@ -55509,7 +55506,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clearBtn: {fileID: 5539890713365884424}
-  _detailBtn: {fileID: 0}
   _builidngParent: {fileID: 0}
   _detailText: {fileID: 1972452486149821314}
 --- !u!224 &8988445007686361072 stripped
@@ -55658,7 +55654,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clearBtn: {fileID: 5548736001562332323}
-  _detailBtn: {fileID: 0}
 --- !u!224 &9033635511602036059 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5362518808446821642, guid: a423df13967101740a1681fe4c63096e, type: 3}
@@ -55816,7 +55811,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clearBtn: {fileID: 5614461451045153135}
-  _detailBtn: {fileID: 0}
   _builidngParent: {fileID: 0}
   _detailText: {fileID: 1897344357934617829}
 --- !u!224 &9058542794557380759 stripped
@@ -56435,7 +56429,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clearBtn: {fileID: 3629358169750176775}
-  _detailBtn: {fileID: 0}
   _meteor: {fileID: 0}
 --- !u!114 &3629358169750176775 stripped
 MonoBehaviour:
@@ -56685,7 +56678,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clearBtn: {fileID: 3655685901376316687}
-  _detailBtn: {fileID: 0}
   _builidngParent: {fileID: 0}
 --- !u!114 &3655685901376316687 stripped
 MonoBehaviour:
@@ -57365,7 +57357,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clearBtn: {fileID: 3006019712966083072}
-  _detailBtn: {fileID: 0}
   _builidngParent: {fileID: 0}
   _detailText: {fileID: 9081980708025089930}
 --- !u!114 &9081980708025089930 stripped
@@ -58982,7 +58973,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clearBtn: {fileID: 1404315259615887759}
-  _detailBtn: {fileID: 0}
   _builidngParent: {fileID: 0}
   _detailText: {fileID: 4954816233010871301}
 --- !u!114 &1404315259615887759 stripped
