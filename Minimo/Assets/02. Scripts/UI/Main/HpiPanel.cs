@@ -7,6 +7,6 @@ public class HpiPanel : UIBase
 
     public override void Initialize()
     {
-        _fillImg.fillAmount = 0.3f;
+        _fillImg.fillAmount = 1f;
     }
 }
