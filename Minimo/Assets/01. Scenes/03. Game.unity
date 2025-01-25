@@ -2955,6 +2955,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2150058139426954162, guid: 7c57d1f99e85aa743b27c1b1a5b6d762, type: 3}
+      propertyPath: _cameraInput
+      value: 
+      objectReference: {fileID: 408177627}
+    - target: {fileID: 2150058139426954162, guid: 7c57d1f99e85aa743b27c1b1a5b6d762, type: 3}
+      propertyPath: _endTransform
+      value: 
+      objectReference: {fileID: 1164252515}
+    - target: {fileID: 2150058139426954162, guid: 7c57d1f99e85aa743b27c1b1a5b6d762, type: 3}
       propertyPath: _circleTransforms.Array.size
       value: 13
       objectReference: {fileID: 0}

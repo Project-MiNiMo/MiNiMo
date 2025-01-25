@@ -105,7 +105,7 @@ public class BuildingBtn : MonoBehaviour
         {
             _requireItem1.ItemBack.SetActive(true);
 
-            string spritePath = $"Item/Icon/{constructData.MatCode1}";
+            string spritePath = $"Item/{constructData.MatCode1}";
             _requireItem1.IconImg.sprite = Resources.Load<Sprite>(spritePath);
 
             _requireItem1.CountTMP.text = constructData.MatAmount1.ToString();
